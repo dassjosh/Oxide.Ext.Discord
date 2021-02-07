@@ -1,7 +1,7 @@
-﻿namespace Oxide.Ext.Discord.DiscordEvents
-{
-    using Oxide.Ext.Discord.DiscordObjects;
+﻿using uMod.Ext.Discord.DiscordObjects;
 
+namespace uMod.Ext.Discord.DiscordEvents
+{
     public class MessageReactionUpdate
     {
         public string user_id { get; set; }

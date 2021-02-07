@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Oxide.Plugins;
+using uMod.Collections;
 
-namespace Oxide.Ext.Discord.Extensions
+namespace uMod.Ext.Discord.Extensions
 {
     public static class HashExt
     {

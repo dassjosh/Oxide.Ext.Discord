@@ -2,14 +2,14 @@ using System;
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Oxide.Ext.Discord.DiscordEvents;
-using Oxide.Ext.Discord.DiscordObjects;
-using Oxide.Ext.Discord.Extensions;
-using Oxide.Ext.Discord.Gateway;
-using Oxide.Ext.Discord.Logging;
+using uMod.Ext.Discord.DiscordEvents;
+using uMod.Ext.Discord.DiscordObjects;
+using uMod.Ext.Discord.Extensions;
+using uMod.Ext.Discord.Gateway;
+using uMod.Ext.Discord.Logging;
 using WebSocketSharp;
 
-namespace Oxide.Ext.Discord.WebSockets
+namespace uMod.Ext.Discord.WebSockets
 {
     public class SocketListener
     {
@@ -28,7 +28,7 @@ namespace Oxide.Ext.Discord.WebSockets
             _logger = logger;
         }
 
-        public void SocketOpened(object sender, EventArgs e)
+        public void SocketOpened(object sender, System.EventArgs e)
         {
             _logger.Warning("Discord socket opened!");
             _client.CallHook("DiscordSocket_WebSocketOpened");

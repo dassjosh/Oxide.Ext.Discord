@@ -1,4 +1,4 @@
-namespace Oxide.Ext.Discord.WebSockets
+namespace uMod.Ext.Discord.WebSockets
 {
     public enum SocketCloseCode
     {

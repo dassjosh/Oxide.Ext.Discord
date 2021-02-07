@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using System.Text;
-using Oxide.Ext.Discord.Extensions;
-using Oxide.Ext.Discord.Helpers;
-using Oxide.Ext.Discord.Logging;
-using Oxide.Plugins;
+using uMod.Collections;
+using uMod.Ext.Discord.Extensions;
+using uMod.Ext.Discord.Logging;
 
-namespace Oxide.Ext.Discord.REST
+namespace uMod.Ext.Discord.REST
 {
     public class BotRestHandler
     {

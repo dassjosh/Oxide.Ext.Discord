@@ -1,6 +1,6 @@
 using System;
 
-namespace Oxide.Ext.Discord.Extensions
+namespace uMod.Ext.Discord.Extensions
 {
     public static class EnumExt
     {

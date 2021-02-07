@@ -1,8 +1,8 @@
-﻿namespace Oxide.Ext.Discord.DiscordObjects
-{
-    using System;
-    using Oxide.Ext.Discord.REST;
+﻿using System;
+using uMod.Ext.Discord.REST;
 
+namespace uMod.Ext.Discord.DiscordObjects
+{
     public class Invite
     {
         public string code { get; set; }

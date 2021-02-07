@@ -1,8 +1,8 @@
 using System;
 using System.Timers;
-using Oxide.Ext.Discord.Helpers;
+using uMod.Ext.Discord.Helpers;
 
-namespace Oxide.Ext.Discord.REST
+namespace uMod.Ext.Discord.REST
 {
     public class BotGlobalRateLimit
     {

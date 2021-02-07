@@ -1,8 +1,8 @@
-﻿namespace Oxide.Ext.Discord.DiscordObjects
-{
-    using System.Collections.Generic;
-    using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
+namespace uMod.Ext.Discord.DiscordObjects
+{
     public class AuditLogChangeKey
     {
         public class Guild

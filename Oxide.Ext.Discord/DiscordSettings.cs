@@ -1,7 +1,7 @@
 ﻿using System;
-using Oxide.Ext.Discord.Logging;
+using uMod.Ext.Discord.Logging;
 
-namespace Oxide.Ext.Discord
+namespace uMod.Ext.Discord
 {
     public class DiscordSettings
     {

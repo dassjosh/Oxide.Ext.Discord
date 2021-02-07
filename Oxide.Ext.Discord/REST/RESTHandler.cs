@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Oxide.Ext.Discord.Logging;
-using Oxide.Plugins;
+using uMod.Collections;
+using uMod.Ext.Discord.Logging;
 
-namespace Oxide.Ext.Discord.REST
+namespace uMod.Ext.Discord.REST
 {
     public class RestHandler
     {

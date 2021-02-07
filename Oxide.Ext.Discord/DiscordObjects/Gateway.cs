@@ -1,8 +1,8 @@
-﻿namespace Oxide.Ext.Discord.DiscordObjects
-{
-    using System;
-    using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
+namespace uMod.Ext.Discord.DiscordObjects
+{
     class Gateway
     {
         [JsonProperty("url")]

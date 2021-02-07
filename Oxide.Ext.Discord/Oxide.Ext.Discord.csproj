@@ -3,7 +3,6 @@
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
   <PropertyGroup>
     <Version>1.0.8.0</Version>
-    <AssemblyName>Oxide.Ext.Discord</AssemblyName>
     <Authors>PsychoTea</Authors>
     <Description>An Oxide extension for Discord.</Description>
     <RepositoryUrl>https://github.com/PsychoTea/Oxide.Ext.Discord</RepositoryUrl>
@@ -11,19 +10,14 @@
     <FrameworkPathOverride Condition="'$(TargetFramework)' == 'net35' And '$(OS)' == 'Windows_NT'">C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5\Profile\Client</FrameworkPathOverride>
     <FrameworkPathOverride Condition="'$(TargetFramework)' == 'net35' And '$(OS)' == 'OSX'">/Library/Frameworks/Mono.framework/Versions/Current/lib/mono/2.0-api</FrameworkPathOverride>
     <LangVersion>7.0</LangVersion>
+    <AssemblyName>uMod.Ext.Discord</AssemblyName>
+    <RootNamespace>uMod.Ext.Discord</RootNamespace>
   </PropertyGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <PropertyGroup />
   <ItemGroup>
-    <PackageReference Include="Oxide.Core" Version="2.0.*">
-      <ExcludeAssets>contentfiles;analyzers;build</ExcludeAssets>
-    </PackageReference>
-    <PackageReference Include="Oxide.CSharp" Version="2.0.4041" />
-    <PackageReference Include="Oxide.References" Version="2.0.*">
-      <ExcludeAssets>contentfiles;analyzers;build</ExcludeAssets>
-    </PackageReference>
-    <PackageReference Include="WebSocketSharpFork" Version="1.0.*">
-      <ExcludeAssets>all</ExcludeAssets>
-    </PackageReference>
+    <PackageReference Include="uMod.Common" Version="1.0.315-develop" />
+    <PackageReference Include="uMod.Core" Version="1.0.932-develop" />
+    <PackageReference Include="WebSocketSharpFork" Version="1.0.4" />
   </ItemGroup>
 </Project>

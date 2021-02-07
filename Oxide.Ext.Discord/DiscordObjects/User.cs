@@ -1,10 +1,10 @@
-﻿namespace Oxide.Ext.Discord.DiscordObjects
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Oxide.Ext.Discord.REST;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using uMod.Ext.Discord.REST;
 
+namespace uMod.Ext.Discord.DiscordObjects
+{
     public class User
     {
         public string id { get; set; }

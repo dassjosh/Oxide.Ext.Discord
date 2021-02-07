@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
-namespace Oxide.Ext.Discord.DiscordObjects
+namespace uMod.Ext.Discord.DiscordObjects
 {
-    using Newtonsoft.Json;
-
     public class GuildMembersRequest
     {
         [JsonProperty("guild_id")]

@@ -1,12 +1,11 @@
-﻿using Oxide.Ext.Discord.Logging;
+﻿using System.Collections.Generic;
+using System.Linq;
+using uMod.Ext.Discord.Exceptions;
+using uMod.Ext.Discord.Logging;
+using uMod.Plugins;
 
-namespace Oxide.Ext.Discord
+namespace uMod.Ext.Discord
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using Oxide.Core.Plugins;
-    using Oxide.Ext.Discord.Exceptions;
-
     public class Discord
     {
         public static List<DiscordClient> Clients { get; private set; } = new List<DiscordClient>();

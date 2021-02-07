@@ -1,9 +1,9 @@
-﻿namespace Oxide.Ext.Discord.DiscordEvents
-{
-    using System.Collections.Generic;
-    using Newtonsoft.Json;
-    using Oxide.Ext.Discord.DiscordObjects;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
+using uMod.Ext.Discord.DiscordObjects;
 
+namespace uMod.Ext.Discord.DiscordEvents
+{
     public class Ready
     {
         [JsonProperty("v")]

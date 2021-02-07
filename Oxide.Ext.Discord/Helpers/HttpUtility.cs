@@ -1,7 +1,7 @@
-﻿namespace Oxide.Ext.Discord.Helpers
-{
-    using System.Text;
+﻿using System.Text;
 
+namespace uMod.Ext.Discord.Helpers
+{
     public static class HttpUtility
     {
         // The code in this class is horrible. I know.

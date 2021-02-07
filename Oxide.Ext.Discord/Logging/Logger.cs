@@ -1,7 +1,6 @@
 using System;
-using Oxide.Core;
 
-namespace Oxide.Ext.Discord.Logging
+namespace uMod.Ext.Discord.Logging
 {
     public class Logger : ILogger
     {
@@ -54,16 +53,16 @@ namespace Oxide.Ext.Discord.Logging
             {
                 case LogLevel.Debug:
                 case LogLevel.Warning:
-                    Interface.Oxide.LogWarning(log);
+                    Interface.uMod.LogWarning(log);
                     break;
                 case LogLevel.Error:
-                    Interface.Oxide.LogError(log);
+                    Interface.uMod.LogError(log);
                     break;
                 case LogLevel.Exception:
-                    Interface.Oxide.LogException(log, (Exception)data);
+                    Interface.uMod.LogException(log, (Exception)data);
                     break;
                 default:
-                    Interface.Oxide.LogInfo(log);
+                    Interface.uMod.LogInfo(log);
                     break;
             }
         }

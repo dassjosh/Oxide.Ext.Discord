@@ -1,4 +1,4 @@
-namespace Oxide.Ext.Discord.Logging
+namespace uMod.Ext.Discord.Logging
 {
     public enum LogLevel
     {

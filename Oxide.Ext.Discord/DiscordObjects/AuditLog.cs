@@ -1,9 +1,9 @@
-﻿namespace Oxide.Ext.Discord.DiscordObjects
-{
-    using System;
-    using System.Collections.Generic;
-    using Oxide.Ext.Discord.REST;
+﻿using System;
+using System.Collections.Generic;
+using uMod.Ext.Discord.REST;
 
+namespace uMod.Ext.Discord.DiscordObjects
+{
     public class AuditLog
     {
         public List<Webhook> webhooks { get; set; }

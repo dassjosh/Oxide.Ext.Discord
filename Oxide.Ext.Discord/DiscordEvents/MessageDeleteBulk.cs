@@ -1,7 +1,7 @@
-﻿namespace Oxide.Ext.Discord.DiscordEvents
-{
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
+namespace uMod.Ext.Discord.DiscordEvents
+{
     public class MessageDeleteBulk
     {
         public List<string> ids { get; set; }

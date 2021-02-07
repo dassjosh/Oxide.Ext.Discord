@@ -1,7 +1,7 @@
-﻿namespace Oxide.Ext.Discord.Gateway
-{
-    using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
+namespace uMod.Ext.Discord.Gateway
+{
     class Connect
     {
         [JsonProperty("v")]

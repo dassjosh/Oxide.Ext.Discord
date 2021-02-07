@@ -1,8 +1,8 @@
-﻿namespace Oxide.Ext.Discord.Gateway
-{
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
+namespace uMod.Ext.Discord.Gateway
+{
     public class RPayload
     {
         [JsonProperty("op")]

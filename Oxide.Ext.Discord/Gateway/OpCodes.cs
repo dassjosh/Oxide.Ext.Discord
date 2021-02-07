@@ -1,4 +1,4 @@
-﻿namespace Oxide.Ext.Discord.Gateway
+﻿namespace uMod.Ext.Discord.Gateway
 {
     public enum ReceiveOpCode
     {

@@ -1,7 +1,7 @@
-﻿namespace Oxide.Ext.Discord.DiscordObjects
-{
-    using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
+namespace uMod.Ext.Discord.DiscordObjects
+{
     public class Game
     {
         [JsonProperty("name")]

@@ -1,11 +1,11 @@
-﻿namespace Oxide.Ext.Discord.DiscordObjects
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using uMod.Ext.Discord.Helpers;
+using uMod.Ext.Discord.REST;
+
+namespace uMod.Ext.Discord.DiscordObjects
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using Oxide.Ext.Discord.Helpers;
-    using Oxide.Ext.Discord.REST;
-    
     public class Message
     {
         public string id { get; set; }

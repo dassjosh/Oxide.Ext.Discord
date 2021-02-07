@@ -1,10 +1,10 @@
-﻿namespace Oxide.Ext.Discord.DiscordObjects
-{
-    using System;
-    using System.Collections.Generic;
-    using Newtonsoft.Json.Linq;
-    using Oxide.Ext.Discord.REST;
+﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
+using uMod.Ext.Discord.REST;
 
+namespace uMod.Ext.Discord.DiscordObjects
+{
     public class Guild
     {
         public string id { get; set; }

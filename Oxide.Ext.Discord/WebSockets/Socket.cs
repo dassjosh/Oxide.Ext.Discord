@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Timers;
 using Newtonsoft.Json;
-using Oxide.Ext.Discord.Gateway;
-using Oxide.Ext.Discord.Exceptions;
-using Oxide.Ext.Discord.Logging;
+using uMod.Ext.Discord.Exceptions;
+using uMod.Ext.Discord.Gateway;
+using uMod.Ext.Discord.Logging;
 using WebSocketSharp;
 
-namespace Oxide.Ext.Discord.WebSockets
+namespace uMod.Ext.Discord.WebSockets
 {
     public class Socket
     {
@@ -60,6 +60,7 @@ namespace Oxide.Ext.Discord.WebSockets
             _socket.ConnectAsync();
         }
         
+
         public void Disconnect(bool attemptReconnect, bool shouldResume, bool requested = false)
         {
             RequestReconnect = attemptReconnect;

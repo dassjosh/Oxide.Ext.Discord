@@ -1,4 +1,4 @@
-﻿namespace Oxide.Ext.Discord.REST
+﻿namespace uMod.Ext.Discord.REST
 {
     public enum RequestMethod
     {

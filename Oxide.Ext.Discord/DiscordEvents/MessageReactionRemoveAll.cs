@@ -1,4 +1,4 @@
-﻿namespace Oxide.Ext.Discord.DiscordEvents
+﻿namespace uMod.Ext.Discord.DiscordEvents
 {
     public class MessageReactionRemoveAll
     {

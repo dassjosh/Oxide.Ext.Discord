@@ -1,7 +1,7 @@
-﻿namespace Oxide.Ext.Discord.DiscordObjects
-{
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
+namespace uMod.Ext.Discord.DiscordObjects
+{
     public class AuditLogEntry
     {
         public string target_id { get; set; }

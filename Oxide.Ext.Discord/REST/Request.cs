@@ -4,12 +4,11 @@ using System.IO;
 using System.Net;
 using System.Text;
 using Newtonsoft.Json;
-using Oxide.Core.Libraries;
-using Oxide.Ext.Discord.DiscordObjects;
-using Oxide.Ext.Discord.Logging;
-using Time = Oxide.Ext.Discord.Helpers.Time;
+using uMod.Ext.Discord.DiscordObjects;
+using uMod.Ext.Discord.Logging;
+using Time = uMod.Ext.Discord.Helpers.Time;
 
-namespace Oxide.Ext.Discord.REST
+namespace uMod.Ext.Discord.REST
 {
     public class Request
     {
@@ -70,7 +69,7 @@ namespace Oxide.Ext.Discord.REST
 
             if (Headers != null)
             {
-                req.SetRawHeaders(Headers);
+                //req.SetRawHeaders(Headers);
             }
             
             try

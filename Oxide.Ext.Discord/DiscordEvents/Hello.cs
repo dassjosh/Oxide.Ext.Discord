@@ -1,7 +1,7 @@
-﻿namespace Oxide.Ext.Discord.DiscordEvents
-{
-    using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
+namespace uMod.Ext.Discord.DiscordEvents
+{
     public class Hello
     {
         [JsonProperty("heartbeat_interval")]

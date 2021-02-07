@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Timers;
-using Oxide.Core;
-using Oxide.Core.Plugins;
-using Oxide.Ext.Discord.Attributes;
-using Oxide.Ext.Discord.DiscordEvents;
-using Oxide.Ext.Discord.DiscordObjects;
-using Oxide.Ext.Discord.Exceptions;
-using Oxide.Ext.Discord.Gateway;
-using Oxide.Ext.Discord.Helpers;
-using Oxide.Ext.Discord.Logging;
-using Oxide.Ext.Discord.REST;
-using Oxide.Ext.Discord.WebSockets;
+using uMod.Ext.Discord.Attributes;
+using uMod.Ext.Discord.DiscordEvents;
+using uMod.Ext.Discord.DiscordObjects;
+using uMod.Ext.Discord.Exceptions;
+using uMod.Ext.Discord.Gateway;
+using uMod.Ext.Discord.Logging;
+using uMod.Ext.Discord.REST;
+using uMod.Ext.Discord.WebSockets;
+using uMod.Plugins;
+using Timer = System.Timers.Timer;
 
-namespace Oxide.Ext.Discord
+namespace uMod.Ext.Discord
 {
     public class DiscordClient
     {
@@ -161,7 +160,7 @@ namespace Oxide.Ext.Discord
         public void CallHook(string hookName, params object[] args)
         {
             //Run from next tick so we can be sure it's ran on the main thread.
-            Interface.Oxide.NextTick(() =>
+            Interface.uMod.NextTick(() =>
             {
                 Plugins.RemoveAll(p => p == null || !p.IsLoaded);
                 foreach (Plugin plugin in Plugins)
@@ -251,10 +250,10 @@ namespace Oxide.Ext.Discord
 
         internal void UpdateGatewayUrl(Action callback)
         {
-            Oxide.Ext.Discord.DiscordObjects.Gateway.GetGateway(this, gateway =>
+            DiscordObjects.Gateway.GetGateway(this, gateway =>
             {
                 // Example: wss://gateway.discord.gg/?v=6&encoding=json
-                Oxide.Ext.Discord.DiscordObjects.Gateway.WebSocketUrl = $"{gateway.URL}/?{Connect.Serialize()}";
+                DiscordObjects.Gateway.WebSocketUrl = $"{gateway.URL}/?{Connect.Serialize()}";
                 _logger.Debug($"{nameof(DiscordClient)}.{nameof(UpdateGatewayUrl)} Got Gateway url: {gateway.URL}");
                 callback.Invoke();
             });

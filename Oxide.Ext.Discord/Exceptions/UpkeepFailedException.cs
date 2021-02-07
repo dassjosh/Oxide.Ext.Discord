@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Oxide.Ext.Discord.Exceptions
+namespace uMod.Ext.Discord.Exceptions
 {
     public class UpkeepFailedException : Exception
     {

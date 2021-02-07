@@ -1,4 +1,4 @@
-﻿namespace Oxide.Ext.Discord.DiscordObjects
+﻿namespace uMod.Ext.Discord.DiscordObjects
 {
     public static class StatusTypes
     {

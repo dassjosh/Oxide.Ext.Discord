@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
-using Oxide.Ext.Discord.Helpers;
-using Oxide.Ext.Discord.Logging;
+using uMod.Ext.Discord.Helpers;
+using uMod.Ext.Discord.Logging;
 
-namespace Oxide.Ext.Discord.REST
+namespace uMod.Ext.Discord.REST
 {
     public class Bucket : List<Request>
     {

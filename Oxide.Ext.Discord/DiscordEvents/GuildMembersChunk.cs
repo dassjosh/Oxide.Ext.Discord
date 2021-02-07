@@ -1,10 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
+using uMod.Ext.Discord.DiscordObjects;
 
-namespace Oxide.Ext.Discord.DiscordEvents
+namespace uMod.Ext.Discord.DiscordEvents
 {
-    using System.Collections.Generic;
-    using Oxide.Ext.Discord.DiscordObjects;
-
     public class GuildMembersChunk
     {
         public string guild_id { get; set; }

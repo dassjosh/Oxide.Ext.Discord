@@ -1,8 +1,5 @@
-﻿namespace Oxide.Ext.Discord.DiscordObjects
+﻿namespace uMod.Ext.Discord.DiscordObjects
 {
-    using System;
-    using Oxide.Ext.Discord.REST;
-
     public class InviteCreated
     {
         public string channel_id { get; set; }
