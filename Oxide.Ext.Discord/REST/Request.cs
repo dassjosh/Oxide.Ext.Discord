@@ -64,12 +64,16 @@ namespace uMod.Ext.Discord.REST
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(RequestUrl);
             req.Method = Method.ToString();
             req.ContentType = "application/json";
+            req.UserAgent = $"DiscordBot (https://github.com/Trickyyy/Oxide.Ext.Discord, {DiscordExtension.GetExtensionVersion})";
             req.Timeout = RequestMaxLength * 1000;
             req.ContentLength = 0;
 
             if (Headers != null)
             {
-                //req.SetRawHeaders(Headers);
+                foreach (KeyValuePair<string,string> header in Headers)
+                {
+                    req.Headers.Add(header.Key, header.Value);
+                }
             }
             
             try

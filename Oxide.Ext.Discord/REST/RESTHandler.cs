@@ -24,8 +24,6 @@ namespace uMod.Ext.Discord.REST
             _headers = new Dictionary<string, string>
             {
                 { "Authorization", $"Bot {apiKey}" },
-                { "Content-Type", "application/json" },
-                { "User-Agent", $"DiscordBot (https://github.com/Trickyyy/Oxide.Ext.Discord, {DiscordExtension.GetExtensionVersion})" }
             };
 
             lock (BotHandlers)

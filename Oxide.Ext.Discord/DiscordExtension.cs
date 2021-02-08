@@ -20,7 +20,9 @@ namespace uMod.Ext.Discord
             _logger = new Logger(LogLevel.Debug);
         }
 
-        ////public override bool SupportsReloading => true;
+        public override bool SupportsReloading => true;
+        public override bool IsCoreExtension => false;
+        public override bool IsGameExtension => false;
 
         public override string Title => "Discord";
         public override string Author => "PsychoTea & DylanSMR & Tricky";
@@ -31,9 +33,8 @@ namespace uMod.Ext.Discord
 
         public override string[] DefaultReferences => new[]
         {
-            "uMod.Ext.Discord", "websocket-sharp"
+            "uMod.Ext.Discord"
         };
-
 
         public override void OnModLoad()
         {
