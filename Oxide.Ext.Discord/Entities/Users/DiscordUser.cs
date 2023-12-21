@@ -116,6 +116,12 @@ namespace Oxide.Ext.Discord.Entities.Users
         /// </summary>
         [JsonProperty("public_flags")]
         public UserFlags? PublicFlags { get; set; }
+
+        /// <summary>
+        /// The user's display name if set
+        /// </summary>
+        [JsonProperty("global_name")]
+        public string? GlobalName { get; set; }
         #endregion
 
         #region Helper Properties
