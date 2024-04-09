@@ -122,11 +122,11 @@ namespace Oxide.Ext.Discord.WebSockets
 
                 if (requested)
                 {
-                    _socket.CloseAsync(4199, "Discord Requested Reconnect");
+                    _socket?.CloseAsync(4199, "Discord Requested Reconnect");
                 }
                 else
                 {
-                    _socket.CloseAsync(CloseStatusCode.Normal);
+                    _socket?.CloseAsync(CloseStatusCode.Normal);
                 }
 
                 DisposeSocket();
