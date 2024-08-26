@@ -1221,10 +1221,31 @@ public class DiscordGuild : ISnowflakeEntity
         InvalidSnowflakeException.ThrowIfInvalid(emojiId);
         return client.Bot.Rest.Delete(client,$"guilds/{Id}/emojis/{emojiId}");
     }
+    
+    /// <summary>
+    /// Get Current User Voice State
+    /// See <a href="https://discord.com/developers/docs/resources/voice#get-user-voice-state">Get Current User Voice State</a>
+    /// </summary>
+    /// <param name="client">Client to use</param>
+    public IPromise<VoiceState> GetCurrentUserVoiceState(DiscordClient client)
+    {
+        return client.Bot.Rest.Get<VoiceState>(client,$"guilds/{Id}/voice-states/@me");
+    }
+
+    /// <summary>
+    /// Get Current User Voice State
+    /// See <a href="https://discord.com/developers/docs/resources/voice#get-user-voice-state">Get User Voice State</a>
+    /// </summary>
+    /// <param name="client">Client to use</param>
+    /// <param name="userId">User ID to get the voice state for</param>
+    public IPromise<VoiceState> GetUserVoiceState(DiscordClient client, Snowflake userId)
+    {
+        return client.Bot.Rest.Get<VoiceState>(client,$"guilds/{Id}/voice-states/{userId}");
+    }
 
     /// <summary>
     /// Modifies the current user's voice state.
-    /// See <a href="https://discord.com/developers/docs/resources/guild#modify-current-user-voice-state">Update Current User Voice State</a>
+    /// See <a href="https://discord.com/developers/docs/resources/voice#modify-current-user-voice-state">Update Current User Voice State</a>
     /// </summary>
     /// <param name="client">Client to use</param>
     /// <param name="update">Update to the guild voice state</param>
@@ -1236,7 +1257,7 @@ public class DiscordGuild : ISnowflakeEntity
 
     /// <summary>
     /// Modifies another user's voice state.
-    /// See <a href="https://discord.com/developers/docs/resources/guild#modify-user-voice-state">Update Users Voice State</a>
+    /// See <a href="https://discord.com/developers/docs/resources/voice#modify-user-voice-state">Update Users Voice State</a>
     /// </summary>
     /// <param name="client">Client to use</param>
     /// <param name="userId">User to modify</param>
