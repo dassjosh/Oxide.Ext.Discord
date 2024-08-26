@@ -137,6 +137,12 @@ public class DiscordApplication : IDebugLoggable
     /// </summary>
     [JsonProperty("approximate_guild_count")]
     public int? ApproximateGuildCount { get; set; } 
+    
+    /// <summary>
+    /// Approximate count of users that have installed the app
+    /// </summary>
+    [JsonProperty("approximate_user_install_count")]
+    public int? ApproximateUserInstallCount { get; set; }
                 
     /// <summary>
     /// Array of redirect URIs for the app
