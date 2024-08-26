@@ -19,9 +19,8 @@ public class DiscordEmbed
     /// <summary>
     /// Type of embed (always "rich" for webhook embeds)
     /// </summary>
-    [Obsolete("Embed types should be considered deprecated and might be removed in a future API version")]
     [JsonProperty("type")]
-    public string Type { get; set; }
+    public EmbedType Type { get; set; }
 
     /// <summary>
     /// Description of embed

@@ -228,4 +228,10 @@ public enum MessageType : byte
     /// </summary>
     [DiscordEnum("PURCHASE_NOTIFICATION")]
     PurchaseNotification = 44,
+    
+    /// <summary>
+    /// Message is a poll result
+    /// </summary>
+    [DiscordEnum("POLL_RESULT")]
+    PollResult = 44,
 }
