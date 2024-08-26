@@ -919,6 +919,18 @@ public class DiscordGuild : ISnowflakeEntity
     }
 
     /// <summary>
+    /// Returns a role object for the specified role.
+    /// See <a href="https://discord.com/developers/docs/resources/guild#get-guild-role">Get Guild Role</a>
+    /// </summary>
+    /// <param name="client">Client to use</param>
+    /// <param name="roleId">ID of the role</param>
+    public IPromise<List<DiscordRole>> GetRole(DiscordClient client, Snowflake roleId)
+    {
+        InvalidSnowflakeException.ThrowIfInvalid(roleId);
+        return client.Bot.Rest.Get<List<DiscordRole>>(client,$"guilds/{Id}/roles/{roleId}");
+    }
+
+    /// <summary>
     /// Create a new role for the guild.
     /// Requires the MANAGE_ROLES permission.
     /// Returns the new role object on success.
