@@ -238,7 +238,12 @@ public enum DiscordDispatchCode : byte
     /// <summary>
     /// Represents the <a href="https://discord.com/developers/docs/topics/gateway#voice-state-update">VOICE_STATE_UPDATE</a> gateway event
     /// </summary>
-    [DiscordEnum("VOICE_STATE_UPDATE")] VoiceStateUpdated,
+    [DiscordEnum("VOICE_STATE_UPDATE")] VoiceStateUpdated,       
+    
+    /// <summary>
+    /// Represents the <a href="https://discord.com/developers/docs/topics/gateway-events#voice-channel-effect-send">VOICE_CHANNEL_EFFECT_SEND</a> gateway event
+    /// </summary>
+    [DiscordEnum("VOICE_CHANNEL_EFFECT_SEND")] VoiceChannelEffectSend,
         
     /// <summary>
     /// Represents the <a href="https://discord.com/developers/docs/topics/gateway#voice-server-update">VOICE_SERVER_UPDATE</a> gateway event

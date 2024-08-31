@@ -475,6 +475,10 @@ public class WebSocketEventHandler : IWebSocketEventHandler
             case DiscordDispatchCode.VoiceStateUpdated:
                 HandleDispatchVoiceStateUpdate(payload.GetData<VoiceState>(_client));
                 break;
+            
+            case DiscordDispatchCode.VoiceChannelEffectSend:
+                HandleDispatchVoiceChannelEffect(payload.GetData<VoiceChannelEffectEvent>(_client));
+                break;
 
             case DiscordDispatchCode.VoiceServerUpdated:
                 HandleDispatchVoiceServerUpdate(payload.GetData<VoiceServerUpdatedEvent>(_client));
@@ -1581,6 +1585,13 @@ public class WebSocketEventHandler : IWebSocketEventHandler
             _client.Hooks.CallHook(DiscordExtHooks.OnDiscordDirectVoiceStateUpdated, voice, channel);
             _logger.Verbose($"{nameof(WebSocketEventHandler)}.{nameof(HandleDispatchVoiceStateUpdate)} DirectChannel Channel ID: {{0}} User ID: {{1}}", voice.ChannelId, voice.UserId);
         }
+    }
+    
+    // https://discord.com/developers/docs/topics/gateway-events#voice-channel-effect-send
+    private void HandleDispatchVoiceChannelEffect(VoiceChannelEffectEvent effect)
+    {
+        DiscordGuild guild = _client.GetGuild(effect.GuildId);
+        _client.Hooks.CallHook(DiscordExtHooks.OnDiscordVoiceChannelEffect, effect, guild);
     }
 
     //https://discord.com/developers/docs/topics/gateway-events#voice-server-update

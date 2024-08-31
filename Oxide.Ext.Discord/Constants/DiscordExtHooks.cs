@@ -1127,6 +1127,17 @@ public static class DiscordExtHooks
     /// </code>
     /// </summary>
     public const string OnDiscordGuildVoiceStateUpdated = nameof(OnDiscordGuildVoiceStateUpdated);
+    
+    /// <summary>
+    /// Sent when someone sends an effect, such as an emoji reaction or a soundboard sound, in a voice channel the current user is connected to.
+    /// <code>
+    /// void OnDiscordVoiceChannelEffect(VoiceChannelEffectEvent effect, DiscordGuild guild)
+    /// {
+    ///     Puts("OnDiscordVoiceChannelEffect Works!");
+    /// }
+    /// </code>
+    /// </summary>
+    public const string OnDiscordVoiceChannelEffect = nameof(OnDiscordVoiceChannelEffect);
 
     /// <summary>
     /// Called when the voice server in a guild channel is updated
