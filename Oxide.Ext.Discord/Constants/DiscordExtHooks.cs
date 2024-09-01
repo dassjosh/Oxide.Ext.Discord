@@ -1360,7 +1360,42 @@ public static class DiscordExtHooks
     /// </code>
     /// </summary>
     public const string OnDiscordStageInstanceDeleted = nameof(OnDiscordStageInstanceDeleted);
+    
+    /// <summary>
+    /// Called when a subscription is created
+    /// <code>
+    /// void OnDiscordSubscriptionCreated(DiscordSubscription subscription)
+    /// {
+    ///     Puts("OnDiscordSubscriptionCreated Works!");
+    /// }
+    /// </code>
+    /// </summary>
+    public const string OnDiscordSubscriptionCreated = nameof(OnDiscordSubscriptionCreated);
 
+    /// <summary>
+    /// Called when a subscription is updated
+    /// <code>
+    /// void OnDiscordSubscriptionUpdated(DiscordSubscription subscription)
+    /// {
+    ///     Puts("OnDiscordSubscriptionUpdated Works!");
+    /// }
+    /// </code>
+    /// </summary>
+    public const string OnDiscordSubscriptionUpdated = nameof(OnDiscordSubscriptionUpdated);
+
+    
+    /// <summary>
+    /// Called when a subscription is deleted
+    /// <code>
+    /// void OnDiscordSubscriptionDeleted(DiscordSubscription subscription)
+    /// {
+    ///     Puts("OnDiscordSubscriptionDeleted Works!");
+    /// }
+    /// </code>
+    /// </summary>
+    public const string OnDiscordSubscriptionDeleted = nameof(OnDiscordSubscriptionDeleted);
+
+    
     /// <summary>
     /// Called when an AutoMod rule is created in a guild
     /// <code>

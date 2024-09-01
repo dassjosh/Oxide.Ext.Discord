@@ -15,15 +15,16 @@ public class InvalidGetEntitlementException : BaseDiscordException
     {
         const int MinLimit = 1;
         const int MaxLimit = 100;
-            
-        if (limit < MinLimit)
+
+        switch (limit)
         {
-            throw new InvalidGetEntitlementException($"Limit cannot be less than {MinLimit}");
+            case null:
+                return;
+            case < MinLimit:
+                throw new InvalidGetEntitlementException($"Limit cannot be less than {MinLimit}");
+            case > MaxLimit:
+                throw new InvalidGetEntitlementException($"Limit cannot be more than {MaxLimit}");
         }
-            
-        if (limit > MaxLimit)
-        {
-            throw new InvalidGetEntitlementException($"Limit cannot be more than {MaxLimit}");
-        }
+
     }
 }

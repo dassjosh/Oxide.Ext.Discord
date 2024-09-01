@@ -539,7 +539,19 @@ public class WebSocketEventHandler : IWebSocketEventHandler
             case DiscordDispatchCode.StageInstanceDeleted:
                 HandleDispatchStageInstanceDeleted(payload.GetData<StageInstance>(_client));
                 break;
+            
+            case DiscordDispatchCode.SubscriptionCreate:
+                HandleDispatchSubscriptionCreated(payload.GetData<DiscordSubscription>(_client));
+                break;
                 
+            case DiscordDispatchCode.SubscriptionUpdate:
+                HandleDispatchSubscriptionUpdated(payload.GetData<DiscordSubscription>(_client));
+                break;
+                
+            case DiscordDispatchCode.SubscriptionDelete:
+                HandleDispatchSubscriptionDeleted(payload.GetData<DiscordSubscription>(_client));
+                break;
+            
             case DiscordDispatchCode.AutoModerationRuleCreate:
                 HandleDispatchAutoModRuleCreated(payload.GetData<AutoModRule>(_client));
                 break;
@@ -1921,6 +1933,24 @@ public class WebSocketEventHandler : IWebSocketEventHandler
         guild.StageInstances.Remove(stage.Id);
         guild.StageInstances[stage.Id] = stage;
         _client.Hooks.CallHook(DiscordExtHooks.OnDiscordStageInstanceDeleted, existing ?? stage, guild);
+    }
+    
+    //https://discord.com/developers/docs/topics/gateway-events#subscription-create
+    private void HandleDispatchSubscriptionCreated(DiscordSubscription subscription)
+    {
+        _client.Hooks.CallHook(DiscordExtHooks.OnDiscordSubscriptionCreated, subscription);
+    }
+
+    //https://discord.com/developers/docs/topics/gateway-events#subscription-update
+    private void HandleDispatchSubscriptionUpdated(DiscordSubscription subscription)
+    {
+        _client.Hooks.CallHook(DiscordExtHooks.OnDiscordSubscriptionUpdated, subscription);
+    }
+
+    //https://discord.com/developers/docs/topics/gateway-events#subscription-delete
+    private void HandleDispatchSubscriptionDeleted(DiscordSubscription subscription)
+    {
+        _client.Hooks.CallHook(DiscordExtHooks.OnDiscordSubscriptionDeleted, subscription);
     }
         
     //https://discord.com/developers/docs/topics/gateway-events#auto-moderation-rule-create

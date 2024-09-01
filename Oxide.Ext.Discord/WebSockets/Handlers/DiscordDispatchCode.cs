@@ -319,6 +319,21 @@ public enum DiscordDispatchCode : byte
     /// Represents the <a href="https://discord.com/developers/docs/topics/gateway#stage-instance-delete">STAGE_INSTANCE_CREATE</a> gateway event
     /// </summary>
     [DiscordEnum("STAGE_INSTANCE_DELETE")] StageInstanceDeleted,
+    
+    /// <summary>
+    /// Represents the <a href="https://discord.com/developers/docs/topics/gateway-events#subscription-create">SUBSCRIPTION_CREATE</a> gateway event
+    /// </summary>
+    [DiscordEnum("SUBSCRIPTION_CREATE")] SubscriptionCreate,
+    
+    /// <summary>
+    /// Represents the <a href="https://discord.com/developers/docs/topics/gateway-events#subscription-update">SUBSCRIPTION_UPDATE</a> gateway event
+    /// </summary>
+    [DiscordEnum("SUBSCRIPTION_UPDATE")] SubscriptionUpdate,
+    
+    /// <summary>
+    /// Represents the <a href="https://discord.com/developers/docs/topics/gateway-events#subscription-delete">SUBSCRIPTION_DELETE</a> gateway event
+    /// </summary>
+    [DiscordEnum("SUBSCRIPTION_DELETE")] SubscriptionDelete,
         
     /// <summary>
     /// Represents the <a href="https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-create">AUTO_MODERATION_RULE_CREATE</a> gateway event

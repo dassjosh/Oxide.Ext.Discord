@@ -18,7 +18,7 @@ namespace Oxide.Ext.Discord.Libraries;
 /// </summary>
 public class DiscordSubscriptions : BaseDiscordLibrary<DiscordSubscriptions>, IDebugLoggable
 {
-    private readonly Hash<Snowflake, List<DiscordSubscription>> _subscriptions = new();
+    private readonly Hash<Snowflake, List<DiscordChannelSubscription>> _subscriptions = new();
 
     private readonly ILogger _logger;
         
@@ -59,15 +59,15 @@ public class DiscordSubscriptions : BaseDiscordLibrary<DiscordSubscriptions>, ID
         Plugin plugin = client.Plugin;
         _logger.Debug($"{nameof(DiscordSubscriptions)}.{nameof(AddChannelSubscription)} {{0}} added subscription to channel {{1}}", plugin.FullName(), channelId);
 
-        List<DiscordSubscription> subs = _subscriptions[channelId];
+        List<DiscordChannelSubscription> subs = _subscriptions[channelId];
         if (subs == null)
         {
-            subs = new List<DiscordSubscription>();
+            subs = new List<DiscordChannelSubscription>();
             _subscriptions[channelId] = subs;
         }
 
         subs.RemoveAll(s => s.IsForPlugin(plugin));
-        subs.Add(new DiscordSubscription(client, channelId, message));
+        subs.Add(new DiscordChannelSubscription(client, channelId, message));
     }
         
     /// <summary>
@@ -83,7 +83,7 @@ public class DiscordSubscriptions : BaseDiscordLibrary<DiscordSubscriptions>, ID
         if (plugin == null) throw new ArgumentNullException(nameof(plugin));
         InvalidSnowflakeException.ThrowIfInvalid(channelId);
             
-        List<DiscordSubscription> subs = _subscriptions[channelId];
+        List<DiscordChannelSubscription> subs = _subscriptions[channelId];
         if (subs == null)
         {
             return;
@@ -109,7 +109,7 @@ public class DiscordSubscriptions : BaseDiscordLibrary<DiscordSubscriptions>, ID
         if (plugin == null) throw new ArgumentNullException(nameof(plugin));
 
         List<Snowflake> emptySubs = [];
-        foreach (KeyValuePair<Snowflake, List<DiscordSubscription>> hash in _subscriptions)
+        foreach (KeyValuePair<Snowflake, List<DiscordChannelSubscription>> hash in _subscriptions)
         {
             RemoveChannelSubscription(plugin, hash.Key);
             if (hash.Value.Count == 0)
@@ -140,7 +140,7 @@ public class DiscordSubscriptions : BaseDiscordLibrary<DiscordSubscriptions>, ID
         }
     }
 
-    private void RunSubs(List<DiscordSubscription> subs, DiscordMessage message, BotClient client)
+    private void RunSubs(List<DiscordChannelSubscription> subs, DiscordMessage message, BotClient client)
     {
         if (subs == null)
         {
@@ -149,7 +149,7 @@ public class DiscordSubscriptions : BaseDiscordLibrary<DiscordSubscriptions>, ID
 
         for (int index = 0; index < subs.Count; index++)
         {
-            DiscordSubscription sub = subs[index];
+            DiscordChannelSubscription sub = subs[index];
             if (sub.CanRun(client))
             {
                 sub.Invoke(message);
@@ -163,9 +163,9 @@ public class DiscordSubscriptions : BaseDiscordLibrary<DiscordSubscriptions>, ID
         logger.AppendList("Subscriptions", GetSubscriptions());
     }
 
-    private IEnumerable<DiscordSubscription> GetSubscriptions()
+    private IEnumerable<DiscordChannelSubscription> GetSubscriptions()
     {
-        foreach (List<DiscordSubscription> pluginSubscriptions in _subscriptions.Values)
+        foreach (List<DiscordChannelSubscription> pluginSubscriptions in _subscriptions.Values)
         {
             for (int index = 0; index < pluginSubscriptions.Count; index++)
             {

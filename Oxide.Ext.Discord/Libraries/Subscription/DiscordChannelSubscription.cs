@@ -14,7 +14,7 @@ namespace Oxide.Ext.Discord.Libraries;
 /// <summary>
 /// Represents a channel subscription for a plugin
 /// </summary>
-public class DiscordSubscription : IDebugLoggable
+public class DiscordChannelSubscription : IDebugLoggable
 {
     private readonly Snowflake _channelId;
     private readonly PluginId _pluginId;
@@ -29,7 +29,7 @@ public class DiscordSubscription : IDebugLoggable
     /// <param name="client">Discord Client for the subscription</param>
     /// <param name="channelId">ID of the channel</param>
     /// <param name="callback">Callback when the channel message is sent</param>
-    public DiscordSubscription(DiscordClient client, Snowflake channelId, Action<DiscordMessage> callback)
+    public DiscordChannelSubscription(DiscordClient client, Snowflake channelId, Action<DiscordMessage> callback)
     {
         _client = client;
         _plugin = client.Plugin;
