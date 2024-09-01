@@ -434,6 +434,17 @@ public class DiscordApplication : IDebugLoggable
         return client.Bot.Rest.Delete(client, $"applications/{Id}/emojis/{emojiId}");
     }
 
+    /// <summary>
+    /// Deletes an application emoji
+    /// </summary>
+    /// <param name="client">Client to use</param>
+    /// <param name="instanceId">Instance ID of the activity</param>
+    /// >
+    public IPromise<ActivityInstance> GetApplicationActivityInstance(DiscordClient client, string instanceId)
+    {
+        return client.Bot.Rest.Get<ActivityInstance>(client, $"applications/{Id}/activity-instances/{instanceId}");
+    }
+
     ///<inheritdoc/>
     public void LogDebug(DebugLogger logger)
     {
