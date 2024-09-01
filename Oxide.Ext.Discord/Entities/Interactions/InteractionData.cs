@@ -16,13 +16,13 @@ public class InteractionData
     public Snowflake Id { get; set; }
         
     /// <summary>
-    /// The name of the invoked command
+    /// Name of the invoked command
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
         
     /// <summary>
-    /// The type of the invoked command
+    /// Type of the invoked command
     /// </summary>
     [JsonProperty("type")]
     public ApplicationCommandType? Type { get; set; }
@@ -34,13 +34,13 @@ public class InteractionData
     public InteractionDataResolved Resolved { get; set; }
         
     /// <summary>
-    /// The params + values from the user
+    /// Params + values from the user
     /// </summary>
     [JsonProperty("options")]
     public List<InteractionDataOption> Options { get; set; }
         
     /// <summary>
-    /// The id of the guild the command is registered to
+    /// ID of the guild the command is registered to
     /// </summary>
     [JsonProperty("guild_id")]
     public Snowflake? GuildId { get; set; }
@@ -64,7 +64,7 @@ public class InteractionData
     public List<string> Values { get; set; }
         
     /// <summary>
-    /// Id the of user or message targeted by a user or message command
+    /// ID of user or message targeted by a user or message command
     /// </summary>
     [JsonProperty("target_id")]
     public Snowflake? TargetId { get; set; }

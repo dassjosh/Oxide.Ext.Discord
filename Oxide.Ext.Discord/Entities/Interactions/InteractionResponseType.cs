@@ -37,8 +37,13 @@ public enum InteractionResponseType : byte
     ApplicationCommandAutocompleteResult = 8,
         
     /// <summary>
-    /// Respond to an interaction with an modal for a user to fill-out
+    /// Respond to an interaction with a popup modal      
     /// Note: You can't respond to a <see cref="InteractionType.ModalSubmit">ModalSubmit</see> with a new MODAL.
     /// </summary>
-    Modal = 9
+    Modal = 9,
+    
+    /// <summary>
+    /// Launch the Activity associated with the app. Only available for apps with Activities enabled  
+    /// </summary>
+    LaunchActivity = 12,
 }

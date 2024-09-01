@@ -322,6 +322,24 @@ public class DiscordInteraction
         _hasResponded = true;
         return client.Bot.Rest.Post(client, $"interactions/{Id}/{Token}/callback", response, RequestOptions.SkipRateLimit());
     }
+    
+    /// <summary>
+    /// Create a response to an Interaction from the gateway.
+    /// See <a href="https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response">Create Interaction Response</a>
+    /// </summary>
+    /// <param name="client">Client to use</param>
+    /// <param name="response">Response to respond with</param>
+    //TODO: Look into improving callback integration with other methods
+    public IPromise<InteractionCallbackResponse> CreateResponseWithCallback(DiscordClient client, BaseInteractionResponse response)
+    {
+        if (response == null) throw new ArgumentNullException(nameof(response));
+        InvalidInteractionResponseException.ThrowIfAlreadyResponded(_hasResponded);
+        InvalidInteractionResponseException.ThrowIfInitialResponseTimeElapsed(CreatedDate);
+        InvalidInteractionResponseException.ThrowIfInvalidResponseType(Type, response.Type);
+
+        _hasResponded = true;
+        return client.Bot.Rest.Post<InteractionCallbackResponse>(client, $"interactions/{Id}/{Token}/callback?with_response=true", response, RequestOptions.SkipRateLimit());
+    }
 
     /// <summary>
     /// Create a response to an Interaction from the gateway.
