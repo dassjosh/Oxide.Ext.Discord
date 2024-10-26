@@ -709,7 +709,7 @@
 | class [RestRateLimit](./Oxide.Ext.Discord/Types/RestRateLimit.md) | Represents a rate limit for rest requests |
 | abstract class [Singleton&lt;T&gt;](./Oxide.Ext.Discord/Types/Singleton%7BT%7D.md) | Represents a singleton of type {T} |
 | class [UkkonenTrie&lt;T&gt;](./Oxide.Ext.Discord/Types/UkkonenTrie%7BT%7D.md) | A Ukkonen Suffix Trie |
-| struct [ValueStringBuilder](./Oxide.Ext.Discord/Types/ValueStringBuilder.md) |  |
+| struct [ValueStringBuilder](./Oxide.Ext.Discord/Types/ValueStringBuilder.md) | A non-heap-allocation allocating string builder |
 | class [WebsocketRateLimit](./Oxide.Ext.Discord/Types/WebsocketRateLimit.md) | Represents a WebSocket Rate Limit |
 
 ## Oxide.Ext.Discord.WebSockets namespace

@@ -27558,6 +27558,39 @@
             <param name="key">Key for the record</param>
             <param name="value">Value of the record</param>
         </member>
+        <member name="T:Oxide.Ext.Discord.Types.ValueStringBuilder">
+            <summary>
+            A non-heap-allocation allocating string builder
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.#ctor(System.Span{System.Char})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="initialBuffer">Initial buffer to use for the chars</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.#ctor(System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="initialCapacity">Initial buffer capacity to rent</param>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Types.ValueStringBuilder.Length">
+            <summary>
+            Length of the builder
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Types.ValueStringBuilder.Capacity">
+            <summary>
+            Current capacity of the builder
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.EnsureCapacity(System.Int32)">
+            <summary>
+            Ensure the builder has a capacity of at least <paramref name="capacity"/>
+            </summary>
+            <param name="capacity"></param>
+        </member>
         <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.GetPinnableReference">
             <summary>
             Get a pinnable reference to the builder.
@@ -27572,6 +27605,18 @@
             </summary>
             <param name="terminate">Ensures that the builder has a null char after <see cref="P:Oxide.Ext.Discord.Types.ValueStringBuilder.Length"/></param>
         </member>
+        <member name="P:Oxide.Ext.Discord.Types.ValueStringBuilder.Item(System.Int32)">
+            <summary>
+            Get the char at the specified index
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.ToString">
+            <summary>
+            Get's the final string and disposes of the builder
+            </summary>
+            <returns></returns>
+        </member>
         <member name="P:Oxide.Ext.Discord.Types.ValueStringBuilder.RawChars">
             <summary>Returns the underlying storage of the builder.</summary>
         </member>
@@ -27580,6 +27625,198 @@
             Returns a span around the contents of the builder.
             </summary>
             <param name="terminate">Ensures that the builder has a null char after <see cref="P:Oxide.Ext.Discord.Types.ValueStringBuilder.Length"/></param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.AsSpan">
+            <summary>
+            Converts the current builder to a <see cref="T:System.ReadOnlySpan`1"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.AsSpan(System.Int32)">
+            <summary>
+            Converts the current builder to a <see cref="T:System.ReadOnlySpan`1"/>
+            </summary>
+            <param name="start">Index to start at</param>
+            <returns></returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.AsSpan(System.Int32,System.Int32)">
+            <summary>
+            Converts the current builder to a <see cref="T:System.ReadOnlySpan`1"/>
+            </summary>
+            <param name="start">Index to start at</param>
+            <param name="length">Length of the span</param>
+            <returns></returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.TryCopyTo(System.Span{System.Char},System.Int32@)">
+            <summary>
+            Tries to copy the current builder to a <see cref="T:System.Span`1"/>
+            </summary>
+            <param name="destination">Span to write the chars to</param>
+            <param name="charsWritten">Number of chars written</param>
+            <returns>True if successfully; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Insert(System.Int32,System.Char,System.Int32)">
+            <summary>
+            Insert a char at the specified index count times
+            </summary>
+            <param name="index">Index to insert the char</param>
+            <param name="value">Char to insert</param>
+            <param name="count">Number of times to insert</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Insert(System.Int32,System.String)">
+            <summary>
+            Insert string at the specified index
+            </summary>
+            <param name="index">Index to insert the string</param>
+            <param name="s">String to insert</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Char)">
+            <summary>
+            Appends char to the builder
+            </summary>
+            <param name="c">Char to append</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.String)">
+            <summary>
+            Appends string to the builder
+            </summary>
+            <param name="s">string to append</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Appends span to the builder
+            </summary>
+            <param name="value">Span to append</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.AppendSpan(System.Int32)">
+            <summary>
+            Requests a writable span of length
+            </summary>
+            <param name="length">Length of the request span</param>
+            <returns>Span of the request length</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Byte,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.Byte"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.SByte,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.SByte"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Int16,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.SByte"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.UInt16,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.SByte"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Int32,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.Int32"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.UInt32,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.UInt32"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Int64,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.Int64"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.UInt64,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.UInt64"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Decimal,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.Decimal"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Single,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.Single"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Double,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.Double"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.DateTime,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.DateTime"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.DateTimeOffset,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.DateTimeOffset"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.TimeSpan,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.TimeSpan"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.AppendLine(System.String)">
+            <summary>
+            Appends <paramref name="s"/> followed by a newline
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.AppendLine">
+            <summary>
+            Appends a newline
+            </summary>
         </member>
         <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Grow(System.Int32)">
             <summary>

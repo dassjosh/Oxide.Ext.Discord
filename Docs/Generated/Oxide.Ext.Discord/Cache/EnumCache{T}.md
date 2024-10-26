@@ -4,7 +4,7 @@ Represents a cache of enum strings
 
 ```csharp
 public sealed class EnumCache<T> : Singleton<EnumCache>
-    where T : struct, IComparable, IFormattable, IConvertible
+    where T : Enum, IConvertible
 ```
 
 | parameter | description |
