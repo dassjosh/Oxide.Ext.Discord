@@ -18,6 +18,11 @@ namespace Oxide.Ext.Discord.Entities
         /// <summary>
         /// Connection type is Battle.net
         /// </summary>
+        [DiscordEnum("amazon-music")] AmazonMusic,
+        
+        /// <summary>
+        /// Connection type is Battle.net
+        /// </summary>
         [DiscordEnum("battlenet")] BattleNet,
         
         /// <summary>
