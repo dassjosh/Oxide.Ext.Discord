@@ -37,6 +37,7 @@ public class DiscordInteraction
 | [CreateFollowUpTemplateResponse](#createfollowuptemplateresponse-method)(…) | Creates a interaction follow up message response from a message template |
 | [CreateModalResponse](#createmodalresponse-method)(…) | Creates a interaction modal response from a modal template |
 | [CreateResponse](#createresponse-method-1-of-7)(…) | Create a response to an Interaction from the gateway. See [Create Interaction Response](https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response) (7 methods) |
+| [CreateResponseWithCallback](#createresponsewithcallback-method)(…) | Create a response to an Interaction from the gateway. See [Create Interaction Response](https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response) |
 | [CreateTemplateResponse](#createtemplateresponse-method)(…) | Creates a interaction message response from a message template |
 | [DefferResponse](#defferresponse-method)(…) | Creates a response indicating that: for application commands there will be an update in the future for message component commands that you have acknowledged the command and there may be an update in the future See [Create Interaction Response](https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response) |
 | [DeleteFollowUpMessage](#deletefollowupmessage-method)(…) | Deletes a followup message for an Interaction See [Delete Followup Message](https://discord.com/developers/docs/interactions/receiving-and-responding#delete-followup-message) |
@@ -341,6 +342,31 @@ public IPromise CreateResponse(DiscordClient client, InteractionResponseType typ
 * class [DiscordClient](../Clients/DiscordClient.md)
 * enum [InteractionResponseType](./InteractionResponseType.md)
 * class [InteractionResponseBuilder](../Builders/InteractionResponseBuilder.md)
+* class [DiscordInteraction](./DiscordInteraction.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# CreateResponseWithCallback method
+
+Create a response to an Interaction from the gateway. See [Create Interaction Response](https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response)
+
+```csharp
+public IPromise<InteractionCallbackResponse> CreateResponseWithCallback(DiscordClient client, 
+    BaseInteractionResponse response)
+```
+
+| parameter | description |
+| --- | --- |
+| client | Client to use |
+| response | Response to respond with |
+
+## See Also
+
+* interface [IPromise&lt;TPromised&gt;](../Interfaces/IPromise%7BTPromised%7D.md)
+* class [InteractionCallbackResponse](./InteractionCallbackResponse.md)
+* class [DiscordClient](../Clients/DiscordClient.md)
+* class [BaseInteractionResponse](./BaseInteractionResponse.md)
 * class [DiscordInteraction](./DiscordInteraction.md)
 * namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)

@@ -13,7 +13,7 @@ public enum DiscordWebsocketCloseCode
 | UnknownError | `UnknownError` | We're not sure what went wrong. Try reconnecting? |
 | UnknownOpcode | `UnknownOpcode` | You sent an invalid Gateway opcode or an invalid payload for an opcode. Don't do that! |
 | DecodeError | `DecodeError` | You sent an invalid payload to us. Don't do that! |
-| NotAuthenticated | `NotAuthenticated` | You sent us a payload prior to identifying. |
+| NotAuthenticated | `NotAuthenticated` | You sent us a payload prior to identifying, or this session has been invalidated. |
 | AuthenticationFailed | `AuthenticationFailed` | The account token sent with your identify payload is incorrect. |
 | AlreadyAuthenticated | `AlreadyAuthenticated` | You sent more than one identify payload. Don't do that! |
 | InvalidSequence | `InvalidSequence` | The sequence sent when resuming the session was invalid. Reconnect and start a new session. |

@@ -109,12 +109,17 @@
 | class [ActivityAssets](./Oxide.Ext.Discord/Entities/ActivityAssets.md) | Represents [Activity Assets](https://discord.com/developers/docs/topics/gateway#activity-object-activity-assets) |
 | class [ActivityButton](./Oxide.Ext.Discord/Entities/ActivityButton.md) | Represents [Activity Buttons](https://discord.com/developers/docs/topics/gateway#activity-object-activity-buttons) |
 | [Flags] enum [ActivityFlags](./Oxide.Ext.Discord/Entities/ActivityFlags.md) | Represents [Activity Flags](https://discord.com/developers/docs/topics/gateway#activity-object-activity-flags) |
+| class [ActivityInstance](./Oxide.Ext.Discord/Entities/ActivityInstance.md) | Represents [Activity Instance](https://discord.com/developers/docs/resources/application#get-application-activity-instance-activity-instance-object) |
+| class [ActivityLocation](./Oxide.Ext.Discord/Entities/ActivityLocation.md) | Represents [Activity Location](https://discord.com/developers/docs/resources/application#get-application-activity-instance-activity-location-object) |
+| enum [ActivityLocationKind](./Oxide.Ext.Discord/Entities/ActivityLocationKind.md) | Represents [Activity Location Kind Enum](https://discord.com/developers/docs/resources/application#get-application-activity-instance-activity-location-kind-enum) |
 | class [ActivityParty](./Oxide.Ext.Discord/Entities/ActivityParty.md) | Represents [Activity Party](https://discord.com/developers/docs/topics/gateway#activity-object-activity-party) |
 | class [ActivitySecrets](./Oxide.Ext.Discord/Entities/ActivitySecrets.md) | Represents [Activity Secrets](https://discord.com/developers/docs/topics/gateway#activity-object-activity-secrets) |
 | class [ActivityTimestamps](./Oxide.Ext.Discord/Entities/ActivityTimestamps.md) | Represents [Activity Timestamps](https://discord.com/developers/docs/topics/gateway#activity-object-activity-timestamps) |
 | enum [ActivityType](./Oxide.Ext.Discord/Entities/ActivityType.md) | Represents [Activity Types](https://discord.com/developers/docs/topics/gateway#activity-object-activity-types) |
 | class [AllowedMentions](./Oxide.Ext.Discord/Entities/AllowedMentions.md) | Represents a [Allowed Mention Types](https://discord.com/developers/docs/resources/channel#allowed-mentions-object) |
 | enum [AllowedMentionTypes](./Oxide.Ext.Discord/Entities/AllowedMentionTypes.md) | Represents a [Allowed Mention Types](https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types) for a message |
+| enum [AnimationType](./Oxide.Ext.Discord/Entities/AnimationType.md) | Represents the [Animation Type]() |
+| enum [ApplicationCommandHandlerType](./Oxide.Ext.Discord/Entities/ApplicationCommandHandlerType.md) | Represents [Entry Point Command Handler Types](https://discord.com/developers/docs/interactions/application-commands#application-command-object-entry-point-command-handler-types) |
 | enum [ApplicationCommandType](./Oxide.Ext.Discord/Entities/ApplicationCommandType.md) | Represents [Application Command Type](https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types) |
 | class [ApplicationEmojiCreate](./Oxide.Ext.Discord/Entities/ApplicationEmojiCreate.md) | Represents [Application Emoji Create Structure](https://discord.com/developers/docs/resources/emoji#create-application-emoji-json-params) |
 | class [ApplicationEmojis](./Oxide.Ext.Discord/Entities/ApplicationEmojis.md) | Represents [Application Emojis](https://discord.com/developers/docs/resources/emoji#list-application-emojis) |
@@ -197,6 +202,7 @@
 | enum [DiscordSkuType](./Oxide.Ext.Discord/Entities/DiscordSkuType.md) | Represents a [Discord SKU Types](https://discord.com/developers/docs/monetization/skus#sku-object-sku-types) |
 | class [DiscordSticker](./Oxide.Ext.Discord/Entities/DiscordSticker.md) | Represents a [Discord Sticker Structure](https://discord.com/developers/docs/resources/sticker#sticker-object) |
 | class [DiscordStickerPack](./Oxide.Ext.Discord/Entities/DiscordStickerPack.md) | Represents a [Sticker Pack Object](https://discord.com/developers/docs/resources/sticker#sticker-pack-object) |
+| class [DiscordSubscription](./Oxide.Ext.Discord/Entities/DiscordSubscription.md) | Represents a [Subscription](https://discord.com/developers/docs/resources/subscription#subscription-resource) |
 | class [DiscordTeam](./Oxide.Ext.Discord/Entities/DiscordTeam.md) | Represents a [Team Object](https://discord.com/developers/docs/topics/teams#data-models-team-object) |
 | class [DiscordUser](./Oxide.Ext.Discord/Entities/DiscordUser.md) | Represents [User Structure](https://discord.com/developers/docs/resources/user#user-object) |
 | class [DiscordWebhook](./Oxide.Ext.Discord/Entities/DiscordWebhook.md) | Represents [Webhook Structure](https://discord.com/developers/docs/resources/webhook#webhook-object) |
@@ -206,6 +212,7 @@
 | class [EmbedImage](./Oxide.Ext.Discord/Entities/EmbedImage.md) | Represents [Embed Image Structure](https://discord.com/developers/docs/resources/channel#embed-object-embed-image-structure) |
 | class [EmbedProvider](./Oxide.Ext.Discord/Entities/EmbedProvider.md) | Represents [Embed Provider Structure](https://discord.com/developers/docs/resources/channel#embed-object-embed-provider-structure) |
 | class [EmbedThumbnail](./Oxide.Ext.Discord/Entities/EmbedThumbnail.md) | Represents [Embed Thumbnail Structure](https://discord.com/developers/docs/resources/channel#embed-object-embed-thumbnail-structure) |
+| enum [EmbedType](./Oxide.Ext.Discord/Entities/EmbedType.md) |  |
 | class [EmbedVideo](./Oxide.Ext.Discord/Entities/EmbedVideo.md) | Represents [Embed Video Structure](https://discord.com/developers/docs/resources/channel#embed-object-embed-video-structure) |
 | class [EmojiCreate](./Oxide.Ext.Discord/Entities/EmojiCreate.md) | Represents [Emoji Create Structure](https://discord.com/developers/docs/resources/emoji#create-guild-emoji-json-params) |
 | class [EmojiUpdate](./Oxide.Ext.Discord/Entities/EmojiUpdate.md) | Represents [Emoji Update Structure](https://discord.com/developers/docs/resources/emoji#modify-guild-emoji-json-params) |
@@ -225,6 +232,7 @@
 | class [GetEntitlements](./Oxide.Ext.Discord/Entities/GetEntitlements.md) | Get Entitlements Query String Builder |
 | class [GetPollAnswerResponse](./Oxide.Ext.Discord/Entities/GetPollAnswerResponse.md) | Represents a [Get Poll Answers Response](https://discord.com/developers/docs/resources/poll#get-answer-voters-response-body) |
 | class [GetPollAnswerVoters](./Oxide.Ext.Discord/Entities/GetPollAnswerVoters.md) | Represents a [Get Answer Voters Query String Params](https://discord.com/developers/docs/resources/poll#get-answer-voters-query-string-params) |
+| class [GetSkuSubscriptionsQueryString](./Oxide.Ext.Discord/Entities/GetSkuSubscriptionsQueryString.md) |  |
 | class [GetThreadMember](./Oxide.Ext.Discord/Entities/GetThreadMember.md) | Represents [Get Thread Member Query String Params](https://discord.com/developers/docs/resources/channel#get-thread-member-query-string-params) |
 | class [GroupDmChannelUpdate](./Oxide.Ext.Discord/Entities/GroupDmChannelUpdate.md) | Represents a [Group DM Channel Update Structure](https://discord.com/developers/docs/resources/channel#modify-channel-json-params-group-dm) |
 | class [GuildBan](./Oxide.Ext.Discord/Entities/GuildBan.md) | Represents [Guild Ban Structure](https://discord.com/developers/docs/resources/guild#ban-object-ban-structure) |
@@ -293,7 +301,10 @@
 | class [IntegrationUpdatedEvent](./Oxide.Ext.Discord/Entities/IntegrationUpdatedEvent.md) | Represents a [Integration Update Structure](https://discord.com/developers/docs/topics/gateway#integration-update-integration-update-event-additional-fields) |
 | class [InteractionAutoCompleteMessage](./Oxide.Ext.Discord/Entities/InteractionAutoCompleteMessage.md) | Interaction Auto Complete Response Message |
 | class [InteractionAutoCompleteResponse](./Oxide.Ext.Discord/Entities/InteractionAutoCompleteResponse.md) | Represents an Auto Complete response in Discord |
+| class [InteractionCallback](./Oxide.Ext.Discord/Entities/InteractionCallback.md) | Represents [Interaction Callback Object](https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-callback-interaction-callback-object) |
+| class [InteractionCallbackActivityInstanceResource](./Oxide.Ext.Discord/Entities/InteractionCallbackActivityInstanceResource.md) | Represents [Interaction Callback Activity Instance Resource](https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-callback-interaction-callback-activity-instance-resource) |
 | class [InteractionCallbackData](./Oxide.Ext.Discord/Entities/InteractionCallbackData.md) | Represents [Interaction Application Command Callback Data Structure](https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-data-structure) |
+| class [InteractionCallbackResponse](./Oxide.Ext.Discord/Entities/InteractionCallbackResponse.md) | Represents [Interaction Callback Response](https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-callback-interaction-callback-response-object) |
 | enum [InteractionContextTypes](./Oxide.Ext.Discord/Entities/InteractionContextTypes.md) | Represents a [Interaction Context Types](https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-context-types) |
 | class [InteractionData](./Oxide.Ext.Discord/Entities/InteractionData.md) | Represents [ApplicationCommandInteractionData](https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data) |
 | class [InteractionDataArgs](./Oxide.Ext.Discord/Entities/InteractionDataArgs.md) | Args supplied for the interaction |
@@ -302,6 +313,7 @@
 | class [InteractionDataResolved](./Oxide.Ext.Discord/Entities/InteractionDataResolved.md) | Represents [Application Command Interaction Data Option](https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure) |
 | class [InteractionModalMessage](./Oxide.Ext.Discord/Entities/InteractionModalMessage.md) | Represents an Interaction Modal Message |
 | class [InteractionModalResponse](./Oxide.Ext.Discord/Entities/InteractionModalResponse.md) | Represents an Interaction Modal Response |
+| class [InteractionResource](./Oxide.Ext.Discord/Entities/InteractionResource.md) | Represents [Interaction Callback Resource](https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-callback-interaction-callback-resource-object) |
 | class [InteractionResponse](./Oxide.Ext.Discord/Entities/InteractionResponse.md) | Represents [Interaction Response](https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object) |
 | enum [InteractionResponseType](./Oxide.Ext.Discord/Entities/InteractionResponseType.md) | Represents [InteractionResponseType](https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type) |
 | enum [InteractionType](./Oxide.Ext.Discord/Entities/InteractionType.md) | Represents [InteractionType](https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type) |
@@ -354,6 +366,11 @@
 | class [RateLimitResponse](./Oxide.Ext.Discord/Entities/RateLimitResponse.md) | Represents a rate limit response from an API request |
 | class [ReactionCountDetails](./Oxide.Ext.Discord/Entities/ReactionCountDetails.md) | Represents a [Reaction Count Details Structure](https://discord.com/developers/docs/resources/channel#reaction-count-details-object) |
 | enum [ReactionType](./Oxide.Ext.Discord/Entities/ReactionType.md) | Represents a [Discord Reaction Type](https://discord.com/developers/docs/resources/channel#get-reactions-reaction-types) |
+| class [RecurrenceRule](./Oxide.Ext.Discord/Entities/RecurrenceRule.md) | Represents [Guild Scheduled Event Recurrence Rule Object](https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object) |
+| enum [RecurrenceRuleFrequency](./Oxide.Ext.Discord/Entities/RecurrenceRuleFrequency.md) | Represents [Guild Scheduled Event Recurrence Rule Frequency](https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-frequency) |
+| enum [RecurrenceRuleMonth](./Oxide.Ext.Discord/Entities/RecurrenceRuleMonth.md) | Represents [Guild Scheduled Event Recurrence Rule Month](https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-month) |
+| class [RecurrenceRuleNWeekday](./Oxide.Ext.Discord/Entities/RecurrenceRuleNWeekday.md) | Represents [Guild Scheduled Event Recurrence Rule N Weekday Object](https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-nweekday-structure) |
+| enum [RecurrenceRuleWeekday](./Oxide.Ext.Discord/Entities/RecurrenceRuleWeekday.md) | Represents [Guild Scheduled Event Recurrence Rule Weekday](https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-weekday) |
 | enum [RequestErrorType](./Oxide.Ext.Discord/Entities/RequestErrorType.md) | Represents a Discord Request Error Type |
 | class [RequestResponse](./Oxide.Ext.Discord/Entities/RequestResponse.md) | Represents a REST response from discord |
 | class [ResponseError](./Oxide.Ext.Discord/Entities/ResponseError.md) | Error object that is returned to the caller when a request fails |
@@ -384,6 +401,7 @@
 | enum [StickerFormatType](./Oxide.Ext.Discord/Entities/StickerFormatType.md) | Represents [Sticker Format Types](https://discord.com/developers/docs/resources/sticker#sticker-format-types) |
 | enum [StickerType](./Oxide.Ext.Discord/Entities/StickerType.md) | Represents a [Sticker Types](https://discord.com/developers/docs/resources/sticker#sticker-types) |
 | class [StringSelectComponent](./Oxide.Ext.Discord/Entities/StringSelectComponent.md) | Represents a [Select Menus Component](https://discord.com/developers/docs/interactions/message-components#select-menus) within discord. |
+| enum [SubscriptionStatus](./Oxide.Ext.Discord/Entities/SubscriptionStatus.md) | Represents a [Subscription Statuses](https://discord.com/developers/docs/resources/subscription#subscription-statuses) |
 | [Flags] enum [SystemChannelFlags](./Oxide.Ext.Discord/Entities/SystemChannelFlags.md) | Represents [System Channel Flags](https://discord.com/developers/docs/resources/guild#guild-object-system-channel-flags) |
 | enum [TargetUserType](./Oxide.Ext.Discord/Entities/TargetUserType.md) | Represents [Target User Types](https://discord.com/developers/docs/resources/invite#invite-object-target-user-types) |
 | class [TeamMember](./Oxide.Ext.Discord/Entities/TeamMember.md) | Represents [Team Members Object](https://discord.com/developers/docs/topics/teams#data-models-team-members-object) |
@@ -410,6 +428,7 @@
 | class [UserSelectComponent](./Oxide.Ext.Discord/Entities/UserSelectComponent.md) | Represents a [Select Menus Component](https://discord.com/developers/docs/interactions/message-components#select-menus) within discord. |
 | enum [UserStatusType](./Oxide.Ext.Discord/Entities/UserStatusType.md) | Represents Discord User [Status Types](https://discord.com/developers/docs/topics/gateway#update-status-status-types) |
 | enum [VideoQualityMode](./Oxide.Ext.Discord/Entities/VideoQualityMode.md) | Represents a [Video Quality Mode](https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes) |
+| class [VoiceChannelEffectEvent](./Oxide.Ext.Discord/Entities/VoiceChannelEffectEvent.md) | Represents [Voice Server Update](https://discord.com/developers/docs/topics/gateway#voice-server-update) |
 | class [VoiceRegion](./Oxide.Ext.Discord/Entities/VoiceRegion.md) | Represents [Voice Region Structure](https://discord.com/developers/docs/resources/voice#voice-region-object) |
 | class [VoiceServerUpdatedEvent](./Oxide.Ext.Discord/Entities/VoiceServerUpdatedEvent.md) | Represents [Voice Server Update](https://discord.com/developers/docs/topics/gateway#voice-server-update) |
 | class [VoiceState](./Oxide.Ext.Discord/Entities/VoiceState.md) | Represents [Voice State Structure](https://discord.com/developers/docs/resources/voice#voice-state-object) |
@@ -455,6 +474,7 @@
 | class [InvalidFileNameException](./Oxide.Ext.Discord/Exceptions/InvalidFileNameException.md) | Exception throw when an attachment filename contains invalid characters |
 | class [InvalidForumTagException](./Oxide.Ext.Discord/Exceptions/InvalidForumTagException.md) | Represents an exception for channel threads |
 | class [InvalidGetEntitlementException](./Oxide.Ext.Discord/Exceptions/InvalidGetEntitlementException.md) | Exceptions for invalid entitlements |
+| class [InvalidGetSkuSubscriptionsException](./Oxide.Ext.Discord/Exceptions/InvalidGetSkuSubscriptionsException.md) | Exceptions for invalid entitlements |
 | class [InvalidGuildBanException](./Oxide.Ext.Discord/Exceptions/InvalidGuildBanException.md) | Represents an error in channel ban |
 | class [InvalidGuildException](./Oxide.Ext.Discord/Exceptions/InvalidGuildException.md) | Represents an exception in guild |
 | class [InvalidGuildListMembersException](./Oxide.Ext.Discord/Exceptions/InvalidGuildListMembersException.md) | Represents an exception in guid list request |
@@ -592,6 +612,7 @@
 | class [DiscordAutoCompleteChoiceTemplate](./Oxide.Ext.Discord/Libraries/DiscordAutoCompleteChoiceTemplate.md) | Template for Discord Auto Completes |
 | class [DiscordAutoCompleteChoiceTemplates](./Oxide.Ext.Discord/Libraries/DiscordAutoCompleteChoiceTemplates.md) | Auto Complete Choice Templates Library |
 | class [DiscordButtonTemplates](./Oxide.Ext.Discord/Libraries/DiscordButtonTemplates.md) | Button Templates Library |
+| class [DiscordChannelSubscription](./Oxide.Ext.Discord/Libraries/DiscordChannelSubscription.md) | Represents a channel subscription for a plugin |
 | class [DiscordCommand](./Oxide.Ext.Discord/Libraries/DiscordCommand.md) | Represents a library for discord commands |
 | class [DiscordCommandLocalization](./Oxide.Ext.Discord/Libraries/DiscordCommandLocalization.md) | Command Localizations for Application Commands |
 | class [DiscordCommandLocalizations](./Oxide.Ext.Discord/Libraries/DiscordCommandLocalizations.md) | Library for localizing [`DiscordApplicationCommand`](./Oxide.Ext.Discord/Entities/DiscordApplicationCommand.md)s |
@@ -610,7 +631,6 @@
 | class [DiscordPlaceholders](./Oxide.Ext.Discord/Libraries/DiscordPlaceholders.md) | Discord Placeholders Library |
 | class [DiscordPool](./Oxide.Ext.Discord/Libraries/DiscordPool.md) | Discord Pool Library |
 | class [DiscordSelectMenuTemplates](./Oxide.Ext.Discord/Libraries/DiscordSelectMenuTemplates.md) | InputText Templates Library |
-| class [DiscordSubscription](./Oxide.Ext.Discord/Libraries/DiscordSubscription.md) | Represents a channel subscription for a plugin |
 | class [DiscordSubscriptions](./Oxide.Ext.Discord/Libraries/DiscordSubscriptions.md) | Represents Discord Subscriptions Oxide Library Allows for plugins to subscribe to discord channels |
 | class [EmbedFooterTemplate](./Oxide.Ext.Discord/Libraries/EmbedFooterTemplate.md) | Discord Template for Embed Footer |
 | class [EmojiTemplate](./Oxide.Ext.Discord/Libraries/EmojiTemplate.md) | Discord Template for Emoji |

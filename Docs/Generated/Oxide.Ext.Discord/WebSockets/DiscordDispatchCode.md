@@ -56,6 +56,7 @@ public enum DiscordDispatchCode : byte
 | TypingStarted | `TypingStarted` | Represents the [TYPING_START](https://discord.com/developers/docs/topics/gateway#typing-start) gateway event |
 | UserUpdated | `UserUpdated` | Represents the [USER_UPDATE](https://discord.com/developers/docs/topics/gateway#user-update) gateway event |
 | VoiceStateUpdated | `VoiceStateUpdated` | Represents the [VOICE_STATE_UPDATE](https://discord.com/developers/docs/topics/gateway#voice-state-update) gateway event |
+| VoiceChannelEffectSend | `VoiceChannelEffectSend` | Represents the [VOICE_CHANNEL_EFFECT_SEND](https://discord.com/developers/docs/topics/gateway-events#voice-channel-effect-send) gateway event |
 | VoiceServerUpdated | `VoiceServerUpdated` | Represents the [VOICE_SERVER_UPDATE](https://discord.com/developers/docs/topics/gateway#voice-server-update) gateway event |
 | WebhooksUpdated | `WebhooksUpdated` | Represents the [WEBHOOKS_UPDATE](https://discord.com/developers/docs/topics/gateway#webhooks-update) gateway event |
 | InviteCreated | `InviteCreated` | Represents the [INVITE_CREATE](https://discord.com/developers/docs/topics/gateway#invite-create) gateway event |
@@ -71,6 +72,9 @@ public enum DiscordDispatchCode : byte
 | StageInstanceCreated | `StageInstanceCreated` | Represents the [STAGE_INSTANCE_CREATE](https://discord.com/developers/docs/topics/gateway#stage-instance-create) gateway event |
 | StageInstanceUpdated | `StageInstanceUpdated` | Represents the [STAGE_INSTANCE_CREATE](https://discord.com/developers/docs/topics/gateway#stage-instance-update) gateway event |
 | StageInstanceDeleted | `StageInstanceDeleted` | Represents the [STAGE_INSTANCE_CREATE](https://discord.com/developers/docs/topics/gateway#stage-instance-delete) gateway event |
+| SubscriptionCreate | `SubscriptionCreate` | Represents the [SUBSCRIPTION_CREATE](https://discord.com/developers/docs/topics/gateway-events#subscription-create) gateway event |
+| SubscriptionUpdate | `SubscriptionUpdate` | Represents the [SUBSCRIPTION_UPDATE](https://discord.com/developers/docs/topics/gateway-events#subscription-update) gateway event |
+| SubscriptionDelete | `SubscriptionDelete` | Represents the [SUBSCRIPTION_DELETE](https://discord.com/developers/docs/topics/gateway-events#subscription-delete) gateway event |
 | AutoModerationRuleCreate | `AutoModerationRuleCreate` | Represents the [AUTO_MODERATION_RULE_CREATE](https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-create) gateway event |
 | AutoModerationRuleUpdate | `AutoModerationRuleUpdate` | Represents the [AUTO_MODERATION_RULE_UPDATE](https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-update) gateway event |
 | AutoModerationRuleDelete | `AutoModerationRuleDelete` | Represents the [AUTO_MODERATION_RULE_DELETE](https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-delete) gateway event |

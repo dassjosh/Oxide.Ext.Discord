@@ -114,8 +114,12 @@ public static class DiscordExtHooks
 | const [OnDiscordStageInstanceCreated](#ondiscordstageinstancecreated-field) | Called when a stage instance is created |
 | const [OnDiscordStageInstanceDeleted](#ondiscordstageinstancedeleted-field) | Called when a stage instance is deleted |
 | const [OnDiscordStageInstanceUpdated](#ondiscordstageinstanceupdated-field) | Called when a stage instance is updated |
+| const [OnDiscordSubscriptionCreated](#ondiscordsubscriptioncreated-field) | Called when a subscription is created |
+| const [OnDiscordSubscriptionDeleted](#ondiscordsubscriptiondeleted-field) | Called when a subscription is deleted |
+| const [OnDiscordSubscriptionUpdated](#ondiscordsubscriptionupdated-field) | Called when a subscription is updated |
 | const [OnDiscordUnhandledCommand](#ondiscordunhandledcommand-field) | void OnDiscordUnhandledCommand(EventPayload payload) { Puts("OnDiscordUnhandledCommand Works!"); } |
 | const [OnDiscordUserUpdated](#ondiscorduserupdated-field) | Called when a discord user is updated |
+| const [OnDiscordVoiceChannelEffect](#ondiscordvoicechanneleffect-field) | Sent when someone sends an effect, such as an emoji reaction or a soundboard sound, in a voice channel the current user is connected to. |
 | const [OnDiscordWebsocketClosed](#ondiscordwebsocketclosed-field) | Called when the web socket is closed for any reason. |
 | const [OnDiscordWebsocketErrored](#ondiscordwebsocketerrored-field) | Called when the web socket has an error. |
 | const [OnDiscordWebsocketOpened](#ondiscordwebsocketopened-field) | Called when the discord socket connects. |
@@ -1987,6 +1991,28 @@ public const string OnDiscordGuildVoiceStateUpdated;
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
    
+# OnDiscordVoiceChannelEffect field
+
+Sent when someone sends an effect, such as an emoji reaction or a soundboard sound, in a voice channel the current user is connected to.
+
+```csharp
+void OnDiscordVoiceChannelEffect(VoiceChannelEffectEvent effect, DiscordGuild guild)
+{
+    Puts("OnDiscordVoiceChannelEffect Works!");
+}
+```
+
+```csharp
+public const string OnDiscordVoiceChannelEffect;
+```
+
+## See Also
+
+* class [DiscordExtHooks](./DiscordExtHooks.md)
+* namespace [Oxide.Ext.Discord.Constants](./ConstantsNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
 # OnDiscordGuildVoiceServerUpdated field
 
 Called when the voice server in a guild channel is updated
@@ -2418,6 +2444,72 @@ void OnDiscordStageInstanceDeleted(StageInstance stage, DiscordGuild guild)
 
 ```csharp
 public const string OnDiscordStageInstanceDeleted;
+```
+
+## See Also
+
+* class [DiscordExtHooks](./DiscordExtHooks.md)
+* namespace [Oxide.Ext.Discord.Constants](./ConstantsNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# OnDiscordSubscriptionCreated field
+
+Called when a subscription is created
+
+```csharp
+void OnDiscordSubscriptionCreated(DiscordSubscription subscription)
+{
+    Puts("OnDiscordSubscriptionCreated Works!");
+}
+```
+
+```csharp
+public const string OnDiscordSubscriptionCreated;
+```
+
+## See Also
+
+* class [DiscordExtHooks](./DiscordExtHooks.md)
+* namespace [Oxide.Ext.Discord.Constants](./ConstantsNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# OnDiscordSubscriptionUpdated field
+
+Called when a subscription is updated
+
+```csharp
+void OnDiscordSubscriptionUpdated(DiscordSubscription subscription)
+{
+    Puts("OnDiscordSubscriptionUpdated Works!");
+}
+```
+
+```csharp
+public const string OnDiscordSubscriptionUpdated;
+```
+
+## See Also
+
+* class [DiscordExtHooks](./DiscordExtHooks.md)
+* namespace [Oxide.Ext.Discord.Constants](./ConstantsNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# OnDiscordSubscriptionDeleted field
+
+Called when a subscription is deleted
+
+```csharp
+void OnDiscordSubscriptionDeleted(DiscordSubscription subscription)
+{
+    Puts("OnDiscordSubscriptionDeleted Works!");
+}
+```
+
+```csharp
+public const string OnDiscordSubscriptionDeleted;
 ```
 
 ## See Also

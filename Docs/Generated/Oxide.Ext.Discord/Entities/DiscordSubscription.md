@@ -1,0 +1,185 @@
+# DiscordSubscription class
+
+Represents a [Subscription](https://discord.com/developers/docs/resources/subscription#subscription-resource)
+
+```csharp
+public class DiscordSubscription
+```
+
+## Public Members
+
+| name | description |
+| --- | --- |
+| [DiscordSubscription](#discordsubscription-constructor)() | The default constructor. |
+| [CanceledAt](#canceledat-property) { get; set; } | When the subscription was canceled |
+| [Country](#country-property) { get; set; } | ISO3166-1 alpha-2 country code of the payment source used to purchase the subscription. Missing unless queried with a private OAuth scope. |
+| [CurrentPeriodEnd](#currentperiodend-property) { get; set; } | End of the current subscription period |
+| [CurrentPeriodStart](#currentperiodstart-property) { get; set; } | Start of the current subscription period |
+| [EntitlementIds](#entitlementids-property) { get; set; } | List of entitlements granted for this subscription |
+| [Id](#id-property) { get; set; } | ID of the subscription |
+| [SkuIds](#skuids-property) { get; set; } | List of SKUs subscribed to |
+| [Status](#status-property) { get; set; } | Current status of the subscription |
+| [UserId](#userid-property) { get; set; } | ID of the user who is subscribed |
+
+## See Also
+
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+* [DiscordSubscription.cs](../../../../Oxide.Ext.Discord/Entities/DiscordSubscription.cs)
+   
+   
+# DiscordSubscription constructor
+
+The default constructor.
+
+```csharp
+public DiscordSubscription()
+```
+
+## See Also
+
+* class [DiscordSubscription](./DiscordSubscription.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# Id property
+
+ID of the subscription
+
+```csharp
+public Snowflake Id { get; set; }
+```
+
+## See Also
+
+* struct [Snowflake](./Snowflake.md)
+* class [DiscordSubscription](./DiscordSubscription.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# UserId property
+
+ID of the user who is subscribed
+
+```csharp
+public Snowflake UserId { get; set; }
+```
+
+## See Also
+
+* struct [Snowflake](./Snowflake.md)
+* class [DiscordSubscription](./DiscordSubscription.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# SkuIds property
+
+List of SKUs subscribed to
+
+```csharp
+public List<Snowflake> SkuIds { get; set; }
+```
+
+## See Also
+
+* struct [Snowflake](./Snowflake.md)
+* class [DiscordSubscription](./DiscordSubscription.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# EntitlementIds property
+
+List of entitlements granted for this subscription
+
+```csharp
+public List<Snowflake> EntitlementIds { get; set; }
+```
+
+## See Also
+
+* struct [Snowflake](./Snowflake.md)
+* class [DiscordSubscription](./DiscordSubscription.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# CurrentPeriodStart property
+
+Start of the current subscription period
+
+```csharp
+public DateTimeOffset CurrentPeriodStart { get; set; }
+```
+
+## See Also
+
+* class [DiscordSubscription](./DiscordSubscription.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# CurrentPeriodEnd property
+
+End of the current subscription period
+
+```csharp
+public DateTimeOffset CurrentPeriodEnd { get; set; }
+```
+
+## See Also
+
+* class [DiscordSubscription](./DiscordSubscription.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# Status property
+
+Current status of the subscription
+
+```csharp
+public SubscriptionStatus Status { get; set; }
+```
+
+## See Also
+
+* enum [SubscriptionStatus](./SubscriptionStatus.md)
+* class [DiscordSubscription](./DiscordSubscription.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# CanceledAt property
+
+When the subscription was canceled
+
+```csharp
+public DateTimeOffset? CanceledAt { get; set; }
+```
+
+## See Also
+
+* class [DiscordSubscription](./DiscordSubscription.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# Country property
+
+ISO3166-1 alpha-2 country code of the payment source used to purchase the subscription. Missing unless queried with a private OAuth scope.
+
+```csharp
+public string Country { get; set; }
+```
+
+## See Also
+
+* class [DiscordSubscription](./DiscordSubscription.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+
+<!-- DO NOT EDIT: generated by xmldocmd for Oxide.Ext.Discord.dll -->

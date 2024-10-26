@@ -1,17 +1,18 @@
-﻿namespace Oxide.Ext.Discord.Entities;
-
-/// <summary>
-/// Represents the <a href="">Animation Type</a>
-/// </summary>
-public enum AnimationType
+﻿namespace Oxide.Ext.Discord.Entities
 {
     /// <summary>
-    /// A fun animation, sent by a Nitro subscriber
+    /// Represents the <a href="">Animation Type</a>
     /// </summary>
-    Premium,
+    public enum AnimationType
+    {
+        /// <summary>
+        /// A fun animation, sent by a Nitro subscriber
+        /// </summary>
+        Premium,
     
-    /// <summary>
-    /// The standard animation
-    /// </summary>
-    Basic
+        /// <summary>
+        /// The standard animation
+        /// </summary>
+        Basic
+    }
 }

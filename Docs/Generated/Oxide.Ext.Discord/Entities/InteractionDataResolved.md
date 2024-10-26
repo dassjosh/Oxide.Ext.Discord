@@ -11,12 +11,12 @@ public class InteractionDataResolved
 | name | description |
 | --- | --- |
 | [InteractionDataResolved](#interactiondataresolved-constructor)() | The default constructor. |
-| [Attachments](#attachments-property) { get; set; } | The ids and attachment objects |
-| [Channels](#channels-property) { get; set; } | The IDs and partial Channel objects |
-| [Members](#members-property) { get; set; } | The IDs and partial Member objects |
-| [Messages](#messages-property) { get; set; } | The ids and partial Message objects |
-| [Roles](#roles-property) { get; set; } | The IDs and Role objects |
-| [Users](#users-property) { get; set; } | The IDs and User objects |
+| [Attachments](#attachments-property) { get; set; } | IDs and attachment objects |
+| [Channels](#channels-property) { get; set; } | IDs and partial Channel objects |
+| [Members](#members-property) { get; set; } | IDs and partial Member objects |
+| [Messages](#messages-property) { get; set; } | IDs and partial Message objects |
+| [Roles](#roles-property) { get; set; } | IDs and Role objects |
+| [Users](#users-property) { get; set; } | IDs and User objects |
 
 ## See Also
 
@@ -42,7 +42,7 @@ public InteractionDataResolved()
    
 # Users property
 
-The IDs and User objects
+IDs and User objects
 
 ```csharp
 public Hash<Snowflake, DiscordUser> Users { get; set; }
@@ -59,7 +59,7 @@ public Hash<Snowflake, DiscordUser> Users { get; set; }
    
 # Members property
 
-The IDs and partial Member objects
+IDs and partial Member objects
 
 ```csharp
 public Hash<Snowflake, GuildMember> Members { get; set; }
@@ -76,7 +76,7 @@ public Hash<Snowflake, GuildMember> Members { get; set; }
    
 # Roles property
 
-The IDs and Role objects
+IDs and Role objects
 
 ```csharp
 public Hash<Snowflake, DiscordRole> Roles { get; set; }
@@ -93,7 +93,7 @@ public Hash<Snowflake, DiscordRole> Roles { get; set; }
    
 # Channels property
 
-The IDs and partial Channel objects
+IDs and partial Channel objects
 
 ```csharp
 public Hash<Snowflake, DiscordChannel> Channels { get; set; }
@@ -110,7 +110,7 @@ public Hash<Snowflake, DiscordChannel> Channels { get; set; }
    
 # Messages property
 
-The ids and partial Message objects
+IDs and partial Message objects
 
 ```csharp
 public Hash<Snowflake, DiscordMessage> Messages { get; set; }
@@ -127,7 +127,7 @@ public Hash<Snowflake, DiscordMessage> Messages { get; set; }
    
 # Attachments property
 
-The ids and attachment objects
+IDs and attachment objects
 
 ```csharp
 public Hash<Snowflake, MessageAttachment> Attachments { get; set; }

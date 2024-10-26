@@ -18,6 +18,7 @@ public class DiscordStickerPack
 | [Name](#name-property) { get; set; } | Name of the sticker pack |
 | [SkuId](#skuid-property) { get; set; } | ID of the pack's SKU |
 | [Stickers](#stickers-property) { get; set; } | The stickers in the pack |
+| static [GetStickerPack](#getstickerpack-method)(…) | Returns a sticker pack object for the given sticker pack ID. See [List Nitro Sticker Packs](https://discord.com/developers/docs/resources/sticker#get-sticker-pack) |
 | static [GetStickerPacks](#getstickerpacks-method)(…) | Returns the list of sticker packs available to Nitro subscribers. See [List Nitro Sticker Packs](https://discord.com/developers/docs/resources/sticker#list-nitro-sticker-packs) |
 
 ## See Also
@@ -25,6 +26,29 @@ public class DiscordStickerPack
 * namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
 * [DiscordStickerPack.cs](../../../../Oxide.Ext.Discord/Entities/DiscordStickerPack.cs)
+   
+   
+# GetStickerPack method
+
+Returns a sticker pack object for the given sticker pack ID. See [List Nitro Sticker Packs](https://discord.com/developers/docs/resources/sticker#get-sticker-pack)
+
+```csharp
+public static IPromise<DiscordStickerPack> GetStickerPack(DiscordClient client, Snowflake packId)
+```
+
+| parameter | description |
+| --- | --- |
+| client | Client to use |
+| packId | ID of the pack |
+
+## See Also
+
+* interface [IPromise&lt;TPromised&gt;](../Interfaces/IPromise%7BTPromised%7D.md)
+* class [DiscordClient](../Clients/DiscordClient.md)
+* struct [Snowflake](./Snowflake.md)
+* class [DiscordStickerPack](./DiscordStickerPack.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
    
 # GetStickerPacks method

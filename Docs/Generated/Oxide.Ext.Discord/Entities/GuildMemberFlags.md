@@ -4,7 +4,7 @@ Represents [Guild Member Flags](https://discord.com/developers/docs/resources/gu
 
 ```csharp
 [Flags]
-public enum GuildMemberFlags
+public enum GuildMemberFlags : ushort
 ```
 
 ## Values
@@ -16,6 +16,11 @@ public enum GuildMemberFlags
 | CompletedOnboarding | `1 << 1` | Member has completed onboarding Editable: False |
 | BypassesVerification | `1 << 2` | Member is exempt from guild verification requirements Editable: True |
 | StartedOnboarding | `1 << 3` | Member has started onboarding Editable: False |
+| IsGuest | `1 << 4` | Member is a guest and can only access the voice channel they were invited to Editable: False |
+| StartedHomeActions | `1 << 5` | Member has started Server Guide new member actions Editable: False |
+| CompletedHomeActions | `1 << 6` | Member has completed Server Guide new member actions Editable: False |
+| AutoModQuarantinedUsername | `1 << 7` | Member's username, display name, or nickname is blocked by AutoMod Editable: False |
+| DmSettingsUpsellAcknowledged | `1 << 9` | Member has dismissed the DM settings upsell Editable: False |
 
 ## See Also
 

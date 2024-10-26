@@ -109,7 +109,7 @@ namespace Oxide.Ext.Discord.Libraries
         {
             if (plugin == null) throw new ArgumentNullException(nameof(plugin));
 
-            List<Snowflake> emptySubs = [];
+            List<Snowflake> emptySubs = new();
             foreach (KeyValuePair<Snowflake, List<DiscordChannelSubscription>> hash in _subscriptions)
             {
                 RemoveChannelSubscription(plugin, hash.Key);
