@@ -46,12 +46,7 @@ namespace Oxide.Ext.Discord.Libraries
         /// <see cref="Plugin.TotalHookTime"/> placeholder
         /// </summary>
         
-        public static TimeSpan HookTime(Plugin plugin) =>
-#if CARBON
-            plugin.TotalHookTime;
-#else 
-            TimeSpan.FromSeconds(plugin.TotalHookTime);
-#endif
+        public static TimeSpan HookTime(Plugin plugin) => TimeSpan.FromSeconds(plugin.TotalHookTime);
         
         /// <summary>
         /// Lang message for a plugin

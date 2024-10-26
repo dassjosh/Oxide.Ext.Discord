@@ -1,6 +1,6 @@
-#if !CARBON
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Oxide.Core;
 using Oxide.Core.Extensions;
@@ -13,6 +13,7 @@ using Oxide.Ext.Discord.Interfaces;
 using Oxide.Ext.Discord.Libraries;
 using Oxide.Ext.Discord.Logging;
 using Oxide.Ext.Discord.Plugins;
+using Oxide.Plugins;
 
 namespace Oxide.Ext.Discord
 {
@@ -127,8 +128,8 @@ namespace Oxide.Ext.Discord
             
             Manager.RegisterPluginLoader(new DiscordExtPluginLoader());
             //Interface.Oxide.OnFrame(PromiseTimer.Instance.Update);
-            
-            Interface.Oxide.Config.Compiler.PreprocessorDirectives.AddRange(GetPreProcessorDirectives());
+
+            InjectPreProcessorDirectives();
             
             Interface.Oxide.RootPluginManager.OnPluginAdded += DiscordClientFactory.Instance.OnPluginLoaded;
             Interface.Oxide.RootPluginManager.OnPluginRemoved += plugin =>
@@ -153,8 +154,28 @@ namespace Oxide.Ext.Discord
         private IEnumerable<string> GetPreProcessorDirectives()
         {
             yield return "DiscordExt";
-            yield return "DiscordExt3_0";
+            for (int i = 0; i <= Version.Minor; i++)
+            {
+                yield return $"DiscordExt{Version.Major}_{i}";
+            }
+        }
+
+        private void InjectPreProcessorDirectives()
+        {
+            try
+            {
+                FieldInfo compilerField = typeof(CSharpPluginLoader).GetField("compiler", BindingFlags.NonPublic | BindingFlags.Instance);
+                object compiler = compilerField.GetValue(CSharpPluginLoader.Instance);
+                FieldInfo preProcessorField = compiler.GetType().GetField("preprocessor", BindingFlags.NonPublic | BindingFlags.Instance);
+                string[] preProcessor = preProcessorField.GetValue(compiler) as string[];
+                preProcessor = preProcessor.Concat(GetPreProcessorDirectives()).ToArray();
+                preProcessorField.SetValue(compiler, preProcessor);
+                GlobalLogger.Debug($"Injected Preprocessor Directives: {string.Join(", ", preProcessor)}");
+            }
+            catch (Exception ex)
+            {
+                GlobalLogger.Exception("Failed to inject preprocessor directives", ex);
+            }
         }
     }
-#endif
 }
