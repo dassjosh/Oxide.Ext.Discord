@@ -18,6 +18,11 @@
         /// <summary>
         /// <a href="https://support.discord.com/hc/en-us/articles/13497665141655">	Server Guide</a>
         /// </summary>
-        Guide
+        Guide,
+        
+        /// <summary>
+        /// <a href="https://support.discord.com/hc/en-us/articles/10388356626711"> Linked Roles</a>
+        /// </summary>
+        LinkedRoles
     }
 }
