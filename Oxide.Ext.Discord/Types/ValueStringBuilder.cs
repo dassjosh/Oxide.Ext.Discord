@@ -5,15 +5,23 @@ using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Oxide.Ext.Discord.Extensions;
 
 namespace Oxide.Ext.Discord.Types
 {
+    /// <summary>
+    /// A non-heap-allocation allocating string builder
+    /// </summary>
     public ref struct ValueStringBuilder
     {
         private char[] _arrayToReturnToPool;
         private Span<char> _chars;
         private int _pos;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="initialBuffer">Initial buffer to use for the chars</param>
         public ValueStringBuilder(Span<char> initialBuffer)
         {
             _arrayToReturnToPool = null;
@@ -21,6 +29,10 @@ namespace Oxide.Ext.Discord.Types
             _pos = 0;
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="initialCapacity">Initial buffer capacity to rent</param>
         public ValueStringBuilder(int initialCapacity)
         {
             _arrayToReturnToPool = System.Buffers.ArrayPool<char>.Shared.Rent(initialCapacity);
@@ -28,6 +40,9 @@ namespace Oxide.Ext.Discord.Types
             _pos = 0;
         }
 
+        /// <summary>
+        /// Length of the builder
+        /// </summary>
         public int Length
         {
             get => _pos;
@@ -39,8 +54,15 @@ namespace Oxide.Ext.Discord.Types
             }
         }
 
+        /// <summary>
+        /// Current capacity of the builder
+        /// </summary>
         public int Capacity => _chars.Length;
 
+        /// <summary>
+        /// Ensure the builder has a capacity of at least <paramref name="capacity"/>
+        /// </summary>
+        /// <param name="capacity"></param>
         public void EnsureCapacity(int capacity)
         {
             // This is not expected to be called this with negative capacity
@@ -76,6 +98,10 @@ namespace Oxide.Ext.Discord.Types
             return ref MemoryMarshal.GetReference(_chars);
         }
 
+        /// <summary>
+        /// Get the char at the specified index
+        /// </summary>
+        /// <param name="index"></param>
         public ref char this[int index]
         {
             get
@@ -85,6 +111,10 @@ namespace Oxide.Ext.Discord.Types
             }
         }
 
+        /// <summary>
+        /// Get's the final string and disposes of the builder
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             string s = _chars.Slice(0, _pos).ToString();
@@ -109,10 +139,33 @@ namespace Oxide.Ext.Discord.Types
             return _chars.Slice(0, _pos);
         }
 
+        /// <summary>
+        /// Converts the current builder to a <see cref="ReadOnlySpan{T}"/>
+        /// </summary>
+        /// <returns></returns>
         public ReadOnlySpan<char> AsSpan() => _chars.Slice(0, _pos);
+        
+        /// <summary>
+        /// Converts the current builder to a <see cref="ReadOnlySpan{T}"/>
+        /// </summary>
+        /// <param name="start">Index to start at</param>
+        /// <returns></returns>
         public ReadOnlySpan<char> AsSpan(int start) => _chars.Slice(start, _pos - start);
+        
+        /// <summary>
+        /// Converts the current builder to a <see cref="ReadOnlySpan{T}"/>
+        /// </summary>
+        /// <param name="start">Index to start at</param>
+        /// <param name="length">Length of the span</param>
+        /// <returns></returns>
         public ReadOnlySpan<char> AsSpan(int start, int length) => _chars.Slice(start, length);
 
+        /// <summary>
+        /// Tries to copy the current builder to a <see cref="Span{T}"/>
+        /// </summary>
+        /// <param name="destination">Span to write the chars to</param>
+        /// <param name="charsWritten">Number of chars written</param>
+        /// <returns>True if successfully; false otherwise</returns>
         public bool TryCopyTo(Span<char> destination, out int charsWritten)
         {
             if (_chars.Slice(0, _pos).TryCopyTo(destination))
@@ -127,6 +180,12 @@ namespace Oxide.Ext.Discord.Types
             return false;
         }
 
+        /// <summary>
+        /// Insert a char at the specified index count times
+        /// </summary>
+        /// <param name="index">Index to insert the char</param>
+        /// <param name="value">Char to insert</param>
+        /// <param name="count">Number of times to insert</param>
         public void Insert(int index, char value, int count)
         {
             if (_pos > _chars.Length - count)
@@ -140,6 +199,11 @@ namespace Oxide.Ext.Discord.Types
             _pos += count;
         }
 
+        /// <summary>
+        /// Insert string at the specified index
+        /// </summary>
+        /// <param name="index">Index to insert the string</param>
+        /// <param name="s">String to insert</param>
         public void Insert(int index, string s)
         {
             if (s == null)
@@ -160,6 +224,10 @@ namespace Oxide.Ext.Discord.Types
             _pos += count;
         }
 
+        /// <summary>
+        /// Appends char to the builder
+        /// </summary>
+        /// <param name="c">Char to append</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Append(char c)
         {
@@ -176,6 +244,10 @@ namespace Oxide.Ext.Discord.Types
             }
         }
 
+        /// <summary>
+        /// Appends string to the builder
+        /// </summary>
+        /// <param name="s">string to append</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Append(string s)
         {
@@ -223,6 +295,10 @@ namespace Oxide.Ext.Discord.Types
             _pos += count;
         }
 
+        /// <summary>
+        /// Appends span to the builder
+        /// </summary>
+        /// <param name="value">Span to append</param>
         public void Append(ReadOnlySpan<char> value)
         {
             int pos = _pos;
@@ -235,6 +311,11 @@ namespace Oxide.Ext.Discord.Types
             _pos += value.Length;
         }
 
+        /// <summary>
+        /// Requests a writable span of length
+        /// </summary>
+        /// <param name="length">Length of the request span</param>
+        /// <returns>Span of the request length</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Span<char> AppendSpan(int length)
         {
@@ -248,11 +329,18 @@ namespace Oxide.Ext.Discord.Types
             return _chars.Slice(origPos, length);
         }
     
+        /// <summary>
+        /// Appends a <see cref="byte"/> to the builder
+        /// </summary>
+        /// <param name="value">Value to append</param>
+        /// <param name="format">format for the value</param>
+        /// <param name="provider">Format provider for the value</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Append(byte value, string format = null, IFormatProvider provider = null)
         {
-            if (value.TryFormat(_chars.Slice(_pos), out int charsWritten, format, provider))
+            if (value.TryFormat(out ReadOnlySpan<char> span, format, provider))
             {
-                _pos += charsWritten;
+                Append(span);
             }
             else
             {
@@ -260,11 +348,18 @@ namespace Oxide.Ext.Discord.Types
             }
         }
     
+        /// <summary>
+        /// Appends a <see cref="sbyte"/> to the builder
+        /// </summary>
+        /// <param name="value">Value to append</param>
+        /// <param name="format">format for the value</param>
+        /// <param name="provider">Format provider for the value</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Append(sbyte value, string format = null, IFormatProvider provider = null)
         {
-            if (value.TryFormat(_chars.Slice(_pos), out int charsWritten, format, provider))
+            if (value.TryFormat(out ReadOnlySpan<char> span, format, provider))
             {
-                _pos += charsWritten;
+                Append(span);
             }
             else
             {
@@ -272,11 +367,18 @@ namespace Oxide.Ext.Discord.Types
             }
         }
     
+        /// <summary>
+        /// Appends a <see cref="sbyte"/> to the builder
+        /// </summary>
+        /// <param name="value">Value to append</param>
+        /// <param name="format">format for the value</param>
+        /// <param name="provider">Format provider for the value</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Append(short value, string format = null, IFormatProvider provider = null)
         {
-            if (value.TryFormat(_chars.Slice(_pos), out int charsWritten, format, provider))
+            if (value.TryFormat(out ReadOnlySpan<char> span, format, provider))
             {
-                _pos += charsWritten;
+                Append(span);
             }
             else
             {
@@ -284,11 +386,18 @@ namespace Oxide.Ext.Discord.Types
             }
         }
     
+        /// <summary>
+        /// Appends a <see cref="sbyte"/> to the builder
+        /// </summary>
+        /// <param name="value">Value to append</param>
+        /// <param name="format">format for the value</param>
+        /// <param name="provider">Format provider for the value</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Append(ushort value, string format = null, IFormatProvider provider = null)
         {
-            if (value.TryFormat(_chars.Slice(_pos), out int charsWritten, format, provider))
+            if (value.TryFormat(out ReadOnlySpan<char> span, format, provider))
             {
-                _pos += charsWritten;
+                Append(span);
             }
             else
             {
@@ -296,11 +405,18 @@ namespace Oxide.Ext.Discord.Types
             }
         }
     
+        /// <summary>
+        /// Appends a <see cref="int"/> to the builder
+        /// </summary>
+        /// <param name="value">Value to append</param>
+        /// <param name="format">format for the value</param>
+        /// <param name="provider">Format provider for the value</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Append(int value, string format = null, IFormatProvider provider = null)
         {
-            if (value.TryFormat(_chars.Slice(_pos), out int charsWritten, format, provider))
+            if (value.TryFormat(out ReadOnlySpan<char> span, format, provider))
             {
-                _pos += charsWritten;
+                Append(span);
             }
             else
             {
@@ -308,11 +424,18 @@ namespace Oxide.Ext.Discord.Types
             }
         }
     
+        /// <summary>
+        /// Appends a <see cref="uint"/> to the builder
+        /// </summary>
+        /// <param name="value">Value to append</param>
+        /// <param name="format">format for the value</param>
+        /// <param name="provider">Format provider for the value</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Append(uint value, string format = null, IFormatProvider provider = null)
         {
-            if (value.TryFormat(_chars.Slice(_pos), out int charsWritten, format, provider))
+            if (value.TryFormat(out ReadOnlySpan<char> span, format, provider))
             {
-                _pos += charsWritten;
+                Append(span);
             }
             else
             {
@@ -320,11 +443,18 @@ namespace Oxide.Ext.Discord.Types
             }
         }
     
+        /// <summary>
+        /// Appends a <see cref="long"/> to the builder
+        /// </summary>
+        /// <param name="value">Value to append</param>
+        /// <param name="format">format for the value</param>
+        /// <param name="provider">Format provider for the value</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Append(long value, string format = null, IFormatProvider provider = null)
         {
-            if (value.TryFormat(_chars.Slice(_pos), out int charsWritten, format, provider))
+            if (value.TryFormat(out ReadOnlySpan<char> span, format, provider))
             {
-                _pos += charsWritten;
+                Append(span);
             }
             else
             {
@@ -332,11 +462,132 @@ namespace Oxide.Ext.Discord.Types
             }
         }
     
+        /// <summary>
+        /// Appends a <see cref="ulong"/> to the builder
+        /// </summary>
+        /// <param name="value">Value to append</param>
+        /// <param name="format">format for the value</param>
+        /// <param name="provider">Format provider for the value</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Append(ulong value, string format = null, IFormatProvider provider = null)
         {
-            if (value.TryFormat(_chars.Slice(_pos), out int charsWritten, format, provider))
+            if (value.TryFormat(out ReadOnlySpan<char> span, format, provider))
             {
-                _pos += charsWritten;
+                Append(span);
+            }
+            else
+            {
+                Append(value.ToString(format, provider));
+            }
+        }
+        
+        /// <summary>
+        /// Appends a <see cref="decimal"/> to the builder
+        /// </summary>
+        /// <param name="value">Value to append</param>
+        /// <param name="format">format for the value</param>
+        /// <param name="provider">Format provider for the value</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Append(decimal value, string format = null, IFormatProvider provider = null)
+        {
+            if (value.TryFormat(out ReadOnlySpan<char> span, format, provider))
+            {
+                Append(span);
+            }
+            else
+            {
+                Append(value.ToString(format, provider));
+            }
+        }
+        
+        /// <summary>
+        /// Appends a <see cref="float"/> to the builder
+        /// </summary>
+        /// <param name="value">Value to append</param>
+        /// <param name="format">format for the value</param>
+        /// <param name="provider">Format provider for the value</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Append(float value, string format = null, IFormatProvider provider = null)
+        {
+            if (value.TryFormat(out ReadOnlySpan<char> span, format, provider))
+            {
+                Append(span);
+            }
+            else
+            {
+                Append(value.ToString(format, provider));
+            }
+        }
+        
+        /// <summary>
+        /// Appends a <see cref="double"/> to the builder
+        /// </summary>
+        /// <param name="value">Value to append</param>
+        /// <param name="format">format for the value</param>
+        /// <param name="provider">Format provider for the value</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Append(double value, string format = null, IFormatProvider provider = null)
+        {
+            if (value.TryFormat(out ReadOnlySpan<char> span, format, provider))
+            {
+                Append(span);
+            }
+            else
+            {
+                Append(value.ToString(format, provider));
+            }
+        }
+        
+        /// <summary>
+        /// Appends a <see cref="DateTime"/> to the builder
+        /// </summary>
+        /// <param name="value">Value to append</param>
+        /// <param name="format">format for the value</param>
+        /// <param name="provider">Format provider for the value</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Append(DateTime value, string format = null, IFormatProvider provider = null)
+        {
+            if (value.TryFormat(out ReadOnlySpan<char> span, format, provider))
+            {
+                Append(span);
+            }
+            else
+            {
+                Append(value.ToString(format, provider));
+            }
+        }
+        
+        /// <summary>
+        /// Appends a <see cref="DateTimeOffset"/> to the builder
+        /// </summary>
+        /// <param name="value">Value to append</param>
+        /// <param name="format">format for the value</param>
+        /// <param name="provider">Format provider for the value</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Append(DateTimeOffset value, string format = null, IFormatProvider provider = null)
+        {
+            if (value.TryFormat(out ReadOnlySpan<char> span, format, provider))
+            {
+                Append(span);
+            }
+            else
+            {
+                Append(value.ToString(format, provider));
+            }
+        }
+        
+        /// <summary>
+        /// Appends a <see cref="TimeSpan"/> to the builder
+        /// </summary>
+        /// <param name="value">Value to append</param>
+        /// <param name="format">format for the value</param>
+        /// <param name="provider">Format provider for the value</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Append(TimeSpan value, string format = null, IFormatProvider provider = null)
+        {
+            if (value.TryFormat(out ReadOnlySpan<char> span, format, provider))
+            {
+                Append(span);
             }
             else
             {
@@ -344,6 +595,10 @@ namespace Oxide.Ext.Discord.Types
             }
         }
 
+        /// <summary>
+        /// Appends <paramref name="s"/> followed by a newline
+        /// </summary>
+        /// <param name="s"></param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void AppendLine(string s)
         {
@@ -351,6 +606,9 @@ namespace Oxide.Ext.Discord.Types
             AppendLine();
         }
     
+        /// <summary>
+        /// Appends a newline
+        /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void AppendLine() => Append(Environment.NewLine);
 
@@ -397,6 +655,7 @@ namespace Oxide.Ext.Discord.Types
             }
         }
 
+        // Dispose of the builder. Only needs to be called if ToString() is not used.
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Dispose()
         {
