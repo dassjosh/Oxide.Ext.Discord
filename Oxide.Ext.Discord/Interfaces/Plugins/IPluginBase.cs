@@ -1,34 +1,35 @@
 ﻿using Oxide.Core;
 
-namespace Oxide.Ext.Discord.Interfaces;
-
-/// <summary>
-/// Represents an interface for a plugin
-/// </summary>
-public interface IPluginBase
+namespace Oxide.Ext.Discord.Interfaces
 {
     /// <summary>
-    /// Name of the plugin
+    /// Represents an interface for a plugin
     /// </summary>
-    string Name { get; }
+    public interface IPluginBase
+    {
+        /// <summary>
+        /// Name of the plugin
+        /// </summary>
+        string Name { get; }
         
-    /// <summary>
-    /// Title of the plugin
-    /// </summary>
-    string Title { get; }
+        /// <summary>
+        /// Title of the plugin
+        /// </summary>
+        string Title { get; }
 
-    /// <summary>
-    /// Description of the plugin
-    /// </summary>
-    string Description { get; }
+        /// <summary>
+        /// Description of the plugin
+        /// </summary>
+        string Description { get; }
 
-    /// <summary>
-    /// Author of the plugin
-    /// </summary>
-    string Author { get; }
+        /// <summary>
+        /// Author of the plugin
+        /// </summary>
+        string Author { get; }
 
-    /// <summary>
-    /// Version of the plugin
-    /// </summary>
-    VersionNumber Version { get; }
+        /// <summary>
+        /// Version of the plugin
+        /// </summary>
+        VersionNumber Version { get; }
+    }
 }

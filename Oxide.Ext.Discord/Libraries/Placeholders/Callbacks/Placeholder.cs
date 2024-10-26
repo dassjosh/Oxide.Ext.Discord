@@ -1,16 +1,17 @@
 using System;
 using Oxide.Core.Plugins;
 
-namespace Oxide.Ext.Discord.Libraries;
-
-internal class Placeholder<TResult> : BasePlaceholder<TResult>
+namespace Oxide.Ext.Discord.Libraries
 {
-    private readonly Func<TResult> _callback;
-        
-    public Placeholder(Plugin plugin, Func<TResult> callback) : base(plugin) 
+    internal class Placeholder<TResult> : BasePlaceholder<TResult>
     {
-        _callback = callback;
-    }
+        private readonly Func<TResult> _callback;
+        
+        public Placeholder(Plugin plugin, Func<TResult> callback) : base(plugin) 
+        {
+            _callback = callback;
+        }
 
-    public override TResult InvokeInternal(PlaceholderState state) => _callback.Invoke();
+        public override TResult InvokeInternal(PlaceholderState state) => _callback.Invoke();
+    }
 }

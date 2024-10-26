@@ -1228,6 +1228,14 @@
             <param name="comparison"><see cref="T:System.StringComparison"/> to use</param>
             <param name="search"><see cref="T:Oxide.Ext.Discord.Builders.AutoCompleteSearchMode"/> Filter search mode</param>
         </member>
+        <member name="M:Oxide.Ext.Discord.Builders.InteractionAutoCompleteBuilder.AddAllPlugins(System.String,System.StringComparison,Oxide.Ext.Discord.Builders.AutoCompleteSearchMode)">
+            <summary>
+            Adds a list of all plugins in the oxide/plugins folder. Includes loaded and unloaded.
+            </summary>
+            <param name="filter">String to filter by</param>
+            <param name="comparison"><see cref="T:System.StringComparison"/> to use</param>
+            <param name="search"><see cref="T:Oxide.Ext.Discord.Builders.AutoCompleteSearchMode"/> Filter search mode</param>
+        </member>
         <member name="M:Oxide.Ext.Discord.Builders.InteractionAutoCompleteBuilder.AddLoadedPlugins(System.String,System.StringComparison,Oxide.Ext.Discord.Builders.AutoCompleteSearchMode)">
             <summary>
             Adds a list of plugins that are currently loaded
@@ -1728,6 +1736,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Oxide.Ext.Discord.Cache.DiscordPluginCache.GetAllPlugins">
+            <summary>
+            Returns a list of all plugins in the plugin folder
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Oxide.Ext.Discord.Cache.EmojiCache">
             <summary>
             Cached Emoji Data
@@ -1751,16 +1765,48 @@
             <summary>
             Replaces emoji character with emoji string characters
             </summary>
-            <param name="text"></param>
-            <param name="nonMatchReplacement"></param>
+            <param name="text">Text to replace</param>
+            <param name="nonMatchReplacement">Replacement Text to use if non-matching</param>
             <returns></returns>
         </member>
         <member name="M:Oxide.Ext.Discord.Cache.EmojiCache.ReplaceTextWithEmoji(System.String,System.String)">
             <summary>
             Replaces emoji string text with emoji characters
             </summary>
-            <param name="text"></param>
-            <param name="nonMatchReplacement"></param>
+            <param name="text">Text to replace</param>
+            <param name="nonMatchReplacement">Replacement Text to use if non-matching</param>
+            <returns></returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Cache.EmojiCache.ReplaceEmojiWithText(System.String,System.Text.RegularExpressions.MatchEvaluator)">
+            <summary>
+            Replaces emoji character with emoji string characters
+            </summary>
+            <param name="text">Text to replace</param>
+            <param name="evaluator">Replacement Evaluator function</param>
+            <returns></returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Cache.EmojiCache.ReplaceTextWithEmoji(System.String,System.Text.RegularExpressions.MatchEvaluator)">
+            <summary>
+            Replaces emoji string text with emoji characters
+            </summary>
+            <param name="text">Text to replace</param>
+            <param name="evaluator">Replacement Evaluator function</param>
+            <returns></returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Cache.EmojiCache.ReplaceEmojiWithText(System.String)">
+            <summary>
+            Replaces emoji character with emoji string characters
+            If no match is found then the original text is used
+            </summary>
+            <param name="text">Text to replace</param>
+            <returns></returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Cache.EmojiCache.ReplaceTextWithEmoji(System.String)">
+            <summary>
+            Replaces emoji string text with emoji characters
+            If no match is found then the original text is used
+            </summary>
+            <param name="text">Text to replace</param>
             <returns></returns>
         </member>
         <member name="T:Oxide.Ext.Discord.Cache.EntityCache`1">
@@ -7315,6 +7361,15 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordColor.Equals(Oxide.Ext.Discord.Entities.DiscordColor)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordColor.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordColor.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.DefaultReaction">
             <summary>
             Represents <a href="https://discord.com/developers/docs/resources/channel#followed-channel-object">Default Reaction Structure</a>
@@ -9327,7 +9382,7 @@
             <param name="client">Client to use</param>
             <param name="userId">UserID to get guild member for</param>
         </member>
-        <member name="M:Oxide.Ext.Discord.Entities.DiscordGuild.Listembers(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.GuildListMembers)">
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordGuild.ListMembers(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.GuildListMembers)">
             <summary>
             Returns a list of guild member objects that are members of the guild.
             In the future, this endpoint will be restricted in line with our Privileged Intents
@@ -18849,6 +18904,11 @@
             Thrown when the minimum template version is higher than the current template version
             </summary>
         </member>
+        <member name="T:Oxide.Ext.Discord.Exceptions.DiscordLoggerException">
+            <summary>
+            Exceptions for the <see cref="T:Oxide.Ext.Discord.Clients.DiscordClient"/>
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Exceptions.InvalidPoolException">
             <summary>
             An exception when something is invalid with a pool
@@ -20732,15 +20792,15 @@
             <summary>
             Called when the web socket is opened
             </summary>
-            <param name="id">ID of the web socket</param>
+            <param name="webSocketId">ID of the web socket</param>
             <returns></returns>
         </member>
         <member name="M:Oxide.Ext.Discord.Interfaces.IWebSocketEventHandler.SocketClosed(Oxide.Ext.Discord.Entities.Snowflake,System.Net.WebSockets.WebSocketCloseStatus,System.String)">
             <summary>
             Called when the web socket is closed
             </summary>
-            <param name="id">ID of the websocket</param>
-            <param name="code">Web socket close code</param>
+            <param name="webSocketId">ID of the websocket</param>
+            <param name="status">Web socket close code</param>
             <param name="message">Web socket close message</param>
             <returns></returns>
         </member>
@@ -20748,7 +20808,7 @@
             <summary>
             Called when an error occurs on the web socket
             </summary>
-            <param name="id">ID of the websocket</param>
+            <param name="webSocketId">ID of the websocket</param>
             <param name="ex">Exception that was thrown</param>
             <returns></returns>
         </member>
@@ -20756,7 +20816,7 @@
             <summary>
             Called when a message is received from the websocket
             </summary>
-            <param name="id">ID of the message</param>
+            <param name="webSocketId">ID of the message</param>
             <param name="stream">Stream containing the message</param>
             <returns></returns>
         </member>
@@ -21732,6 +21792,15 @@
             <param name="player">IPlayer for the ID</param>
             <exception cref="T:System.ArgumentNullException">Thrown if the IPlayer is null</exception>
         </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.PlayerId.Equals(Oxide.Ext.Discord.Libraries.PlayerId)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.PlayerId.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.PlayerId.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:Oxide.Ext.Discord.Libraries.DiscordLocale">
             <summary>
             Represents a Locale in Discord
@@ -21765,6 +21834,15 @@
             Returns the ID of the Locale
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.DiscordLocale.Equals(Oxide.Ext.Discord.Libraries.DiscordLocale)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.DiscordLocale.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.DiscordLocale.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:Oxide.Ext.Discord.Libraries.DiscordLocales">
             <summary>
@@ -21918,6 +21996,15 @@
             Returns the ID of the ServerLocale
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.ServerLocale.Equals(Oxide.Ext.Discord.Libraries.ServerLocale)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.ServerLocale.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.ServerLocale.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:Oxide.Ext.Discord.Libraries.ApplicationCommandPlaceholders">
             <summary>
@@ -23933,6 +24020,15 @@
             </summary>
             <param name="key">Value of the key</param>
         </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.PlaceholderDataKey.Equals(Oxide.Ext.Discord.Libraries.PlaceholderDataKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.PlaceholderDataKey.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.PlaceholderDataKey.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:Oxide.Ext.Discord.Libraries.PlaceholderFormatting">
             <summary>
             Formatting Helpers for Placeholders
@@ -24033,6 +24129,15 @@
             </summary>
             <param name="key"></param>
             <returns></returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.PlaceholderKey.Equals(Oxide.Ext.Discord.Libraries.PlaceholderKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.PlaceholderKey.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.PlaceholderKey.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:Oxide.Ext.Discord.Libraries.PlaceholderState">
             <summary>
@@ -25348,6 +25453,15 @@
             <param name="key"></param>
             <returns></returns>
         </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.TemplateKey.Equals(Oxide.Ext.Discord.Libraries.TemplateKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.TemplateKey.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.TemplateKey.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:Oxide.Ext.Discord.Libraries.TemplateType">
             <summary>
             Represents available template type
@@ -25463,6 +25577,15 @@
         </member>
         <member name="M:Oxide.Ext.Discord.Libraries.TemplateVersion.ToString">
             <inheritdoc/>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.TemplateVersion.Equals(Oxide.Ext.Discord.Libraries.TemplateVersion)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.TemplateVersion.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.TemplateVersion.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:Oxide.Ext.Discord.Logging.DebugLogger">
             <summary>
@@ -25773,27 +25896,27 @@
         </member>
         <member name="F:Oxide.Ext.Discord.Logging.DiscordLogLevel.Debug">
             <summary>
-            Debug log level display all messages up to and include Debug
+            Debug log level display all messages up to and including Debug
             </summary>
         </member>
         <member name="F:Oxide.Ext.Discord.Logging.DiscordLogLevel.Info">
             <summary>
-            Info log level display all messages up to and include Info
+            Info log level display all messages up to and including Info
             </summary>
         </member>
         <member name="F:Oxide.Ext.Discord.Logging.DiscordLogLevel.Warning">
             <summary>
-            Warning log level display all messages up to and include Warning
+            Warning log level display all messages up to and including Warning
             </summary>
         </member>
         <member name="F:Oxide.Ext.Discord.Logging.DiscordLogLevel.Error">
             <summary>
-            Error log level display all messages up to and include Error
+            Error log level display all messages up to and including Error
             </summary>
         </member>
         <member name="F:Oxide.Ext.Discord.Logging.DiscordLogLevel.Exception">
             <summary>
-            Exception log level display all messages up to and include Exception
+            Exception log level display all messages up to and including Exception
             </summary>
         </member>
         <member name="F:Oxide.Ext.Discord.Logging.DiscordLogLevel.Off">
@@ -25824,6 +25947,15 @@
         </member>
         <member name="M:Oxide.Ext.Discord.Plugins.PluginId.LogDebug(Oxide.Ext.Discord.Logging.DebugLogger)">
             <inheritdoc/>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Plugins.PluginId.Equals(Oxide.Ext.Discord.Plugins.PluginId)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Plugins.PluginId.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Plugins.PluginId.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:Oxide.Ext.Discord.Plugins.PluginSetup">
             <summary>
@@ -25909,6 +26041,15 @@
         </member>
         <member name="M:Oxide.Ext.Discord.Rest.BucketId.ToString">
             <inheritdoc/>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Rest.BucketId.Equals(Oxide.Ext.Discord.Rest.BucketId)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Rest.BucketId.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Rest.BucketId.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:Oxide.Ext.Discord.Rest.BaseRequest">
             <summary>
@@ -27417,6 +27558,39 @@
             <param name="key">Key for the record</param>
             <param name="value">Value of the record</param>
         </member>
+        <member name="T:Oxide.Ext.Discord.Types.ValueStringBuilder">
+            <summary>
+            A non-heap-allocation allocating string builder
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.#ctor(System.Span{System.Char})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="initialBuffer">Initial buffer to use for the chars</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.#ctor(System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="initialCapacity">Initial buffer capacity to rent</param>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Types.ValueStringBuilder.Length">
+            <summary>
+            Length of the builder
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Types.ValueStringBuilder.Capacity">
+            <summary>
+            Current capacity of the builder
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.EnsureCapacity(System.Int32)">
+            <summary>
+            Ensure the builder has a capacity of at least <paramref name="capacity"/>
+            </summary>
+            <param name="capacity"></param>
+        </member>
         <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.GetPinnableReference">
             <summary>
             Get a pinnable reference to the builder.
@@ -27431,6 +27605,18 @@
             </summary>
             <param name="terminate">Ensures that the builder has a null char after <see cref="P:Oxide.Ext.Discord.Types.ValueStringBuilder.Length"/></param>
         </member>
+        <member name="P:Oxide.Ext.Discord.Types.ValueStringBuilder.Item(System.Int32)">
+            <summary>
+            Get the char at the specified index
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.ToString">
+            <summary>
+            Get's the final string and disposes of the builder
+            </summary>
+            <returns></returns>
+        </member>
         <member name="P:Oxide.Ext.Discord.Types.ValueStringBuilder.RawChars">
             <summary>Returns the underlying storage of the builder.</summary>
         </member>
@@ -27439,6 +27625,198 @@
             Returns a span around the contents of the builder.
             </summary>
             <param name="terminate">Ensures that the builder has a null char after <see cref="P:Oxide.Ext.Discord.Types.ValueStringBuilder.Length"/></param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.AsSpan">
+            <summary>
+            Converts the current builder to a <see cref="T:System.ReadOnlySpan`1"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.AsSpan(System.Int32)">
+            <summary>
+            Converts the current builder to a <see cref="T:System.ReadOnlySpan`1"/>
+            </summary>
+            <param name="start">Index to start at</param>
+            <returns></returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.AsSpan(System.Int32,System.Int32)">
+            <summary>
+            Converts the current builder to a <see cref="T:System.ReadOnlySpan`1"/>
+            </summary>
+            <param name="start">Index to start at</param>
+            <param name="length">Length of the span</param>
+            <returns></returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.TryCopyTo(System.Span{System.Char},System.Int32@)">
+            <summary>
+            Tries to copy the current builder to a <see cref="T:System.Span`1"/>
+            </summary>
+            <param name="destination">Span to write the chars to</param>
+            <param name="charsWritten">Number of chars written</param>
+            <returns>True if successfully; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Insert(System.Int32,System.Char,System.Int32)">
+            <summary>
+            Insert a char at the specified index count times
+            </summary>
+            <param name="index">Index to insert the char</param>
+            <param name="value">Char to insert</param>
+            <param name="count">Number of times to insert</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Insert(System.Int32,System.String)">
+            <summary>
+            Insert string at the specified index
+            </summary>
+            <param name="index">Index to insert the string</param>
+            <param name="s">String to insert</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Char)">
+            <summary>
+            Appends char to the builder
+            </summary>
+            <param name="c">Char to append</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.String)">
+            <summary>
+            Appends string to the builder
+            </summary>
+            <param name="s">string to append</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Appends span to the builder
+            </summary>
+            <param name="value">Span to append</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.AppendSpan(System.Int32)">
+            <summary>
+            Requests a writable span of length
+            </summary>
+            <param name="length">Length of the request span</param>
+            <returns>Span of the request length</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Byte,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.Byte"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.SByte,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.SByte"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Int16,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.SByte"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.UInt16,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.SByte"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Int32,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.Int32"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.UInt32,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.UInt32"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Int64,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.Int64"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.UInt64,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.UInt64"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Decimal,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.Decimal"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Single,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.Single"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Double,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.Double"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.DateTime,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.DateTime"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.DateTimeOffset,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.DateTimeOffset"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.TimeSpan,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.TimeSpan"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.AppendLine(System.String)">
+            <summary>
+            Appends <paramref name="s"/> followed by a newline
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.AppendLine">
+            <summary>
+            Appends a newline
+            </summary>
         </member>
         <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Grow(System.Int32)">
             <summary>
@@ -28090,7 +28468,7 @@
             <summary>
             Called when a socket is closed
             </summary>
-            <param name="websocketId">ID of the web socket</param>
+            <param name="webSocketId">ID of the web socket</param>
             <param name="status"><see cref="T:System.Net.WebSockets.WebSocketCloseStatus"/> for the web socket</param>
             <param name="message">Close message from the web socket</param>
         </member>
@@ -28131,7 +28509,7 @@
             Handles the web socket connection and events
             </summary>
         </member>
-        <member name="M:Oxide.Ext.Discord.WebSockets.WebSocketHandler.#ctor(Oxide.Ext.Discord.Interfaces.IWebSocketEventHandler,Oxide.Ext.Discord.Interfaces.ILogger)">
+        <member name="M:Oxide.Ext.Discord.WebSockets.WebSocketHandler.#ctor(Oxide.Ext.Discord.Interfaces.IWebSocketEventHandler,Oxide.Ext.Discord.Clients.BotClient,Oxide.Ext.Discord.Interfaces.ILogger)">
             <summary>
             Constructor
             </summary>

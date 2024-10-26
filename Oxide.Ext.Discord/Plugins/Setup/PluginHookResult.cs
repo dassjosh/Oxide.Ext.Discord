@@ -1,19 +1,20 @@
 ﻿using System.Reflection;
 using Oxide.Ext.Discord.Attributes;
 
-namespace Oxide.Ext.Discord.Plugins;
-
-internal readonly struct PluginHookResult<T> where T : BaseDiscordAttribute
+namespace Oxide.Ext.Discord.Plugins
 {
-    public readonly string Name;
-    public readonly MethodInfo Method;
-    public readonly T Attribute;
-    public bool IsValid => !string.IsNullOrEmpty(Name) && Attribute != null;
-
-    public PluginHookResult(PluginCallback callback, T attribute)
+    internal readonly struct PluginHookResult<T> where T : BaseDiscordAttribute
     {
-        Name = callback.Name;
-        Method = callback.Method;
-        Attribute = attribute;
+        public readonly string Name;
+        public readonly MethodInfo Method;
+        public readonly T Attribute;
+        public bool IsValid => !string.IsNullOrEmpty(Name) && Attribute != null;
+
+        public PluginHookResult(PluginCallback callback, T attribute)
+        {
+            Name = callback.Name;
+            Method = callback.Method;
+            Attribute = attribute;
+        }
     }
 }

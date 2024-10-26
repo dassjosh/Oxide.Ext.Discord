@@ -2,37 +2,38 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Oxide.Ext.Discord.Exceptions;
 
-namespace Oxide.Ext.Discord.Entities;
-
-/// <summary>
-/// Represents a <a href="https://discord.com/developers/docs/interactions/message-components#select-menus">Select Menus Component</a> within discord.
-/// </summary>
-[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-public class StringSelectComponent : BaseSelectMenuComponent
+namespace Oxide.Ext.Discord.Entities
 {
     /// <summary>
-    /// The choices in the select
-    /// Max 25 options
+    /// Represents a <a href="https://discord.com/developers/docs/interactions/message-components#select-menus">Select Menus Component</a> within discord.
     /// </summary>
-    [JsonProperty("options")]
-    public List<SelectMenuOption> Options { get; } = new();
-
-    /// <summary>
-    /// Select Menu Component Constructor
-    /// </summary>
-    public StringSelectComponent() : base(MessageComponentType.StringSelect) { }
-
-    ///<inheritdoc />
-    public override void Validate()
+    [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
+    public class StringSelectComponent : BaseSelectMenuComponent
     {
-        base.Validate();
-        if (Options != null)
+        /// <summary>
+        /// The choices in the select
+        /// Max 25 options
+        /// </summary>
+        [JsonProperty("options")]
+        public List<SelectMenuOption> Options { get; } = new();
+
+        /// <summary>
+        /// Select Menu Component Constructor
+        /// </summary>
+        public StringSelectComponent() : base(MessageComponentType.StringSelect) { }
+
+        ///<inheritdoc />
+        public override void Validate()
         {
-            InvalidSelectMenuComponentException.ThrowIfInvalidSelectMenuOptionCount(Options.Count);
-            for (int index = 0; index < Options.Count; index++)
+            base.Validate();
+            if (Options != null)
             {
-                SelectMenuOption option = Options[index];
-                option.Validate();
+                InvalidSelectMenuComponentException.ThrowIfInvalidSelectMenuOptionCount(Options.Count);
+                for (int index = 0; index < Options.Count; index++)
+                {
+                    SelectMenuOption option = Options[index];
+                    option.Validate();
+                }
             }
         }
     }

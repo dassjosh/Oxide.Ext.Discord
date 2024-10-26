@@ -6,60 +6,61 @@ using Oxide.Ext.Discord.Entities;
 using Oxide.Ext.Discord.Interfaces;
 using Oxide.Plugins;
 
-namespace Oxide.Ext.Discord.Json;
-
-/// <summary>
-/// Converts to and from a list in JSON to a hash
-/// </summary>
-/// <typeparam name="TValue"></typeparam>
-public class HashListConverter<TValue> : JsonConverter where TValue : class, ISnowflakeEntity
+namespace Oxide.Ext.Discord.Json
 {
     /// <summary>
-    /// Read an array in JSON as a hash
+    /// Converts to and from a list in JSON to a hash
     /// </summary>
-    /// <param name="reader"></param>
-    /// <param name="objectType"></param>
-    /// <param name="existingValue"></param>
-    /// <param name="serializer"></param>
-    /// <returns></returns>
-    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+    /// <typeparam name="TValue"></typeparam>
+    public class HashListConverter<TValue> : JsonConverter where TValue : class, ISnowflakeEntity
     {
-        Hash<Snowflake, TValue> data = new();
-            
-        foreach (JToken token in JArray.Load(reader))
+        /// <summary>
+        /// Read an array in JSON as a hash
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="objectType"></param>
+        /// <param name="existingValue"></param>
+        /// <param name="serializer"></param>
+        /// <returns></returns>
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            TValue value = token.ToObject<TValue>();
-            data[value.Id] = value;
-        }
+            Hash<Snowflake, TValue> data = new();
+            
+            foreach (JToken token in JArray.Load(reader))
+            {
+                TValue value = token.ToObject<TValue>();
+                data[value.Id] = value;
+            }
 
-        return data;
-    }
+            return data;
+        }
         
-    /// <summary>
-    /// Write a hash as a list in JSON
-    /// </summary>
-    /// <param name="writer"></param>
-    /// <param name="value"></param>
-    /// <param name="serializer"></param>
-    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-    {
-        Hash<Snowflake, TValue> data = (Hash<Snowflake, TValue>) value;
-            
-        writer.WriteStartArray();
-        foreach (TValue tValue in data.Values)
+        /// <summary>
+        /// Write a hash as a list in JSON
+        /// </summary>
+        /// <param name="writer"></param>
+        /// <param name="value"></param>
+        /// <param name="serializer"></param>
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            serializer.Serialize(writer, tValue);
+            Hash<Snowflake, TValue> data = (Hash<Snowflake, TValue>) value;
+            
+            writer.WriteStartArray();
+            foreach (TValue tValue in data.Values)
+            {
+                serializer.Serialize(writer, tValue);
+            }
+            writer.WriteEndArray();
         }
-        writer.WriteEndArray();
-    }
 
-    /// <summary>
-    /// Can we convert the given type
-    /// </summary>
-    /// <param name="objectType"></param>
-    /// <returns></returns>
-    public override bool CanConvert(Type objectType)
-    {
-        return objectType == typeof(List<TValue>) || objectType == typeof(Hash<Snowflake, TValue>);
+        /// <summary>
+        /// Can we convert the given type
+        /// </summary>
+        /// <param name="objectType"></param>
+        /// <returns></returns>
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType == typeof(List<TValue>) || objectType == typeof(Hash<Snowflake, TValue>);
+        }
     }
 }

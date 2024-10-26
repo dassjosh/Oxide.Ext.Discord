@@ -1,15 +1,16 @@
 using Newtonsoft.Json;
 
-namespace Oxide.Ext.Discord.Configuration;
-
-/// <summary>
-/// Discord Validation Config
-/// </summary>
-internal class DiscordValidationConfig
+namespace Oxide.Ext.Discord.Configuration
 {
     /// <summary>
-    /// Enables request validation
+    /// Discord Validation Config
     /// </summary>
-    [JsonProperty("Enable Request Validation")]
-    public bool EnableValidation { get; set; }
+    internal class DiscordValidationConfig
+    {
+        /// <summary>
+        /// Enables request validation
+        /// </summary>
+        [JsonProperty("Enable Request Validation")]
+        public bool EnableValidation { get; set; }
+    }
 }

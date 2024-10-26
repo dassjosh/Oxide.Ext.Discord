@@ -2,62 +2,63 @@ using Oxide.Core.Libraries.Covalence;
 using Oxide.Ext.Discord.Entities;
 using Oxide.Ext.Discord.Libraries;
 
-namespace Oxide.Ext.Discord.Extensions;
-
-/// <summary>
-/// Adds extension methods to Discord User to allow sending server chat commands to the player
-/// </summary>
-public static class DiscordUserExt
+namespace Oxide.Ext.Discord.Extensions
 {
     /// <summary>
-    /// Send a chat message to the user if they're connected
+    /// Adds extension methods to Discord User to allow sending server chat commands to the player
     /// </summary>
-    /// <param name="user">User to send the message to on the server</param>
-    /// <param name="message">Message to send</param>
-    public static void SendChatMessage(this DiscordUser user, string message)
+    public static class DiscordUserExt
     {
-        IPlayer player = user.Player;
-        if (player is {IsConnected: true})
+        /// <summary>
+        /// Send a chat message to the user if they're connected
+        /// </summary>
+        /// <param name="user">User to send the message to on the server</param>
+        /// <param name="message">Message to send</param>
+        public static void SendChatMessage(this DiscordUser user, string message)
         {
-            player.Message(message);
+            IPlayer player = user.Player;
+            if (player is {IsConnected: true})
+            {
+                player.Message(message);
+            }
         }
-    }
 
-    /// <summary>
-    /// Send a chat message to the user if they're connected
-    /// </summary>
-    /// <param name="user">User to send the message to on the server</param>
-    /// <param name="message">Message to send</param>
-    /// <param name="prefix">Message Prefix</param>
-    /// <param name="args">Message Args</param>
-    public static void SendChatMessage(this DiscordUser user, string message, string prefix, params object[] args)
-    {
-        IPlayer player = user.Player;
-        if (player is {IsConnected: true})
+        /// <summary>
+        /// Send a chat message to the user if they're connected
+        /// </summary>
+        /// <param name="user">User to send the message to on the server</param>
+        /// <param name="message">Message to send</param>
+        /// <param name="prefix">Message Prefix</param>
+        /// <param name="args">Message Args</param>
+        public static void SendChatMessage(this DiscordUser user, string message, string prefix, params object[] args)
         {
-            player.Message(message, prefix, args);
+            IPlayer player = user.Player;
+            if (player is {IsConnected: true})
+            {
+                player.Message(message, prefix, args);
+            }
         }
-    }
 
-    /// <summary>
-    /// Return if the discord user has the given oxide permission.
-    /// If the user is not linked, this will return false
-    /// </summary>
-    /// <param name="user">User to check for permission</param>
-    /// <param name="permission">Permission to check for</param>
-    /// <returns>True if use is linked and has permission; False otherwise</returns>
-    public static bool HasPermission(this DiscordUser user, string permission)
-    {
-        return user.Player?.HasPermission(permission) ?? false;
-    }
+        /// <summary>
+        /// Return if the discord user has the given oxide permission.
+        /// If the user is not linked, this will return false
+        /// </summary>
+        /// <param name="user">User to check for permission</param>
+        /// <param name="permission">Permission to check for</param>
+        /// <returns>True if use is linked and has permission; False otherwise</returns>
+        public static bool HasPermission(this DiscordUser user, string permission)
+        {
+            return user.Player?.HasPermission(permission) ?? false;
+        }
         
-    /// <summary>
-    /// Returns true if the player is linked
-    /// </summary>
-    /// <param name="user">Discord user to check if they're linked</param>
-    /// <returns>True if linked; False otherwise</returns>
-    public static bool IsLinked(this DiscordUser user)
-    {
-        return DiscordLink.Instance.IsLinked(user.Id);
+        /// <summary>
+        /// Returns true if the player is linked
+        /// </summary>
+        /// <param name="user">Discord user to check if they're linked</param>
+        /// <returns>True if linked; False otherwise</returns>
+        public static bool IsLinked(this DiscordUser user)
+        {
+            return DiscordLink.Instance.IsLinked(user.Id);
+        }
     }
 }

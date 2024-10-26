@@ -1,16 +1,17 @@
 // Originally from: https://github.com/gmamaladze/trienet
 // Modified by: MJSU
 
-namespace Oxide.Ext.Discord.Types;
-
-internal struct SplitResult<T>
+namespace Oxide.Ext.Discord.Types
 {
-    public readonly Node<T> Node;
-    public readonly bool Endpoint;
-
-    public SplitResult(Node<T> node, bool endpoint)
+    internal struct SplitResult<T>
     {
-        Node = node;
-        Endpoint = endpoint;
+        public readonly Node<T> Node;
+        public readonly bool Endpoint;
+
+        public SplitResult(Node<T> node, bool endpoint)
+        {
+            Node = node;
+            Endpoint = endpoint;
+        }
     }
 }

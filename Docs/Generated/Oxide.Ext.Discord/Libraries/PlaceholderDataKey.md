@@ -13,12 +13,55 @@ public struct PlaceholderDataKey : IEquatable<PlaceholderDataKey>
 | [PlaceholderDataKey](#placeholderdatakey-constructor)(…) | Constructor |
 | [IsValid](#isvalid-property) { get; } | If the [`Key`](#key-field) is a valid value |
 | readonly [Key](#key-field) | Value of the key |
+| override [Equals](#equals-method)(…) |  |
+| [Equals](#equals-method)(…) |  |
+| override [GetHashCode](#gethashcode-method)() |  |
 
 ## See Also
 
 * namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
 * [PlaceholderDataKey.cs](../../../../Oxide.Ext.Discord/Libraries/PlaceholderDataKey.cs)
+   
+   
+# Equals method (1 of 2)
+
+```csharp
+public override bool Equals(object obj)
+```
+
+## See Also
+
+* struct [PlaceholderDataKey](./PlaceholderDataKey.md)
+* namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+
+---
+
+# Equals method (2 of 2)
+
+```csharp
+public bool Equals(PlaceholderDataKey other)
+```
+
+## See Also
+
+* struct [PlaceholderDataKey](./PlaceholderDataKey.md)
+* namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# GetHashCode method
+
+```csharp
+public override int GetHashCode()
+```
+
+## See Also
+
+* struct [PlaceholderDataKey](./PlaceholderDataKey.md)
+* namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
    
 # PlaceholderDataKey constructor

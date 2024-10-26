@@ -7,88 +7,89 @@ using Oxide.Ext.Discord.Logging;
 using Oxide.Ext.Discord.Types;
 using Oxide.Plugins;
 
-namespace Oxide.Ext.Discord.Factory;
-
-internal sealed class BotClientFactory : Singleton<BotClientFactory>
+namespace Oxide.Ext.Discord.Factory
 {
-    /// <summary>
-    /// List of active bots by bot API key
-    /// </summary>
-    private readonly Hash<string, BotClient> _activeBots = new();
-    private readonly Hash<Snowflake, BotClient> _applicationBots = new();
-        
-    public IEnumerable<BotClient> Clients => _activeBots.Values;
-        
-    private BotClientFactory() {}
-
-    /// <summary>
-    /// Gets or creates a new bot client for the given discord client
-    /// </summary>
-    /// <param name="client">Client to use for creating / loading the bot client</param>
-    /// <param name="connection">Connection for the bot</param>
-    /// <returns>Bot client that is created or already exists</returns>
-    public BotClient InitializeBotClient(DiscordClient client, BotConnection connection)
+    internal sealed class BotClientFactory : Singleton<BotClientFactory>
     {
-        try
+        /// <summary>
+        /// List of active bots by bot API key
+        /// </summary>
+        private readonly Hash<string, BotClient> _activeBots = new();
+        private readonly Hash<Snowflake, BotClient> _applicationBots = new();
+        
+        public IEnumerable<BotClient> Clients => _activeBots.Values;
+        
+        private BotClientFactory() {}
+
+        /// <summary>
+        /// Gets or creates a new bot client for the given discord client
+        /// </summary>
+        /// <param name="client">Client to use for creating / loading the bot client</param>
+        /// <param name="connection">Connection for the bot</param>
+        /// <returns>Bot client that is created or already exists</returns>
+        public BotClient InitializeBotClient(DiscordClient client, BotConnection connection)
         {
-            BotClient bot = _activeBots[connection.ApiToken];
-            if (bot == null)
+            try
             {
-                DiscordExtension.GlobalLogger.Debug($"{nameof(BotClientFactory)}.{nameof(InitializeBotClient)} Creating new BotClient");
-                bot = new BotClient(connection);
-                _activeBots[connection.ApiToken] = bot;
-                _applicationBots[connection.ApplicationId] = bot;
-            }
+                BotClient bot = _activeBots[connection.ApiToken];
+                if (bot == null)
+                {
+                    DiscordExtension.GlobalLogger.Debug($"{nameof(BotClientFactory)}.{nameof(InitializeBotClient)} Creating new BotClient");
+                    bot = new BotClient(connection);
+                    _activeBots[connection.ApiToken] = bot;
+                    _applicationBots[connection.ApplicationId] = bot;
+                }
                 
-            DiscordExtension.GlobalLogger.Debug($"{nameof(BotClientFactory)}.{nameof(InitializeBotClient)} Adding {{0}} client to bot {{1}}", client.PluginName, bot.BotUser?.FullUserName);
-            return bot;
+                DiscordExtension.GlobalLogger.Debug($"{nameof(BotClientFactory)}.{nameof(InitializeBotClient)} Adding {{0}} client to bot {{1}}", client.PluginName, bot.BotUser?.FullUserName);
+                return bot;
+            }
+            catch (Exception ex)
+            {
+                DiscordExtension.GlobalLogger.Exception($"{nameof(BotClientFactory)}.{nameof(InitializeBotClient)} An error occured adding {{0}} client", client.PluginName, ex);
+                return null;
+            }
         }
-        catch (Exception ex)
+
+        internal BotClient GetByApplicationId(Snowflake appId)
         {
-            DiscordExtension.GlobalLogger.Exception($"{nameof(BotClientFactory)}.{nameof(InitializeBotClient)} An error occured adding {{0}} client", client.PluginName, ex);
-            return null;
+            return _applicationBots[appId];
         }
-    }
 
-    internal BotClient GetByApplicationId(Snowflake appId)
-    {
-        return _applicationBots[appId];
-    }
-
-    public void RemoveBot(BotClient bot)
-    {
-        _activeBots.Remove(bot.Connection.ApiToken);
-    }
-
-    public void ResetAllWebSockets()
-    {
-        foreach (BotClient client in _activeBots.Values)
+        public void RemoveBot(BotClient bot)
         {
-            client.ResetWebSocket();
+            _activeBots.Remove(bot.Connection.ApiToken);
         }
-    }
+
+        public void ResetAllWebSockets()
+        {
+            foreach (BotClient client in _activeBots.Values)
+            {
+                client.ResetWebSocket();
+            }
+        }
         
-    public void ReconnectAllWebSockets()
-    {
-        foreach (BotClient client in _activeBots.Values)
+        public void ReconnectAllWebSockets()
         {
-            client.WebSocket.Disconnect(true, true, true);
+            foreach (BotClient client in _activeBots.Values)
+            {
+                client.WebSocket.Disconnect(true, true, true);
+            }
         }
-    }
 
-    public void ResetAllRestApis()
-    {
-        foreach (BotClient client in _activeBots.Values)
+        public void ResetAllRestApis()
         {
-            client.ResetRestApi();
+            foreach (BotClient client in _activeBots.Values)
+            {
+                client.ResetRestApi();
+            }
         }
-    }
 
-    public void UpdateLogLevel()
-    {
-        foreach (BotClient client in _activeBots.Values)
+        public void UpdateLogLevel()
         {
-            client.UpdateLogLevel(DiscordLoggerFactory.Instance.GetLogLevel());
+            foreach (BotClient client in _activeBots.Values)
+            {
+                client.UpdateLogLevel(DiscordLoggerFactory.Instance.GetLogLevel());
+            }
         }
     }
 }

@@ -5,39 +5,40 @@ using System;
 using Oxide.Ext.Discord.Interfaces;
 using Oxide.Ext.Discord.Logging;
 
-namespace Oxide.Ext.Discord.Types;
-
-/// <summary>
-/// Represents a handler invoked when the promise is resolved.
-/// </summary>
-internal readonly struct ResolveHandler
+namespace Oxide.Ext.Discord.Types
 {
     /// <summary>
-    /// Callback fn.
+    /// Represents a handler invoked when the promise is resolved.
     /// </summary>
-    private readonly Action _resolve;
-
-    /// <summary>
-    /// The promise that is rejected when there is an error while invoking the handler.
-    /// </summary>
-    private readonly IRejectable _rejectable;
-
-    public ResolveHandler(Action resolve, IRejectable rejectable)
+    internal readonly struct ResolveHandler
     {
-        _resolve = resolve;
-        _rejectable = rejectable;
-    }
-        
-    public void Resolve()
-    {
-        try
+        /// <summary>
+        /// Callback fn.
+        /// </summary>
+        private readonly Action _resolve;
+
+        /// <summary>
+        /// The promise that is rejected when there is an error while invoking the handler.
+        /// </summary>
+        private readonly IRejectable _rejectable;
+
+        public ResolveHandler(Action resolve, IRejectable rejectable)
         {
-            _resolve();
+            _resolve = resolve;
+            _rejectable = rejectable;
         }
-        catch (Exception ex)
+        
+        public void Resolve()
         {
-            DiscordExtension.GlobalLogger.Exception($"An error occured during resolve of Promise", ex);
-            _rejectable.Reject(ex);
+            try
+            {
+                _resolve();
+            }
+            catch (Exception ex)
+            {
+                DiscordExtension.GlobalLogger.Exception($"An error occured during resolve of Promise", ex);
+                _rejectable.Reject(ex);
+            }
         }
     }
 }

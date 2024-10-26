@@ -125,8 +125,8 @@ public class DiscordGuild : ISnowflakeEntity
 | [GetWidgetSettings](#getwidgetsettings-method)(…) | Returns a guild widget object. Requires the MANAGE_GUILD permission. See [Get Guild Widget Settings](https://discord.com/developers/docs/resources/guild#get-guild-widget-settings) |
 | [ListActiveThreads](#listactivethreads-method)(…) | Returns all active threads in the guild, including public and private threads. Threads are ordered by their id, in descending order. See [List Active Threads](https://discord.com/developers/docs/resources/guild#list-active-threads) |
 | [ListAutoModRules](#listautomodrules-method)(…) |  |
-| [Listembers](#listembers-method)(…) | Returns a list of guild member objects that are members of the guild. In the future, this endpoint will be restricted in line with our Privileged Intents |
 | [ListEmojis](#listemojis-method)(…) | Returns a list of emoji objects for the given guild. See [List Guild Emojis](https://discord.com/developers/docs/resources/emoji#list-guild-emojis) |
+| [ListMembers](#listmembers-method)(…) | Returns a list of guild member objects that are members of the guild. In the future, this endpoint will be restricted in line with our Privileged Intents |
 | [ListStickers](#liststickers-method)(…) | Returns an array of sticker objects for the given guild. Includes user fields if the bot has the MANAGE_EMOJIS_AND_STICKERS permission. See [List Guild Stickers](https://discord.com/developers/docs/resources/sticker#list-guild-stickers) |
 | [RemoveBan](#removeban-method)(…) | Remove the ban for a user. Requires the BAN_MEMBERS permissions. See [Remove Guild Ban](https://discord.com/developers/docs/resources/guild#remove-guild-ban) |
 | [RemoveMember](#removemember-method-1-of-2)(…) | Remove a member from a guild. Requires KICK_MEMBERS permission. See [Remove Guild Member](https://discord.com/developers/docs/resources/guild#remove-guild-member) (2 methods) |
@@ -620,12 +620,12 @@ public IPromise<ThreadList> ListActiveThreads(DiscordClient client)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
    
-# Listembers method
+# ListMembers method
 
 Returns a list of guild member objects that are members of the guild. In the future, this endpoint will be restricted in line with our Privileged Intents
 
 ```csharp
-public IPromise<List<GuildMember>> Listembers(DiscordClient client, GuildListMembers list = null)
+public IPromise<List<GuildMember>> ListMembers(DiscordClient client, GuildListMembers list = null)
 ```
 
 | parameter | description |

@@ -3,16 +3,17 @@ using System.Text;
 using Oxide.Core.Libraries.Covalence;
 using Oxide.Core.Plugins;
 
-namespace Oxide.Ext.Discord.Plugins;
-
-internal partial class DiscordExtensionCore
+namespace Oxide.Ext.Discord.Plugins
 {
-    private Action<IPlayer, StringBuilder, bool> _replacer;
-        
-    public Action<IPlayer, StringBuilder, bool> GetReplacer() => _replacer;
-
-    private void HandlePlaceholderApi(Plugin plugin)
+    internal partial class DiscordExtensionCore
     {
-        _replacer = plugin?.Call("GetProcessPlaceholders", 1) as Action<IPlayer, StringBuilder, bool>;
+        private Action<IPlayer, StringBuilder, bool> _replacer;
+        
+        public Action<IPlayer, StringBuilder, bool> GetReplacer() => _replacer;
+
+        private void HandlePlaceholderApi(Plugin plugin)
+        {
+            _replacer = plugin?.Call("GetProcessPlaceholders", 1) as Action<IPlayer, StringBuilder, bool>;
+        }
     }
 }

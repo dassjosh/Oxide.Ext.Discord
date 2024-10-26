@@ -1,9 +1,10 @@
-namespace Oxide.Ext.Discord.Exceptions;
-
-/// <summary>
-/// Represents an exception that occured with the websocket
-/// </summary>
-public class DiscordWebSocketException : BaseDiscordException
+namespace Oxide.Ext.Discord.Exceptions
 {
-    internal DiscordWebSocketException(string message) : base(message) { }
+    /// <summary>
+    /// Represents an exception that occured with the websocket
+    /// </summary>
+    public class DiscordWebSocketException : BaseDiscordException
+    {
+        internal DiscordWebSocketException(string message) : base(message) { }
+    }
 }

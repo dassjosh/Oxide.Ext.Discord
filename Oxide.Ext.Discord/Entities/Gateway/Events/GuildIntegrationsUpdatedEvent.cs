@@ -1,16 +1,17 @@
 ﻿using Newtonsoft.Json;
 
-namespace Oxide.Ext.Discord.Entities;
-
-/// <summary>
-/// Represents <a href="https://discord.com/developers/docs/topics/gateway#guild-integrations-update">Guild Integrations Update</a>
-/// </summary>
-[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-public class GuildIntegrationsUpdatedEvent
+namespace Oxide.Ext.Discord.Entities
 {
     /// <summary>
-    /// ID of the guild whose integrations were updated
+    /// Represents <a href="https://discord.com/developers/docs/topics/gateway#guild-integrations-update">Guild Integrations Update</a>
     /// </summary>
-    [JsonProperty("guild_id")]
-    public Snowflake GuildId { get; set; }
+    [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
+    public class GuildIntegrationsUpdatedEvent
+    {
+        /// <summary>
+        /// ID of the guild whose integrations were updated
+        /// </summary>
+        [JsonProperty("guild_id")]
+        public Snowflake GuildId { get; set; }
+    }
 }

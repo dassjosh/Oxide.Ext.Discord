@@ -1,29 +1,30 @@
 using Oxide.Ext.Discord.Builders;
 using Oxide.Ext.Discord.Interfaces;
 
-namespace Oxide.Ext.Discord.Entities;
-
-/// <summary>
-/// Represents webhook message query string parameters 
-/// </summary>
-public class WebhookMessageParams : IDiscordQueryString
+namespace Oxide.Ext.Discord.Entities
 {
     /// <summary>
-    /// If the message exists in a thread
-    /// This field is optional and defaults to null
+    /// Represents webhook message query string parameters 
     /// </summary>
-    public Snowflake? ThreadId { get; set; }
-        
-    /// <inheritdoc/>
-    public string ToQueryString()
+    public class WebhookMessageParams : IDiscordQueryString
     {
-        QueryStringBuilder builder = new();
-
-        if (ThreadId.HasValue)
+        /// <summary>
+        /// If the message exists in a thread
+        /// This field is optional and defaults to null
+        /// </summary>
+        public Snowflake? ThreadId { get; set; }
+        
+        /// <inheritdoc/>
+        public string ToQueryString()
         {
-            builder.Add("thread_id", ThreadId.Value.ToString());
-        }
+            QueryStringBuilder builder = new();
+
+            if (ThreadId.HasValue)
+            {
+                builder.Add("thread_id", ThreadId.Value.ToString());
+            }
             
-        return builder.ToString();
+            return builder.ToString();
+        }
     }
 }

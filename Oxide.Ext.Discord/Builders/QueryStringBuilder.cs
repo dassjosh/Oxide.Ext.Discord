@@ -1,70 +1,66 @@
 using System.Collections.Generic;
 using Oxide.Ext.Discord.Types;
 
-namespace Oxide.Ext.Discord.Builders;
-
-/// <summary>
-/// Builder used to build query strings for urls
-/// </summary>
-public ref struct QueryStringBuilder
+namespace Oxide.Ext.Discord.Builders
 {
-    private ValueStringBuilder _builder;
-
-    public QueryStringBuilder()
-    {
-        _builder = new ValueStringBuilder();
-        _builder.Append('?');
-    }
-
     /// <summary>
-    /// Add a key value pair to the query string
+    /// Builder used to build query strings for urls
     /// </summary>
-    /// <param name="key">Key name</param>
-    /// <param name="value">Key value</param>
-    public void Add(string key, string value)
+    public ref struct QueryStringBuilder
     {
-        AddKey(key);
-        _builder.Append(value);
-    }
+        private ValueStringBuilder _builder;
 
-    /// <summary>
-    /// Add a list of values with the specified separator
-    /// </summary>
-    /// <param name="key">Key name</param>
-    /// <param name="list">List to be added</param>
-    /// <param name="separator">Separator for the list</param>
-    /// <typeparam name="T"></typeparam>
-    public void AddList<T>(string key, List<T> list, string separator)
-    {
-        AddKey(key);
-        for (int index = 0; index < list.Count; index++)
+        /// <summary>
+        /// Add a key value pair to the query string
+        /// </summary>
+        /// <param name="key">Key name</param>
+        /// <param name="value">Key value</param>
+        public void Add(string key, string value)
         {
-            T entry = list[index];
-            _builder.Append(entry.ToString());
-            if (index + 1 != list.Count)
+            AddKey(key);
+            _builder.Append(value);
+        }
+
+        /// <summary>
+        /// Add a list of values with the specified separator
+        /// </summary>
+        /// <param name="key">Key name</param>
+        /// <param name="list">List to be added</param>
+        /// <param name="separator">Separator for the list</param>
+        /// <typeparam name="T"></typeparam>
+        public void AddList<T>(string key, List<T> list, string separator)
+        {
+            AddKey(key);
+            for (int index = 0; index < list.Count; index++)
             {
-                _builder.Append(separator);
+                T entry = list[index];
+                _builder.Append(entry.ToString());
+                if (index + 1 != list.Count)
+                {
+                    _builder.Append(separator);
+                }
             }
         }
-    }
 
-    private void AddKey(string key)
-    {
-        if (_builder.Length > 1)
+        private void AddKey(string key)
         {
-            _builder.Append('&');
-        }
+            if (_builder.Length > 1)
+            {
+                _builder.Append('&');
+            }
             
-        _builder.Append(key);
-        _builder.Append('=');
-    }
+            _builder.Append(key);
+            _builder.Append('=');
+        }
 
-    /// <summary>
-    /// Returns the query string as a string.
-    /// </summary>
-    /// <returns></returns>
-    public override string ToString()
-    {
-        return _builder.Length <= 1 ? string.Empty : _builder.ToString();
+        /// <summary>
+        /// Returns the query string as a string.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            _builder.Insert(0, "?");
+            return _builder.Length <= 1 ? string.Empty : _builder.ToString();
+        }
     }
 }

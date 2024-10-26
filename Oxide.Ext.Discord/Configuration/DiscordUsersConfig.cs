@@ -1,15 +1,16 @@
 using Newtonsoft.Json;
 
-namespace Oxide.Ext.Discord.Configuration;
-
-/// <summary>
-/// Discord User Config
-/// </summary>
-internal class DiscordUsersConfig
+namespace Oxide.Ext.Discord.Configuration
 {
     /// <summary>
-    /// How long to block DM's after we receive a 50007 Discord API Error code
+    /// Discord User Config
     /// </summary>
-    [JsonProperty("Direct Message Blocked Duration (Hours)")]
-    public float DmBlockedDuration { get; set; }
+    internal class DiscordUsersConfig
+    {
+        /// <summary>
+        /// How long to block DM's after we receive a 50007 Discord API Error code
+        /// </summary>
+        [JsonProperty("Direct Message Blocked Duration (Hours)")]
+        public float DmBlockedDuration { get; set; }
+    }
 }

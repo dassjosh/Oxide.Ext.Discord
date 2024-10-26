@@ -27,12 +27,12 @@ public interface IWebSocketEventHandler
 Called when the web socket is opened
 
 ```csharp
-public ValueTask SocketOpened(Snowflake id)
+public ValueTask SocketOpened(Snowflake webSocketId)
 ```
 
 | parameter | description |
 | --- | --- |
-| id | ID of the web socket |
+| webSocketId | ID of the web socket |
 
 ## See Also
 
@@ -47,13 +47,13 @@ public ValueTask SocketOpened(Snowflake id)
 Called when the web socket is closed
 
 ```csharp
-public ValueTask SocketClosed(Snowflake id, WebSocketCloseStatus code, string message)
+public ValueTask SocketClosed(Snowflake webSocketId, WebSocketCloseStatus status, string message)
 ```
 
 | parameter | description |
 | --- | --- |
-| id | ID of the websocket |
-| code | Web socket close code |
+| webSocketId | ID of the websocket |
+| status | Web socket close code |
 | message | Web socket close message |
 
 ## See Also
@@ -69,12 +69,12 @@ public ValueTask SocketClosed(Snowflake id, WebSocketCloseStatus code, string me
 Called when an error occurs on the web socket
 
 ```csharp
-public ValueTask SocketErrored(Snowflake id, Exception ex)
+public ValueTask SocketErrored(Snowflake webSocketId, Exception ex)
 ```
 
 | parameter | description |
 | --- | --- |
-| id | ID of the websocket |
+| webSocketId | ID of the websocket |
 | ex | Exception that was thrown |
 
 ## See Also
@@ -90,12 +90,12 @@ public ValueTask SocketErrored(Snowflake id, Exception ex)
 Called when a message is received from the websocket
 
 ```csharp
-public ValueTask SocketMessage(Snowflake id, DiscordJsonReader stream)
+public ValueTask SocketMessage(Snowflake webSocketId, DiscordJsonReader stream)
 ```
 
 | parameter | description |
 | --- | --- |
-| id | ID of the message |
+| webSocketId | ID of the message |
 | stream | Stream containing the message |
 
 ## See Also

@@ -1,40 +1,41 @@
 ﻿using Newtonsoft.Json;
 
-namespace Oxide.Ext.Discord.Entities;
-
-/// <summary>
-/// Represents <a href="https://discord.com/developers/docs/topics/gateway#typing-start">Typing Start</a>
-/// </summary>
-[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-public class TypingStartedEvent
+namespace Oxide.Ext.Discord.Entities
 {
     /// <summary>
-    /// ID of the channel
+    /// Represents <a href="https://discord.com/developers/docs/topics/gateway#typing-start">Typing Start</a>
     /// </summary>
-    [JsonProperty("channel_id")]
-    public Snowflake ChannelId { get; set; }
+    [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
+    public class TypingStartedEvent
+    {
+        /// <summary>
+        /// ID of the channel
+        /// </summary>
+        [JsonProperty("channel_id")]
+        public Snowflake ChannelId { get; set; }
         
-    /// <summary>
-    /// ID of the guild
-    /// </summary>
-    [JsonProperty("guild_id")]
-    public Snowflake? GuildId { get; set; }
+        /// <summary>
+        /// ID of the guild
+        /// </summary>
+        [JsonProperty("guild_id")]
+        public Snowflake? GuildId { get; set; }
         
-    /// <summary>
-    /// ID of the user
-    /// </summary>
-    [JsonProperty("user_id")]
-    public Snowflake UserId { get; set; }
+        /// <summary>
+        /// ID of the user
+        /// </summary>
+        [JsonProperty("user_id")]
+        public Snowflake UserId { get; set; }
 
-    /// <summary>
-    /// Unix time (in seconds) of when the user started typing
-    /// </summary>
-    [JsonProperty("timestamp")]
-    public int? Timestamp { get; set; }
+        /// <summary>
+        /// Unix time (in seconds) of when the user started typing
+        /// </summary>
+        [JsonProperty("timestamp")]
+        public int? Timestamp { get; set; }
         
-    /// <summary>
-    /// The member who started typing if this happened in a guild
-    /// </summary>
-    [JsonProperty("member")]
-    public GuildMember Member { get; set; }
+        /// <summary>
+        /// The member who started typing if this happened in a guild
+        /// </summary>
+        [JsonProperty("member")]
+        public GuildMember Member { get; set; }
+    }
 }

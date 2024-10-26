@@ -15,7 +15,10 @@ public struct ServerLocale : IEquatable<ServerLocale>
 | [IsDefault](#isdefault-property) { get; } | Returns if the Locale is the default server language "en" |
 | [IsValid](#isvalid-property) { get; } | Returns if the Locale is valid |
 | readonly [Id](#id-field) | ID of the Locale |
+| override [Equals](#equals-method)(…) |  |
+| [Equals](#equals-method)(…) |  |
 | [GetDiscordLocale](#getdiscordlocale-method)() | Returns the [`DiscordLocale`](./DiscordLocale.md) for this server locale |
+| override [GetHashCode](#gethashcode-method)() |  |
 | override [ToString](#tostring-method)() | Returns the ID of the ServerLocale |
 
 ## See Also
@@ -66,6 +69,46 @@ Returns the ID of the ServerLocale
 
 ```csharp
 public override string ToString()
+```
+
+## See Also
+
+* struct [ServerLocale](./ServerLocale.md)
+* namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# Equals method (1 of 2)
+
+```csharp
+public override bool Equals(object obj)
+```
+
+## See Also
+
+* struct [ServerLocale](./ServerLocale.md)
+* namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+
+---
+
+# Equals method (2 of 2)
+
+```csharp
+public bool Equals(ServerLocale other)
+```
+
+## See Also
+
+* struct [ServerLocale](./ServerLocale.md)
+* namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# GetHashCode method
+
+```csharp
+public override int GetHashCode()
 ```
 
 ## See Also

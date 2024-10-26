@@ -1,27 +1,28 @@
 using Oxide.Ext.Discord.Entities;
 
-namespace Oxide.Ext.Discord.Exceptions;
-
-/// <summary>
-/// Represents an exception in guild prune requests
-/// </summary>
-public class InvalidGuildPruneException : BaseDiscordException
+namespace Oxide.Ext.Discord.Exceptions
 {
-    private InvalidGuildPruneException(string message) : base(message) { }
-
-    internal static void ThrowIfInvalidDays(int days)
+    /// <summary>
+    /// Represents an exception in guild prune requests
+    /// </summary>
+    public class InvalidGuildPruneException : BaseDiscordException
     {
-        const int MinDays = 1;
-        const int MaxDays = 30;
+        private InvalidGuildPruneException(string message) : base(message) { }
 
-        if (days < MinDays)
+        internal static void ThrowIfInvalidDays(int days)
         {
-            throw new InvalidGuildPruneException($"{nameof(GuildPruneGet)}.{nameof(GuildPruneGet.Days)} cannot be less than {MinDays}");
-        }
+            const int MinDays = 1;
+            const int MaxDays = 30;
+
+            if (days < MinDays)
+            {
+                throw new InvalidGuildPruneException($"{nameof(GuildPruneGet)}.{nameof(GuildPruneGet.Days)} cannot be less than {MinDays}");
+            }
             
-        if (days > MaxDays)
-        {
-            throw new InvalidGuildPruneException($"{nameof(GuildPruneGet)}.{nameof(GuildPruneGet.Days)} cannot be more than {MaxDays}");
+            if (days > MaxDays)
+            {
+                throw new InvalidGuildPruneException($"{nameof(GuildPruneGet)}.{nameof(GuildPruneGet.Days)} cannot be more than {MaxDays}");
+            }
         }
     }
 }

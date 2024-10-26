@@ -3,58 +3,59 @@ using Newtonsoft.Json;
 using Oxide.Ext.Discord.Clients;
 using Oxide.Ext.Discord.Interfaces;
 
-namespace Oxide.Ext.Discord.Entities;
-
-/// <summary>
-/// Represents a <a href="https://discord.com/developers/docs/monetization/skus#sku-object-sku-structure">SKU Structure</a>
-/// </summary>
-[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-public class DiscordSku
+namespace Oxide.Ext.Discord.Entities
 {
     /// <summary>
-    /// ID of SKU
+    /// Represents a <a href="https://discord.com/developers/docs/monetization/skus#sku-object-sku-structure">SKU Structure</a>
     /// </summary>
-    [JsonProperty("id")]
-    public Snowflake Id { get; set; }
-        
-    /// <summary>
-    /// Type of SKU
-    /// </summary>
-    [JsonProperty("type")]
-    public DiscordSkuType Type { get; set; }
-        
-    /// <summary>
-    /// ID of the parent application
-    /// </summary>
-    [JsonProperty("application_id")]
-    public Snowflake ApplicationId { get; set; }
-        
-    /// <summary>
-    /// Customer-facing name of your premium offering
-    /// </summary>
-    [JsonProperty("name")]
-    public string Name { get; set; }
-        
-    /// <summary>
-    /// System-generated URL slug based on the SKU's name
-    /// </summary>
-    [JsonProperty("slug")]
-    public string Slug { get; set; }
-        
-    /// <summary>
-    /// SKU flags combined as a bitfield
-    /// </summary>
-    [JsonProperty("flags")]
-    public SkuFlags Flags { get; set; }
-
-    /// <summary>
-    /// Returns all SKUs for a given application. Because of how our SKU and subscription systems work, you will see two SKUs for your premium offering. 
-    /// </summary>
-    /// <param name="client">Client to use</param>
-    /// <param name="applicationId">Application ID to get SKU's for</param>
-    public static IPromise<List<DiscordSku>> GetSkus(DiscordClient client, Snowflake applicationId)
+    [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
+    public class DiscordSku
     {
-        return client.Bot.Rest.Get<List<DiscordSku>>(client, $"applications/{applicationId}/skus");
+        /// <summary>
+        /// ID of SKU
+        /// </summary>
+        [JsonProperty("id")]
+        public Snowflake Id { get; set; }
+        
+        /// <summary>
+        /// Type of SKU
+        /// </summary>
+        [JsonProperty("type")]
+        public DiscordSkuType Type { get; set; }
+        
+        /// <summary>
+        /// ID of the parent application
+        /// </summary>
+        [JsonProperty("application_id")]
+        public Snowflake ApplicationId { get; set; }
+        
+        /// <summary>
+        /// Customer-facing name of your premium offering
+        /// </summary>
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        
+        /// <summary>
+        /// System-generated URL slug based on the SKU's name
+        /// </summary>
+        [JsonProperty("slug")]
+        public string Slug { get; set; }
+        
+        /// <summary>
+        /// SKU flags combined as a bitfield
+        /// </summary>
+        [JsonProperty("flags")]
+        public SkuFlags Flags { get; set; }
+
+        /// <summary>
+        /// Returns all SKUs for a given application. Because of how our SKU and subscription systems work, you will see two SKUs for your premium offering. 
+        /// </summary>
+        /// <param name="client">Client to use</param>
+        /// <param name="applicationId">Application ID to get SKU's for</param>
+        public static IPromise<List<DiscordSku>> GetSkus(DiscordClient client, Snowflake applicationId)
+        {
+            return client.Bot.Rest.Get<List<DiscordSku>>(client, $"applications/{applicationId}/skus");
+        }
     }
 
     /// <summary>

@@ -1,20 +1,21 @@
 using Oxide.Ext.Discord.Builders;
 using Oxide.Ext.Discord.Entities;
 
-namespace Oxide.Ext.Discord.Exceptions;
-
-/// <summary>
-/// Represents an exception in Message Component Builder
-/// </summary>
-public class MessageComponentBuilderException : BaseDiscordException
+namespace Oxide.Ext.Discord.Exceptions
 {
-    private MessageComponentBuilderException(string message) : base(message) { }
-        
-    internal static void ThrowIfInvalidActionButtonStyle(ButtonStyle style)
+    /// <summary>
+    /// Represents an exception in Message Component Builder
+    /// </summary>
+    public class MessageComponentBuilderException : BaseDiscordException
     {
-        if (style == ButtonStyle.Link)
+        private MessageComponentBuilderException(string message) : base(message) { }
+        
+        internal static void ThrowIfInvalidActionButtonStyle(ButtonStyle style)
         {
-            throw new MessageComponentBuilderException($"Cannot add link button as action button. Please use {nameof(MessageComponentBuilder.AddLinkButton)} instead");
+            if (style == ButtonStyle.Link)
+            {
+                throw new MessageComponentBuilderException($"Cannot add link button as action button. Please use {nameof(MessageComponentBuilder.AddLinkButton)} instead");
+            }
         }
     }
 }

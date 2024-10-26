@@ -1,26 +1,27 @@
 ﻿using System;
 using Oxide.Ext.Discord.Entities;
 
-namespace Oxide.Ext.Discord.Exceptions;
-
-/// <summary>
-/// Exception when a user has blocked receving messages from a bot
-/// </summary>
-public class BlockedUserException : BaseDiscordException
+namespace Oxide.Ext.Discord.Exceptions
 {
     /// <summary>
-    /// User who has blocked messages
+    /// Exception when a user has blocked receving messages from a bot
     /// </summary>
-    public readonly DiscordUser User;
-        
-    /// <summary>
-    /// Time until we try sending a message again
-    /// </summary>
-    public readonly DateTime BlockedUntil;
-
-    internal BlockedUserException(DiscordUser user, DateTime blockedUntil)
+    public class BlockedUserException : BaseDiscordException
     {
-        User = user;
-        BlockedUntil = blockedUntil;
+        /// <summary>
+        /// User who has blocked messages
+        /// </summary>
+        public readonly DiscordUser User;
+        
+        /// <summary>
+        /// Time until we try sending a message again
+        /// </summary>
+        public readonly DateTime BlockedUntil;
+
+        internal BlockedUserException(DiscordUser user, DateTime blockedUntil)
+        {
+            User = user;
+            BlockedUntil = blockedUntil;
+        }
     }
 }

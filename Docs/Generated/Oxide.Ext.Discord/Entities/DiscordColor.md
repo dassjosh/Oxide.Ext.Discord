@@ -39,6 +39,9 @@ public struct DiscordColor : IEquatable<DiscordColor>
 | static readonly [Teal](#teal-field) | Teal Role Color |
 | static readonly [Warning](#warning-field) | Discord Warning Color |
 | readonly [Color](#color-field) | uint value of the hex color code |
+| [Equals](#equals-method)(…) |  |
+| override [Equals](#equals-method)(…) |  |
+| override [GetHashCode](#gethashcode-method)() |  |
 | [ToHex](#tohex-method)() | Returns the color as a hex color code |
 | override [ToString](#tostring-method)() | Returns the color as a string |
 
@@ -70,6 +73,46 @@ Returns the color as a hex color code
 
 ```csharp
 public string ToHex()
+```
+
+## See Also
+
+* struct [DiscordColor](./DiscordColor.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# Equals method (1 of 2)
+
+```csharp
+public bool Equals(DiscordColor other)
+```
+
+## See Also
+
+* struct [DiscordColor](./DiscordColor.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+
+---
+
+# Equals method (2 of 2)
+
+```csharp
+public override bool Equals(object obj)
+```
+
+## See Also
+
+* struct [DiscordColor](./DiscordColor.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# GetHashCode method
+
+```csharp
+public override int GetHashCode()
 ```
 
 ## See Also

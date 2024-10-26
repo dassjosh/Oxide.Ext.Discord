@@ -2,31 +2,32 @@
 using Newtonsoft.Json;
 using Oxide.Ext.Discord.Libraries;
 
-namespace Oxide.Ext.Discord.Json;
-
-/// <summary>
-/// JSON Template Key Converter
-/// </summary>
-public class TemplateKeyConverter : JsonConverter
+namespace Oxide.Ext.Discord.Json
 {
-    /// <inheritdoc />
-    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+    /// <summary>
+    /// JSON Template Key Converter
+    /// </summary>
+    public class TemplateKeyConverter : JsonConverter
     {
-        TemplateKey key = (TemplateKey)value;
-        writer.WriteValue(key.Name);
-    }
-
-    /// <inheritdoc />
-    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-    {
-        if (reader.TokenType == JsonToken.String)
+        /// <inheritdoc />
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            return new TemplateKey(reader.Value.ToString());
+            TemplateKey key = (TemplateKey)value;
+            writer.WriteValue(key.Name);
         }
-                
-        throw new JsonException($"Unexpected token {reader.TokenType} when parsing TemplateKey.");
-    }
 
-    /// <inheritdoc />
-    public override bool CanConvert(Type objectType) => typeof(TemplateKey) == objectType;
+        /// <inheritdoc />
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            if (reader.TokenType == JsonToken.String)
+            {
+                return new TemplateKey(reader.Value.ToString());
+            }
+                
+            throw new JsonException($"Unexpected token {reader.TokenType} when parsing TemplateKey.");
+        }
+
+        /// <inheritdoc />
+        public override bool CanConvert(Type objectType) => typeof(TemplateKey) == objectType;
+    }
 }

@@ -1,98 +1,99 @@
-namespace Oxide.Ext.Discord.Exceptions;
-
-/// <summary>
-/// Represents an invalid embed
-/// </summary>
-public class InvalidEmbedException : BaseDiscordException
+namespace Oxide.Ext.Discord.Exceptions
 {
     /// <summary>
-    /// Constructor
+    /// Represents an invalid embed
     /// </summary>
-    /// <param name="message">Exception message</param>
-    private InvalidEmbedException(string message) : base(message)
+    public class InvalidEmbedException : BaseDiscordException
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="message">Exception message</param>
+        private InvalidEmbedException(string message) : base(message)
+        {
             
-    }
+        }
 
-    internal static void ThrowIfEmbedLimit(int? count)
-    {
-        if (count > 10)
+        internal static void ThrowIfEmbedLimit(int? count)
         {
-            throw new InvalidEmbedException("You cannot add more than 10 embeds in a message");
+            if (count > 10)
+            {
+                throw new InvalidEmbedException("You cannot add more than 10 embeds in a message");
+            }
         }
-    }
         
-    internal static void ThrowIfInvalidTitle(string title)
-    {
-        if (title.Length > 256)
+        internal static void ThrowIfInvalidTitle(string title)
         {
-            throw new InvalidEmbedException("Title cannot be more than 256 characters");
+            if (title.Length > 256)
+            {
+                throw new InvalidEmbedException("Title cannot be more than 256 characters");
+            }
         }
-    }
         
-    internal static void ThrowIfInvalidDescription(string description)
-    {
-        if (description.Length > 4096)
+        internal static void ThrowIfInvalidDescription(string description)
         {
-            throw new InvalidEmbedException("Description cannot be more than 4096 characters");
+            if (description.Length > 4096)
+            {
+                throw new InvalidEmbedException("Description cannot be more than 4096 characters");
+            }
         }
-    }
         
-    internal static void ThrowIfInvalidFieldCount(int count)
-    {
-        if (count > 25)
+        internal static void ThrowIfInvalidFieldCount(int count)
         {
-            throw new InvalidEmbedException("Embeds cannot have more than 25 fields");
+            if (count > 25)
+            {
+                throw new InvalidEmbedException("Embeds cannot have more than 25 fields");
+            }
         }
-    }
 
-    internal static void ThrowIfInvalidFieldName(string name)
-    {
-        if (name != null && name.Length > 256)
+        internal static void ThrowIfInvalidFieldName(string name)
         {
-            throw new InvalidEmbedException("Embed Field Name cannot be more than 256 characters");
+            if (name != null && name.Length > 256)
+            {
+                throw new InvalidEmbedException("Embed Field Name cannot be more than 256 characters");
+            }
         }
-    }
         
-    internal static void ThrowIfInvalidFieldValue(string value)
-    {
-        if (value != null && value.Length > 1024)
+        internal static void ThrowIfInvalidFieldValue(string value)
         {
-            throw new InvalidEmbedException("Embed Field Value cannot be more than 1024 characters");
+            if (value != null && value.Length > 1024)
+            {
+                throw new InvalidEmbedException("Embed Field Value cannot be more than 1024 characters");
+            }
         }
-    }
         
-    internal static void ThrowIfInvalidFooterText(string text)
-    {
-        if (text == null)
+        internal static void ThrowIfInvalidFooterText(string text)
         {
-            throw new InvalidEmbedException("Embed Footer Text cannot be null");
-        }
+            if (text == null)
+            {
+                throw new InvalidEmbedException("Embed Footer Text cannot be null");
+            }
             
-        if (text.Length > 2048)
-        {
-            throw new InvalidEmbedException("Embed Footer Text cannot be more than 2048 characters");
+            if (text.Length > 2048)
+            {
+                throw new InvalidEmbedException("Embed Footer Text cannot be more than 2048 characters");
+            }
         }
-    }
         
-    internal static void ThrowIfInvalidAuthorName(string name)
-    {
-        if (name == null)
+        internal static void ThrowIfInvalidAuthorName(string name)
         {
-            throw new InvalidEmbedException("Embed Author Name cannot be null");
-        }
+            if (name == null)
+            {
+                throw new InvalidEmbedException("Embed Author Name cannot be null");
+            }
             
-        if (name.Length > 256)
-        {
-            throw new InvalidEmbedException("Embed Author Name cannot be more than 256 characters");
+            if (name.Length > 256)
+            {
+                throw new InvalidEmbedException("Embed Author Name cannot be more than 256 characters");
+            }
         }
-    }
         
-    internal static void ThrowIfInvalidUrl(string url)
-    {
-        if (url == null)
+        internal static void ThrowIfInvalidUrl(string url)
         {
-            throw new InvalidEmbedException("Url cannot be null");
+            if (url == null)
+            {
+                throw new InvalidEmbedException("Url cannot be null");
+            }
         }
     }
 }

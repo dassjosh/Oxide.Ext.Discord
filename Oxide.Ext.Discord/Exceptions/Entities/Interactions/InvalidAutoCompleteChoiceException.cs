@@ -1,36 +1,37 @@
-namespace Oxide.Ext.Discord.Exceptions;
-
-/// <summary>
-/// Exception for invalid Auto Complete choices
-/// </summary>
-public class InvalidAutoCompleteChoiceException : BaseDiscordException
+namespace Oxide.Ext.Discord.Exceptions
 {
     /// <summary>
-    /// Constructor
+    /// Exception for invalid Auto Complete choices
     /// </summary>
-    /// <param name="message">Exception message</param>
-    protected InvalidAutoCompleteChoiceException(string message) : base(message) { }
-
-    internal static void ThrowIfInvalidName(string name)
+    public class InvalidAutoCompleteChoiceException : BaseDiscordException
     {
-        const int MaxLength = 100;
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="message">Exception message</param>
+        protected InvalidAutoCompleteChoiceException(string message) : base(message) { }
+
+        internal static void ThrowIfInvalidName(string name)
+        {
+            const int MaxLength = 100;
             
-        if (string.IsNullOrEmpty(name))
-        {
-            throw new InvalidAutoCompleteChoiceException("Name must contain at least 1 character");
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new InvalidAutoCompleteChoiceException("Name must contain at least 1 character");
+            }
+
+            if (name.Length > MaxLength)
+            {
+                throw new InvalidAutoCompleteChoiceException($"Name cannot be greater than {MaxLength} characters");
+            }
         }
 
-        if (name.Length > MaxLength)
+        internal static void ThrowIfInvalidValue(object value)
         {
-            throw new InvalidAutoCompleteChoiceException($"Name cannot be greater than {MaxLength} characters");
-        }
-    }
-
-    internal static void ThrowIfInvalidValue(object value)
-    {
-        if (value == null)
-        {
-            throw new InvalidAutoCompleteChoiceException("Value cannot be null");
+            if (value == null)
+            {
+                throw new InvalidAutoCompleteChoiceException("Value cannot be null");
+            }
         }
     }
 }

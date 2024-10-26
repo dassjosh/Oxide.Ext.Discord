@@ -1,34 +1,35 @@
 ﻿using Oxide.Ext.Discord.Entities;
 using Oxide.Ext.Discord.Libraries;
 
-namespace Oxide.Ext.Discord.Callbacks;
-
-internal class AppCommandCallback : BaseNextTickCallback
+namespace Oxide.Ext.Discord.Callbacks
 {
-    private BaseAppCommand _command;
-    private DiscordInteraction _interaction;
-        
-    public static void Start(BaseAppCommand command, DiscordInteraction interaction)
+    internal class AppCommandCallback : BaseNextTickCallback
     {
-        AppCommandCallback sub = DiscordPool.Internal.Get<AppCommandCallback>();
-        sub.Init(command, interaction);
-        sub.Run();
-    }
+        private BaseAppCommand _command;
+        private DiscordInteraction _interaction;
         
-    private void Init(BaseAppCommand command, DiscordInteraction interaction)
-    {
-        _command = command;
-        _interaction = interaction;
-    }
+        public static void Start(BaseAppCommand command, DiscordInteraction interaction)
+        {
+            AppCommandCallback sub = DiscordPool.Internal.Get<AppCommandCallback>();
+            sub.Init(command, interaction);
+            sub.Run();
+        }
         
-    protected override void HandleCallback()
-    {
-        _command.HandleCommandInternal(_interaction);
-    }
+        private void Init(BaseAppCommand command, DiscordInteraction interaction)
+        {
+            _command = command;
+            _interaction = interaction;
+        }
+        
+        protected override void HandleCallback()
+        {
+            _command.HandleCommandInternal(_interaction);
+        }
 
-    protected override void EnterPool()
-    {
-        _command = null;
-        _interaction = null;
+        protected override void EnterPool()
+        {
+            _command = null;
+            _interaction = null;
+        }
     }
 }

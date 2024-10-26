@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
 using Oxide.Core.Libraries.Covalence;
 
-namespace Oxide.Ext.Discord.Services;
-
-internal interface IPlayerSearchService
+namespace Oxide.Ext.Discord.Services
 {
-    IEnumerable<IPlayer> GetOnlinePlayers(string name);
-    IEnumerable<IPlayer> GetAllPlayers(string name);
+    internal interface IPlayerSearchService
+    {
+        IEnumerable<IPlayer> GetOnlinePlayers(string name);
+        IEnumerable<IPlayer> GetAllPlayers(string name);
 
-    void OnUserConnected(IPlayer player);
+        void OnUserConnected(IPlayer player);
 
-    void OnUserDisconnected(IPlayer player);
+        void OnUserDisconnected(IPlayer player);
 
-    void OnUserNameUpdated(IPlayer player, string oldName, string newName);
+        void OnUserNameUpdated(IPlayer player, string oldName, string newName);
+    }
 }

@@ -1,42 +1,43 @@
-namespace Oxide.Ext.Discord.Exceptions;
-
-/// <summary>
-/// Represents a Webhook Create Exception
-/// </summary>
-public class InvalidWebhookException : BaseDiscordException
+namespace Oxide.Ext.Discord.Exceptions
 {
     /// <summary>
-    /// Invalid username characters
+    /// Represents a Webhook Create Exception
     /// </summary>
-    public static readonly char[] InvalidUserNameCharacters = "@#:".ToCharArray();
-        
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="message">Error Message</param>
-    private InvalidWebhookException(string message) : base(message) { }
-
-    internal static void ThrowIfInvalidName(string name)
+    public class InvalidWebhookException : BaseDiscordException
     {
-        const int MaxLength = 80;
-        if (string.IsNullOrEmpty(name) || name.Length > MaxLength)
-        {
-            throw new InvalidWebhookException($"Name '{name}' cannot be less than 1 character or more than {MaxLength} characters");
-        }
+        /// <summary>
+        /// Invalid username characters
+        /// </summary>
+        public static readonly char[] InvalidUserNameCharacters = "@#:".ToCharArray();
+        
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="message">Error Message</param>
+        private InvalidWebhookException(string message) : base(message) { }
 
-        if (name.IndexOfAny(InvalidUserNameCharacters) != -1)
+        internal static void ThrowIfInvalidName(string name)
         {
-            throw new InvalidWebhookException($"Name '{name}' Cannot contain any of the following characters [@,#,:]");
-        }
+            const int MaxLength = 80;
+            if (string.IsNullOrEmpty(name) || name.Length > MaxLength)
+            {
+                throw new InvalidWebhookException($"Name '{name}' cannot be less than 1 character or more than {MaxLength} characters");
+            }
 
-        if (name.Contains("```"))
-        {
-            throw new InvalidWebhookException($"Name '{name}' Cannot contain \"```\"");
-        }
+            if (name.IndexOfAny(InvalidUserNameCharacters) != -1)
+            {
+                throw new InvalidWebhookException($"Name '{name}' Cannot contain any of the following characters [@,#,:]");
+            }
 
-        if (name.Contains("discord"))
-        {
-            throw new InvalidWebhookException($"Name '{name}' Cannot contain \"discord\"");
+            if (name.Contains("```"))
+            {
+                throw new InvalidWebhookException($"Name '{name}' Cannot contain \"```\"");
+            }
+
+            if (name.Contains("discord"))
+            {
+                throw new InvalidWebhookException($"Name '{name}' Cannot contain \"discord\"");
+            }
         }
     }
 }

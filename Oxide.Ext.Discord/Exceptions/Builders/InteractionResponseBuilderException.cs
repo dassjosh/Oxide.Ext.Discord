@@ -1,35 +1,36 @@
 using Oxide.Ext.Discord.Entities;
 
-namespace Oxide.Ext.Discord.Exceptions;
-
-/// <summary>
-/// Represents an Interaction Response Builder Exception
-/// </summary>
-public class InteractionResponseBuilderException : BaseDiscordException
+namespace Oxide.Ext.Discord.Exceptions
 {
-    private InteractionResponseBuilderException(string message) : base(message) { }
-
-    internal static void ThrowIfInteractionIsAutoComplete(InteractionType type)
+    /// <summary>
+    /// Represents an Interaction Response Builder Exception
+    /// </summary>
+    public class InteractionResponseBuilderException : BaseDiscordException
     {
-        if (type == InteractionType.ApplicationCommandAutoComplete)
+        private InteractionResponseBuilderException(string message) : base(message) { }
+
+        internal static void ThrowIfInteractionIsAutoComplete(InteractionType type)
         {
-            throw new InteractionResponseBuilderException("Cannot call this method because you can only add Auto Complete Choices to this interaction response");
+            if (type == InteractionType.ApplicationCommandAutoComplete)
+            {
+                throw new InteractionResponseBuilderException("Cannot call this method because you can only add Auto Complete Choices to this interaction response");
+            }
         }
-    }
         
-    internal static void ThrowIfInteractionIsNotAutoComplete(InteractionType type)
-    {
-        if (type != InteractionType.ApplicationCommandAutoComplete)
+        internal static void ThrowIfInteractionIsNotAutoComplete(InteractionType type)
         {
-            throw new InteractionResponseBuilderException("Cannot call this method because this is not an Auto Complete interaction");
+            if (type != InteractionType.ApplicationCommandAutoComplete)
+            {
+                throw new InteractionResponseBuilderException("Cannot call this method because this is not an Auto Complete interaction");
+            }
         }
-    }
 
-    internal static void ThrowIfInteractionIsModalSubmit(InteractionType type)
-    {
-        if (type == InteractionType.ModalSubmit)
+        internal static void ThrowIfInteractionIsModalSubmit(InteractionType type)
         {
-            throw new InteractionResponseBuilderException("You cannot open a modal from another modal");
+            if (type == InteractionType.ModalSubmit)
+            {
+                throw new InteractionResponseBuilderException("You cannot open a modal from another modal");
+            }
         }
     }
 }

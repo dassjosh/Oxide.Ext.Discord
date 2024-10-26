@@ -1,20 +1,21 @@
 using Oxide.Ext.Discord.Entities;
 
-namespace Oxide.Ext.Discord.Exceptions;
-
-/// <summary>
-/// Represents an exception in guild schedule event lookup requests
-/// </summary>
-public class InvalidGuildScheduledEventLookupException : BaseDiscordException
+namespace Oxide.Ext.Discord.Exceptions
 {
-    private InvalidGuildScheduledEventLookupException(string message) : base(message) { }
-
-    internal static void ThrowIfInvalidLimit(int? limit)
+    /// <summary>
+    /// Represents an exception in guild schedule event lookup requests
+    /// </summary>
+    public class InvalidGuildScheduledEventLookupException : BaseDiscordException
     {
-        const int MaxLimit = 100;
-        if (limit > MaxLimit)
+        private InvalidGuildScheduledEventLookupException(string message) : base(message) { }
+
+        internal static void ThrowIfInvalidLimit(int? limit)
         {
-            throw new InvalidGuildScheduledEventLookupException($"{nameof(ScheduledEventUsersLookup)}.{nameof(ScheduledEventUsersLookup.Limit)} cannot be greater than {MaxLimit}");
+            const int MaxLimit = 100;
+            if (limit > MaxLimit)
+            {
+                throw new InvalidGuildScheduledEventLookupException($"{nameof(ScheduledEventUsersLookup)}.{nameof(ScheduledEventUsersLookup.Limit)} cannot be greater than {MaxLimit}");
+            }
         }
     }
 }

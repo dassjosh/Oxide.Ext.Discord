@@ -1,15 +1,16 @@
 using Oxide.Ext.Discord.Interfaces;
 
-namespace Oxide.Ext.Discord.Libraries;
-
-/// <summary>
-/// Embed Templates Library
-/// </summary>
-public class DiscordEmbedTemplates : BaseMessageTemplateLibrary<DiscordEmbedTemplate>
+namespace Oxide.Ext.Discord.Libraries
 {
     /// <summary>
-    /// Constructor
+    /// Embed Templates Library
     /// </summary>
-    /// <param name="logger"></param>
-    internal DiscordEmbedTemplates(ILogger logger) : base(TemplateType.Embed, logger) { }
+    public class DiscordEmbedTemplates : BaseMessageTemplateLibrary<DiscordEmbedTemplate>
+    {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="logger"></param>
+        internal DiscordEmbedTemplates(ILogger logger) : base(TemplateType.Embed, logger) { }
+    }
 }

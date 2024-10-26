@@ -11,11 +11,11 @@ public enum DiscordLogLevel : byte
 | name | value | description |
 | --- | --- | --- |
 | Verbose | `Verbose` | Verbose log level displays all message |
-| Debug | `Debug` | Debug log level display all messages up to and include Debug |
-| Info | `Info` | Info log level display all messages up to and include Info |
-| Warning | `Warning` | Warning log level display all messages up to and include Warning |
-| Error | `Error` | Error log level display all messages up to and include Error |
-| Exception | `Exception` | Exception log level display all messages up to and include Exception |
+| Debug | `Debug` | Debug log level display all messages up to and including Debug |
+| Info | `Info` | Info log level display all messages up to and including Info |
+| Warning | `Warning` | Warning log level display all messages up to and including Warning |
+| Error | `Error` | Error log level display all messages up to and including Error |
+| Exception | `Exception` | Exception log level display all messages up to and including Exception |
 | Off | `Off` | Disables all logging |
 
 ## See Also

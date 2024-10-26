@@ -2,25 +2,26 @@ using System.Collections.Generic;
 using Oxide.Ext.Discord.Entities;
 using ProtoBuf;
 
-namespace Oxide.Ext.Discord.Data;
-
-[ProtoContract]
-internal sealed class DiscordUserData : BaseDataFile<DiscordUserData>
+namespace Oxide.Ext.Discord.Data
 {
-    [ProtoMember(1)]
-    private Dictionary<Snowflake, BotData> _bots = new();
-
-    public bool TryGetBotData(Snowflake id, out BotData data) => _bots.TryGetValue(id, out data);
-        
-    public BotData GetBotData(Snowflake botId)
+    [ProtoContract]
+    internal sealed class DiscordUserData : BaseDataFile<DiscordUserData>
     {
-        if (!_bots.TryGetValue(botId, out BotData data))
-        {
-            data = new BotData();
-            _bots[botId] = data;
-            OnDataChanged();
-        }
+        [ProtoMember(1)]
+        private Dictionary<Snowflake, BotData> _bots = new();
 
-        return data;
+        public bool TryGetBotData(Snowflake id, out BotData data) => _bots.TryGetValue(id, out data);
+        
+        public BotData GetBotData(Snowflake botId)
+        {
+            if (!_bots.TryGetValue(botId, out BotData data))
+            {
+                data = new BotData();
+                _bots[botId] = data;
+                OnDataChanged();
+            }
+
+            return data;
+        }
     }
 }

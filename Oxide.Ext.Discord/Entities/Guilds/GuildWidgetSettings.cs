@@ -1,22 +1,23 @@
 ﻿using Newtonsoft.Json;
 
-namespace Oxide.Ext.Discord.Entities;
-
-/// <summary>
-/// Represents <a href="https://discord.com/developers/docs/resources/guild#guild-widget-object-guild-widget-structure">Guild Widget Settings Structure</a>
-/// </summary>
-[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-public class GuildWidgetSettings
+namespace Oxide.Ext.Discord.Entities
 {
     /// <summary>
-    /// Whether the widget is enabled
+    /// Represents <a href="https://discord.com/developers/docs/resources/guild#guild-widget-object-guild-widget-structure">Guild Widget Settings Structure</a>
     /// </summary>
-    [JsonProperty("enabled")]
-    public bool Enabled { get; set; }
+    [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
+    public class GuildWidgetSettings
+    {
+        /// <summary>
+        /// Whether the widget is enabled
+        /// </summary>
+        [JsonProperty("enabled")]
+        public bool Enabled { get; set; }
 
-    /// <summary>
-    /// The widget channel id
-    /// </summary>
-    [JsonProperty("channel_id")]
-    public Snowflake ChannelId { get; set; }
+        /// <summary>
+        /// The widget channel id
+        /// </summary>
+        [JsonProperty("channel_id")]
+        public Snowflake ChannelId { get; set; }
+    }
 }

@@ -1,5 +1,4 @@
 using System;
-using System.Buffers;
 using System.Collections.Concurrent;
 using System.IO;
 using System.Text;
@@ -8,79 +7,78 @@ using Oxide.Core;
 using Oxide.Ext.Discord.Cache;
 using Oxide.Ext.Discord.Interfaces;
 
-namespace Oxide.Ext.Discord.Logging;
-
-/// <summary>
-/// Represents a File Logger for Discord
-/// </summary>
-internal class DiscordFileLogger : IOutputLogger
+namespace Oxide.Ext.Discord.Logging
 {
-    private readonly ConcurrentQueue<string> _messages = new();
-    private readonly string _logFileName;
-    private readonly string _dateTimeFormat;
-    private readonly AutoResetEvent _reset;
+    /// <summary>
+    /// Represents a File Logger for Discord
+    /// </summary>
+    internal class DiscordFileLogger : IOutputLogger
+    {
+        private readonly ConcurrentQueue<string> _messages = new();
+        private readonly string _logFileName;
+        private readonly string _dateTimeFormat;
+        private readonly AutoResetEvent _reset;
         
-    private static readonly ThreadLocal<StringBuilder> Builder = new(() => new StringBuilder());
+        private static readonly ThreadLocal<StringBuilder> Builder = new(() => new StringBuilder());
 
-    internal DiscordFileLogger(string pluginName, string dateTimeFormat, AutoResetEvent reset)
-    {
-        _dateTimeFormat = dateTimeFormat;
-        _reset = reset;
-        string logPath = Path.Combine(Interface.Oxide.LogDirectory, pluginName);
-        if (!Directory.Exists(logPath))
+        internal DiscordFileLogger(string pluginName, string dateTimeFormat, AutoResetEvent reset)
         {
-            Directory.CreateDirectory(logPath);
-        }
+            _dateTimeFormat = dateTimeFormat;
+            _reset = reset;
+            string logPath = Path.Combine(Interface.Oxide.LogDirectory, pluginName);
+            if (!Directory.Exists(logPath))
+            {
+                Directory.CreateDirectory(logPath);
+            }
             
-        _logFileName = Path.Combine(logPath, $"{pluginName}-{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.txt");
-    }
+            _logFileName = Path.Combine(logPath, $"{pluginName}-{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.txt");
+        }
 
-    public void AddMessage(DiscordLogLevel level, string log, object[] args, Exception ex)
-    {
-        StringBuilder sb = Builder.Value;
-        sb.Clear();
-        char[] formatting = ArrayPool<char>.Shared.Rent(_dateTimeFormat.Length);
-        Span<char> span = formatting.AsSpan();
-        DateTime.Now.TryFormat(span, out int written, _dateTimeFormat);
-        sb.Append(span.Slice(0, written));
-        sb.Append(" [");
-        sb.Append(EnumCache<DiscordLogLevel>.Instance.ToString(level));
-        sb.Append("]: ");
-        if (args.Length != 0)
+        public void AddMessage(DiscordLogLevel level, string log, object[] args, Exception ex)
         {
-            sb.AppendFormat(log, args);
-        }
-        else
-        {
-            sb.Append(log);
-        }
+            StringBuilder sb = Builder.Value;
+            sb.Clear();
+            Span<char> span = stackalloc char[_dateTimeFormat.Length];
+            DateTime.Now.TryFormat(span, out int written, _dateTimeFormat);
+            sb.Append(span.Slice(0, written));
+            sb.Append(" [");
+            sb.Append(EnumCache<DiscordLogLevel>.Instance.ToString(level));
+            sb.Append("]: ");
+            if (args.Length != 0)
+            {
+                sb.AppendFormat(log, args);
+            }
+            else
+            {
+                sb.Append(log);
+            }
             
-        _messages.Enqueue(sb.ToString());
-        if (ex != null)
-        {
-            _messages.Enqueue(ex.ToString());
+            _messages.Enqueue(sb.ToString());
+            if (ex != null)
+            {
+                _messages.Enqueue(ex.ToString());
+            }
+            _reset.Set();
         }
-        _reset.Set();
-        ArrayPool<char>.Shared.Return(formatting);
-    }
         
-    internal void WriteLog()
-    {
-        if (_messages.IsEmpty)
+        internal void WriteLog()
         {
-            return;
+            if (_messages.IsEmpty)
+            {
+                return;
+            }
+
+            using StreamWriter fileWriter = File.AppendText(_logFileName);
+            while (_messages.TryDequeue(out string message))
+            {
+                fileWriter.WriteLine(message);
+            }
         }
 
-        using StreamWriter fileWriter = File.AppendText(_logFileName);
-        while (_messages.TryDequeue(out string message))
+        public void OnShutdown()
         {
-            fileWriter.WriteLine(message);
+            WriteLog();
+            DiscordFileLoggerFactory.Instance.RemoveLogger(this);
         }
-    }
-
-    public void OnShutdown()
-    {
-        WriteLog();
-        DiscordFileLoggerFactory.Instance.RemoveLogger(this);
     }
 }

@@ -1,15 +1,16 @@
 using Oxide.Core;
 
-namespace Oxide.Ext.Discord.Callbacks;
-
-/// <summary>
-/// Represents a callback that calls next tick
-/// </summary>
-public abstract class BaseNextTickCallback : BaseCallback
+namespace Oxide.Ext.Discord.Callbacks
 {
-    /// <inheritdoc/>
-    protected sealed override void Run()
+    /// <summary>
+    /// Represents a callback that calls next tick
+    /// </summary>
+    public abstract class BaseNextTickCallback : BaseCallback
     {
-        Interface.Oxide.NextTick(Callback);
+        /// <inheritdoc/>
+        protected sealed override void Run()
+        {
+            Interface.Oxide.NextTick(Callback);
+        }
     }
 }

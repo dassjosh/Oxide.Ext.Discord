@@ -1,8 +1,9 @@
 ﻿using Oxide.Core.Plugins;
 
-namespace Oxide.Ext.Discord.Plugins;
-
-internal partial class DiscordExtensionCore
+namespace Oxide.Ext.Discord.Plugins
 {
-    private static bool IsPluginLoaded(Plugin plugin) => plugin != null && plugin.IsLoaded;
+    internal partial class DiscordExtensionCore
+    {
+        private static bool IsPluginLoaded(Plugin plugin) => plugin != null && plugin.IsLoaded;
+    }
 }

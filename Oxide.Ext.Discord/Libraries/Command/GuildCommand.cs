@@ -4,46 +4,47 @@ using Oxide.Ext.Discord.Entities;
 using Oxide.Ext.Discord.Extensions;
 using Oxide.Ext.Discord.Logging;
 
-namespace Oxide.Ext.Discord.Libraries;
-
-internal class GuildCommand : BaseCommand
+namespace Oxide.Ext.Discord.Libraries
 {
-    private readonly List<Snowflake> _allowedChannels;
-
-    public GuildCommand(Plugin plugin, string name, string hook, List<Snowflake> allowedChannels) : base(plugin, name, hook)
+    internal class GuildCommand : BaseCommand
     {
-        _allowedChannels = allowedChannels;
-    }
+        private readonly List<Snowflake> _allowedChannels;
 
-    public override bool CanHandle(DiscordMessage message, DiscordChannel channel)
-    {
-        if (!message.GuildId.HasValue)
+        public GuildCommand(Plugin plugin, string name, string hook, List<Snowflake> allowedChannels) : base(plugin, name, hook)
         {
+            _allowedChannels = allowedChannels;
+        }
+
+        public override bool CanHandle(DiscordMessage message, DiscordChannel channel)
+        {
+            if (!message.GuildId.HasValue)
+            {
+                return false;
+            }
+            
+            if (channel == null)
+            {
+                return true;
+            }
+
+            if (_allowedChannels == null || _allowedChannels.Count == 0 || _allowedChannels.Contains(channel.Id))
+            {
+                return true;
+            }
+
+            if (channel.ParentId.HasValue && _allowedChannels.Contains(channel.ParentId.Value))
+            {
+                return true;
+            }
+            
             return false;
         }
-            
-        if (channel == null)
-        {
-            return true;
-        }
 
-        if (_allowedChannels == null || _allowedChannels.Count == 0 || _allowedChannels.Contains(channel.Id))
+        public override void LogDebug(DebugLogger logger)
         {
-            return true;
+            logger.AppendField("Name", Name);
+            logger.AppendField("Plugin", Plugin.FullName());
+            logger.AppendField("Type", "Guild Command");
         }
-
-        if (channel.ParentId.HasValue && _allowedChannels.Contains(channel.ParentId.Value))
-        {
-            return true;
-        }
-            
-        return false;
-    }
-
-    public override void LogDebug(DebugLogger logger)
-    {
-        logger.AppendField("Name", Name);
-        logger.AppendField("Plugin", Plugin.FullName());
-        logger.AppendField("Type", "Guild Command");
     }
 }

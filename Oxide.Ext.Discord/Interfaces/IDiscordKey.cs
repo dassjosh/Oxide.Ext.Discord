@@ -1,13 +1,14 @@
-﻿namespace Oxide.Ext.Discord.Interfaces;
-
-/// <summary>
-/// Represents a Key in Discord
-/// </summary>
-public interface IDiscordKey
+﻿namespace Oxide.Ext.Discord.Interfaces
 {
     /// <summary>
-    /// Converts the key to a string
+    /// Represents a Key in Discord
     /// </summary>
-    /// <returns></returns>
-    string ToString();
+    public interface IDiscordKey
+    {
+        /// <summary>
+        /// Converts the key to a string
+        /// </summary>
+        /// <returns></returns>
+        string ToString();
+    }
 }

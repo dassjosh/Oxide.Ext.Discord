@@ -1,10 +1,11 @@
-namespace Oxide.Ext.Discord.Plugins;
-
-internal static class AppCommandKeys
+namespace Oxide.Ext.Discord.Plugins
 {
-    public const string DeCommand = "de";
+    internal static class AppCommandKeys
+    {
+        public const string DeCommand = "de";
 
-    public const string AppCommandGroup = "commands";
-    public const string DeleteAppCommand = "delete";
-    public const string DeleteAppCommandArgument = "command";
+        public const string AppCommandGroup = "commands";
+        public const string DeleteAppCommand = "delete";
+        public const string DeleteAppCommandArgument = "command";
+    }
 }

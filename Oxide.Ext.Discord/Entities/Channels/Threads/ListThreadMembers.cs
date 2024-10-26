@@ -3,48 +3,49 @@ using Oxide.Ext.Discord.Builders;
 using Oxide.Ext.Discord.Cache;
 using Oxide.Ext.Discord.Interfaces;
 
-namespace Oxide.Ext.Discord.Entities;
-
-/// <summary>
-/// Represents <a href="https://discord.com/developers/docs/resources/channel#list-thread-members-query-string-params">List Thread Member Query String Params</a>
-/// </summary>
-public class ListThreadMembers : IDiscordQueryString
+namespace Oxide.Ext.Discord.Entities
 {
     /// <summary>
-    /// Whether to include a guild member object for the thread member
+    /// Represents <a href="https://discord.com/developers/docs/resources/channel#list-thread-members-query-string-params">List Thread Member Query String Params</a>
     /// </summary>
-    public bool WithMember { get; set; }
-        
-    /// <summary>
-    /// Get thread members after this user ID
-    /// </summary>
-    public Snowflake? After { get; set; }
-        
-    /// <summary>
-    /// Max number of thread members to return (1-100). Defaults to 100.
-    /// </summary>
-    public int? Limit { get; set; }
-        
-    ///<inheritdoc/>
-    public string ToQueryString()
+    public class ListThreadMembers : IDiscordQueryString
     {
-        QueryStringBuilder builder = new();
-
-        if (WithMember)
+        /// <summary>
+        /// Whether to include a guild member object for the thread member
+        /// </summary>
+        public bool WithMember { get; set; }
+        
+        /// <summary>
+        /// Get thread members after this user ID
+        /// </summary>
+        public Snowflake? After { get; set; }
+        
+        /// <summary>
+        /// Max number of thread members to return (1-100). Defaults to 100.
+        /// </summary>
+        public int? Limit { get; set; }
+        
+        ///<inheritdoc/>
+        public string ToQueryString()
         {
-            builder.Add("with_member", StringCache<bool>.Instance.ToString(WithMember));
-        }
+            QueryStringBuilder builder = new();
 
-        if (After.HasValue)
-        {
-            builder.Add("after", After.Value.ToString());
-        }
+            if (WithMember)
+            {
+                builder.Add("with_member", StringCache<bool>.Instance.ToString(WithMember));
+            }
 
-        if (Limit.HasValue)
-        {
-            builder.Add("limit", StringCache<int>.Instance.ToString(Math.Clamp(Limit.Value, 1, 100)));
-        }
+            if (After.HasValue)
+            {
+                builder.Add("after", After.Value.ToString());
+            }
+
+            if (Limit.HasValue)
+            {
+                builder.Add("limit", StringCache<int>.Instance.ToString(Math.Clamp(Limit.Value, 1, 100)));
+            }
             
-        return builder.ToString();
+            return builder.ToString();
+        }
     }
 }

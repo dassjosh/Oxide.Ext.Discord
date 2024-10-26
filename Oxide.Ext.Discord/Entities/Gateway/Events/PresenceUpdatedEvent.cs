@@ -1,41 +1,42 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Oxide.Ext.Discord.Entities;
-
-/// <summary>
-/// Represents <a href="https://discord.com/developers/docs/topics/gateway#presence-update">Presence Update</a>
-/// </summary>
-[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-public class PresenceUpdatedEvent
+namespace Oxide.Ext.Discord.Entities
 {
     /// <summary>
-    /// The user presence is being updated for
+    /// Represents <a href="https://discord.com/developers/docs/topics/gateway#presence-update">Presence Update</a>
     /// </summary>
-    [JsonProperty("user")]
-    public DiscordUser User { get; set; }
+    [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
+    public class PresenceUpdatedEvent
+    {
+        /// <summary>
+        /// The user presence is being updated for
+        /// </summary>
+        [JsonProperty("user")]
+        public DiscordUser User { get; set; }
 
-    /// <summary>
-    /// ID of the guild
-    /// </summary>
-    [JsonProperty("guild_id")]
-    public Snowflake GuildId { get; set; }
+        /// <summary>
+        /// ID of the guild
+        /// </summary>
+        [JsonProperty("guild_id")]
+        public Snowflake GuildId { get; set; }
         
-    /// <summary>
-    /// Users status
-    /// </summary>
-    [JsonProperty("status")]
-    public UserStatusType Status { get; set; }
+        /// <summary>
+        /// Users status
+        /// </summary>
+        [JsonProperty("status")]
+        public UserStatusType Status { get; set; }
         
-    /// <summary>
-    /// User's current activities
-    /// </summary>
-    [JsonProperty("activities")]
-    public List<DiscordActivity> Activities { get; set; }
+        /// <summary>
+        /// User's current activities
+        /// </summary>
+        [JsonProperty("activities")]
+        public List<DiscordActivity> Activities { get; set; }
         
-    /// <summary>
-    /// User's platform-dependent status
-    /// </summary>
-    [JsonProperty("client_status")]
-    public ClientStatus ClientStatus { get; set; }
+        /// <summary>
+        /// User's platform-dependent status
+        /// </summary>
+        [JsonProperty("client_status")]
+        public ClientStatus ClientStatus { get; set; }
+    }
 }

@@ -2,34 +2,35 @@ using Newtonsoft.Json;
 using Oxide.Ext.Discord.Exceptions;
 using Oxide.Ext.Discord.Interfaces;
 
-namespace Oxide.Ext.Discord.Entities;
-
-/// <summary>
-/// Represents a <a href="https://discord.com/developers/docs/resources/user#modify-current-user-json-params">Modify Current User Structure</a>
-/// </summary>
-public class UserModifyCurrent : IDiscordValidation
+namespace Oxide.Ext.Discord.Entities
 {
     /// <summary>
-    /// User's username, if changed may cause the user's discriminator to be randomized.
+    /// Represents a <a href="https://discord.com/developers/docs/resources/user#modify-current-user-json-params">Modify Current User Structure</a>
     /// </summary>
-    [JsonProperty("username")]
-    public string Username { get; set; }
-        
-    /// <summary>
-    /// If passed, modifies the user's avatar
-    /// </summary>
-    [JsonProperty("avatar")]
-    public DiscordImageData Avatar { get; set; }
-        
-    /// <summary>
-    /// If passed, modifies the user's banner
-    /// </summary>
-    [JsonProperty("banner")]
-    public DiscordImageData Banner { get; set; }
-        
-    /// <inheritdoc/>
-    public void Validate()
+    public class UserModifyCurrent : IDiscordValidation
     {
-        InvalidUserException.ThrowIfInvalidUserName(Username);
+        /// <summary>
+        /// User's username, if changed may cause the user's discriminator to be randomized.
+        /// </summary>
+        [JsonProperty("username")]
+        public string Username { get; set; }
+        
+        /// <summary>
+        /// If passed, modifies the user's avatar
+        /// </summary>
+        [JsonProperty("avatar")]
+        public DiscordImageData Avatar { get; set; }
+        
+        /// <summary>
+        /// If passed, modifies the user's banner
+        /// </summary>
+        [JsonProperty("banner")]
+        public DiscordImageData Banner { get; set; }
+        
+        /// <inheritdoc/>
+        public void Validate()
+        {
+            InvalidUserException.ThrowIfInvalidUserName(Username);
+        }
     }
 }

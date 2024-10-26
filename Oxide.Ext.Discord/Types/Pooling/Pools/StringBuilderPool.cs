@@ -1,20 +1,21 @@
 using System.Text;
 
-namespace Oxide.Ext.Discord.Types;
-
-/// <summary>
-/// Pool for StringBuilders
-/// </summary>
-internal class StringBuilderPool : BasePool<StringBuilder, StringBuilderPool>
+namespace Oxide.Ext.Discord.Types
 {
-    protected override PoolSize GetPoolSize(PoolSettings settings) => settings.StringBuilderPoolSize;
-        
-    protected override StringBuilder CreateNew() => new();
-
-    ///<inheritdoc/>
-    protected override bool OnFreeItem(ref StringBuilder item)
+    /// <summary>
+    /// Pool for StringBuilders
+    /// </summary>
+    internal class StringBuilderPool : BasePool<StringBuilder, StringBuilderPool>
     {
-        item.Clear();
-        return true;
+        protected override PoolSize GetPoolSize(PoolSettings settings) => settings.StringBuilderPoolSize;
+        
+        protected override StringBuilder CreateNew() => new();
+
+        ///<inheritdoc/>
+        protected override bool OnFreeItem(ref StringBuilder item)
+        {
+            item.Clear();
+            return true;
+        }
     }
 }

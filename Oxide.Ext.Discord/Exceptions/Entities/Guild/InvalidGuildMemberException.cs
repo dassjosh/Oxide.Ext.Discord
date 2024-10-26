@@ -1,21 +1,22 @@
 using Oxide.Ext.Discord.Entities;
 
-namespace Oxide.Ext.Discord.Exceptions;
-
-/// <summary>
-/// Represents an exception in guild member
-/// </summary>
-public class InvalidGuildMemberException : BaseDiscordException
+namespace Oxide.Ext.Discord.Exceptions
 {
-    private InvalidGuildMemberException(string message) : base(message) { }
-
-    internal static void ThrowIfInvalidNickname(string nickname)
+    /// <summary>
+    /// Represents an exception in guild member
+    /// </summary>
+    public class InvalidGuildMemberException : BaseDiscordException
     {
-        const int MaxLength = 32;
-            
-        if (!string.IsNullOrEmpty(nickname) && nickname.Length > MaxLength)
+        private InvalidGuildMemberException(string message) : base(message) { }
+
+        internal static void ThrowIfInvalidNickname(string nickname)
         {
-            throw new InvalidGuildMemberException($"{nameof(GuildMemberUpdate)}.{nameof(GuildMemberUpdate.Nick)} cannot be more than {MaxLength} characters");
+            const int MaxLength = 32;
+            
+            if (!string.IsNullOrEmpty(nickname) && nickname.Length > MaxLength)
+            {
+                throw new InvalidGuildMemberException($"{nameof(GuildMemberUpdate)}.{nameof(GuildMemberUpdate.Nick)} cannot be more than {MaxLength} characters");
+            }
         }
     }
 }

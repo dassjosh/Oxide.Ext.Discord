@@ -1,23 +1,24 @@
 using Newtonsoft.Json;
 
-namespace Oxide.Ext.Discord.Entities;
-
-/// <summary>
-/// Represents <a href="https://discord.com/developers/docs/topics/gateway#guild-ban-add">Guild Ban Add</a> Event
-/// Represents <a href="https://discord.com/developers/docs/topics/gateway#guild-ban-remove">Guild Ban Remove</a> Event
-/// </summary>
-[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-public class GuildMemberBannedEvent
+namespace Oxide.Ext.Discord.Entities
 {
     /// <summary>
-    /// ID of the guild
+    /// Represents <a href="https://discord.com/developers/docs/topics/gateway#guild-ban-add">Guild Ban Add</a> Event
+    /// Represents <a href="https://discord.com/developers/docs/topics/gateway#guild-ban-remove">Guild Ban Remove</a> Event
     /// </summary>
-    [JsonProperty("guild_id")]
-    public Snowflake GuildId { get; set; }
+    [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
+    public class GuildMemberBannedEvent
+    {
+        /// <summary>
+        /// ID of the guild
+        /// </summary>
+        [JsonProperty("guild_id")]
+        public Snowflake GuildId { get; set; }
         
-    /// <summary>
-    /// The banned / unbanned user
-    /// </summary>
-    [JsonProperty("user")]
-    public DiscordUser User { get; set; }
+        /// <summary>
+        /// The banned / unbanned user
+        /// </summary>
+        [JsonProperty("user")]
+        public DiscordUser User { get; set; }
+    }
 }

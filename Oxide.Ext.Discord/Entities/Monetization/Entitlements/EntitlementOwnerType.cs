@@ -1,17 +1,18 @@
-﻿namespace Oxide.Ext.Discord.Entities;
-
-/// <summary>
-/// Represents a <a href="https://discord.com/developers/docs/monetization/entitlements#create-test-entitlement-json-params">Entitlement Owner Types</a>
-/// </summary>
-public enum EntitlementOwnerType
+﻿namespace Oxide.Ext.Discord.Entities
 {
     /// <summary>
-    /// Subscription is a Guild Subscription
+    /// Represents a <a href="https://discord.com/developers/docs/monetization/entitlements#create-test-entitlement-json-params">Entitlement Owner Types</a>
     /// </summary>
-    GuidSubscription = 1,
+    public enum EntitlementOwnerType
+    {
+        /// <summary>
+        /// Subscription is a Guild Subscription
+        /// </summary>
+        GuidSubscription = 1,
         
-    /// <summary>
-    /// Subscription is a User Subscription
-    /// </summary>
-    UserSubscription = 2
+        /// <summary>
+        /// Subscription is a User Subscription
+        /// </summary>
+        UserSubscription = 2
+    }
 }

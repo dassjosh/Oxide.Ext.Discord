@@ -1,22 +1,23 @@
 ﻿using Newtonsoft.Json;
 
-namespace Oxide.Ext.Discord.Entities;
-
-/// <summary>
-/// Represents <a href="https://discord.com/developers/docs/topics/gateway#webhooks-update">Webhooks Update</a>
-/// </summary>
-[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-public class WebhooksUpdatedEvent
+namespace Oxide.Ext.Discord.Entities
 {
     /// <summary>
-    /// ID of the guild
+    /// Represents <a href="https://discord.com/developers/docs/topics/gateway#webhooks-update">Webhooks Update</a>
     /// </summary>
-    [JsonProperty("guild_id")]
-    public Snowflake GuildId { get; set; }
+    [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
+    public class WebhooksUpdatedEvent
+    {
+        /// <summary>
+        /// ID of the guild
+        /// </summary>
+        [JsonProperty("guild_id")]
+        public Snowflake GuildId { get; set; }
 
-    /// <summary>
-    /// ID of the channel
-    /// </summary>
-    [JsonProperty("channel_id")]
-    public Snowflake ChannelId { get; set; }
+        /// <summary>
+        /// ID of the channel
+        /// </summary>
+        [JsonProperty("channel_id")]
+        public Snowflake ChannelId { get; set; }
+    }
 }

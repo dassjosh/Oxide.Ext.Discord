@@ -3,38 +3,39 @@ using System.Collections.Generic;
 using System.Reflection;
 using Oxide.Ext.Discord.Attributes;
 
-namespace Oxide.Ext.Discord.Plugins;
-
-internal readonly struct PluginField
+namespace Oxide.Ext.Discord.Plugins
 {
-    public readonly MemberInfo Member;
-    private readonly List<Attribute> _attributes;
-
-    public PluginField(MemberInfo member, Attribute[] attributes)
+    internal readonly struct PluginField
     {
-        Member = member;
-        _attributes = new List<Attribute>(0);
-        for (int index = 0; index < attributes.Length; index++)
+        public readonly MemberInfo Member;
+        private readonly List<Attribute> _attributes;
+
+        public PluginField(MemberInfo member, Attribute[] attributes)
         {
-            Attribute attribute = attributes[index];
-            if (attribute is BaseDiscordAttribute)
+            Member = member;
+            _attributes = new List<Attribute>(0);
+            for (int index = 0; index < attributes.Length; index++)
             {
-                _attributes.Add(attribute);
+                Attribute attribute = attributes[index];
+                if (attribute is BaseDiscordAttribute)
+                {
+                    _attributes.Add(attribute);
+                }
             }
         }
-    }
         
-    public T GetAttribute<T>() where T : Attribute
-    {
-        for (int index = 0; index < _attributes.Count; index++)
+        public T GetAttribute<T>() where T : Attribute
         {
-            Attribute attribute = _attributes[index];
-            if (attribute is T tAttribute)
+            for (int index = 0; index < _attributes.Count; index++)
             {
-                return tAttribute;
+                Attribute attribute = _attributes[index];
+                if (attribute is T tAttribute)
+                {
+                    return tAttribute;
+                }
             }
-        }
 
-        return default;
+            return default;
+        }
     }
 }

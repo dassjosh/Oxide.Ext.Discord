@@ -29,7 +29,7 @@ public class WebSocketEventHandler : IWebSocketEventHandler
 Called when a socket is open
 
 ```csharp
-public ValueTask SocketOpened(Snowflake websocketId)
+public ValueTask SocketOpened(Snowflake webSocketId)
 ```
 
 ## See Also
@@ -45,12 +45,12 @@ public ValueTask SocketOpened(Snowflake websocketId)
 Called when a socket is closed
 
 ```csharp
-public ValueTask SocketClosed(Snowflake websocketId, WebSocketCloseStatus status, string message)
+public ValueTask SocketClosed(Snowflake webSocketId, WebSocketCloseStatus status, string message)
 ```
 
 | parameter | description |
 | --- | --- |
-| websocketId | ID of the web socket |
+| webSocketId | ID of the web socket |
 | status | WebSocketCloseStatus for the web socket |
 | message | Close message from the web socket |
 

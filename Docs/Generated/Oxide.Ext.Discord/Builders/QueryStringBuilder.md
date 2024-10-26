@@ -11,7 +11,6 @@ public struct QueryStringBuilder
 
 | name | description |
 | --- | --- |
-| [QueryStringBuilder](#querystringbuilder-constructor)() | The default constructor. |
 | [Add](#add-method)(…) | Add a key value pair to the query string |
 | [AddList&lt;T&gt;](#addlist&amp;lt;t&amp;gt;-method)(…) | Add a list of values with the specified separator |
 | override [ToString](#tostring-method)() | Returns the query string as a string. |
@@ -71,21 +70,6 @@ Returns the query string as a string.
 
 ```csharp
 public override string ToString()
-```
-
-## See Also
-
-* struct [QueryStringBuilder](./QueryStringBuilder.md)
-* namespace [Oxide.Ext.Discord.Builders](./BuildersNamespace.md)
-* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
-   
-   
-# QueryStringBuilder constructor
-
-The default constructor.
-
-```csharp
-public QueryStringBuilder()
 ```
 
 ## See Also

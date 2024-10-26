@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Oxide.Ext.Discord.Configuration;
-
-internal class DiscordSearchConfig
+namespace Oxide.Ext.Discord.Configuration
 {
-    [JsonProperty("Enable Player Name Trie Search (High Performance / High Memory Usage)")]
-    public bool EnablePlayerNameSearchTrie { get; set; }
+    internal class DiscordSearchConfig
+    {
+        [JsonProperty("Enable Player Name Trie Search (High Performance / High Memory Usage)")]
+        public bool EnablePlayerNameSearchTrie { get; set; }
+    }
 }

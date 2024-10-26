@@ -1,20 +1,21 @@
 ﻿using System;
 using Oxide.Ext.Discord.Data;
 
-namespace Oxide.Ext.Discord.Exceptions.Data;
-
-/// <summary>
-/// Exception for Data Info not being fouind
-/// </summary>
-public class DataInfoNotFoundException : BaseDiscordException
+namespace Oxide.Ext.Discord.Exceptions.Data
 {
-    private DataInfoNotFoundException(string message) : base(message) { }
-
-    internal static void ThrowIfDataInfoNotFound(Type type, DataFileInfo info)
+    /// <summary>
+    /// Exception for Data Info not being fouind
+    /// </summary>
+    public class DataInfoNotFoundException : BaseDiscordException
     {
-        if (info == null)
+        private DataInfoNotFoundException(string message) : base(message) { }
+
+        internal static void ThrowIfDataInfoNotFound(Type type, DataFileInfo info)
         {
-            throw new DataInfoNotFoundException($"Failed to find DataInfo for type: {type.FullName}");
+            if (info == null)
+            {
+                throw new DataInfoNotFoundException($"Failed to find DataInfo for type: {type.FullName}");
+            }
         }
     }
 }

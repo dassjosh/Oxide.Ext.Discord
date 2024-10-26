@@ -14,12 +14,55 @@ public struct PlayerId : IEquatable<PlayerId>
 | [IsValid](#isvalid-property) { get; } | Returns true if the ID is valid; false otherwise |
 | [Player](#player-property) { get; } | Returns the IPlayer for the Player ID |
 | readonly [Id](#id-field) | ID of the player |
+| override [Equals](#equals-method)(…) |  |
+| [Equals](#equals-method)(…) |  |
+| override [GetHashCode](#gethashcode-method)() |  |
 
 ## See Also
 
 * namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
 * [PlayerId.cs](../../../../Oxide.Ext.Discord/Libraries/PlayerId.cs)
+   
+   
+# Equals method (1 of 2)
+
+```csharp
+public override bool Equals(object obj)
+```
+
+## See Also
+
+* struct [PlayerId](./PlayerId.md)
+* namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+
+---
+
+# Equals method (2 of 2)
+
+```csharp
+public bool Equals(PlayerId other)
+```
+
+## See Also
+
+* struct [PlayerId](./PlayerId.md)
+* namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# GetHashCode method
+
+```csharp
+public override int GetHashCode()
+```
+
+## See Also
+
+* struct [PlayerId](./PlayerId.md)
+* namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
    
 # PlayerId constructor (1 of 2)

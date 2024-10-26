@@ -2,39 +2,40 @@
 using Oxide.Ext.Discord.Cache;
 using Oxide.Ext.Discord.Libraries;
 
-namespace Oxide.Ext.Discord.Types;
-
-internal class Boxed<T> : IBoxed
+namespace Oxide.Ext.Discord.Types
 {
-    public T Value;
-    private bool _disposed;
-    internal DiscordPluginPool Pool;
-
-    public override string ToString() => StringCache<T>.Instance.ToString(Value);
-
-    internal void LeavePool()
+    internal class Boxed<T> : IBoxed
     {
-        _disposed = false;
-    }
+        public T Value;
+        private bool _disposed;
+        internal DiscordPluginPool Pool;
 
-    public IBoxed Copy()
-    {
-        return Pool.GetBoxed(Value);
-    }
-        
-    public void Dispose()
-    {
-        if (_disposed)
+        public override string ToString() => StringCache<T>.Instance.ToString(Value);
+
+        internal void LeavePool()
         {
-            throw new ObjectDisposedException($"{nameof(Boxed<T>)}<{typeof(T).Name}>");
+            _disposed = false;
         }
-            
-        _disposed = true;
-        DiscordPool.Internal.FreeBoxed(this);
-    }
-}
 
-internal interface IBoxed : IDisposable
-{
-    IBoxed Copy();
+        public IBoxed Copy()
+        {
+            return Pool.GetBoxed(Value);
+        }
+        
+        public void Dispose()
+        {
+            if (_disposed)
+            {
+                throw new ObjectDisposedException($"{nameof(Boxed<T>)}<{typeof(T).Name}>");
+            }
+            
+            _disposed = true;
+            DiscordPool.Internal.FreeBoxed(this);
+        }
+    }
+
+    internal interface IBoxed : IDisposable
+    {
+        IBoxed Copy();
+    }
 }

@@ -3,15 +3,16 @@
 
 using System;
 
-namespace Oxide.Ext.Discord.Interfaces;
-
-/// <summary>
-/// Interface for a promise that can be rejected.
-/// </summary>
-public interface IRejectable
+namespace Oxide.Ext.Discord.Interfaces
 {
     /// <summary>
-    /// Reject the promise with an exception.
+    /// Interface for a promise that can be rejected.
     /// </summary>
-    void Reject(Exception ex);
+    public interface IRejectable
+    {
+        /// <summary>
+        /// Reject the promise with an exception.
+        /// </summary>
+        void Reject(Exception ex);
+    }
 }

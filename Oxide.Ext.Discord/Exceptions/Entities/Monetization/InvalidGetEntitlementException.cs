@@ -1,30 +1,30 @@
-﻿namespace Oxide.Ext.Discord.Exceptions;
-
-/// <summary>
-/// Exceptions for invalid entitlements
-/// </summary>
-public class InvalidGetEntitlementException : BaseDiscordException
+﻿namespace Oxide.Ext.Discord.Exceptions
 {
     /// <summary>
-    /// Constructor
+    /// Exceptions for invalid entitlements
     /// </summary>
-    /// <param name="message">Exception message</param>
-    private InvalidGetEntitlementException(string message) : base(message) { }
-        
-    internal static void ThrowIfInvalidLimit(int? limit)
+    public class InvalidGetEntitlementException : BaseDiscordException
     {
-        const int MinLimit = 1;
-        const int MaxLimit = 100;
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="message">Exception message</param>
+        private InvalidGetEntitlementException(string message) : base(message) { }
 
-        switch (limit)
+        internal static void ThrowIfInvalidLimit(int? limit)
         {
-            case null:
-                return;
-            case < MinLimit:
-                throw new InvalidGetEntitlementException($"Limit cannot be less than {MinLimit}");
-            case > MaxLimit:
-                throw new InvalidGetEntitlementException($"Limit cannot be more than {MaxLimit}");
-        }
+            const int MinLimit = 1;
+            const int MaxLimit = 100;
 
+            switch (limit)
+            {
+                case null:
+                    return;
+                case < MinLimit:
+                    throw new InvalidGetEntitlementException($"Limit cannot be less than {MinLimit}");
+                case > MaxLimit:
+                    throw new InvalidGetEntitlementException($"Limit cannot be more than {MaxLimit}");
+            }
+        }
     }
 }

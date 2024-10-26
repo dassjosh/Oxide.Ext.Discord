@@ -437,6 +437,7 @@
 | class [DiscordApplicationException](./Oxide.Ext.Discord/Exceptions/DiscordApplicationException.md) | Exceptions for [`DiscordApplication`](./Oxide.Ext.Discord/Entities/DiscordApplication.md) |
 | class [DiscordClientException](./Oxide.Ext.Discord/Exceptions/DiscordClientException.md) | Exceptions for the [`DiscordClient`](./Oxide.Ext.Discord/Clients/DiscordClient.md) |
 | class [DiscordLocaleNotFoundException](./Oxide.Ext.Discord/Exceptions/DiscordLocaleNotFoundException.md) | Exception thrown when Discord Locale is not found |
+| class [DiscordLoggerException](./Oxide.Ext.Discord/Exceptions/DiscordLoggerException.md) | Exceptions for the [`DiscordClient`](./Oxide.Ext.Discord/Clients/DiscordClient.md) |
 | class [DiscordTemplateException](./Oxide.Ext.Discord/Exceptions/DiscordTemplateException.md) | Exception for Discord Templates |
 | class [DiscordWebSocketException](./Oxide.Ext.Discord/Exceptions/DiscordWebSocketException.md) | Represents an exception that occured with the websocket |
 | class [DuplicateTemplateException](./Oxide.Ext.Discord/Exceptions/DuplicateTemplateException.md) | Thrown when duplicate templates have been registered for the same type, plugin, and name |
@@ -708,7 +709,7 @@
 | class [RestRateLimit](./Oxide.Ext.Discord/Types/RestRateLimit.md) | Represents a rate limit for rest requests |
 | abstract class [Singleton&lt;T&gt;](./Oxide.Ext.Discord/Types/Singleton%7BT%7D.md) | Represents a singleton of type {T} |
 | class [UkkonenTrie&lt;T&gt;](./Oxide.Ext.Discord/Types/UkkonenTrie%7BT%7D.md) | A Ukkonen Suffix Trie |
-| struct [ValueStringBuilder](./Oxide.Ext.Discord/Types/ValueStringBuilder.md) |  |
+| struct [ValueStringBuilder](./Oxide.Ext.Discord/Types/ValueStringBuilder.md) | A non-heap-allocation allocating string builder |
 | class [WebsocketRateLimit](./Oxide.Ext.Discord/Types/WebsocketRateLimit.md) | Represents a WebSocket Rate Limit |
 
 ## Oxide.Ext.Discord.WebSockets namespace

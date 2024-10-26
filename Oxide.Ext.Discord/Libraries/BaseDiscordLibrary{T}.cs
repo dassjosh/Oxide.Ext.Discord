@@ -1,26 +1,27 @@
 ﻿using System;
 
-namespace Oxide.Ext.Discord.Libraries;
-
-/// <summary>
-/// Base Discord Library for Oxide Libraries 
-/// </summary>
-/// <typeparam name="TLibrary"></typeparam>
-public abstract class BaseDiscordLibrary<TLibrary> : BaseDiscordLibrary where TLibrary : BaseDiscordLibrary<TLibrary>
+namespace Oxide.Ext.Discord.Libraries
 {
-    internal static TLibrary Instance;
-        
     /// <summary>
-    /// Constructor
+    /// Base Discord Library for Oxide Libraries 
     /// </summary>
-    /// <exception cref="Exception">Thrown if the Library has already been initialized</exception>
-    protected BaseDiscordLibrary()
+    /// <typeparam name="TLibrary"></typeparam>
+    public abstract class BaseDiscordLibrary<TLibrary> : BaseDiscordLibrary where TLibrary : BaseDiscordLibrary<TLibrary>
     {
-        if (Instance != null)
+        internal static TLibrary Instance;
+        
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <exception cref="Exception">Thrown if the Library has already been initialized</exception>
+        protected BaseDiscordLibrary()
         {
-            throw new Exception($"Duplicate Library Instances for type {typeof(TLibrary).FullName}");
-        }
+            if (Instance != null)
+            {
+                throw new Exception($"Duplicate Library Instances for type {typeof(TLibrary).FullName}");
+            }
             
-        Instance = (TLibrary)this;
+            Instance = (TLibrary)this;
+        }
     }
 }

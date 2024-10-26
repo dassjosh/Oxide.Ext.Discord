@@ -1,44 +1,46 @@
 ﻿using System;
 
-namespace Oxide.Ext.Discord.Types;
-
-internal ref struct ReverseStringTokenizer
+namespace Oxide.Ext.Discord.Types
 {
-    private ReadOnlySpan<char> _remaining;
-    private readonly ReadOnlySpan<char> _token;
+    internal ref struct ReverseStringTokenizer
+    {
+        private ReadOnlySpan<char> _remaining;
+        private readonly ReadOnlySpan<char> _token;
 
-    public ReadOnlySpan<char> Current { get; private set; }
+        public ReadOnlySpan<char> Current { get; private set; }
         
-    public ReverseStringTokenizer(string str, string token)
-    {
-        _remaining = str;
-        _token = token;
-    }
-
-    public bool MoveNext()
-    {
-        if (_remaining.Length == 0)
+        public ReverseStringTokenizer(string str, string token)
         {
-            return false;
+            _remaining = str;
+            _token = token;
+            Current = default;
         }
-            
-        int index = _remaining.LastIndexOf(_token);
-        if (index < 0)
+
+        public bool MoveNext()
         {
-            Current = _remaining;
-            _remaining = default;
+            if (_remaining.Length == 0)
+            {
+                return false;
+            }
+            
+            int index = _remaining.LastIndexOf(_token);
+            if (index < 0)
+            {
+                Current = _remaining;
+                _remaining = default;
+                return true;
+            }
+            
+            int length = _remaining.Length - index;
+            if (length <= 1)
+            {
+                _remaining = _remaining.Slice(0, index);
+                return MoveNext();
+            }
+
+            Current = _remaining.Slice(index + 1, length - 1);
+            _remaining = _remaining.Slice(0, Math.Min(index, _remaining.Length));
             return true;
         }
-            
-        int length = _remaining.Length - index;
-        if (length <= 1)
-        {
-            _remaining = _remaining.Slice(0, index);
-            return MoveNext();
-        }
-
-        Current = _remaining.Slice(index + 1, length - 1);
-        _remaining = _remaining.Slice(0, Math.Min(index, _remaining.Length));
-        return true;
     }
 }

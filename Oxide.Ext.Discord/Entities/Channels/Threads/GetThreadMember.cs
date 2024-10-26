@@ -2,28 +2,29 @@
 using Oxide.Ext.Discord.Cache;
 using Oxide.Ext.Discord.Interfaces;
 
-namespace Oxide.Ext.Discord.Entities;
-
-/// <summary>
-/// Represents <a href="https://discord.com/developers/docs/resources/channel#get-thread-member-query-string-params">Get Thread Member Query String Params</a>
-/// </summary>
-public class GetThreadMember : IDiscordQueryString
+namespace Oxide.Ext.Discord.Entities
 {
     /// <summary>
-    /// Whether to include a guild member object for the thread member
+    /// Represents <a href="https://discord.com/developers/docs/resources/channel#get-thread-member-query-string-params">Get Thread Member Query String Params</a>
     /// </summary>
-    public bool WithMember { get; set; }
-        
-    ///<inheritdoc/>
-    public string ToQueryString()
+    public class GetThreadMember : IDiscordQueryString
     {
-        if (!WithMember)
+        /// <summary>
+        /// Whether to include a guild member object for the thread member
+        /// </summary>
+        public bool WithMember { get; set; }
+        
+        ///<inheritdoc/>
+        public string ToQueryString()
         {
-            return string.Empty;
-        }
+            if (!WithMember)
+            {
+                return string.Empty;
+            }
             
-        QueryStringBuilder builder = new();
-        builder.Add("with_member", StringCache<bool>.Instance.ToString(WithMember));
-        return builder.ToString();
+            QueryStringBuilder builder = new();
+            builder.Add("with_member", StringCache<bool>.Instance.ToString(WithMember));
+            return builder.ToString();
+        }
     }
 }

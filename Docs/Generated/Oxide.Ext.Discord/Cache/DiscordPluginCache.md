@@ -10,6 +10,7 @@ public sealed class DiscordPluginCache : Singleton<DiscordPluginCache>
 
 | name | description |
 | --- | --- |
+| [GetAllPlugins](#getallplugins-method)() | Returns a list of all plugins in the plugin folder |
 | [GetLoadablePlugins](#getloadableplugins-method)() | Returns a list of plugins that can be loaded by oxide Already loaded plugins are excluded from the list |
 | [GetLoadedPlugins](#getloadedplugins-method)() | Returns a list of plugins loaded by oxide |
 
@@ -42,6 +43,21 @@ Returns a list of plugins that can be loaded by oxide Already loaded plugins are
 
 ```csharp
 public IReadOnlyList<string> GetLoadablePlugins()
+```
+
+## See Also
+
+* class [DiscordPluginCache](./DiscordPluginCache.md)
+* namespace [Oxide.Ext.Discord.Cache](./CacheNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# GetAllPlugins method
+
+Returns a list of all plugins in the plugin folder
+
+```csharp
+public IReadOnlyList<string> GetAllPlugins()
 ```
 
 ## See Also

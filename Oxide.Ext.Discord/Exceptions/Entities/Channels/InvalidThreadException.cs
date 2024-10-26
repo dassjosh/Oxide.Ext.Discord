@@ -1,52 +1,53 @@
 using Oxide.Ext.Discord.Entities;
 
-namespace Oxide.Ext.Discord.Exceptions;
-
-/// <summary>
-/// Represents an exception for channel threads
-/// </summary>
-public class InvalidThreadException : BaseDiscordException
+namespace Oxide.Ext.Discord.Exceptions
 {
-    private InvalidThreadException(string message) : base(message) { }
-
-    internal static void ThrowIfInvalidAutoArchiveDuration(int? autoArchiveDuration)
+    /// <summary>
+    /// Represents an exception for channel threads
+    /// </summary>
+    public class InvalidThreadException : BaseDiscordException
     {
-        if (!autoArchiveDuration.HasValue)
+        private InvalidThreadException(string message) : base(message) { }
+
+        internal static void ThrowIfInvalidAutoArchiveDuration(int? autoArchiveDuration)
         {
-            return;
-        }
+            if (!autoArchiveDuration.HasValue)
+            {
+                return;
+            }
             
-        switch (autoArchiveDuration.Value)
-        {
-            case 60:
-            case 1440:
-            case 4320:
-            case 10080:
-                break;
-            default:
-                throw new InvalidThreadException("AutoArchiveDuration must be one of 60, 1440, 4320, or 10080");
+            switch (autoArchiveDuration.Value)
+            {
+                case 60:
+                case 1440:
+                case 4320:
+                case 10080:
+                    break;
+                default:
+                    throw new InvalidThreadException("AutoArchiveDuration must be one of 60, 1440, 4320, or 10080");
+            }
         }
-    }
 
-    internal static void ThrowIfInvalidChannelType(ChannelType type)
-    {
-        switch (type)
+        internal static void ThrowIfInvalidChannelType(ChannelType type)
         {
-            case ChannelType.GuildNewsThread:
-            case ChannelType.GuildPublicThread:
-            case ChannelType.GuildPrivateThread:
-                break;
+            switch (type)
+            {
+                case ChannelType.GuildNewsThread:
+                case ChannelType.GuildPublicThread:
+                case ChannelType.GuildPrivateThread:
+                    break;
                 
-            default:
-                throw new InvalidThreadException("Type must be one of GuildNewsThread, GuildPublicThread, or GuildPrivateThread");
+                default:
+                    throw new InvalidThreadException("Type must be one of GuildNewsThread, GuildPublicThread, or GuildPrivateThread");
+            }
         }
-    }
 
-    internal static void ThrowIfInvalidForumCreateMessage(MessageCreate create)
-    {
-        if (create == null)
+        internal static void ThrowIfInvalidForumCreateMessage(MessageCreate create)
         {
-            throw new InvalidThreadException("Message cannot be null for ThreadForumCreate");
+            if (create == null)
+            {
+                throw new InvalidThreadException("Message cannot be null for ThreadForumCreate");
+            }
         }
     }
 }

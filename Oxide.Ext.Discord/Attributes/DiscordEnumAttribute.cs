@@ -1,14 +1,15 @@
 ﻿using System;
 
-namespace Oxide.Ext.Discord.Attributes;
-
-[AttributeUsage(AttributeTargets.Field)]
-internal class DiscordEnumAttribute : Attribute
+namespace Oxide.Ext.Discord.Attributes
 {
-    public readonly string Name;
-
-    public DiscordEnumAttribute(string name)
+    [AttributeUsage(AttributeTargets.Field)]
+    internal class DiscordEnumAttribute : Attribute
     {
-        Name = name;
+        public readonly string Name;
+
+        public DiscordEnumAttribute(string name)
+        {
+            Name = name;
+        }
     }
 }

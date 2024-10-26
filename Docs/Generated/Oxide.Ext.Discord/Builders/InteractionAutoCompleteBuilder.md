@@ -14,6 +14,7 @@ public class InteractionAutoCompleteBuilder
 | [Count](#count-property) { get; } | Number of added choices |
 | [AddAllOnlineFirstPlayers](#addallonlinefirstplayers-method)(…) | Adds Online Players to the list first If there is still space add Offline Players |
 | [AddAllPlayers](#addallplayers-method)(…) | Adds Any Player to the list |
+| [AddAllPlugins](#addallplugins-method)(…) | Adds a list of all plugins in the oxide/plugins folder. Includes loaded and unloaded. |
 | [AddByPlayerId](#addbyplayerid-method)(…) | Adds a player by player ID to the list |
 | [AddChoice](#addchoice-method-1-of-3)(…) | Adds a [`CommandOptionChoice`](../Entities/CommandOptionChoice.md) to the response (3 methods) |
 | [AddChoices](#addchoices-method)(…) | Adds a collection of [`CommandOptionChoice`](../Entities/CommandOptionChoice.md) to the response |
@@ -588,6 +589,30 @@ Adds a list of plugins that can be loaded
 
 ```csharp
 public void AddLoadablePlugins(string filter = null, 
+    StringComparison comparison = StringComparison.OrdinalIgnoreCase, 
+    AutoCompleteSearchMode search = AutoCompleteSearchMode.StartsWith)
+```
+
+| parameter | description |
+| --- | --- |
+| filter | String to filter by |
+| comparison | StringComparison to use |
+| search | [`AutoCompleteSearchMode`](./AutoCompleteSearchMode.md) Filter search mode |
+
+## See Also
+
+* enum [AutoCompleteSearchMode](./AutoCompleteSearchMode.md)
+* class [InteractionAutoCompleteBuilder](./InteractionAutoCompleteBuilder.md)
+* namespace [Oxide.Ext.Discord.Builders](./BuildersNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# AddAllPlugins method
+
+Adds a list of all plugins in the oxide/plugins folder. Includes loaded and unloaded.
+
+```csharp
+public void AddAllPlugins(string filter = null, 
     StringComparison comparison = StringComparison.OrdinalIgnoreCase, 
     AutoCompleteSearchMode search = AutoCompleteSearchMode.StartsWith)
 ```

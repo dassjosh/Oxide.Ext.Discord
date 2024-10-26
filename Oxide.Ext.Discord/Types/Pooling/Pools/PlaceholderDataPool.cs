@@ -1,31 +1,32 @@
 using Oxide.Ext.Discord.Libraries;
 
-namespace Oxide.Ext.Discord.Types;
-
-internal class PlaceholderDataPool : BasePool<BasePoolable, PlaceholderDataPool>
+namespace Oxide.Ext.Discord.Types
 {
-    protected override PoolSize GetPoolSize(PoolSettings settings) => settings.PlaceholderDataPoolSize;
-        
-    protected override BasePoolable CreateNew()
+    internal class PlaceholderDataPool : BasePool<BasePoolable, PlaceholderDataPool>
     {
-        PlaceholderData data = new();
-        data.OnInit(PluginPool, this);
-        return data;
-    }
+        protected override PoolSize GetPoolSize(PoolSettings settings) => settings.PlaceholderDataPoolSize;
         
-    protected override void OnGetItem(BasePoolable item)
-    {
-        item.LeavePoolInternal();
-    }
-        
-    protected override bool OnFreeItem(ref BasePoolable item)
-    {
-        if (item.Disposed)
+        protected override BasePoolable CreateNew()
         {
-            return false;
+            PlaceholderData data = new();
+            data.OnInit(PluginPool, this);
+            return data;
         }
+        
+        protected override void OnGetItem(BasePoolable item)
+        {
+            item.LeavePoolInternal();
+        }
+        
+        protected override bool OnFreeItem(ref BasePoolable item)
+        {
+            if (item.Disposed)
+            {
+                return false;
+            }
             
-        item.EnterPoolInternal();
-        return true;
+            item.EnterPoolInternal();
+            return true;
+        }
     }
 }

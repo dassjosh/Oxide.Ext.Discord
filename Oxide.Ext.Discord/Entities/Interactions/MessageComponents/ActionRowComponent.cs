@@ -3,38 +3,39 @@ using Newtonsoft.Json;
 using Oxide.Ext.Discord.Exceptions;
 using Oxide.Ext.Discord.Json;
 
-namespace Oxide.Ext.Discord.Entities;
-
-/// <summary>
-/// Represents <a href="https://discord.com/developers/docs/interactions/message-components#actionrow">Action Row Component</a> within discord
-/// </summary>
-[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-public class ActionRowComponent : BaseComponent
+namespace Oxide.Ext.Discord.Entities
 {
     /// <summary>
-    /// The components on the action row
+    /// Represents <a href="https://discord.com/developers/docs/interactions/message-components#actionrow">Action Row Component</a> within discord
     /// </summary>
-    [JsonConverter(typeof(MessageComponentsConverter))]
-    [JsonProperty("components")]
-    public List<BaseComponent> Components { get; } = new();
-
-    /// <summary>
-    /// Constructor for ActionRowComponent
-    /// Sets the Type to ActionRow
-    /// </summary>
-    public ActionRowComponent()
+    [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
+    public class ActionRowComponent : BaseComponent
     {
-        Type = MessageComponentType.ActionRow;
-    }
+        /// <summary>
+        /// The components on the action row
+        /// </summary>
+        [JsonConverter(typeof(MessageComponentsConverter))]
+        [JsonProperty("components")]
+        public List<BaseComponent> Components { get; } = new();
 
-    ///<inheritdoc />
-    public override void Validate()
-    {
-        InvalidMessageComponentException.ThrowIfInvalidMaxActionRows(Components.Count);
-        for (int index = 0; index < Components.Count; index++)
+        /// <summary>
+        /// Constructor for ActionRowComponent
+        /// Sets the Type to ActionRow
+        /// </summary>
+        public ActionRowComponent()
         {
-            BaseComponent component = Components[index];
-            component.Validate();
+            Type = MessageComponentType.ActionRow;
+        }
+
+        ///<inheritdoc />
+        public override void Validate()
+        {
+            InvalidMessageComponentException.ThrowIfInvalidMaxActionRows(Components.Count);
+            for (int index = 0; index < Components.Count; index++)
+            {
+                BaseComponent component = Components[index];
+                component.Validate();
+            }
         }
     }
 }

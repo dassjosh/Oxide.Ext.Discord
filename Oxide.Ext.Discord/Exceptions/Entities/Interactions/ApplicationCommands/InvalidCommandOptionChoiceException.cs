@@ -1,59 +1,60 @@
 using Oxide.Ext.Discord.Entities;
 
-namespace Oxide.Ext.Discord.Exceptions;
-
-/// <summary>
-/// Represents an error in application command option choice
-/// </summary>
-public class InvalidCommandOptionChoiceException : BaseDiscordException
+namespace Oxide.Ext.Discord.Exceptions
 {
-    private InvalidCommandOptionChoiceException(string message) : base(message) { }
-        
-    internal static void ThrowIfMaxChoices(int count)
+    /// <summary>
+    /// Represents an error in application command option choice
+    /// </summary>
+    public class InvalidCommandOptionChoiceException : BaseDiscordException
     {
-        const int MaxChoices = 25;
-            
-        if (count > MaxChoices)
+        private InvalidCommandOptionChoiceException(string message) : base(message) { }
+        
+        internal static void ThrowIfMaxChoices(int count)
         {
-            throw new InvalidCommandOptionChoiceException($"Cannot have more than {MaxChoices} Command Option Choices");
+            const int MaxChoices = 25;
+            
+            if (count > MaxChoices)
+            {
+                throw new InvalidCommandOptionChoiceException($"Cannot have more than {MaxChoices} Command Option Choices");
+            }
         }
-    }
 
-    internal static void ThrowIfInvalidName(string name, bool allowNullOrEmpty)
-    {
-        const int MaxLength = 100;
-            
-        if (!allowNullOrEmpty && string.IsNullOrEmpty(name))
+        internal static void ThrowIfInvalidName(string name, bool allowNullOrEmpty)
         {
-            throw new InvalidCommandOptionChoiceException("Name cannot be less than 1 character");
-        }
+            const int MaxLength = 100;
             
-        if (name.Length > MaxLength)
-        {
-            throw new InvalidCommandOptionChoiceException($"Name cannot be more than {MaxLength} characters");
+            if (!allowNullOrEmpty && string.IsNullOrEmpty(name))
+            {
+                throw new InvalidCommandOptionChoiceException("Name cannot be less than 1 character");
+            }
+            
+            if (name.Length > MaxLength)
+            {
+                throw new InvalidCommandOptionChoiceException($"Name cannot be more than {MaxLength} characters");
+            }
         }
-    }
         
-    internal static void ThrowIfInvalidStringValue(string value)
-    {
-        const int MaxLength = 100;
-            
-        if (string.IsNullOrEmpty(value))
+        internal static void ThrowIfInvalidStringValue(string value)
         {
-            throw new InvalidCommandOptionChoiceException("Value cannot be less than 1 character");
-        }
+            const int MaxLength = 100;
             
-        if (value.Length > MaxLength)
-        {
-            throw new InvalidCommandOptionChoiceException($"Value cannot be more than {MaxLength} characters");
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new InvalidCommandOptionChoiceException("Value cannot be less than 1 character");
+            }
+            
+            if (value.Length > MaxLength)
+            {
+                throw new InvalidCommandOptionChoiceException($"Value cannot be more than {MaxLength} characters");
+            }
         }
-    }
         
-    internal static void ThrowIfInvalidType(CommandOptionType value, CommandOptionType expected)
-    {
-        if (value != expected)
+        internal static void ThrowIfInvalidType(CommandOptionType value, CommandOptionType expected)
         {
-            throw new InvalidCommandOptionChoiceException($"Cannot add a {value} choice type to type: {expected}");
+            if (value != expected)
+            {
+                throw new InvalidCommandOptionChoiceException($"Cannot add a {value} choice type to type: {expected}");
+            }
         }
     }
 }

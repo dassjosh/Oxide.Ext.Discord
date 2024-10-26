@@ -13,6 +13,9 @@ public struct TemplateKey : IDiscordKey, IEquatable<TemplateKey>
 | [TemplateKey](#templatekey-constructor)(…) | Constructor |
 | [IsValid](#isvalid-property) { get; } | If [`Name`](#name-field) Is a Valid Key |
 | readonly [Name](#name-field) | Placeholder Key |
+| override [Equals](#equals-method)(…) |  |
+| [Equals](#equals-method)(…) |  |
+| override [GetHashCode](#gethashcode-method)() |  |
 | override [ToString](#tostring-method)() | Returns the template name |
 | [implicit operator](#templatekey-implicit-operator) | Implicitly converts to String by calling the [`ToString`](#tostring-method) method. |
 
@@ -50,6 +53,46 @@ public static implicit operator string(TemplateKey key)
 | parameter | description |
 | --- | --- |
 | key |  |
+
+## See Also
+
+* struct [TemplateKey](./TemplateKey.md)
+* namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# Equals method (1 of 2)
+
+```csharp
+public override bool Equals(object obj)
+```
+
+## See Also
+
+* struct [TemplateKey](./TemplateKey.md)
+* namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+
+---
+
+# Equals method (2 of 2)
+
+```csharp
+public bool Equals(TemplateKey other)
+```
+
+## See Also
+
+* struct [TemplateKey](./TemplateKey.md)
+* namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# GetHashCode method
+
+```csharp
+public override int GetHashCode()
+```
 
 ## See Also
 

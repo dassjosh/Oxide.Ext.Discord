@@ -363,7 +363,7 @@ Appends a field with the given name and enum value
 
 ```csharp
 public void AppendFieldEnum<T>(string name, T value)
-    where T : struct, IComparable, IFormattable, IConvertible
+    where T : Enum, IComparable, IFormattable, IConvertible
 ```
 
 | parameter | description |

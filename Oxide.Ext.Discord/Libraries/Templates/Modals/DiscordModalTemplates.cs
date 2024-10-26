@@ -1,15 +1,16 @@
 using Oxide.Ext.Discord.Interfaces;
 
-namespace Oxide.Ext.Discord.Libraries;
-
-/// <summary>
-/// Modal Templates Library
-/// </summary>
-public class DiscordModalTemplates : BaseMessageTemplateLibrary<DiscordModalTemplate>
+namespace Oxide.Ext.Discord.Libraries
 {
     /// <summary>
-    /// Constructor
+    /// Modal Templates Library
     /// </summary>
-    /// <param name="logger"></param>
-    internal DiscordModalTemplates(ILogger logger) : base(TemplateType.Modal, logger) { }
+    public class DiscordModalTemplates : BaseMessageTemplateLibrary<DiscordModalTemplate>
+    {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="logger"></param>
+        internal DiscordModalTemplates(ILogger logger) : base(TemplateType.Modal, logger) { }
+    }
 }

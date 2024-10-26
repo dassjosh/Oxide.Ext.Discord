@@ -12,8 +12,13 @@ public struct PluginId : IDebugLoggable, IEquatable<PluginId>
 | --- | --- |
 | [IsValid](#isvalid-property) { get; } | Returns if the PluginId is valid |
 | readonly [Id](#id-field) | Hashcode value of the Plugin Name |
+| override [Equals](#equals-method)(…) |  |
+| [Equals](#equals-method)(…) |  |
+| override [GetHashCode](#gethashcode-method)() |  |
 | [LogDebug](#logdebug-method)(…) |  |
 | override [ToString](#tostring-method)() | Returns the PluginName |
+| [operator ==](#pluginid-equality-operator) |  |
+| [operator !=](#pluginid-inequality-operator) |  |
 
 ## See Also
 
@@ -47,6 +52,72 @@ public void LogDebug(DebugLogger logger)
 ## See Also
 
 * class [DebugLogger](../Logging/DebugLogger.md)
+* struct [PluginId](./PluginId.md)
+* namespace [Oxide.Ext.Discord.Plugins](./PluginsNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# Equals method (1 of 2)
+
+```csharp
+public override bool Equals(object obj)
+```
+
+## See Also
+
+* struct [PluginId](./PluginId.md)
+* namespace [Oxide.Ext.Discord.Plugins](./PluginsNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+
+---
+
+# Equals method (2 of 2)
+
+```csharp
+public bool Equals(PluginId other)
+```
+
+## See Also
+
+* struct [PluginId](./PluginId.md)
+* namespace [Oxide.Ext.Discord.Plugins](./PluginsNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# GetHashCode method
+
+```csharp
+public override int GetHashCode()
+```
+
+## See Also
+
+* struct [PluginId](./PluginId.md)
+* namespace [Oxide.Ext.Discord.Plugins](./PluginsNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# PluginId Inequality operator
+
+```csharp
+public static bool operator !=(PluginId left, PluginId right)
+```
+
+## See Also
+
+* struct [PluginId](./PluginId.md)
+* namespace [Oxide.Ext.Discord.Plugins](./PluginsNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# PluginId Equality operator
+
+```csharp
+public static bool operator ==(PluginId left, PluginId right)
+```
+
+## See Also
+
 * struct [PluginId](./PluginId.md)
 * namespace [Oxide.Ext.Discord.Plugins](./PluginsNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)

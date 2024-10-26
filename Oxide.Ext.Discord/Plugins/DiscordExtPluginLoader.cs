@@ -1,9 +1,10 @@
 using System;
 using Oxide.Core.Plugins;
 
-namespace Oxide.Ext.Discord.Plugins;
-
-internal class DiscordExtPluginLoader : PluginLoader
+namespace Oxide.Ext.Discord.Plugins
 {
-    public override Type[] CorePlugins => [typeof(DiscordExtensionCore)];
+    internal class DiscordExtPluginLoader : PluginLoader
+    {
+        public override Type[] CorePlugins => new[] {typeof(DiscordExtensionCore)};
+    }
 }

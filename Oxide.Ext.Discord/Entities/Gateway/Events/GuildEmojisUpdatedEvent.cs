@@ -2,24 +2,25 @@
 using Oxide.Ext.Discord.Json;
 using Oxide.Plugins;
 
-namespace Oxide.Ext.Discord.Entities;
-
-/// <summary>
-/// Represents <a href="https://discord.com/developers/docs/topics/gateway#guild-emojis-update">Guild Emojis Update</a>
-/// </summary>
-[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-public class GuildEmojisUpdatedEvent
+namespace Oxide.Ext.Discord.Entities
 {
     /// <summary>
-    /// ID of the guild
+    /// Represents <a href="https://discord.com/developers/docs/topics/gateway#guild-emojis-update">Guild Emojis Update</a>
     /// </summary>
-    [JsonProperty("guild_id")]
-    public Snowflake GuildId { get; set; }
+    [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
+    public class GuildEmojisUpdatedEvent
+    {
+        /// <summary>
+        /// ID of the guild
+        /// </summary>
+        [JsonProperty("guild_id")]
+        public Snowflake GuildId { get; set; }
 
-    /// <summary>
-    /// List of emojis
-    /// </summary>
-    [JsonConverter(typeof(HashListConverter<DiscordEmoji>))]
-    [JsonProperty("emojis")]
-    public Hash<Snowflake, DiscordEmoji> Emojis { get; set; }
+        /// <summary>
+        /// List of emojis
+        /// </summary>
+        [JsonConverter(typeof(HashListConverter<DiscordEmoji>))]
+        [JsonProperty("emojis")]
+        public Hash<Snowflake, DiscordEmoji> Emojis { get; set; }
+    }
 }

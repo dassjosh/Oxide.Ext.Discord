@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Oxide.Ext.Discord.Entities;
-
-/// <summary>
-/// Interaction Auto Complete Response Message
-/// </summary>
-public class InteractionAutoCompleteMessage
+namespace Oxide.Ext.Discord.Entities
 {
     /// <summary>
-    /// Autocomplete choices (max of 25 choices)
+    /// Interaction Auto Complete Response Message
     /// </summary>
-    [JsonProperty("choices")]
-    public List<CommandOptionChoice> Choices { get; set; }
+    public class InteractionAutoCompleteMessage
+    {
+        /// <summary>
+        /// Autocomplete choices (max of 25 choices)
+        /// </summary>
+        [JsonProperty("choices")]
+        public List<CommandOptionChoice> Choices { get; set; }
+    }
 }

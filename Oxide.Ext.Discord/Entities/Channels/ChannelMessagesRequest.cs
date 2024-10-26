@@ -2,61 +2,62 @@ using Newtonsoft.Json;
 using Oxide.Ext.Discord.Builders;
 using Oxide.Ext.Discord.Interfaces;
 
-namespace Oxide.Ext.Discord.Entities;
-
-/// <summary>
-/// Represents <a href="https://discord.com/developers/docs/resources/channel#get-channel-messages">Get Channel Messages Request</a>
-/// </summary>
-[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-public class ChannelMessagesRequest : IDiscordQueryString
+namespace Oxide.Ext.Discord.Entities
 {
     /// <summary>
-    /// Get messages around this message ID
-    /// Before, after, and around keys are mutually exclusive, only one may be passed at a time
+    /// Represents <a href="https://discord.com/developers/docs/resources/channel#get-channel-messages">Get Channel Messages Request</a>
     /// </summary>
-    public Snowflake? Around { get; set; }
-        
-    /// <summary>
-    /// Get messages before this message ID
-    /// Before, after, and around keys are mutually exclusive, only one may be passed at a time
-    /// </summary>
-    public Snowflake? Before { get; set; }
-        
-    /// <summary>
-    /// Get messages after this message ID
-    /// Before, after, and around keys are mutually exclusive, only one may be passed at a time
-    /// </summary>
-    public Snowflake? After { get; set; }
-        
-    /// <summary>
-    /// Max number of messages to return (1-100)
-    /// </summary>
-    public int? Limit { get; set; }
-
-    /// <inheritdoc/>
-    public string ToQueryString()
+    [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
+    public class ChannelMessagesRequest : IDiscordQueryString
     {
-        QueryStringBuilder builder = new();
+        /// <summary>
+        /// Get messages around this message ID
+        /// Before, after, and around keys are mutually exclusive, only one may be passed at a time
+        /// </summary>
+        public Snowflake? Around { get; set; }
+        
+        /// <summary>
+        /// Get messages before this message ID
+        /// Before, after, and around keys are mutually exclusive, only one may be passed at a time
+        /// </summary>
+        public Snowflake? Before { get; set; }
+        
+        /// <summary>
+        /// Get messages after this message ID
+        /// Before, after, and around keys are mutually exclusive, only one may be passed at a time
+        /// </summary>
+        public Snowflake? After { get; set; }
+        
+        /// <summary>
+        /// Max number of messages to return (1-100)
+        /// </summary>
+        public int? Limit { get; set; }
 
-        //Per Documentation "The before, after, and around keys are mutually exclusive, only one may be passed at a time."
-        if (Around.HasValue)
+        /// <inheritdoc/>
+        public string ToQueryString()
         {
-            builder.Add("around", Around.Value.ToString());
-        }
-        else if (Before.HasValue)
-        {
-            builder.Add("before", Before.Value.ToString());
-        }
-        else if (After.HasValue)
-        {
-            builder.Add("after", After.Value.ToString());
-        }
+            QueryStringBuilder builder = new();
+
+            //Per Documentation "The before, after, and around keys are mutually exclusive, only one may be passed at a time."
+            if (Around.HasValue)
+            {
+                builder.Add("around", Around.Value.ToString());
+            }
+            else if (Before.HasValue)
+            {
+                builder.Add("before", Before.Value.ToString());
+            }
+            else if (After.HasValue)
+            {
+                builder.Add("after", After.Value.ToString());
+            }
             
-        if (Limit.HasValue)
-        {
-            builder.Add("limit", Limit.Value.ToString());
-        }
+            if (Limit.HasValue)
+            {
+                builder.Add("limit", Limit.Value.ToString());
+            }
 
-        return builder.ToString();
+            return builder.ToString();
+        }
     }
 }

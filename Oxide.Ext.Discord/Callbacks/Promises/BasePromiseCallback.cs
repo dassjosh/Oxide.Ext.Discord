@@ -2,52 +2,53 @@
 using Oxide.Core;
 using Oxide.Ext.Discord.Types;
 
-namespace Oxide.Ext.Discord.Callbacks;
-
-internal abstract class BasePromiseCallback : BasePoolable
+namespace Oxide.Ext.Discord.Callbacks
 {
-    internal readonly Action<Exception> RunRejected;
-    private Action<Exception> _onFail;
-    private readonly Action _dispose;
-    private BasePromise _rejectable;
-
-    protected BasePromiseCallback()
+    internal abstract class BasePromiseCallback : BasePoolable
     {
-        RunRejected = FailInternal;
-        _dispose = Dispose;
-    }
+        internal readonly Action<Exception> RunRejected;
+        private Action<Exception> _onFail;
+        private readonly Action _dispose;
+        private BasePromise _rejectable;
 
-    protected void OnInit(BasePromise rejectable, Action<Exception> onFail)
-    {
-        _rejectable = rejectable;
-        _onFail = onFail;
-    }
-
-    private void FailInternal(Exception exception)
-    {
-        try
+        protected BasePromiseCallback()
         {
-            _onFail?.Invoke(exception);
-            _rejectable.Reject(exception);
+            RunRejected = FailInternal;
+            _dispose = Dispose;
         }
-        catch (Exception ex)
-        {
-            _rejectable.Reject(ex);
-        }
-        finally
-        {
-            DelayDispose();
-        }
-    }
 
-    protected override void EnterPool()
-    {
-        _rejectable = null;
-        _onFail = null;
-    }
+        protected void OnInit(BasePromise rejectable, Action<Exception> onFail)
+        {
+            _rejectable = rejectable;
+            _onFail = onFail;
+        }
 
-    protected void DelayDispose()
-    {
-        Interface.Oxide.NextTick(_dispose);
+        private void FailInternal(Exception exception)
+        {
+            try
+            {
+                _onFail?.Invoke(exception);
+                _rejectable.Reject(exception);
+            }
+            catch (Exception ex)
+            {
+                _rejectable.Reject(ex);
+            }
+            finally
+            {
+                DelayDispose();
+            }
+        }
+
+        protected override void EnterPool()
+        {
+            _rejectable = null;
+            _onFail = null;
+        }
+
+        protected void DelayDispose()
+        {
+            Interface.Oxide.NextTick(_dispose);
+        }
     }
 }

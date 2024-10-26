@@ -10,6 +10,7 @@
 | class [DiscordApplicationException](./DiscordApplicationException.md) | Exceptions for [`DiscordApplication`](./Oxide.Ext.Discord/Entities/DiscordApplication.md) |
 | class [DiscordClientException](./DiscordClientException.md) | Exceptions for the [`DiscordClient`](./Oxide.Ext.Discord/Clients/DiscordClient.md) |
 | class [DiscordLocaleNotFoundException](./DiscordLocaleNotFoundException.md) | Exception thrown when Discord Locale is not found |
+| class [DiscordLoggerException](./DiscordLoggerException.md) | Exceptions for the [`DiscordClient`](./Oxide.Ext.Discord/Clients/DiscordClient.md) |
 | class [DiscordTemplateException](./DiscordTemplateException.md) | Exception for Discord Templates |
 | class [DiscordWebSocketException](./DiscordWebSocketException.md) | Represents an exception that occured with the websocket |
 | class [DuplicateTemplateException](./DuplicateTemplateException.md) | Thrown when duplicate templates have been registered for the same type, plugin, and name |

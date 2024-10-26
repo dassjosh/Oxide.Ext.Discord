@@ -1,27 +1,28 @@
 ﻿using System;
 using System.Reflection;
 
-namespace Oxide.Ext.Discord.Extensions;
-
-internal static class MemberInfoExt
+namespace Oxide.Ext.Discord.Extensions
 {
-    internal static void SetMemberValue(this MemberInfo info, object instance, object value)
+    internal static class MemberInfoExt
     {
-        switch (info.MemberType)
+        internal static void SetMemberValue(this MemberInfo info, object instance, object value)
         {
-            case MemberTypes.Field:
-                ((FieldInfo)info).SetValue(instance, value);
-                break;
-            case MemberTypes.Property:
-                PropertyInfo property = ((PropertyInfo)info);
-                if (property.CanWrite)
-                {
-                    ((PropertyInfo)info).SetValue(instance, value);
+            switch (info.MemberType)
+            {
+                case MemberTypes.Field:
+                    ((FieldInfo)info).SetValue(instance, value);
                     break;
-                }
-                throw new Exception($"{property.DeclaringType?.Name}.{property.Name} does not support writing");
-            default:
-                throw new Exception("Invalid Member Type. This method only supports MemberTypes.Field or MemberTypes.Property");
+                case MemberTypes.Property:
+                    PropertyInfo property = ((PropertyInfo)info);
+                    if (property.CanWrite)
+                    {
+                        ((PropertyInfo)info).SetValue(instance, value);
+                        break;
+                    }
+                    throw new Exception($"{property.DeclaringType?.Name}.{property.Name} does not support writing");
+                default:
+                    throw new Exception("Invalid Member Type. This method only supports MemberTypes.Field or MemberTypes.Property");
+            }
         }
     }
 }

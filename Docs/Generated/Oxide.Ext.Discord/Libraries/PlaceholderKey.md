@@ -14,6 +14,9 @@ public struct PlaceholderKey : IComparable<PlaceholderKey>, IDiscordKey, IEquata
 | [IsValid](#isvalid-property) { get; } | If [`Placeholder`](#placeholder-field) Is a Valid Key |
 | readonly [Placeholder](#placeholder-field) | Placeholder Key |
 | [CompareTo](#compareto-method)(…) |  |
+| override [Equals](#equals-method)(…) |  |
+| [Equals](#equals-method)(…) |  |
+| override [GetHashCode](#gethashcode-method)() |  |
 | override [ToString](#tostring-method)() | Returns the PlaceholderKey formatted as a usable placeholder in text |
 | [WithFormat](#withformat-method)(…) | Applies a format to a given [`PlaceholderKey`](./PlaceholderKey.md) |
 | [implicit operator](#placeholderkey-implicit-operator) | Implicitly converts to String by calling the [`ToString`](#tostring-method) method. |
@@ -88,6 +91,46 @@ public static implicit operator string(PlaceholderKey key)
 | parameter | description |
 | --- | --- |
 | key |  |
+
+## See Also
+
+* struct [PlaceholderKey](./PlaceholderKey.md)
+* namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# Equals method (1 of 2)
+
+```csharp
+public override bool Equals(object obj)
+```
+
+## See Also
+
+* struct [PlaceholderKey](./PlaceholderKey.md)
+* namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+
+---
+
+# Equals method (2 of 2)
+
+```csharp
+public bool Equals(PlaceholderKey other)
+```
+
+## See Also
+
+* struct [PlaceholderKey](./PlaceholderKey.md)
+* namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# GetHashCode method
+
+```csharp
+public override int GetHashCode()
+```
 
 ## See Also
 

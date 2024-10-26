@@ -1,30 +1,31 @@
 using System;
 using Oxide.Ext.Discord.Entities;
 
-namespace Oxide.Ext.Discord.Attributes;
-
-/// <summary>
-/// Discord Message Component Command Attribute for <see cref="InteractionType.ModalSubmit"/>
-/// Callback Hook Format:
-/// <code>
-/// [DiscordModalSubmitAttribute("CustomId")]
-/// private void ModalSubmitCommand(DiscordInteraction interaction)
-/// {
-///     Puts("ModalSubmitCommand Works!");
-/// }
-/// </code>
-/// </summary>
-[AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
-public sealed class DiscordModalSubmitAttribute : BaseApplicationCommandAttribute
+namespace Oxide.Ext.Discord.Attributes
 {
-    internal readonly string CustomId;
-
     /// <summary>
-    /// Constructor
+    /// Discord Message Component Command Attribute for <see cref="InteractionType.ModalSubmit"/>
+    /// Callback Hook Format:
+    /// <code>
+    /// [DiscordModalSubmitAttribute("CustomId")]
+    /// private void ModalSubmitCommand(DiscordInteraction interaction)
+    /// {
+    ///     Puts("ModalSubmitCommand Works!");
+    /// }
+    /// </code>
     /// </summary>
-    /// <param name="customId">CustomID to match on. Matching uses string.StartsWith</param>
-    public DiscordModalSubmitAttribute(string customId)
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+    public sealed class DiscordModalSubmitAttribute : BaseApplicationCommandAttribute
     {
-        CustomId = customId;
+        internal readonly string CustomId;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="customId">CustomID to match on. Matching uses string.StartsWith</param>
+        public DiscordModalSubmitAttribute(string customId)
+        {
+            CustomId = customId;
+        }
     }
 }
