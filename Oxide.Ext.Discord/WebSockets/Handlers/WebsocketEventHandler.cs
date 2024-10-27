@@ -1150,7 +1150,7 @@ namespace Oxide.Ext.Discord.WebSockets
             //Used to load all members in the discord server
             if (chunk.Nonce == "DiscordExtension")
             {
-                if (guild == null || !guild.IsAvailable)
+                if (guild is not {IsAvailable: true})
                 {
                     return;
                 }

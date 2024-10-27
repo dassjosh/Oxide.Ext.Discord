@@ -161,6 +161,18 @@ namespace Oxide.Ext.Discord.Entities
         /// </summary>
         [JsonProperty("role_connections_verification_url")]
         public string RoleConnectionsVerificationUrl { get; set; }
+        
+        /// <summary>
+        /// Event webhooks URL for the app to receive webhook events
+        /// </summary>
+        [JsonProperty("event_webhooks_url")]
+        public string EventWebhooksUrl { get; set; }
+        
+        /// <summary>
+        /// Event webhooks URL for the app to receive webhook events
+        /// </summary>
+        [JsonProperty("event_webhooks_types")]
+        public WebhookEventType? EventWebhooksTypes { get; set; }
 
         /// <summary>
         /// Up to 5 tags describing the content and functionality of the application

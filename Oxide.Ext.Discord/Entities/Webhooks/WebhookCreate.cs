@@ -7,6 +7,7 @@ namespace Oxide.Ext.Discord.Entities
     /// <summary>
     /// Represents a <a href="https://discord.com/developers/docs/resources/webhook#create-webhook-json-params">Webhook Create Structure</a>
     /// </summary>
+    [JsonObject(MemberSerialization.OptIn)]
     public class WebhookCreate : IDiscordValidation
     {
         /// <summary>
