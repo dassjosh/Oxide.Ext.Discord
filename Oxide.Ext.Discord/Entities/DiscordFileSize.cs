@@ -3,7 +3,7 @@ namespace Oxide.Ext.Discord.Entities
     /// <summary>
     /// Represents an image size
     /// </summary>
-    public enum DiscordImageSize : byte
+    public enum DiscordFileSize : byte
     {
         /// <summary>
         /// Image Size in bytes

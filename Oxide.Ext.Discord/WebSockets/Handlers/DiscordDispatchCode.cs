@@ -336,6 +336,31 @@ namespace Oxide.Ext.Discord.WebSockets
         [DiscordEnum("SUBSCRIPTION_DELETE")] SubscriptionDelete,
         
         /// <summary>
+        /// Represents the <a href="https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-create">GUILD_SOUNDBOARD_SOUND_CREATE</a> gateway event
+        /// </summary>
+        [DiscordEnum("GUILD_SOUNDBOARD_SOUND_CREATE")] GuildSoundboardSoundCreate,
+        
+        /// <summary>
+        /// Represents the <a href="https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-update">GUILD_SOUNDBOARD_SOUND_UPDATE</a> gateway event
+        /// </summary>
+        [DiscordEnum("GUILD_SOUNDBOARD_SOUND_UPDATE")] GuildSoundboardSoundUpdate,
+        
+        /// <summary>
+        /// Represents the <a href="https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-delete">GUILD_SOUNDBOARD_SOUND_DELETE</a> gateway event
+        /// </summary>
+        [DiscordEnum("GUILD_SOUNDBOARD_SOUND_DELETE")] GuildSoundboardSoundDelete,
+        
+        /// <summary>
+        /// Represents the <a href="https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sounds-update">GUILD_SOUNDBOARD_SOUNDS_UPDATE</a> gateway event
+        /// </summary>
+        [DiscordEnum("GUILD_SOUNDBOARD_SOUNDS_UPDATE")] GuildSoundboardSoundsUpdate,
+        
+        /// <summary>
+        /// Represents the <a href="https://discord.com/developers/docs/events/gateway-events#soundboard-sounds">SOUNDBOARD_SOUNDS</a> gateway event
+        /// </summary>
+        [DiscordEnum("SOUNDBOARD_SOUNDS")] SoundboardSounds,
+        
+        /// <summary>
         /// Represents the <a href="https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-create">AUTO_MODERATION_RULE_CREATE</a> gateway event
         /// </summary>
         [DiscordEnum("AUTO_MODERATION_RULE_CREATE")] AutoModerationRuleCreate,

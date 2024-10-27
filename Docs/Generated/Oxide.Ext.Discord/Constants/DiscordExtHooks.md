@@ -40,6 +40,7 @@ public static class DiscordExtHooks
 | const [OnDiscordGatewayReady](#ondiscordgatewayready-field) | - Called when the Discord Bot has successfully connected to the gateway and identified successfully. **Note:** Only partial guild information is available at this point. If you need full guild listen for [OnDiscordGuildCreated](#OnDiscordGuildCreated) hook If you need full guild member list listen for [OnDiscordGuildMembersLoaded](#OnDiscordGuildMembersLoaded) |
 | const [OnDiscordGatewayReconnected](#ondiscordgatewayreconnected-field) | Called when the websocket has reconnected |
 | const [OnDiscordGatewayResumed](#ondiscordgatewayresumed-field) | Called when the websocket has reconnected to the websocket and resumed the previous session |
+| const [OnDiscordGetGuildSoundboardSounds](#ondiscordgetguildsoundboardsounds-field) | Called when a guild soundboard is deleted |
 | const [OnDiscordGuildChannelCreated](#ondiscordguildchannelcreated-field) | Called when a channel has been created in a guild. |
 | const [OnDiscordGuildChannelDeleted](#ondiscordguildchanneldeleted-field) | Called when a channel has been deleted in a guild. |
 | const [OnDiscordGuildChannelPinsUpdated](#ondiscordguildchannelpinsupdated-field) | Called when a guild channel has it's pinned messages updated |
@@ -90,6 +91,9 @@ public static class DiscordExtHooks
 | const [OnDiscordGuildScheduledEventUpdated](#ondiscordguildscheduledeventupdated-field) | Called when a discord guild scheduled event is updated |
 | const [OnDiscordGuildScheduledEventUserAdded](#ondiscordguildscheduledeventuseradded-field) | Called when a discord user is added to a guild scheduled event |
 | const [OnDiscordGuildScheduledEventUserRemoved](#ondiscordguildscheduledeventuserremoved-field) | Called when a discord user is removed from a guild scheduled event |
+| const [OnDiscordGuildSoundboardCreated](#ondiscordguildsoundboardcreated-field) | Called when a guild soundboard is created |
+| const [OnDiscordGuildSoundboardDeleted](#ondiscordguildsoundboarddeleted-field) | Called when a guild soundboard is deleted |
+| const [OnDiscordGuildSoundboardUpdated](#ondiscordguildsoundboardupdated-field) | Called when a guild soundboard is updated |
 | const [OnDiscordGuildStickersUpdated](#ondiscordguildstickersupdated-field) | Called when the guild stickers are updated |
 | const [OnDiscordGuildThreadCreated](#ondiscordguildthreadcreated-field) | Called when a guild thread is created |
 | const [OnDiscordGuildThreadDeleted](#ondiscordguildthreaddeleted-field) | Called when a guild thread is deleted |
@@ -2510,6 +2514,94 @@ void OnDiscordSubscriptionDeleted(DiscordSubscription subscription)
 
 ```csharp
 public const string OnDiscordSubscriptionDeleted;
+```
+
+## See Also
+
+* class [DiscordExtHooks](./DiscordExtHooks.md)
+* namespace [Oxide.Ext.Discord.Constants](./ConstantsNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# OnDiscordGuildSoundboardCreated field
+
+Called when a guild soundboard is created
+
+```csharp
+void OnDiscordGuildSoundboardCreated(DiscordSoundboard soundboard, DiscordGuild guid)
+{
+    Puts("OnDiscordGuildSoundboardCreated Works!");
+}
+```
+
+```csharp
+public const string OnDiscordGuildSoundboardCreated;
+```
+
+## See Also
+
+* class [DiscordExtHooks](./DiscordExtHooks.md)
+* namespace [Oxide.Ext.Discord.Constants](./ConstantsNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# OnDiscordGuildSoundboardUpdated field
+
+Called when a guild soundboard is updated
+
+```csharp
+void OnDiscordGuildSoundboardUpdated(DiscordSoundboard soundboard, DiscordGuild guid)
+{
+    Puts("OnDiscordGuildSoundboardUpdated Works!");
+}
+```
+
+```csharp
+public const string OnDiscordGuildSoundboardUpdated;
+```
+
+## See Also
+
+* class [DiscordExtHooks](./DiscordExtHooks.md)
+* namespace [Oxide.Ext.Discord.Constants](./ConstantsNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# OnDiscordGuildSoundboardDeleted field
+
+Called when a guild soundboard is deleted
+
+```csharp
+void OnDiscordGuildSoundboardDeleted(DiscordSoundboard soundboard, DiscordGuild guid)
+{
+    Puts("OnDiscordGuildSoundboardDeleted Works!");
+}
+```
+
+```csharp
+public const string OnDiscordGuildSoundboardDeleted;
+```
+
+## See Also
+
+* class [DiscordExtHooks](./DiscordExtHooks.md)
+* namespace [Oxide.Ext.Discord.Constants](./ConstantsNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# OnDiscordGetGuildSoundboardSounds field
+
+Called when a guild soundboard is deleted
+
+```csharp
+void OnDiscordGetGuildSoundboardSounds(List<DiscordSoundboard> soundboard, DiscordGuild guid)
+{
+    Puts("OnDiscordGetGuildSoundboardSounds Works!");
+}
+```
+
+```csharp
+public const string OnDiscordGetGuildSoundboardSounds;
 ```
 
 ## See Also

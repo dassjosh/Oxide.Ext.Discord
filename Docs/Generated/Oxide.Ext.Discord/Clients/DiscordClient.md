@@ -18,6 +18,7 @@ public class DiscordClient
 | readonly [Webhooks](#webhooks-field) | Webhook clients for this DiscordClient |
 | [Connect](#connect-method-1-of-4)(…) | Starts a connection to discord with the given apiKey and intents (4 methods) |
 | [Disconnect](#disconnect-method)() | Disconnects this client from discord |
+| [GetSoundboardSounds](#getsoundboardsounds-method)(…) | Request the list of soundboard sounds for the given guilds |
 | [IsConnected](#isconnected-method)() | Returns if the client is connected to a bot / webhook and if the bot / webhook is initialized |
 | [RequestGuildMembers](#requestguildmembers-method)(…) | Used to request guild members from discord for a specific guild |
 | [UpdateStatus](#updatestatus-method)(…) | Used to update the bot status in discord |
@@ -200,6 +201,26 @@ public void UpdateStatus(UpdatePresenceCommand presenceUpdate)
 ## See Also
 
 * class [UpdatePresenceCommand](../Entities/UpdatePresenceCommand.md)
+* class [DiscordClient](./DiscordClient.md)
+* namespace [Oxide.Ext.Discord.Clients](./ClientsNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# GetSoundboardSounds method
+
+Request the list of soundboard sounds for the given guilds
+
+```csharp
+public void GetSoundboardSounds(GetSoundboardSoundsCommand request)
+```
+
+| parameter | description |
+| --- | --- |
+| request |  |
+
+## See Also
+
+* class [GetSoundboardSoundsCommand](../Entities/GetSoundboardSoundsCommand.md)
 * class [DiscordClient](./DiscordClient.md)
 * namespace [Oxide.Ext.Discord.Clients](./ClientsNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)

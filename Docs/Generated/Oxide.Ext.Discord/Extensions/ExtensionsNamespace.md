@@ -2,6 +2,7 @@
 
 | public type | description |
 | --- | --- |
+| static class [ByteExt](./ByteExt.md) |  |
 | static class [DateTimeOffsetExt](./DateTimeOffsetExt.md) | DateTimeOffset Extensions |
 | static class [DiscordUserExt](./DiscordUserExt.md) | Adds extension methods to Discord User to allow sending server chat commands to the player |
 | static class [HashExt](./HashExt.md) | Hash extensions |

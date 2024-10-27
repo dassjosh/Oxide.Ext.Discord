@@ -85,11 +85,11 @@
 | class [DiscordEmbed](./DiscordEmbed.md) | Represents [Embed Structure](https://discord.com/developers/docs/resources/channel#embed-object) |
 | class [DiscordEmoji](./DiscordEmoji.md) | Represents [Emoji Structure](https://discord.com/developers/docs/resources/emoji#emoji-object) |
 | class [DiscordEntitlement](./DiscordEntitlement.md) | Represents a [Entitlement Structure](https://discord.com/developers/docs/monetization/entitlements#entitlement-object-entitlement-structure) |
+| enum [DiscordFileSize](./DiscordFileSize.md) | Represents an image size |
 | class [DiscordGuild](./DiscordGuild.md) | Represents [Guild Structure](https://discord.com/developers/docs/resources/guild#guild-object) |
 | enum [DiscordHttpStatusCode](./DiscordHttpStatusCode.md) | Represents possible HTTP Codes sent from discord |
 | struct [DiscordImageData](./DiscordImageData.md) | Represents [Discord Image Data](https://discord.com/developers/docs/reference#image-data) |
 | enum [DiscordImageFormat](./DiscordImageFormat.md) | Represents [Image Formats](https://discord.com/developers/docs/reference#image-formatting-image-formats) |
-| enum [DiscordImageSize](./DiscordImageSize.md) | Represents an image size |
 | class [DiscordInteraction](./DiscordInteraction.md) | Represents [Interaction Structure](https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure) |
 | class [DiscordInvite](./DiscordInvite.md) | Represents an [Invite Structure](https://discord.com/developers/docs/resources/invite#invite-object) that when used, adds a user to a guild or group DM channel. |
 | class [DiscordMessage](./DiscordMessage.md) | Represents a [Message Structure](https://discord.com/developers/docs/resources/channel#message-object) sent in a channel within Discord.. |
@@ -97,6 +97,9 @@
 | class [DiscordRole](./DiscordRole.md) | Represents [Role Structure](https://discord.com/developers/docs/topics/permissions#role-object) |
 | class [DiscordSku](./DiscordSku.md) | Represents a [SKU Structure](https://discord.com/developers/docs/monetization/skus#sku-object-sku-structure) |
 | enum [DiscordSkuType](./DiscordSkuType.md) | Represents a [Discord SKU Types](https://discord.com/developers/docs/monetization/skus#sku-object-sku-types) |
+| class [DiscordSoundboardSound](./DiscordSoundboardSound.md) | Represents [Soundboard](https://discord.com/developers/docs/resources/soundboard#soundboard-sound-object) in Discord |
+| struct [DiscordSoundData](./DiscordSoundData.md) | Represents [Discord Sound Data](https://discord.com/developers/docs/reference#image-data) |
+| enum [DiscordSoundFormat](./DiscordSoundFormat.md) | Represents [Image Formats](https://discord.com/developers/docs/reference#image-formatting-image-formats) |
 | class [DiscordSticker](./DiscordSticker.md) | Represents a [Discord Sticker Structure](https://discord.com/developers/docs/resources/sticker#sticker-object) |
 | class [DiscordStickerPack](./DiscordStickerPack.md) | Represents a [Sticker Pack Object](https://discord.com/developers/docs/resources/sticker#sticker-pack-object) |
 | class [DiscordSubscription](./DiscordSubscription.md) | Represents a [Subscription](https://discord.com/developers/docs/resources/subscription#subscription-resource) |
@@ -127,9 +130,12 @@
 | class [GatewayReadyEvent](./GatewayReadyEvent.md) | Represents [Ready](https://discord.com/developers/docs/topics/gateway#ready) The ready event is dispatched when a client has completed the initial handshake with the gateway (for new sessions) |
 | class [GatewayResumedEvent](./GatewayResumedEvent.md) | Represents [Resumed](https://discord.com/developers/docs/topics/gateway#resumed) The resumed event is dispatched when a client has sent a resume payload to the gateway (for resuming existing sessions). |
 | class [GetEntitlements](./GetEntitlements.md) | Get Entitlements Query String Builder |
+| class [GetGuildSoundboardSoundsEvent](./GetGuildSoundboardSoundsEvent.md) | Represents [Soundboard Sounds Event Fields](https://discord.com/developers/docs/events/gateway-events#soundboard-sounds-soundboard-sounds-event-fields) |
+| class [GetGuildSoundsResponse](./GetGuildSoundsResponse.md) | Represents [Get Guild Sounds Response](https://discord.com/developers/docs/resources/soundboard#list-guild-soundboard-sounds-response-structure) in Discord |
 | class [GetPollAnswerResponse](./GetPollAnswerResponse.md) | Represents a [Get Poll Answers Response](https://discord.com/developers/docs/resources/poll#get-answer-voters-response-body) |
 | class [GetPollAnswerVoters](./GetPollAnswerVoters.md) | Represents a [Get Answer Voters Query String Params](https://discord.com/developers/docs/resources/poll#get-answer-voters-query-string-params) |
 | class [GetSkuSubscriptionsQueryString](./GetSkuSubscriptionsQueryString.md) |  |
+| class [GetSoundboardSoundsCommand](./GetSoundboardSoundsCommand.md) | Represents [Update Voice State](https://discord.com/developers/docs/topics/gateway#update-voice-state) |
 | class [GetThreadMember](./GetThreadMember.md) | Represents [Get Thread Member Query String Params](https://discord.com/developers/docs/resources/channel#get-thread-member-query-string-params) |
 | class [GroupDmChannelUpdate](./GroupDmChannelUpdate.md) | Represents a [Group DM Channel Update Structure](https://discord.com/developers/docs/resources/channel#modify-channel-json-params-group-dm) |
 | class [GuildBan](./GuildBan.md) | Represents [Guild Ban Structure](https://discord.com/developers/docs/resources/guild#ban-object-ban-structure) |
@@ -289,9 +295,14 @@
 | class [SelectMenuDefaultValue](./SelectMenuDefaultValue.md) | Represents a [Select Default Value Structure](https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure) within discord. |
 | enum [SelectMenuDefaultValueType](./SelectMenuDefaultValueType.md) | Represents a [Select Menus Default Value Type](https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure) within discord. |
 | class [SelectMenuOption](./SelectMenuOption.md) | Represents a [Select Menu Option Structure](https://discord.com/developers/docs/interactions/message-components#select-option-structure) within discord. |
+| class [SendSoundboardSound](./SendSoundboardSound.md) | Represents [Send Soundboard Sound Request](https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound-json-params) in Discord |
 | [Flags] enum [SkuFlags](./SkuFlags.md) | Represents a [Discord SKU Flags](https://discord.com/developers/docs/monetization/skus#sku-object-sku-flags) |
 | struct [Snowflake](./Snowflake.md) | Represents an ID in discord. |
 | enum [SortOrderType](./SortOrderType.md) | Represents [Sort Order Types](https://discord.com/developers/docs/resources/channel#channel-object-sort-order-types) in Discord |
+| class [SoundboardDeletedEvent](./SoundboardDeletedEvent.md) | Represents [Guild Soundboard Sound Delete](https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-delete-guild-soundboard-sound-delete-event-fields) |
+| class [SoundboardSoundCreate](./SoundboardSoundCreate.md) | Represents [Soundboard Create Request](https://discord.com/developers/docs/resources/soundboard#create-guild-soundboard-sound-json-params) in Discord |
+| class [SoundboardSoundsUpdatedEvent](./SoundboardSoundsUpdatedEvent.md) | Represents [Guild Soundboard Sounds Update](https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sounds-update-guild-soundboard-sounds-update-event-fields) |
+| class [SoundboardSoundUpdate](./SoundboardSoundUpdate.md) | Represents [Soundboard Update Request](https://discord.com/developers/docs/resources/soundboard#modify-guild-soundboard-sound-json-params) in Discord |
 | class [StageInstance](./StageInstance.md) | Represents a channel [Stage Instance](https://discord.com/developers/docs/resources/stage-instance#stage-instance-object-stage-instance-structure) within Discord. |
 | class [StageInstanceCreate](./StageInstanceCreate.md) | Represents a  href="https://discord.com/developers/docs/resources/stage-instance#create-stage-instance-json-params"&gt;Stage Instance Create Structure |
 | class [StageInstanceUpdate](./StageInstanceUpdate.md) | Represents a [Modify Stage Instance](https://discord.com/developers/docs/resources/stage-instance#modify-stage-instance-json-params) Structure |

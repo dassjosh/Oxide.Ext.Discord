@@ -1,5 +1,6 @@
 using System.Text.RegularExpressions;
 using Oxide.Ext.Discord.Entities;
+using Oxide.Ext.Discord.Extensions;
 
 namespace Oxide.Ext.Discord.Exceptions
 {
@@ -50,12 +51,12 @@ namespace Oxide.Ext.Discord.Exceptions
         {
             const int MaxSize = 256;
             
-            if (!image.IsValid())
+            if (!image.IsValid)
             {
                 throw new InvalidEmojiException("ImageData is required");
             }
 
-            if (image.GetImageSize(DiscordImageSize.KiloBytes) > MaxSize)
+            if (image.Image.GetFileSize(DiscordFileSize.KiloBytes) > MaxSize)
             {
                 throw new InvalidEmojiException($"ImageData cannot be more than {MaxSize} kilobytes");
             }

@@ -56,7 +56,18 @@ namespace Oxide.Ext.Discord.Entities
         /// - GUILD_EMOJIS_UPDATE
         /// - GUILD_STICKERS_UPDATE
         /// </summary>
+        [Obsolete("Use GuildExpressions instead")]
         GuildEmojisAndStickers  = 1 << 3,
+        
+        /// <summary>
+        /// - GUILD_EMOJIS_UPDATE
+        /// - GUILD_STICKERS_UPDATE
+        /// - GUILD_SOUNDBOARD_SOUND_CREATE
+        /// - GUILD_SOUNDBOARD_SOUND_UPDATE
+        /// - GUILD_SOUNDBOARD_SOUND_DELETE
+        /// - GUILD_SOUNDBOARD_SOUNDS_UPDATE
+        /// </summary>
+        GuildExpressions  = 1 << 3,
         
         /// <summary>
         /// - GUILD_INTEGRATIONS_UPDATE

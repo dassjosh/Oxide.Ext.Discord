@@ -28,7 +28,7 @@ namespace Oxide.Ext.Discord.Exceptions
         
         internal static void ThrowIfInvalidImageData(DiscordImageData image)
         {
-            if (!image.IsValid())
+            if (!image.IsValid)
             {
                 throw new InvalidImageDataException("ImageData is not a valid image");
             }

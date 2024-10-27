@@ -188,11 +188,11 @@
 | class [DiscordEmbed](./Oxide.Ext.Discord/Entities/DiscordEmbed.md) | Represents [Embed Structure](https://discord.com/developers/docs/resources/channel#embed-object) |
 | class [DiscordEmoji](./Oxide.Ext.Discord/Entities/DiscordEmoji.md) | Represents [Emoji Structure](https://discord.com/developers/docs/resources/emoji#emoji-object) |
 | class [DiscordEntitlement](./Oxide.Ext.Discord/Entities/DiscordEntitlement.md) | Represents a [Entitlement Structure](https://discord.com/developers/docs/monetization/entitlements#entitlement-object-entitlement-structure) |
+| enum [DiscordFileSize](./Oxide.Ext.Discord/Entities/DiscordFileSize.md) | Represents an image size |
 | class [DiscordGuild](./Oxide.Ext.Discord/Entities/DiscordGuild.md) | Represents [Guild Structure](https://discord.com/developers/docs/resources/guild#guild-object) |
 | enum [DiscordHttpStatusCode](./Oxide.Ext.Discord/Entities/DiscordHttpStatusCode.md) | Represents possible HTTP Codes sent from discord |
 | struct [DiscordImageData](./Oxide.Ext.Discord/Entities/DiscordImageData.md) | Represents [Discord Image Data](https://discord.com/developers/docs/reference#image-data) |
 | enum [DiscordImageFormat](./Oxide.Ext.Discord/Entities/DiscordImageFormat.md) | Represents [Image Formats](https://discord.com/developers/docs/reference#image-formatting-image-formats) |
-| enum [DiscordImageSize](./Oxide.Ext.Discord/Entities/DiscordImageSize.md) | Represents an image size |
 | class [DiscordInteraction](./Oxide.Ext.Discord/Entities/DiscordInteraction.md) | Represents [Interaction Structure](https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure) |
 | class [DiscordInvite](./Oxide.Ext.Discord/Entities/DiscordInvite.md) | Represents an [Invite Structure](https://discord.com/developers/docs/resources/invite#invite-object) that when used, adds a user to a guild or group DM channel. |
 | class [DiscordMessage](./Oxide.Ext.Discord/Entities/DiscordMessage.md) | Represents a [Message Structure](https://discord.com/developers/docs/resources/channel#message-object) sent in a channel within Discord.. |
@@ -200,6 +200,9 @@
 | class [DiscordRole](./Oxide.Ext.Discord/Entities/DiscordRole.md) | Represents [Role Structure](https://discord.com/developers/docs/topics/permissions#role-object) |
 | class [DiscordSku](./Oxide.Ext.Discord/Entities/DiscordSku.md) | Represents a [SKU Structure](https://discord.com/developers/docs/monetization/skus#sku-object-sku-structure) |
 | enum [DiscordSkuType](./Oxide.Ext.Discord/Entities/DiscordSkuType.md) | Represents a [Discord SKU Types](https://discord.com/developers/docs/monetization/skus#sku-object-sku-types) |
+| class [DiscordSoundboardSound](./Oxide.Ext.Discord/Entities/DiscordSoundboardSound.md) | Represents [Soundboard](https://discord.com/developers/docs/resources/soundboard#soundboard-sound-object) in Discord |
+| struct [DiscordSoundData](./Oxide.Ext.Discord/Entities/DiscordSoundData.md) | Represents [Discord Sound Data](https://discord.com/developers/docs/reference#image-data) |
+| enum [DiscordSoundFormat](./Oxide.Ext.Discord/Entities/DiscordSoundFormat.md) | Represents [Image Formats](https://discord.com/developers/docs/reference#image-formatting-image-formats) |
 | class [DiscordSticker](./Oxide.Ext.Discord/Entities/DiscordSticker.md) | Represents a [Discord Sticker Structure](https://discord.com/developers/docs/resources/sticker#sticker-object) |
 | class [DiscordStickerPack](./Oxide.Ext.Discord/Entities/DiscordStickerPack.md) | Represents a [Sticker Pack Object](https://discord.com/developers/docs/resources/sticker#sticker-pack-object) |
 | class [DiscordSubscription](./Oxide.Ext.Discord/Entities/DiscordSubscription.md) | Represents a [Subscription](https://discord.com/developers/docs/resources/subscription#subscription-resource) |
@@ -230,9 +233,12 @@
 | class [GatewayReadyEvent](./Oxide.Ext.Discord/Entities/GatewayReadyEvent.md) | Represents [Ready](https://discord.com/developers/docs/topics/gateway#ready) The ready event is dispatched when a client has completed the initial handshake with the gateway (for new sessions) |
 | class [GatewayResumedEvent](./Oxide.Ext.Discord/Entities/GatewayResumedEvent.md) | Represents [Resumed](https://discord.com/developers/docs/topics/gateway#resumed) The resumed event is dispatched when a client has sent a resume payload to the gateway (for resuming existing sessions). |
 | class [GetEntitlements](./Oxide.Ext.Discord/Entities/GetEntitlements.md) | Get Entitlements Query String Builder |
+| class [GetGuildSoundboardSoundsEvent](./Oxide.Ext.Discord/Entities/GetGuildSoundboardSoundsEvent.md) | Represents [Soundboard Sounds Event Fields](https://discord.com/developers/docs/events/gateway-events#soundboard-sounds-soundboard-sounds-event-fields) |
+| class [GetGuildSoundsResponse](./Oxide.Ext.Discord/Entities/GetGuildSoundsResponse.md) | Represents [Get Guild Sounds Response](https://discord.com/developers/docs/resources/soundboard#list-guild-soundboard-sounds-response-structure) in Discord |
 | class [GetPollAnswerResponse](./Oxide.Ext.Discord/Entities/GetPollAnswerResponse.md) | Represents a [Get Poll Answers Response](https://discord.com/developers/docs/resources/poll#get-answer-voters-response-body) |
 | class [GetPollAnswerVoters](./Oxide.Ext.Discord/Entities/GetPollAnswerVoters.md) | Represents a [Get Answer Voters Query String Params](https://discord.com/developers/docs/resources/poll#get-answer-voters-query-string-params) |
 | class [GetSkuSubscriptionsQueryString](./Oxide.Ext.Discord/Entities/GetSkuSubscriptionsQueryString.md) |  |
+| class [GetSoundboardSoundsCommand](./Oxide.Ext.Discord/Entities/GetSoundboardSoundsCommand.md) | Represents [Update Voice State](https://discord.com/developers/docs/topics/gateway#update-voice-state) |
 | class [GetThreadMember](./Oxide.Ext.Discord/Entities/GetThreadMember.md) | Represents [Get Thread Member Query String Params](https://discord.com/developers/docs/resources/channel#get-thread-member-query-string-params) |
 | class [GroupDmChannelUpdate](./Oxide.Ext.Discord/Entities/GroupDmChannelUpdate.md) | Represents a [Group DM Channel Update Structure](https://discord.com/developers/docs/resources/channel#modify-channel-json-params-group-dm) |
 | class [GuildBan](./Oxide.Ext.Discord/Entities/GuildBan.md) | Represents [Guild Ban Structure](https://discord.com/developers/docs/resources/guild#ban-object-ban-structure) |
@@ -392,9 +398,14 @@
 | class [SelectMenuDefaultValue](./Oxide.Ext.Discord/Entities/SelectMenuDefaultValue.md) | Represents a [Select Default Value Structure](https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure) within discord. |
 | enum [SelectMenuDefaultValueType](./Oxide.Ext.Discord/Entities/SelectMenuDefaultValueType.md) | Represents a [Select Menus Default Value Type](https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure) within discord. |
 | class [SelectMenuOption](./Oxide.Ext.Discord/Entities/SelectMenuOption.md) | Represents a [Select Menu Option Structure](https://discord.com/developers/docs/interactions/message-components#select-option-structure) within discord. |
+| class [SendSoundboardSound](./Oxide.Ext.Discord/Entities/SendSoundboardSound.md) | Represents [Send Soundboard Sound Request](https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound-json-params) in Discord |
 | [Flags] enum [SkuFlags](./Oxide.Ext.Discord/Entities/SkuFlags.md) | Represents a [Discord SKU Flags](https://discord.com/developers/docs/monetization/skus#sku-object-sku-flags) |
 | struct [Snowflake](./Oxide.Ext.Discord/Entities/Snowflake.md) | Represents an ID in discord. |
 | enum [SortOrderType](./Oxide.Ext.Discord/Entities/SortOrderType.md) | Represents [Sort Order Types](https://discord.com/developers/docs/resources/channel#channel-object-sort-order-types) in Discord |
+| class [SoundboardDeletedEvent](./Oxide.Ext.Discord/Entities/SoundboardDeletedEvent.md) | Represents [Guild Soundboard Sound Delete](https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-delete-guild-soundboard-sound-delete-event-fields) |
+| class [SoundboardSoundCreate](./Oxide.Ext.Discord/Entities/SoundboardSoundCreate.md) | Represents [Soundboard Create Request](https://discord.com/developers/docs/resources/soundboard#create-guild-soundboard-sound-json-params) in Discord |
+| class [SoundboardSoundsUpdatedEvent](./Oxide.Ext.Discord/Entities/SoundboardSoundsUpdatedEvent.md) | Represents [Guild Soundboard Sounds Update](https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sounds-update-guild-soundboard-sounds-update-event-fields) |
+| class [SoundboardSoundUpdate](./Oxide.Ext.Discord/Entities/SoundboardSoundUpdate.md) | Represents [Soundboard Update Request](https://discord.com/developers/docs/resources/soundboard#modify-guild-soundboard-sound-json-params) in Discord |
 | class [StageInstance](./Oxide.Ext.Discord/Entities/StageInstance.md) | Represents a channel [Stage Instance](https://discord.com/developers/docs/resources/stage-instance#stage-instance-object-stage-instance-structure) within Discord. |
 | class [StageInstanceCreate](./Oxide.Ext.Discord/Entities/StageInstanceCreate.md) | Represents a  href="https://discord.com/developers/docs/resources/stage-instance#create-stage-instance-json-params"&gt;Stage Instance Create Structure |
 | class [StageInstanceUpdate](./Oxide.Ext.Discord/Entities/StageInstanceUpdate.md) | Represents a [Modify Stage Instance](https://discord.com/developers/docs/resources/stage-instance#modify-stage-instance-json-params) Structure |
@@ -494,6 +505,8 @@
 | class [InvalidPoolException](./Oxide.Ext.Discord/Exceptions/InvalidPoolException.md) | An exception when something is invalid with a pool |
 | class [InvalidSelectMenuComponentException](./Oxide.Ext.Discord/Exceptions/InvalidSelectMenuComponentException.md) | Represents an exception for select menu components |
 | class [InvalidSnowflakeException](./Oxide.Ext.Discord/Exceptions/InvalidSnowflakeException.md) | Exception thrown when an invalid Snowflake ID is used in an API call |
+| class [InvalidSoundboardException](./Oxide.Ext.Discord/Exceptions/InvalidSoundboardException.md) | Represents an exception in discord sound data |
+| class [InvalidSoundDataException](./Oxide.Ext.Discord/Exceptions/InvalidSoundDataException.md) | Represents an exception in discord sound data |
 | class [InvalidTemplateVersionException](./Oxide.Ext.Discord/Exceptions/InvalidTemplateVersionException.md) | Thrown when the minimum template version is higher than the current template version |
 | class [InvalidThreadException](./Oxide.Ext.Discord/Exceptions/InvalidThreadException.md) | Represents an exception for channel threads |
 | class [InvalidUserException](./Oxide.Ext.Discord/Exceptions/InvalidUserException.md) | Represents an exception when modifying a user with invalid data |
@@ -515,6 +528,7 @@
 
 | public type | description |
 | --- | --- |
+| static class [ByteExt](./Oxide.Ext.Discord/Extensions/ByteExt.md) |  |
 | static class [DateTimeOffsetExt](./Oxide.Ext.Discord/Extensions/DateTimeOffsetExt.md) | DateTimeOffset Extensions |
 | static class [DiscordUserExt](./Oxide.Ext.Discord/Extensions/DiscordUserExt.md) | Adds extension methods to Discord User to allow sending server chat commands to the player |
 | static class [HashExt](./Oxide.Ext.Discord/Extensions/HashExt.md) | Hash extensions |
@@ -577,6 +591,7 @@
 | class [DiscordImageDataConverter](./Oxide.Ext.Discord/Json/DiscordImageDataConverter.md) | Represents the JsonConverter for [`DiscordImageData`](./Oxide.Ext.Discord/Entities/DiscordImageData.md) |
 | class [DiscordJsonReader](./Oxide.Ext.Discord/Json/DiscordJsonReader.md) | This is a pooled JSON reader that can read as string, deserialize object, or populate a given object async |
 | class [DiscordJsonWriter](./Oxide.Ext.Discord/Json/DiscordJsonWriter.md) | This is a pooled JSON writer that can write JSON to a stream |
+| class [DiscordSoundDataConverter](./Oxide.Ext.Discord/Json/DiscordSoundDataConverter.md) | Represents the JsonConverter for [`DiscordSoundData`](./Oxide.Ext.Discord/Entities/DiscordSoundData.md) |
 | class [EventPayloadConverter](./Oxide.Ext.Discord/Json/EventPayloadConverter.md) | JSON converter for [`EventPayload`](./Oxide.Ext.Discord/Entities/EventPayload.md) |
 | class [HashListConverter&lt;TValue&gt;](./Oxide.Ext.Discord/Json/HashListConverter%7BTValue%7D.md) | Converts to and from a list in JSON to a hash |
 | class [MessageComponentsConverter](./Oxide.Ext.Discord/Json/MessageComponentsConverter.md) | Converter for a list of message components |

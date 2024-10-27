@@ -34,5 +34,10 @@ namespace Oxide.Ext.Discord.Entities
         /// Request information about offline guild members in a large guild.
         /// </summary>
         RequestGuildMembers = 8,
+        
+        /// <summary>
+        /// Request information about soundboard sounds in a set of guilds.
+        /// </summary>
+        RequestSoundboardSounds = 31
     }
 }

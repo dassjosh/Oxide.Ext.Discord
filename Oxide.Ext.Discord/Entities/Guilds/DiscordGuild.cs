@@ -347,6 +347,14 @@ namespace Oxide.Ext.Discord.Entities
         
         /// <summary>
         /// The scheduled events in the guild
+        /// <see cref="DiscordSticker"/>
+        /// </summary>
+        [JsonConverter(typeof(HashListConverter<DiscordSoundboardSound>))]
+        [JsonProperty("soundboard_sounds")]
+        public Hash<Snowflake, DiscordSoundboardSound> SoundboardSounds { get; set; }
+        
+        /// <summary>
+        /// Whether the guild has the boost progress bar enabled
         /// </summary>
         [JsonProperty("premium_progress_bar_enabled")]
         public bool PremiumProgressBarEnabled { get; set; }
@@ -1380,6 +1388,27 @@ namespace Oxide.Ext.Discord.Entities
         public IPromise<GuildOnboarding> EditOnboarding(DiscordClient client, GuildOnboardingUpdate update)
         {
             return client.Bot.Rest.Put<GuildOnboarding>(client,$"guilds/{Id}/onboarding", update);
+        }
+        
+        /// <summary>
+        /// Returns a list of the guild's soundboard sounds
+        /// See <a href="https://discord.com/developers/docs/resources/soundboard#list-guild-soundboard-sounds">List Guild Soundboard Sounds</a>
+        /// </summary>
+        /// <param name="client">Client to use</param>
+        public IPromise<GetGuildSoundsResponse> GetGuildSounds(DiscordClient client)
+        {
+            return client.Bot.Rest.Get<GetGuildSoundsResponse>(client,$"guilds/{Id}/soundboard-sounds");
+        }
+
+        /// <summary>
+        /// Returns a soundboard sound object for the given sound id
+        /// See <a href="https://discord.com/developers/docs/resources/soundboard#get-guild-soundboard-sound">Get Guild Soundboard Sound</a>
+        /// </summary>
+        /// <param name="client">Client to use</param>
+        /// <param name="soundId">ID of the guild sound</param>
+        public IPromise<DiscordSoundboardSound> GetGuildSound(DiscordClient client, Snowflake soundId)
+        {
+            return client.Bot.Rest.Get<DiscordSoundboardSound>(client,$"guilds/{Id}/soundboard-sounds/{soundId}");
         }
         #endregion
 

@@ -2314,6 +2314,12 @@
             </summary>
             <param name="presenceUpdate"></param>
         </member>
+        <member name="M:Oxide.Ext.Discord.Clients.DiscordClient.GetSoundboardSounds(Oxide.Ext.Discord.Entities.GetSoundboardSoundsCommand)">
+            <summary>
+            Request the list of soundboard sounds for the given guilds
+            </summary>
+            <param name="request"></param>
+        </member>
         <member name="T:Oxide.Ext.Discord.Clients.WebhookClient">
             <summary>
             A client that can connect to a webhook
@@ -3880,6 +3886,50 @@
             void OnDiscordSubscriptionDeleted(DiscordSubscription subscription)
             {
                 Puts("OnDiscordSubscriptionDeleted Works!");
+            }
+            </code>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Constants.DiscordExtHooks.OnDiscordGuildSoundboardCreated">
+            <summary>
+            Called when a guild soundboard is created
+            <code>
+            void OnDiscordGuildSoundboardCreated(DiscordSoundboard soundboard, DiscordGuild guid)
+            {
+                Puts("OnDiscordGuildSoundboardCreated Works!");
+            }
+            </code>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Constants.DiscordExtHooks.OnDiscordGuildSoundboardUpdated">
+            <summary>
+            Called when a guild soundboard is updated
+            <code>
+            void OnDiscordGuildSoundboardUpdated(DiscordSoundboard soundboard, DiscordGuild guid)
+            {
+                Puts("OnDiscordGuildSoundboardUpdated Works!");
+            }
+            </code>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Constants.DiscordExtHooks.OnDiscordGuildSoundboardDeleted">
+            <summary>
+            Called when a guild soundboard is deleted
+            <code>
+            void OnDiscordGuildSoundboardDeleted(DiscordSoundboard soundboard, DiscordGuild guid)
+            {
+                Puts("OnDiscordGuildSoundboardDeleted Works!");
+            }
+            </code>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Constants.DiscordExtHooks.OnDiscordGetGuildSoundboardSounds">
+            <summary>
+            Called when a guild soundboard is deleted
+            <code>
+            void OnDiscordGetGuildSoundboardSounds(List&lt;DiscordSoundboard&gt; soundboard, DiscordGuild guid)
+            {
+                Puts("OnDiscordGetGuildSoundboardSounds Works!");
             }
             </code>
             </summary>
@@ -6575,6 +6625,14 @@
             </summary>
             <param name="client">Client to use</param>
         </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordChannel.SendSoundboardSound(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.SendSoundboardSound)">
+            <summary>
+            Sends a soundboard sound to the channel
+            See <a href="https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound">Send Soundboard Sound</a>
+            </summary>
+            <param name="client">Client to use</param>
+            <param name="request">Sound to send</param>
+        </member>
         <member name="M:Oxide.Ext.Discord.Entities.DiscordChannel.LogDebug(Oxide.Ext.Discord.Logging.DebugLogger)">
             <inheritdoc/>
         </member>
@@ -6794,6 +6852,21 @@
         <member name="F:Oxide.Ext.Discord.Entities.PermissionType.Member">
             <summary>
             This permission belongs to a member
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.SendSoundboardSound">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound-json-params">Send Soundboard Sound Request</a> in Discord
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SendSoundboardSound.SoundId">
+            <summary>
+            Id of the soundboard sound to play
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SendSoundboardSound.SourceGuildId">
+            <summary>
+            Id of the guild the soundboard sound is from, required to play sounds from different servers
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.SortOrderType">
@@ -7497,6 +7570,31 @@
         <member name="M:Oxide.Ext.Discord.Entities.DiscordColor.GetHashCode">
             <inheritdoc />
         </member>
+        <member name="T:Oxide.Ext.Discord.Entities.DiscordFileSize">
+            <summary>
+            Represents an image size
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.DiscordFileSize.Bytes">
+            <summary>
+            Image Size in bytes
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.DiscordFileSize.KiloBytes">
+            <summary>
+            Image size in kilobytes
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.DiscordFileSize.MegaBytes">
+            <summary>
+            Image Size in megabytes
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.DiscordFileSize.GigaBytes">
+            <summary>
+            Image Size in gigabytes
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.DefaultReaction">
             <summary>
             Represents <a href="https://discord.com/developers/docs/resources/channel#followed-channel-object">Default Reaction Structure</a>
@@ -7712,6 +7810,21 @@
         <member name="F:Oxide.Ext.Discord.Entities.GatewayCommandCode.RequestGuildMembers">
             <summary>
             Request information about offline guild members in a large guild.
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.GatewayCommandCode.RequestSoundboardSounds">
+            <summary>
+            Request information about soundboard sounds in a set of guilds.
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.GetSoundboardSoundsCommand">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/topics/gateway#update-voice-state">Update Voice State</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.GetSoundboardSoundsCommand.GuildIds">
+            <summary>
+            IDs of the guilds to get soundboard sounds for
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.GuildMembersRequestCommand">
@@ -8123,6 +8236,21 @@
             <summary>
             Represents <a href="https://discord.com/developers/docs/topics/gateway#resumed">Resumed</a>
             The resumed event is dispatched when a client has sent a resume payload to the gateway (for resuming existing sessions).
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.GetGuildSoundboardSoundsEvent">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/events/gateway-events#soundboard-sounds-soundboard-sounds-event-fields">Soundboard Sounds Event Fields</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.GetGuildSoundboardSoundsEvent.SoundboardSounds">
+            <summary>
+            The guild's soundboard sounds
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.GetGuildSoundboardSoundsEvent.GuildId">
+            <summary>
+            ID of the guild the sound was in
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.GuildEmojisUpdatedEvent">
@@ -8716,6 +8844,36 @@
             User's platform-dependent status
             </summary>
         </member>
+        <member name="T:Oxide.Ext.Discord.Entities.SoundboardDeletedEvent">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-delete-guild-soundboard-sound-delete-event-fields">Guild Soundboard Sound Delete</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardDeletedEvent.SoundId">
+            <summary>
+            ID of the sound that was deleted
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardDeletedEvent.GuildId">
+            <summary>
+            ID of the guild the sound was in
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.SoundboardSoundsUpdatedEvent">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sounds-update-guild-soundboard-sounds-update-event-fields">Guild Soundboard Sounds Update</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundsUpdatedEvent.SoundboardSounds">
+            <summary>
+            The guild's soundboard sounds
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundsUpdatedEvent.GuildId">
+            <summary>
+            ID of the guild the sound was in
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.ThreadListSyncEvent">
             <summary>
             Represents <a href="https://discord.com/developers/docs/topics/gateway#thread-list-sync-thread-list-sync-event-fields">Thread List Sync</a>
@@ -8969,6 +9127,16 @@
             <summary>
             - GUILD_EMOJIS_UPDATE
             - GUILD_STICKERS_UPDATE
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.GatewayIntents.GuildExpressions">
+            <summary>
+            - GUILD_EMOJIS_UPDATE
+            - GUILD_STICKERS_UPDATE
+            - GUILD_SOUNDBOARD_SOUND_CREATE
+            - GUILD_SOUNDBOARD_SOUND_UPDATE
+            - GUILD_SOUNDBOARD_SOUND_DELETE
+            - GUILD_SOUNDBOARD_SOUNDS_UPDATE
             </summary>
         </member>
         <member name="F:Oxide.Ext.Discord.Entities.GatewayIntents.GuildIntegrations">
@@ -9355,9 +9523,15 @@
             <see cref="T:Oxide.Ext.Discord.Entities.DiscordSticker"/>
             </summary>
         </member>
-        <member name="P:Oxide.Ext.Discord.Entities.DiscordGuild.PremiumProgressBarEnabled">
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordGuild.SoundboardSounds">
             <summary>
             The scheduled events in the guild
+            <see cref="T:Oxide.Ext.Discord.Entities.DiscordSticker"/>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordGuild.PremiumProgressBarEnabled">
+            <summary>
+            Whether the guild has the boost progress bar enabled
             </summary>
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.DiscordGuild.SafetyAlertsChannelId">
@@ -10048,6 +10222,21 @@
             <param name="update">Update for the guild onboarding</param>
             See <a href="">Modify Guild Onboarding</a>
         </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordGuild.GetGuildSounds(Oxide.Ext.Discord.Clients.DiscordClient)">
+            <summary>
+            Returns a list of the guild's soundboard sounds
+            See <a href="https://discord.com/developers/docs/resources/soundboard#list-guild-soundboard-sounds">List Guild Soundboard Sounds</a>
+            </summary>
+            <param name="client">Client to use</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordGuild.GetGuildSound(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.Snowflake)">
+            <summary>
+            Returns a soundboard sound object for the given sound id
+            See <a href="https://discord.com/developers/docs/resources/soundboard#get-guild-soundboard-sound">Get Guild Soundboard Sound</a>
+            </summary>
+            <param name="client">Client to use</param>
+            <param name="soundId">ID of the guild sound</param>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.ExplicitContentFilterLevel">
             <summary>
             Represents <a href="https://discord.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level">Explicit Content Filter Level</a>
@@ -10066,6 +10255,16 @@
         <member name="F:Oxide.Ext.Discord.Entities.ExplicitContentFilterLevel.AllMembers">
             <summary>
             Filter for all members
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.GetGuildSoundsResponse">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/soundboard#list-guild-soundboard-sounds-response-structure">Get Guild Sounds Response</a> in Discord
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.GetGuildSoundsResponse.Items">
+            <summary>
+            Soundboard sounds for the guild
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.GuildBan">
@@ -10301,6 +10500,11 @@
             Guild has enabled Membership Screening
             </summary>
         </member>
+        <member name="F:Oxide.Ext.Discord.Entities.GuildFeatures.MoreSoundboard">
+            <summary>
+            Guild has increased custom soundboard sound slots   
+            </summary>
+        </member>
         <member name="F:Oxide.Ext.Discord.Entities.GuildFeatures.MoreStickers">
             <summary>
             Guild has increased custom sticker slots
@@ -10339,6 +10543,11 @@
         <member name="F:Oxide.Ext.Discord.Entities.GuildFeatures.RoleSubscriptionsEnabled">
             <summary>
             Guild has enabled role subscriptions
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.GuildFeatures.Soundboard">
+            <summary>
+            Guild has created soundboard sounds
             </summary>
         </member>
         <member name="F:Oxide.Ext.Discord.Entities.GuildFeatures.TicketedEventsEnabled">
@@ -10674,6 +10883,11 @@
         <member name="F:Oxide.Ext.Discord.Entities.GuildNavigationType.Guide">
             <summary>
             <a href="https://support.discord.com/hc/en-us/articles/13497665141655">	Server Guide</a>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.GuildNavigationType.LinkedRoles">
+            <summary>
+            <a href="https://support.discord.com/hc/en-us/articles/10388356626711"> Linked Roles</a>
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.GuildNsfwLevel">
@@ -11877,6 +12091,12 @@
             The image data
             </summary>
         </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordImageData.IsValid">
+            <summary>
+            Returns if this struct has a valid image
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Oxide.Ext.Discord.Entities.DiscordImageData.#ctor(System.Byte[])">
             <summary>
             Constructor from a byte[] of the image
@@ -11899,20 +12119,6 @@
         <member name="M:Oxide.Ext.Discord.Entities.DiscordImageData.GetBase64Image">
             <summary>
             Returns the Base64 Image string for the image.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Oxide.Ext.Discord.Entities.DiscordImageData.GetImageSize(Oxide.Ext.Discord.Entities.DiscordImageSize)">
-            <summary>
-            Returns the image size in the given format
-            </summary>
-            <param name="size"></param>
-            <returns></returns>
-            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
-        </member>
-        <member name="M:Oxide.Ext.Discord.Entities.DiscordImageData.IsValid">
-            <summary>
-            Returns if this struct has a valid image
             </summary>
             <returns></returns>
         </member>
@@ -11957,31 +12163,6 @@
         <member name="F:Oxide.Ext.Discord.Entities.DiscordImageFormat.Lottie">
             <summary>
             Lottie Image
-            </summary>
-        </member>
-        <member name="T:Oxide.Ext.Discord.Entities.DiscordImageSize">
-            <summary>
-            Represents an image size
-            </summary>
-        </member>
-        <member name="F:Oxide.Ext.Discord.Entities.DiscordImageSize.Bytes">
-            <summary>
-            Image Size in bytes
-            </summary>
-        </member>
-        <member name="F:Oxide.Ext.Discord.Entities.DiscordImageSize.KiloBytes">
-            <summary>
-            Image size in kilobytes
-            </summary>
-        </member>
-        <member name="F:Oxide.Ext.Discord.Entities.DiscordImageSize.MegaBytes">
-            <summary>
-            Image Size in megabytes
-            </summary>
-        </member>
-        <member name="F:Oxide.Ext.Discord.Entities.DiscordImageSize.GigaBytes">
-            <summary>
-            Image Size in gigabytes
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.Integration">
@@ -17500,6 +17681,199 @@
             <param name="id">Id to be converted to snowflake</param>
             <returns>ID converted to a snowflake</returns>
         </member>
+        <member name="T:Oxide.Ext.Discord.Entities.DiscordSoundboardSound">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/soundboard#soundboard-sound-object">Soundboard</a> in Discord
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.Id">
+            <summary>
+            ID of the sound
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.Name">
+            <summary>
+            Name of this sound
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.SoundId">
+            <summary>
+            ID of this sound
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.Volume">
+            <summary>
+            Volume of this sound, from 0 to 1
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.EmojiId">
+            <summary>
+            ID of this sound's custom emoji
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.EmojiName">
+            <summary>
+            Unicode character of this sound's standard emoji
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.GuildId">
+            <summary>
+            ID of the guild this sound is in
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.Available">
+            <summary>
+            Whether this sound can be used, may be false due to loss of Server Boosts
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.User">
+            <summary>
+            User who created this sound
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.GetDefaultSounds(Oxide.Ext.Discord.Clients.DiscordClient)">
+            <summary>
+            Returns a list of soundboard sound objects that can be used by all users.
+            See <a href="https://discord.com/developers/docs/resources/soundboard#list-default-soundboard-sounds">List Default Soundboard Sounds</a>
+            </summary>
+            <param name="client">Client to use</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.Edit(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.SoundboardSoundUpdate)">
+            <summary>
+            Returns a list of soundboard sound objects that can be used by all users.
+            See <a href="https://discord.com/developers/docs/resources/soundboard#list-default-soundboard-sounds">List Default Soundboard Sounds</a>
+            </summary>
+            <param name="client">Client to use</param>
+            <param name="update">Update to apply</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.Delete(Oxide.Ext.Discord.Clients.DiscordClient)">
+            <summary>
+            Returns a list of soundboard sound objects that can be used by all users.
+            See <a href="https://discord.com/developers/docs/resources/soundboard#list-default-soundboard-sounds">List Default Soundboard Sounds</a>
+            </summary>
+            <param name="client">Client to use</param>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.DiscordSoundData">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/reference#image-data">Discord Sound Data</a>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.DiscordSoundData.Format">
+            <summary>
+            Format for the sound
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.DiscordSoundData.Sound">
+            <summary>
+            Sound Data
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundData.IsValid">
+            <summary>
+            Returns if this struct has a valid sound
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordSoundData.#ctor(System.Byte[])">
+            <summary>
+            Constructor
+            </summary>
+            <param name="sound">Sound data</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordSoundData.#ctor(System.IO.Stream)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="stream">Sound data</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordSoundData.#ctor(System.String)">
+            <summary>
+            Constructor from the discord image data format
+            </summary>
+            <param name="sound">string base64 image</param>
+            <exception cref="T:Oxide.Ext.Discord.Exceptions.InvalidImageDataException">Thrown if the sound is not a valid base64 sound string</exception>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordSoundData.GetBase64Sound">
+            <summary>
+            Returns the Base64 Image string for the image.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.DiscordSoundFormat">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/reference#image-formatting-image-formats">Image Formats</a>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.DiscordSoundFormat.Auto">
+            <summary>
+            Automatically pick the sound format
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.DiscordSoundFormat.Mp3">
+            <summary>
+            Data is MP3
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.DiscordSoundFormat.Ogg">
+            <summary>
+            Data is OGG
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.SoundboardSoundCreate">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/soundboard#create-guild-soundboard-sound-json-params">Soundboard Create Request</a> in Discord
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundCreate.Name">
+            <summary>
+            Name of the soundboard sound (2-32 characters)
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundCreate.Sound">
+            <summary>
+            Mp3 or ogg sound data
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundCreate.Volume">
+            <summary>
+            Volume of the soundboard sound, from 0 to 1, defaults to 1
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundCreate.EmojiId">
+            <summary>
+            ID of the custom emoji for the soundboard sound
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundCreate.EmojiName">
+            <summary>
+            Unicode character of a standard emoji for the soundboard sound
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.SoundboardSoundUpdate">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/soundboard#modify-guild-soundboard-sound-json-params">Soundboard Update Request</a> in Discord
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundUpdate.Name">
+            <summary>
+            Name of the soundboard sound (2-32 characters)
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundUpdate.Volume">
+            <summary>
+            Volume of the soundboard sound, from 0 to 1, defaults to 1
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundUpdate.EmojiId">
+            <summary>
+            ID of the custom emoji for the soundboard sound
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundUpdate.EmojiName">
+            <summary>
+            Unicode character of a standard emoji for the soundboard sound
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.DiscordSticker">
             <summary>
             Represents a <a href="https://discord.com/developers/docs/resources/sticker#sticker-object">Discord Sticker Structure</a>
@@ -17918,6 +18292,11 @@
         <member name="F:Oxide.Ext.Discord.Entities.ConnectionType.Unknown">
             <summary>
             Discord Extension doesn't currently support this connection type
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.ConnectionType.AmazonMusic">
+            <summary>
+            Connection type is Battle.net
             </summary>
         </member>
         <member name="F:Oxide.Ext.Discord.Entities.ConnectionType.BattleNet">
@@ -19430,6 +19809,16 @@
             </summary>
             <param name="message">Exception message</param>
         </member>
+        <member name="T:Oxide.Ext.Discord.Exceptions.InvalidSoundboardException">
+            <summary>
+            Represents an exception in discord sound data
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Exceptions.InvalidSoundDataException">
+            <summary>
+            Represents an exception in discord sound data
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Exceptions.InvalidGuildStickerException">
             <summary>
             Represents an exception in guild stickers
@@ -20486,6 +20875,13 @@
             <param name="type">Type to navigate to</param>
             <returns>string with navigation to the navigation type</returns>
         </member>
+        <member name="M:Oxide.Ext.Discord.Helpers.DiscordFormatting.LinkedRoles(Oxide.Ext.Discord.Entities.Snowflake)">
+            <summary>
+            Linked Roles
+            </summary>
+            <param name="roleId">Linked role ID</param>
+            <returns>string with navigation to the navigation type</returns>
+        </member>
         <member name="M:Oxide.Ext.Discord.Helpers.DiscordFormatting.Italics(System.String)">
             <summary>
             Will display the message in italics
@@ -21529,6 +21925,37 @@
             <exception cref="T:Newtonsoft.Json.JsonException"></exception>
         </member>
         <member name="M:Oxide.Ext.Discord.Json.DiscordImageDataConverter.CanConvert(System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="objectType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Json.DiscordSoundDataConverter">
+            <summary>
+            Represents the <see cref="T:Newtonsoft.Json.JsonConverter"/> for <see cref="T:Oxide.Ext.Discord.Entities.DiscordSoundData"/>
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Json.DiscordSoundDataConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            
+            </summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+            <param name="serializer"></param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Json.DiscordSoundDataConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <param name="objectType"></param>
+            <param name="existingValue"></param>
+            <param name="serializer"></param>
+            <returns></returns>
+            <exception cref="T:Newtonsoft.Json.JsonException"></exception>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Json.DiscordSoundDataConverter.CanConvert(System.Type)">
             <summary>
             
             </summary>
@@ -29012,6 +29439,31 @@
         <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.SubscriptionDelete">
             <summary>
             Represents the <a href="https://discord.com/developers/docs/topics/gateway-events#subscription-delete">SUBSCRIPTION_DELETE</a> gateway event
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.GuildSoundboardSoundCreate">
+            <summary>
+            Represents the <a href="https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-create">GUILD_SOUNDBOARD_SOUND_CREATE</a> gateway event
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.GuildSoundboardSoundUpdate">
+            <summary>
+            Represents the <a href="https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-update">GUILD_SOUNDBOARD_SOUND_UPDATE</a> gateway event
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.GuildSoundboardSoundDelete">
+            <summary>
+            Represents the <a href="https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-delete">GUILD_SOUNDBOARD_SOUND_DELETE</a> gateway event
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.GuildSoundboardSoundsUpdate">
+            <summary>
+            Represents the <a href="https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sounds-update">GUILD_SOUNDBOARD_SOUNDS_UPDATE</a> gateway event
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.SoundboardSounds">
+            <summary>
+            Represents the <a href="https://discord.com/developers/docs/events/gateway-events#soundboard-sounds">SOUNDBOARD_SOUNDS</a> gateway event
             </summary>
         </member>
         <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.AutoModerationRuleCreate">

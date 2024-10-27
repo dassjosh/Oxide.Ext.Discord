@@ -837,6 +837,17 @@ namespace Oxide.Ext.Discord.Entities
             return client.Bot.Rest.Get<StageInstance>(client,$"stage-instances/{Id}");
         }
 
+        /// <summary>
+        /// Sends a soundboard sound to the channel
+        /// See <a href="https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound">Send Soundboard Sound</a>
+        /// </summary>
+        /// <param name="client">Client to use</param>
+        /// <param name="request">Sound to send</param>
+        public IPromise SendSoundboardSound(DiscordClient client, SendSoundboardSound request)
+        {
+            return client.Bot.Rest.Post(client,$"channels/{Id}/send-soundboard-sound", request);
+        }
+
         internal DiscordChannel Update(DiscordChannel channel)
         {
             DiscordChannel previous = (DiscordChannel)MemberwiseClone();

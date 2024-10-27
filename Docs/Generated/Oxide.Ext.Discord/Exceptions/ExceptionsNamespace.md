@@ -48,6 +48,8 @@
 | class [InvalidPoolException](./InvalidPoolException.md) | An exception when something is invalid with a pool |
 | class [InvalidSelectMenuComponentException](./InvalidSelectMenuComponentException.md) | Represents an exception for select menu components |
 | class [InvalidSnowflakeException](./InvalidSnowflakeException.md) | Exception thrown when an invalid Snowflake ID is used in an API call |
+| class [InvalidSoundboardException](./InvalidSoundboardException.md) | Represents an exception in discord sound data |
+| class [InvalidSoundDataException](./InvalidSoundDataException.md) | Represents an exception in discord sound data |
 | class [InvalidTemplateVersionException](./InvalidTemplateVersionException.md) | Thrown when the minimum template version is higher than the current template version |
 | class [InvalidThreadException](./InvalidThreadException.md) | Represents an exception for channel threads |
 | class [InvalidUserException](./InvalidUserException.md) | Represents an exception when modifying a user with invalid data |

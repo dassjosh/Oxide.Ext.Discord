@@ -88,6 +88,14 @@ namespace Oxide.Ext.Discord.Constants
                 OnDiscordGuildEmojisUpdated,
                 OnDiscordGuildStickersUpdated
             },
+            [GatewayIntents.GuildExpressions] = new List<string>
+            {
+                OnDiscordGuildEmojisUpdated,
+                OnDiscordGuildStickersUpdated,
+                OnDiscordGuildSoundboardCreated,
+                OnDiscordGuildSoundboardUpdated,
+                OnDiscordGuildSoundboardDeleted
+            },
             [GatewayIntents.GuildIntegrations] = new List<string>
             {
                 OnDiscordGuildIntegrationsUpdated,
@@ -1387,7 +1395,6 @@ namespace Oxide.Ext.Discord.Constants
         /// </code>
         /// </summary>
         public const string OnDiscordSubscriptionUpdated = nameof(OnDiscordSubscriptionUpdated);
-
         
         /// <summary>
         /// Called when a subscription is deleted
@@ -1399,7 +1406,50 @@ namespace Oxide.Ext.Discord.Constants
         /// </code>
         /// </summary>
         public const string OnDiscordSubscriptionDeleted = nameof(OnDiscordSubscriptionDeleted);
-
+        
+        /// <summary>
+        /// Called when a guild soundboard is created
+        /// <code>
+        /// void OnDiscordGuildSoundboardCreated(DiscordSoundboard soundboard, DiscordGuild guid)
+        /// {
+        ///     Puts("OnDiscordGuildSoundboardCreated Works!");
+        /// }
+        /// </code>
+        /// </summary>
+        public const string OnDiscordGuildSoundboardCreated = nameof(OnDiscordGuildSoundboardCreated);
+        
+        /// <summary>
+        /// Called when a guild soundboard is updated
+        /// <code>
+        /// void OnDiscordGuildSoundboardUpdated(DiscordSoundboard soundboard, DiscordGuild guid)
+        /// {
+        ///     Puts("OnDiscordGuildSoundboardUpdated Works!");
+        /// }
+        /// </code>
+        /// </summary>
+        public const string OnDiscordGuildSoundboardUpdated = nameof(OnDiscordGuildSoundboardUpdated);
+        
+        /// <summary>
+        /// Called when a guild soundboard is deleted
+        /// <code>
+        /// void OnDiscordGuildSoundboardDeleted(DiscordSoundboard soundboard, DiscordGuild guid)
+        /// {
+        ///     Puts("OnDiscordGuildSoundboardDeleted Works!");
+        /// }
+        /// </code>
+        /// </summary>
+        public const string OnDiscordGuildSoundboardDeleted = nameof(OnDiscordGuildSoundboardCreated);
+        
+        /// <summary>
+        /// Called when a guild soundboard is deleted
+        /// <code>
+        /// void OnDiscordGetGuildSoundboardSounds(List&lt;DiscordSoundboard&gt; soundboard, DiscordGuild guid)
+        /// {
+        ///     Puts("OnDiscordGetGuildSoundboardSounds Works!");
+        /// }
+        /// </code>
+        /// </summary>
+        public const string OnDiscordGetGuildSoundboardSounds = nameof(OnDiscordGetGuildSoundboardSounds);
         
         /// <summary>
         /// Called when an AutoMod rule is created in a guild

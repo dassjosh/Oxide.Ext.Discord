@@ -49,7 +49,7 @@ public class DiscordGuild : ISnowflakeEntity
 | [OwnerId](#ownerid-property) { get; set; } | ID of owner |
 | [Permissions](#permissions-property) { get; set; } | Total permissions for the user in the guild (excludes overrides) |
 | [PreferredLocale](#preferredlocale-property) { get; set; } | The preferred locale of a Community guild Used in server discovery and notices from Discord Defaults to "en-US" |
-| [PremiumProgressBarEnabled](#premiumprogressbarenabled-property) { get; set; } | The scheduled events in the guild |
+| [PremiumProgressBarEnabled](#premiumprogressbarenabled-property) { get; set; } | Whether the guild has the boost progress bar enabled |
 | [PremiumSubscriptionCount](#premiumsubscriptioncount-property) { get; set; } | The number of boosts this guild currently has |
 | [PremiumTier](#premiumtier-property) { get; set; } | Premium tier (Server Boost level) |
 | [Presences](#presences-property) { get; set; } | Presences of the members in the guild will only include non-offline members if the size is greater than large threshold |
@@ -58,6 +58,7 @@ public class DiscordGuild : ISnowflakeEntity
 | [RulesChannelId](#ruleschannelid-property) { get; set; } | The id of the channel where Community guilds can display rules and/or guidelines |
 | [SafetyAlertsChannelId](#safetyalertschannelid-property) { get; set; } | The ID of the channel where admins and moderators of Community guilds receive safety alerts from Discord |
 | [ScheduledEvents](#scheduledevents-property) { get; set; } | The scheduled events in the guild [`DiscordSticker`](./DiscordSticker.md) |
+| [SoundboardSounds](#soundboardsounds-property) { get; set; } | The scheduled events in the guild [`DiscordSticker`](./DiscordSticker.md) |
 | [Splash](#splash-property) { get; set; } | Splash hash |
 | [SplashUrl](#splashurl-property) { get; } | Returns the Guilds Splash Url |
 | [StageInstances](#stageinstances-property) { get; set; } | Stage instances in the guild [`StageInstance`](./StageInstance.md) |
@@ -109,6 +110,8 @@ public class DiscordGuild : ISnowflakeEntity
 | [GetChannels](#getchannels-method)(…) | Returns a list of guild channel objects. Does not include threads See [Get Guild Channels](https://discord.com/developers/docs/resources/guild#get-guild-channels) |
 | [GetCurrentUserVoiceState](#getcurrentuservoicestate-method)(…) | Get Current User Voice State See [Get Current User Voice State](https://discord.com/developers/docs/resources/voice#get-user-voice-state) |
 | [GetEmoji](#getemoji-method-1-of-2)(…) | Finds guild emoji by name (2 methods) |
+| [GetGuildSound](#getguildsound-method)(…) | Returns a soundboard sound object for the given sound id See [Get Guild Soundboard Sound](https://discord.com/developers/docs/resources/soundboard#get-guild-soundboard-sound) |
+| [GetGuildSounds](#getguildsounds-method)(…) | Returns a list of the guild's soundboard sounds See [List Guild Soundboard Sounds](https://discord.com/developers/docs/resources/soundboard#list-guild-soundboard-sounds) |
 | [GetIntegrations](#getintegrations-method)(…) | Returns a list of integration objects for the guild. Requires the MANAGE_GUILD permission. See [Get Guild Integrations](https://discord.com/developers/docs/resources/guild#get-guild-integrations) |
 | [GetInvites](#getinvites-method)(…) | Returns a list of invite objects (with invite metadata) for the guild. Requires the MANAGE_GUILD permission. See [Get Guild Invites](https://discord.com/developers/docs/resources/guild#get-guild-invites) |
 | [GetMember](#getmember-method-1-of-3)(…) | Returns a GuildMember with the given username (Case Insensitive) (3 methods) |
@@ -1955,6 +1958,52 @@ public IPromise<GuildOnboarding> EditOnboarding(DiscordClient client, GuildOnboa
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
    
+# GetGuildSounds method
+
+Returns a list of the guild's soundboard sounds See [List Guild Soundboard Sounds](https://discord.com/developers/docs/resources/soundboard#list-guild-soundboard-sounds)
+
+```csharp
+public IPromise<GetGuildSoundsResponse> GetGuildSounds(DiscordClient client)
+```
+
+| parameter | description |
+| --- | --- |
+| client | Client to use |
+
+## See Also
+
+* interface [IPromise&lt;TPromised&gt;](../Interfaces/IPromise%7BTPromised%7D.md)
+* class [GetGuildSoundsResponse](./GetGuildSoundsResponse.md)
+* class [DiscordClient](../Clients/DiscordClient.md)
+* class [DiscordGuild](./DiscordGuild.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# GetGuildSound method
+
+Returns a soundboard sound object for the given sound id See [Get Guild Soundboard Sound](https://discord.com/developers/docs/resources/soundboard#get-guild-soundboard-sound)
+
+```csharp
+public IPromise<DiscordSoundboardSound> GetGuildSound(DiscordClient client, Snowflake soundId)
+```
+
+| parameter | description |
+| --- | --- |
+| client | Client to use |
+| soundId | ID of the guild sound |
+
+## See Also
+
+* interface [IPromise&lt;TPromised&gt;](../Interfaces/IPromise%7BTPromised%7D.md)
+* class [DiscordSoundboardSound](./DiscordSoundboardSound.md)
+* class [DiscordClient](../Clients/DiscordClient.md)
+* struct [Snowflake](./Snowflake.md)
+* class [DiscordGuild](./DiscordGuild.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
 # DiscordGuild constructor
 
 The default constructor.
@@ -2771,9 +2820,26 @@ public Hash<Snowflake, GuildScheduledEvent> ScheduledEvents { get; set; }
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
    
+# SoundboardSounds property
+
+The scheduled events in the guild [`DiscordSticker`](./DiscordSticker.md)
+
+```csharp
+public Hash<Snowflake, DiscordSoundboardSound> SoundboardSounds { get; set; }
+```
+
+## See Also
+
+* struct [Snowflake](./Snowflake.md)
+* class [DiscordSoundboardSound](./DiscordSoundboardSound.md)
+* class [DiscordGuild](./DiscordGuild.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
 # PremiumProgressBarEnabled property
 
-The scheduled events in the guild
+Whether the guild has the boost progress bar enabled
 
 ```csharp
 public bool PremiumProgressBarEnabled { get; set; }

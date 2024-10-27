@@ -11,11 +11,10 @@ public struct DiscordImageData
 | name | description |
 | --- | --- |
 | [DiscordImageData](#discordimagedata-constructor-1-of-3)(…) | Constructor from a byte[] of the image (3 constructors) |
+| [IsValid](#isvalid-property) { get; } | Returns if this struct has a valid image |
 | readonly [Image](#image-field) | The image data |
 | readonly [Type](#type-field) | The type of image |
 | [GetBase64Image](#getbase64image-method)() | Returns the Base64 Image string for the image. |
-| [GetImageSize](#getimagesize-method)(…) | Returns the image size in the given format |
-| [IsValid](#isvalid-method)() | Returns if this struct has a valid image |
 
 ## See Also
 
@@ -30,47 +29,6 @@ Returns the Base64 Image string for the image.
 
 ```csharp
 public string GetBase64Image()
-```
-
-## See Also
-
-* struct [DiscordImageData](./DiscordImageData.md)
-* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
-* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
-   
-   
-# GetImageSize method
-
-Returns the image size in the given format
-
-```csharp
-public double GetImageSize(DiscordImageSize size)
-```
-
-| parameter | description |
-| --- | --- |
-| size |  |
-
-## Exceptions
-
-| exception | condition |
-| --- | --- |
-| ArgumentOutOfRangeException |  |
-
-## See Also
-
-* enum [DiscordImageSize](./DiscordImageSize.md)
-* struct [DiscordImageData](./DiscordImageData.md)
-* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
-* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
-   
-   
-# IsValid method
-
-Returns if this struct has a valid image
-
-```csharp
-public bool IsValid()
 ```
 
 ## See Also
@@ -137,6 +95,21 @@ public DiscordImageData(string image)
 | exception | condition |
 | --- | --- |
 | [InvalidImageDataException](../Exceptions/InvalidImageDataException.md) | Thrown if the image is not a valid base64 image string |
+
+## See Also
+
+* struct [DiscordImageData](./DiscordImageData.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# IsValid property
+
+Returns if this struct has a valid image
+
+```csharp
+public bool IsValid { get; }
+```
 
 ## See Also
 

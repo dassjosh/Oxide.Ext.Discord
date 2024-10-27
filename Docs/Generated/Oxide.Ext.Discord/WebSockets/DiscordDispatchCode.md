@@ -75,6 +75,11 @@ public enum DiscordDispatchCode : byte
 | SubscriptionCreate | `SubscriptionCreate` | Represents the [SUBSCRIPTION_CREATE](https://discord.com/developers/docs/topics/gateway-events#subscription-create) gateway event |
 | SubscriptionUpdate | `SubscriptionUpdate` | Represents the [SUBSCRIPTION_UPDATE](https://discord.com/developers/docs/topics/gateway-events#subscription-update) gateway event |
 | SubscriptionDelete | `SubscriptionDelete` | Represents the [SUBSCRIPTION_DELETE](https://discord.com/developers/docs/topics/gateway-events#subscription-delete) gateway event |
+| GuildSoundboardSoundCreate | `GuildSoundboardSoundCreate` | Represents the [GUILD_SOUNDBOARD_SOUND_CREATE](https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-create) gateway event |
+| GuildSoundboardSoundUpdate | `GuildSoundboardSoundUpdate` | Represents the [GUILD_SOUNDBOARD_SOUND_UPDATE](https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-update) gateway event |
+| GuildSoundboardSoundDelete | `GuildSoundboardSoundDelete` | Represents the [GUILD_SOUNDBOARD_SOUND_DELETE](https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-delete) gateway event |
+| GuildSoundboardSoundsUpdate | `GuildSoundboardSoundsUpdate` | Represents the [GUILD_SOUNDBOARD_SOUNDS_UPDATE](https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sounds-update) gateway event |
+| SoundboardSounds | `SoundboardSounds` | Represents the [SOUNDBOARD_SOUNDS](https://discord.com/developers/docs/events/gateway-events#soundboard-sounds) gateway event |
 | AutoModerationRuleCreate | `AutoModerationRuleCreate` | Represents the [AUTO_MODERATION_RULE_CREATE](https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-create) gateway event |
 | AutoModerationRuleUpdate | `AutoModerationRuleUpdate` | Represents the [AUTO_MODERATION_RULE_UPDATE](https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-update) gateway event |
 | AutoModerationRuleDelete | `AutoModerationRuleDelete` | Represents the [AUTO_MODERATION_RULE_DELETE](https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-delete) gateway event |

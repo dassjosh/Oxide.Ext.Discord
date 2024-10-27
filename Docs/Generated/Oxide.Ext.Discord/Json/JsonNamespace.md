@@ -7,6 +7,7 @@
 | class [DiscordImageDataConverter](./DiscordImageDataConverter.md) | Represents the JsonConverter for [`DiscordImageData`](./Oxide.Ext.Discord/Entities/DiscordImageData.md) |
 | class [DiscordJsonReader](./DiscordJsonReader.md) | This is a pooled JSON reader that can read as string, deserialize object, or populate a given object async |
 | class [DiscordJsonWriter](./DiscordJsonWriter.md) | This is a pooled JSON writer that can write JSON to a stream |
+| class [DiscordSoundDataConverter](./DiscordSoundDataConverter.md) | Represents the JsonConverter for [`DiscordSoundData`](./Oxide.Ext.Discord/Entities/DiscordSoundData.md) |
 | class [EventPayloadConverter](./EventPayloadConverter.md) | JSON converter for [`EventPayload`](./Oxide.Ext.Discord/Entities/EventPayload.md) |
 | class [HashListConverter&lt;TValue&gt;](./HashListConverter%7BTValue%7D.md) | Converts to and from a list in JSON to a hash |
 | class [MessageComponentsConverter](./MessageComponentsConverter.md) | Converter for a list of message components |

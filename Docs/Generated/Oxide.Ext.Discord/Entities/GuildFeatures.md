@@ -25,6 +25,7 @@ public enum GuildFeatures : byte
 | InvitesDisabled | `InvitesDisabled` | Guild has paused invites, preventing new users from joining |
 | InviteSplash | `InviteSplash` | Guild has access to set an invite splash background |
 | MemberVerificationGateEnabled | `MemberVerificationGateEnabled` | Guild has enabled Membership Screening |
+| MoreSoundboard | `MoreSoundboard` | Guild has increased custom soundboard sound slots |
 | MoreStickers | `MoreStickers` | Guild has increased custom sticker slots |
 | News | `News` | Guild has access to create news channels |
 | Partnered | `Partnered` | Guild is partnered |
@@ -33,6 +34,7 @@ public enum GuildFeatures : byte
 | RoleIcons | `RoleIcons` | Guild can be previewed before joining via Membership Screening or the directory |
 | RoleSubscriptionsAvailableForPurchase | `RoleSubscriptionsAvailableForPurchase` | Guild has role subscriptions that can be purchased |
 | RoleSubscriptionsEnabled | `RoleSubscriptionsEnabled` | Guild has enabled role subscriptions |
+| Soundboard | `Soundboard` | Guild has created soundboard sounds |
 | TicketedEventsEnabled | `TicketedEventsEnabled` | Guild has enabled ticketed events |
 | VanityUrl | `VanityUrl` | Guild has access to set a vanity URL |
 | Verified | `Verified` | Guild is verified |
