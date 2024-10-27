@@ -35,6 +35,12 @@ namespace Oxide.Ext.Discord.Entities
         /// </summary>
         [JsonProperty("avatar")]
         public string Avatar { get; set; }
+        
+        /// <summary>
+        /// The member's guild banner hash
+        /// </summary>
+        [JsonProperty("banner")]
+        public string Banner { get; set; }
 
         /// <summary>
         /// List of member roles

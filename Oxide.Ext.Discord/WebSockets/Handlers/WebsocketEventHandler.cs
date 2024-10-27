@@ -1042,7 +1042,7 @@ namespace Oxide.Ext.Discord.WebSockets
         private void HandleDispatchGuildMemberUpdate(GuildMemberUpdatedEvent update)
         {
             DiscordGuild guild = _client.GetGuild(update.GuildId);
-            if (guild == null || !guild.IsAvailable)
+            if (guild is not {IsAvailable: true})
             {
                 return;
             }
@@ -1136,6 +1136,9 @@ namespace Oxide.Ext.Discord.WebSockets
             }
 
             current.Flags = update.Flags;
+            current.Banner = update.Banner;
+            current.Pending = update.Pending;
+            if (update.AvatarDecoration != null) current.AvatarDecoration = update.AvatarDecoration;
         }
 
         //https://discord.com/developers/docs/topics/gateway-events#guild-members-chunk
