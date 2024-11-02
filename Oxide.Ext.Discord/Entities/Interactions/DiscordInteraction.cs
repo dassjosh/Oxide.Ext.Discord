@@ -87,7 +87,7 @@ namespace Oxide.Ext.Discord.Entities
 
         /// <summary>
         /// Continuation token for responding to the interaction
-        /// Interaction tokens are valid for 15 minutes and can be used to send followup messages but you must send an initial response within 3 seconds of receiving the event.
+        /// tokens are valid for 15 minutes and can be used to send followup messages, but you must send an initial response within 3 seconds of receiving the event.
         /// If the 3 second deadline is exceeded, the token will be invalidated.
         /// </summary>
         [JsonProperty("token")]
@@ -149,14 +149,14 @@ namespace Oxide.Ext.Discord.Entities
         /// <summary>
         /// Returns the interaction parsed args to make it easier to process that interaction.
         /// </summary>
-        public InteractionDataParsed Parsed => _parsed ?? (_parsed = new InteractionDataParsed(this));
+        public InteractionDataParsed Parsed => _parsed ??= new InteractionDataParsed(this);
 
         private InteractionDataOption _focused;
 
         /// <summary>
         /// Returns the Focused option for Auto Complete
         /// </summary>
-        public InteractionDataOption Focused => _focused ?? (_focused = GetFocusedOption());
+        public InteractionDataOption Focused => _focused ??= GetFocusedOption();
 
         /// <summary>
         /// The UTC DateTime this interaction was created
