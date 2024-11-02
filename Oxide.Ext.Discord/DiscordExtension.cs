@@ -153,10 +153,10 @@ namespace Oxide.Ext.Discord
 
         private IEnumerable<string> GetPreProcessorDirectives()
         {
-            yield return "DiscordExt";
+            yield return "DISCORD_EXT";
             for (int i = 0; i <= Version.Minor; i++)
             {
-                yield return $"DiscordExt{Version.Major}_{i}";
+                yield return $"DISCORD_EXT_{Version.Major}_{i}";
             }
         }
 

@@ -28,7 +28,7 @@ public class DiscordInteraction
 | [Member](#member-property) { get; set; } | Guild member data for the invoking user, including permissions |
 | [Message](#message-property) { get; set; } | For components, the message they were attached to |
 | [Parsed](#parsed-property) { get; } | Returns the interaction parsed args to make it easier to process that interaction. |
-| [Token](#token-property) { get; set; } | Continuation token for responding to the interaction Interaction tokens are valid for 15 minutes and can be used to send followup messages but you must send an initial response within 3 seconds of receiving the event. If the 3 second deadline is exceeded, the token will be invalidated. |
+| [Token](#token-property) { get; set; } | Continuation token for responding to the interaction tokens are valid for 15 minutes and can be used to send followup messages, but you must send an initial response within 3 seconds of receiving the event. If the 3 second deadline is exceeded, the token will be invalidated. |
 | [Type](#type-property) { get; set; } | The type of interaction See [`InteractionType`](./InteractionType.md) |
 | [User](#user-property) { get; } | User object. If in DM then DM user else GuildMember.User |
 | [Version](#version-property) { get; set; } | Read-only property, always 1 |
@@ -907,7 +907,7 @@ public DiscordUser User { get; }
    
 # Token property
 
-Continuation token for responding to the interaction Interaction tokens are valid for 15 minutes and can be used to send followup messages but you must send an initial response within 3 seconds of receiving the event. If the 3 second deadline is exceeded, the token will be invalidated.
+Continuation token for responding to the interaction tokens are valid for 15 minutes and can be used to send followup messages, but you must send an initial response within 3 seconds of receiving the event. If the 3 second deadline is exceeded, the token will be invalidated.
 
 ```csharp
 public string Token { get; set; }

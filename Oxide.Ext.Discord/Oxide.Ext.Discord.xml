@@ -5040,6 +5040,16 @@
             Role connection verification URL for the app
             </summary>
         </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordApplication.EventWebhooksUrl">
+            <summary>
+            Event webhooks URL for the app to receive webhook events
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordApplication.EventWebhooksTypes">
+            <summary>
+            Event webhooks URL for the app to receive webhook events
+            </summary>
+        </member>
         <member name="P:Oxide.Ext.Discord.Entities.DiscordApplication.Tags">
             <summary>
             Up to 5 tags describing the content and functionality of the application
@@ -10622,6 +10632,11 @@
             The member's guild avatar hash
             </summary>
         </member>
+        <member name="P:Oxide.Ext.Discord.Entities.GuildMember.Banner">
+            <summary>
+            The member's guild banner hash
+            </summary>
+        </member>
         <member name="P:Oxide.Ext.Discord.Entities.GuildMember.Roles">
             <summary>
             List of member roles
@@ -13057,7 +13072,7 @@
         <member name="P:Oxide.Ext.Discord.Entities.DiscordInteraction.Token">
             <summary>
             Continuation token for responding to the interaction
-            Interaction tokens are valid for 15 minutes and can be used to send followup messages but you must send an initial response within 3 seconds of receiving the event.
+            tokens are valid for 15 minutes and can be used to send followup messages, but you must send an initial response within 3 seconds of receiving the event.
             If the 3 second deadline is exceeded, the token will be invalidated.
             </summary>
         </member>
@@ -14945,11 +14960,6 @@
             sent if the message is sent as a result of an interaction
             </summary>
         </member>
-        <member name="P:Oxide.Ext.Discord.Entities.DiscordMessage.Interaction">
-            <summary>
-            Sent if the message is a response to an Interaction
-            </summary>
-        </member>
         <member name="P:Oxide.Ext.Discord.Entities.DiscordMessage.Thread">
             <summary>
             The thread that was started from this message, includes thread member object
@@ -15954,36 +15964,6 @@
             This message is a voice message
             </summary>
         </member>
-        <member name="T:Oxide.Ext.Discord.Entities.MessageInteraction">
-            <summary>
-            Represents a <a href="https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object">Message Interaction Structure</a> within Discord.
-            </summary>
-        </member>
-        <member name="P:Oxide.Ext.Discord.Entities.MessageInteraction.Id">
-            <summary>
-            ID of the interaction
-            </summary>
-        </member>
-        <member name="P:Oxide.Ext.Discord.Entities.MessageInteraction.Type">
-            <summary>
-            Type of interaction
-            </summary>
-        </member>
-        <member name="P:Oxide.Ext.Discord.Entities.MessageInteraction.Name">
-            <summary>
-            Name of the <see cref="T:Oxide.Ext.Discord.Entities.DiscordApplicationCommand"/>, including subcommands and subcommand groups 
-            </summary>
-        </member>
-        <member name="P:Oxide.Ext.Discord.Entities.MessageInteraction.User">
-            <summary>
-            The user who invoked the interaction
-            </summary>
-        </member>
-        <member name="P:Oxide.Ext.Discord.Entities.MessageInteraction.Member">
-            <summary>
-            Member who invoked the interaction in the guild
-            </summary>
-        </member>
         <member name="T:Oxide.Ext.Discord.Entities.MessageInteractionMetadata">
             <summary>
             Represents a <a href="https://discord.com/developers/docs/resources/channel#message-interaction-metadata-object-message-interaction-metadata-structure">Message Interaction Metadata Structure</a> within Discord.
@@ -16380,6 +16360,71 @@
         </member>
         <member name="M:Oxide.Ext.Discord.Entities.MessageUpdate.Validate">
             <inheritdoc/>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.ApplicationCommandInteractionMetadata">
+            <summary>
+            Represents a <a href="https://discord.com/developers/docs/resources/channel#message-call-object">Application Command Interaction Metadata</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.ApplicationCommandInteractionMetadata.TargetUser">
+            <summary>
+            The user the command was run on, present only on user command interactions
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.ApplicationCommandInteractionMetadata.TargetMessageId">
+            <summary>
+             The ID of the message the command was run on, present only on message command interactions. The original response message will also have message_reference and referenced_message pointing to this message.
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.BaseInteractionMetadata">
+            <summary>
+            Represents a <a href="https://discord.com/developers/docs/resources/channel#message-call-object">Message Call Structure</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.BaseInteractionMetadata.Id">
+            <summary>
+            ID of the interaction
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.BaseInteractionMetadata.Type">
+            <summary>
+            Type of interaction
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.BaseInteractionMetadata.User">
+            <summary>
+            User who triggered the interaction
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.BaseInteractionMetadata.AuthorizingIntegrationOwners">
+            <summary>
+            IDs for installation context(s) related to an interaction. Details in Authorizing Integration Owners Object
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.BaseInteractionMetadata.OriginalResponseMessageId">
+            <summary>
+            ID of the original response message, present only on follow-up messages
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.MessageComponentInteractionMetadata">
+            <summary>
+            Represents a <a href="https://discord.com/developers/docs/resources/channel#message-call-object">Application Command Interaction Metadata</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.MessageComponentInteractionMetadata.InteractedMessageId">
+            <summary>
+            ID of the message that contained the interactive component
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.ModalSubmitInteractionMetadata">
+            <summary>
+            Represents a <a href="https://discord.com/developers/docs/resources/channel#message-call-object">Message Component Interaction Metadata</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.ModalSubmitInteractionMetadata.TriggeringInteractionMetadata">
+            <summary>
+            The ID of the message the command was run on, present only on message command interactions. The original response message will also have message_reference and referenced_message pointing to this message.
+            </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.DiscordPoll">
             <summary>
@@ -19433,6 +19478,26 @@
         <member name="M:Oxide.Ext.Discord.Entities.WebhookEditMessage.Validate">
             <inheritdoc/>
         </member>
+        <member name="T:Oxide.Ext.Discord.Entities.WebhookEventType">
+            <summary>
+            Represents a <a href="https://discord.com/developers/docs/resources/application#application-event-webhook-status">Webhook event type</a>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.WebhookEventType.Disabled">
+            <summary>
+            Webhook events are disabled by developer 
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.WebhookEventType.Enabled">
+            <summary>
+            Webhook events are enabled by developer  
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.WebhookEventType.DisabledByDiscord">
+            <summary>
+            Webhook events are disabled by Discord, usually do to inactivity
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.WebhookExecuteParams">
             <summary>
             Represents parameters to execute a webhook
@@ -22030,6 +22095,43 @@
             <param name="objectType"></param>
             <returns></returns>
         </member>
+        <member name="T:Oxide.Ext.Discord.Json.InteractionMetadataConverter">
+            <summary>
+            Converter for a list of message components
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Json.InteractionMetadataConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Ignored as we don't write JSON
+            </summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+            <param name="serializer"></param>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Json.InteractionMetadataConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Populate the correct types in components instead of just the BaseComponent
+            </summary>
+            <param name="reader"></param>
+            <param name="objectType"></param>
+            <param name="existingValue"></param>
+            <param name="serializer"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Json.InteractionMetadataConverter.CanConvert(System.Type)">
+            <summary>
+            Returns if this can convert the value
+            </summary>
+            <param name="objectType"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Json.InteractionMetadataConverter.CanWrite">
+            <summary>
+            Message Component Convert does not write JSON
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Json.MessageComponentsConverter">
             <summary>
             Converter for a list of message components
@@ -22093,43 +22195,6 @@
         <member name="M:Oxide.Ext.Discord.Json.PermissionFlagsStringConverter.CanConvert(System.Type)">
             <summary>
             Returns if the type equals PermissionFlags
-            </summary>
-            <param name="objectType"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Oxide.Ext.Discord.Json.RoleTagsConverter">
-            <summary>
-            Handles converting <see cref="T:Oxide.Ext.Discord.Entities.RoleTags"/>
-            This type contains special deserialization types
-            </summary>
-        </member>
-        <member name="P:Oxide.Ext.Discord.Json.RoleTagsConverter.CanWrite">
-            <summary>
-            Cannot write
-            </summary>
-        </member>
-        <member name="M:Oxide.Ext.Discord.Json.RoleTagsConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
-            <summary>
-            Cannot Write
-            </summary>
-            <param name="writer"></param>
-            <param name="value"></param>
-            <param name="serializer"></param>
-            <exception cref="T:Newtonsoft.Json.JsonSerializationException"></exception>
-        </member>
-        <member name="M:Oxide.Ext.Discord.Json.RoleTagsConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
-            <summary>
-            Converts the JSON to a <see cref="T:Oxide.Ext.Discord.Entities.RoleTags"/>
-            </summary>
-            <param name="reader"></param>
-            <param name="objectType"></param>
-            <param name="existingValue"></param>
-            <param name="serializer"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Oxide.Ext.Discord.Json.RoleTagsConverter.CanConvert(System.Type)">
-            <summary>
-            Returns if the type can be converter
             </summary>
             <param name="objectType"></param>
             <returns></returns>

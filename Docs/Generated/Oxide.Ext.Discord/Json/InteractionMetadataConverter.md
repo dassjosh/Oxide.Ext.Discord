@@ -1,31 +1,31 @@
-# RoleTagsConverter class
+# InteractionMetadataConverter class
 
-Handles converting [`RoleTags`](../Entities/RoleTags.md) This type contains special deserialization types
+Converter for a list of message components
 
 ```csharp
-public class RoleTagsConverter : JsonConverter
+public class InteractionMetadataConverter : JsonConverter
 ```
 
 ## Public Members
 
 | name | description |
 | --- | --- |
-| [RoleTagsConverter](#roletagsconverter-constructor)() | The default constructor. |
-| override [CanWrite](#canwrite-property) { get; } | Cannot write |
-| override [CanConvert](#canconvert-method)(…) | Returns if the type can be converter |
-| override [ReadJson](#readjson-method)(…) | Converts the JSON to a [`RoleTags`](../Entities/RoleTags.md) |
-| override [WriteJson](#writejson-method)(…) | Cannot Write |
+| [InteractionMetadataConverter](#interactionmetadataconverter-constructor)() | The default constructor. |
+| override [CanWrite](#canwrite-property) { get; } | Message Component Convert does not write JSON |
+| override [CanConvert](#canconvert-method)(…) | Returns if this can convert the value |
+| override [ReadJson](#readjson-method)(…) | Populate the correct types in components instead of just the BaseComponent |
+| override [WriteJson](#writejson-method)(…) | Ignored as we don't write JSON |
 
 ## See Also
 
 * namespace [Oxide.Ext.Discord.Json](./JsonNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
-* [RoleTagsConverter.cs](../../../../Oxide.Ext.Discord/Json/RoleTagsConverter.cs)
+* [InteractionMetadataConverter.cs](../../../../Oxide.Ext.Discord/Json/InteractionMetadataConverter.cs)
    
    
 # WriteJson method
 
-Cannot Write
+Ignored as we don't write JSON
 
 ```csharp
 public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
@@ -41,18 +41,18 @@ public override void WriteJson(JsonWriter writer, object value, JsonSerializer s
 
 | exception | condition |
 | --- | --- |
-| JsonSerializationException |  |
+| NotSupportedException |  |
 
 ## See Also
 
-* class [RoleTagsConverter](./RoleTagsConverter.md)
+* class [InteractionMetadataConverter](./InteractionMetadataConverter.md)
 * namespace [Oxide.Ext.Discord.Json](./JsonNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
    
 # ReadJson method
 
-Converts the JSON to a [`RoleTags`](../Entities/RoleTags.md)
+Populate the correct types in components instead of just the BaseComponent
 
 ```csharp
 public override object ReadJson(JsonReader reader, Type objectType, object existingValue, 
@@ -66,16 +66,22 @@ public override object ReadJson(JsonReader reader, Type objectType, object exist
 | existingValue |  |
 | serializer |  |
 
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| ArgumentOutOfRangeException |  |
+
 ## See Also
 
-* class [RoleTagsConverter](./RoleTagsConverter.md)
+* class [InteractionMetadataConverter](./InteractionMetadataConverter.md)
 * namespace [Oxide.Ext.Discord.Json](./JsonNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
    
 # CanConvert method
 
-Returns if the type can be converter
+Returns if this can convert the value
 
 ```csharp
 public override bool CanConvert(Type objectType)
@@ -87,29 +93,29 @@ public override bool CanConvert(Type objectType)
 
 ## See Also
 
-* class [RoleTagsConverter](./RoleTagsConverter.md)
+* class [InteractionMetadataConverter](./InteractionMetadataConverter.md)
 * namespace [Oxide.Ext.Discord.Json](./JsonNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
    
-# RoleTagsConverter constructor
+# InteractionMetadataConverter constructor
 
 The default constructor.
 
 ```csharp
-public RoleTagsConverter()
+public InteractionMetadataConverter()
 ```
 
 ## See Also
 
-* class [RoleTagsConverter](./RoleTagsConverter.md)
+* class [InteractionMetadataConverter](./InteractionMetadataConverter.md)
 * namespace [Oxide.Ext.Discord.Json](./JsonNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
    
 # CanWrite property
 
-Cannot write
+Message Component Convert does not write JSON
 
 ```csharp
 public override bool CanWrite { get; }
@@ -117,7 +123,7 @@ public override bool CanWrite { get; }
 
 ## See Also
 
-* class [RoleTagsConverter](./RoleTagsConverter.md)
+* class [InteractionMetadataConverter](./InteractionMetadataConverter.md)
 * namespace [Oxide.Ext.Discord.Json](./JsonNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
 

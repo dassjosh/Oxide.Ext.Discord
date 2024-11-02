@@ -17,6 +17,7 @@
 | enum [AllowedMentionTypes](./AllowedMentionTypes.md) | Represents a [Allowed Mention Types](https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types) for a message |
 | enum [AnimationType](./AnimationType.md) | Represents the [Animation Type]() |
 | enum [ApplicationCommandHandlerType](./ApplicationCommandHandlerType.md) | Represents [Entry Point Command Handler Types](https://discord.com/developers/docs/interactions/application-commands#application-command-object-entry-point-command-handler-types) |
+| class [ApplicationCommandInteractionMetadata](./ApplicationCommandInteractionMetadata.md) | Represents a [Application Command Interaction Metadata](https://discord.com/developers/docs/resources/channel#message-call-object) |
 | enum [ApplicationCommandType](./ApplicationCommandType.md) | Represents [Application Command Type](https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types) |
 | class [ApplicationEmojiCreate](./ApplicationEmojiCreate.md) | Represents [Application Emoji Create Structure](https://discord.com/developers/docs/resources/emoji#create-application-emoji-json-params) |
 | class [ApplicationEmojis](./ApplicationEmojis.md) | Represents [Application Emojis](https://discord.com/developers/docs/resources/emoji#list-application-emojis) |
@@ -43,6 +44,7 @@
 | abstract class [BaseComponent](./BaseComponent.md) | Represents [Message Component](https://discord.com/developers/docs/interactions/message-components#component-object) within discord |
 | abstract class [BaseInteractableComponent](./BaseInteractableComponent.md) | Represent a MessageComponent that can be interacted with |
 | abstract class [BaseInteractionMessage](./BaseInteractionMessage.md) | Represents a Base Message for an interaction |
+| class [BaseInteractionMetadata](./BaseInteractionMetadata.md) | Represents a [Message Call Structure](https://discord.com/developers/docs/resources/channel#message-call-object) |
 | abstract class [BaseInteractionResponse](./BaseInteractionResponse.md) | Represents a Base Interaction response |
 | abstract class [BaseInteractionResponse&lt;T&gt;](./BaseInteractionResponse%7BT%7D.md) | Represents a Base Interaction Response with generic data {T} |
 | abstract class [BaseMessageCreate](./BaseMessageCreate.md) | Represents a base message in discord |
@@ -233,12 +235,12 @@
 | class [MessageAttachment](./MessageAttachment.md) | Represents a message [Attachment Structure](https://discord.com/developers/docs/resources/channel#attachment-object) |
 | class [MessageBulkDeletedEvent](./MessageBulkDeletedEvent.md) | Represents [Message Delete Bulk](https://discord.com/developers/docs/topics/gateway#message-delete-bulk) |
 | class [MessageCall](./MessageCall.md) | Represents a [Message Call Structure](https://discord.com/developers/docs/resources/channel#message-call-object) |
+| class [MessageComponentInteractionMetadata](./MessageComponentInteractionMetadata.md) | Represents a [Application Command Interaction Metadata](https://discord.com/developers/docs/resources/channel#message-call-object) |
 | enum [MessageComponentType](./MessageComponentType.md) | Represents a [Message Component Type](https://discord.com/developers/docs/interactions/message-components#component-types) within Discord.. |
 | class [MessageCreate](./MessageCreate.md) | Represents a [Message Create Structure](https://discord.com/developers/docs/resources/channel#create-message-jsonform-params) to be created in discord |
 | class [MessageDeletedEvent](./MessageDeletedEvent.md) | Represents [Message Delete](https://discord.com/developers/docs/topics/gateway#message-delete) |
 | class [MessageFileAttachment](./MessageFileAttachment.md) | Represents a file attachment for a discord message |
 | [Flags] enum [MessageFlags](./MessageFlags.md) | Represents [Message Flags](https://discord.com/developers/docs/resources/channel#message-object-message-flags) for a message |
-| class [MessageInteraction](./MessageInteraction.md) | Represents a [Message Interaction Structure](https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object) within Discord. |
 | class [MessageInteractionMetadata](./MessageInteractionMetadata.md) | Represents a [Message Interaction Metadata Structure](https://discord.com/developers/docs/resources/channel#message-interaction-metadata-object-message-interaction-metadata-structure) within Discord. |
 | class [MessagePollVoteAddedEvent](./MessagePollVoteAddedEvent.md) | Represents [Message Poll Vote Added Event](https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-add) |
 | class [MessagePollVoteRemovedEvent](./MessagePollVoteRemovedEvent.md) | Represents [Message Poll Vote Removed Event](https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-remove) |
@@ -252,6 +254,7 @@
 | class [MessageSnapshot](./MessageSnapshot.md) | Represents a [Message Snapshot](https://discord.com/developers/docs/resources/channel#message-snapshot-object) |
 | enum [MessageType](./MessageType.md) | Represents [Message Types](https://discord.com/developers/docs/resources/channel#message-object-message-types) |
 | class [MessageUpdate](./MessageUpdate.md) | Represents a [Message Update Structure](https://discord.com/developers/docs/resources/channel#edit-message-jsonform-params) sent in a channel within Discord.. |
+| class [ModalSubmitInteractionMetadata](./ModalSubmitInteractionMetadata.md) | Represents a [Message Component Interaction Metadata](https://discord.com/developers/docs/resources/channel#message-call-object) |
 | class [OnboardingPrompt](./OnboardingPrompt.md) | Represents [Onboarding Prompt Structure](https://discord.com/developers/docs/resources/guild#guild-onboarding-object-onboarding-prompt-structure) |
 | class [OnboardingPromptOption](./OnboardingPromptOption.md) | Represents [Prompt Option Structure](https://discord.com/developers/docs/resources/guild#guild-onboarding-object-prompt-option-structure) |
 | enum [OnboardingPromptType](./OnboardingPromptType.md) | Represents [Prompt Types](https://discord.com/developers/docs/resources/guild#guild-onboarding-object-prompt-types) |
@@ -344,6 +347,7 @@
 | class [WebhookCreateMessage](./WebhookCreateMessage.md) | Represents [Webhook Create Message](https://discord.com/developers/docs/resources/webhook#execute-webhook-jsonform-params) |
 | class [WebhookEdit](./WebhookEdit.md) | Represents a [Webhook Create Structure](https://discord.com/developers/docs/resources/webhook#create-webhook-json-params) |
 | class [WebhookEditMessage](./WebhookEditMessage.md) | Represents [Webhook Edit Message Structure](https://discord.com/developers/docs/resources/webhook#edit-webhook-message-jsonform-params) |
+| enum [WebhookEventType](./WebhookEventType.md) | Represents a [Webhook event type](https://discord.com/developers/docs/resources/application#application-event-webhook-status) |
 | class [WebhookExecuteParams](./WebhookExecuteParams.md) | Represents parameters to execute a webhook |
 | class [WebhookMessageParams](./WebhookMessageParams.md) | Represents webhook message query string parameters |
 | enum [WebhookSendType](./WebhookSendType.md) | Use to control which webhook execute url to call |

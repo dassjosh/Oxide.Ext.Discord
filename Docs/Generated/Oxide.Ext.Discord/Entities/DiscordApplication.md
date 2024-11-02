@@ -19,6 +19,8 @@ public class DiscordApplication : IDebugLoggable
 | [CoverImage](#coverimage-property) { get; set; } | If this application is a game sold on Discord, this field will be the hash of the image on store embeds |
 | [CustomInstallUrl](#custominstallurl-property) { get; set; } | The application's default custom authorization link, if enabled |
 | [Description](#description-property) { get; set; } | Description of the app |
+| [EventWebhooksTypes](#eventwebhookstypes-property) { get; set; } | Event webhooks URL for the app to receive webhook events |
+| [EventWebhooksUrl](#eventwebhooksurl-property) { get; set; } | Event webhooks URL for the app to receive webhook events |
 | [Flags](#flags-property) { get; set; } | App's public flags |
 | [GetApplicationCoverUrl](#getapplicationcoverurl-property) { get; } | Returns the URL for the application cover |
 | [GetApplicationIconUrl](#getapplicationiconurl-property) { get; } | Returns the URL for the applications Icon |
@@ -965,6 +967,37 @@ public string RoleConnectionsVerificationUrl { get; set; }
 
 ## See Also
 
+* class [DiscordApplication](./DiscordApplication.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# EventWebhooksUrl property
+
+Event webhooks URL for the app to receive webhook events
+
+```csharp
+public string EventWebhooksUrl { get; set; }
+```
+
+## See Also
+
+* class [DiscordApplication](./DiscordApplication.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# EventWebhooksTypes property
+
+Event webhooks URL for the app to receive webhook events
+
+```csharp
+public WebhookEventType? EventWebhooksTypes { get; set; }
+```
+
+## See Also
+
+* enum [WebhookEventType](./WebhookEventType.md)
 * class [DiscordApplication](./DiscordApplication.md)
 * namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)

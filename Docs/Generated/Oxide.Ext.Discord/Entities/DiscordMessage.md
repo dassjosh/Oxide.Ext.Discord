@@ -26,7 +26,6 @@ public class DiscordMessage : IFileAttachments
 | [Flags](#flags-property) { get; set; } | Message flags combined as a bitfield [`MessageFlags`](./MessageFlags.md) |
 | [GuildId](#guildid-property) { get; set; } | ID of the guild the message was sent in |
 | [Id](#id-property) { get; set; } | ID of the message |
-| [Interaction](#interaction-property) { get; set; } | Sent if the message is a response to an Interaction |
 | [InteractionMetadata](#interactionmetadata-property) { get; set; } | sent if the message is sent as a result of an interaction |
 | [Member](#member-property) { get; set; } | Member properties for this message's author [`GuildMember`](./GuildMember.md) |
 | [MentionEveryone](#mentioneveryone-property) { get; set; } | Whether this message mentions everyone |
@@ -1443,29 +1442,12 @@ public DiscordMessage ReferencedMessage { get; }
 sent if the message is sent as a result of an interaction
 
 ```csharp
-public MessageInteraction InteractionMetadata { get; set; }
+public BaseInteractionMetadata InteractionMetadata { get; set; }
 ```
 
 ## See Also
 
-* class [MessageInteraction](./MessageInteraction.md)
-* class [DiscordMessage](./DiscordMessage.md)
-* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
-* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
-   
-   
-# Interaction property
-
-Sent if the message is a response to an Interaction
-
-```csharp
-[Obsolete("Deprecated in favor of InteractionMetadata")]
-public MessageInteraction Interaction { get; set; }
-```
-
-## See Also
-
-* class [MessageInteraction](./MessageInteraction.md)
+* class [BaseInteractionMetadata](./BaseInteractionMetadata.md)
 * class [DiscordMessage](./DiscordMessage.md)
 * namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)

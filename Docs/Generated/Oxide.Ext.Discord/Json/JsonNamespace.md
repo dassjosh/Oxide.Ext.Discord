@@ -10,9 +10,9 @@
 | class [DiscordSoundDataConverter](./DiscordSoundDataConverter.md) | Represents the JsonConverter for [`DiscordSoundData`](./Oxide.Ext.Discord/Entities/DiscordSoundData.md) |
 | class [EventPayloadConverter](./EventPayloadConverter.md) | JSON converter for [`EventPayload`](./Oxide.Ext.Discord/Entities/EventPayload.md) |
 | class [HashListConverter&lt;TValue&gt;](./HashListConverter%7BTValue%7D.md) | Converts to and from a list in JSON to a hash |
+| class [InteractionMetadataConverter](./InteractionMetadataConverter.md) | Converter for a list of message components |
 | class [MessageComponentsConverter](./MessageComponentsConverter.md) | Converter for a list of message components |
 | class [PermissionFlagsStringConverter](./PermissionFlagsStringConverter.md) | Converts Permission Flags to and from a JSON string |
-| class [RoleTagsConverter](./RoleTagsConverter.md) | Handles converting [`RoleTags`](./Oxide.Ext.Discord/Entities/RoleTags.md) This type contains special deserialization types |
 | class [SnowflakeConverter](./SnowflakeConverter.md) | Converts a snowflake to and from its JSON string value |
 | class [TemplateComponentsConverter](./TemplateComponentsConverter.md) | Converter for a list of message components |
 | class [TemplateKeyConverter](./TemplateKeyConverter.md) | JSON Template Key Converter |

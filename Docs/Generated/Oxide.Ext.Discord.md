@@ -120,6 +120,7 @@
 | enum [AllowedMentionTypes](./Oxide.Ext.Discord/Entities/AllowedMentionTypes.md) | Represents a [Allowed Mention Types](https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types) for a message |
 | enum [AnimationType](./Oxide.Ext.Discord/Entities/AnimationType.md) | Represents the [Animation Type]() |
 | enum [ApplicationCommandHandlerType](./Oxide.Ext.Discord/Entities/ApplicationCommandHandlerType.md) | Represents [Entry Point Command Handler Types](https://discord.com/developers/docs/interactions/application-commands#application-command-object-entry-point-command-handler-types) |
+| class [ApplicationCommandInteractionMetadata](./Oxide.Ext.Discord/Entities/ApplicationCommandInteractionMetadata.md) | Represents a [Application Command Interaction Metadata](https://discord.com/developers/docs/resources/channel#message-call-object) |
 | enum [ApplicationCommandType](./Oxide.Ext.Discord/Entities/ApplicationCommandType.md) | Represents [Application Command Type](https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types) |
 | class [ApplicationEmojiCreate](./Oxide.Ext.Discord/Entities/ApplicationEmojiCreate.md) | Represents [Application Emoji Create Structure](https://discord.com/developers/docs/resources/emoji#create-application-emoji-json-params) |
 | class [ApplicationEmojis](./Oxide.Ext.Discord/Entities/ApplicationEmojis.md) | Represents [Application Emojis](https://discord.com/developers/docs/resources/emoji#list-application-emojis) |
@@ -146,6 +147,7 @@
 | abstract class [BaseComponent](./Oxide.Ext.Discord/Entities/BaseComponent.md) | Represents [Message Component](https://discord.com/developers/docs/interactions/message-components#component-object) within discord |
 | abstract class [BaseInteractableComponent](./Oxide.Ext.Discord/Entities/BaseInteractableComponent.md) | Represent a MessageComponent that can be interacted with |
 | abstract class [BaseInteractionMessage](./Oxide.Ext.Discord/Entities/BaseInteractionMessage.md) | Represents a Base Message for an interaction |
+| class [BaseInteractionMetadata](./Oxide.Ext.Discord/Entities/BaseInteractionMetadata.md) | Represents a [Message Call Structure](https://discord.com/developers/docs/resources/channel#message-call-object) |
 | abstract class [BaseInteractionResponse](./Oxide.Ext.Discord/Entities/BaseInteractionResponse.md) | Represents a Base Interaction response |
 | abstract class [BaseInteractionResponse&lt;T&gt;](./Oxide.Ext.Discord/Entities/BaseInteractionResponse%7BT%7D.md) | Represents a Base Interaction Response with generic data {T} |
 | abstract class [BaseMessageCreate](./Oxide.Ext.Discord/Entities/BaseMessageCreate.md) | Represents a base message in discord |
@@ -336,12 +338,12 @@
 | class [MessageAttachment](./Oxide.Ext.Discord/Entities/MessageAttachment.md) | Represents a message [Attachment Structure](https://discord.com/developers/docs/resources/channel#attachment-object) |
 | class [MessageBulkDeletedEvent](./Oxide.Ext.Discord/Entities/MessageBulkDeletedEvent.md) | Represents [Message Delete Bulk](https://discord.com/developers/docs/topics/gateway#message-delete-bulk) |
 | class [MessageCall](./Oxide.Ext.Discord/Entities/MessageCall.md) | Represents a [Message Call Structure](https://discord.com/developers/docs/resources/channel#message-call-object) |
+| class [MessageComponentInteractionMetadata](./Oxide.Ext.Discord/Entities/MessageComponentInteractionMetadata.md) | Represents a [Application Command Interaction Metadata](https://discord.com/developers/docs/resources/channel#message-call-object) |
 | enum [MessageComponentType](./Oxide.Ext.Discord/Entities/MessageComponentType.md) | Represents a [Message Component Type](https://discord.com/developers/docs/interactions/message-components#component-types) within Discord.. |
 | class [MessageCreate](./Oxide.Ext.Discord/Entities/MessageCreate.md) | Represents a [Message Create Structure](https://discord.com/developers/docs/resources/channel#create-message-jsonform-params) to be created in discord |
 | class [MessageDeletedEvent](./Oxide.Ext.Discord/Entities/MessageDeletedEvent.md) | Represents [Message Delete](https://discord.com/developers/docs/topics/gateway#message-delete) |
 | class [MessageFileAttachment](./Oxide.Ext.Discord/Entities/MessageFileAttachment.md) | Represents a file attachment for a discord message |
 | [Flags] enum [MessageFlags](./Oxide.Ext.Discord/Entities/MessageFlags.md) | Represents [Message Flags](https://discord.com/developers/docs/resources/channel#message-object-message-flags) for a message |
-| class [MessageInteraction](./Oxide.Ext.Discord/Entities/MessageInteraction.md) | Represents a [Message Interaction Structure](https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object) within Discord. |
 | class [MessageInteractionMetadata](./Oxide.Ext.Discord/Entities/MessageInteractionMetadata.md) | Represents a [Message Interaction Metadata Structure](https://discord.com/developers/docs/resources/channel#message-interaction-metadata-object-message-interaction-metadata-structure) within Discord. |
 | class [MessagePollVoteAddedEvent](./Oxide.Ext.Discord/Entities/MessagePollVoteAddedEvent.md) | Represents [Message Poll Vote Added Event](https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-add) |
 | class [MessagePollVoteRemovedEvent](./Oxide.Ext.Discord/Entities/MessagePollVoteRemovedEvent.md) | Represents [Message Poll Vote Removed Event](https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-remove) |
@@ -355,6 +357,7 @@
 | class [MessageSnapshot](./Oxide.Ext.Discord/Entities/MessageSnapshot.md) | Represents a [Message Snapshot](https://discord.com/developers/docs/resources/channel#message-snapshot-object) |
 | enum [MessageType](./Oxide.Ext.Discord/Entities/MessageType.md) | Represents [Message Types](https://discord.com/developers/docs/resources/channel#message-object-message-types) |
 | class [MessageUpdate](./Oxide.Ext.Discord/Entities/MessageUpdate.md) | Represents a [Message Update Structure](https://discord.com/developers/docs/resources/channel#edit-message-jsonform-params) sent in a channel within Discord.. |
+| class [ModalSubmitInteractionMetadata](./Oxide.Ext.Discord/Entities/ModalSubmitInteractionMetadata.md) | Represents a [Message Component Interaction Metadata](https://discord.com/developers/docs/resources/channel#message-call-object) |
 | class [OnboardingPrompt](./Oxide.Ext.Discord/Entities/OnboardingPrompt.md) | Represents [Onboarding Prompt Structure](https://discord.com/developers/docs/resources/guild#guild-onboarding-object-onboarding-prompt-structure) |
 | class [OnboardingPromptOption](./Oxide.Ext.Discord/Entities/OnboardingPromptOption.md) | Represents [Prompt Option Structure](https://discord.com/developers/docs/resources/guild#guild-onboarding-object-prompt-option-structure) |
 | enum [OnboardingPromptType](./Oxide.Ext.Discord/Entities/OnboardingPromptType.md) | Represents [Prompt Types](https://discord.com/developers/docs/resources/guild#guild-onboarding-object-prompt-types) |
@@ -447,6 +450,7 @@
 | class [WebhookCreateMessage](./Oxide.Ext.Discord/Entities/WebhookCreateMessage.md) | Represents [Webhook Create Message](https://discord.com/developers/docs/resources/webhook#execute-webhook-jsonform-params) |
 | class [WebhookEdit](./Oxide.Ext.Discord/Entities/WebhookEdit.md) | Represents a [Webhook Create Structure](https://discord.com/developers/docs/resources/webhook#create-webhook-json-params) |
 | class [WebhookEditMessage](./Oxide.Ext.Discord/Entities/WebhookEditMessage.md) | Represents [Webhook Edit Message Structure](https://discord.com/developers/docs/resources/webhook#edit-webhook-message-jsonform-params) |
+| enum [WebhookEventType](./Oxide.Ext.Discord/Entities/WebhookEventType.md) | Represents a [Webhook event type](https://discord.com/developers/docs/resources/application#application-event-webhook-status) |
 | class [WebhookExecuteParams](./Oxide.Ext.Discord/Entities/WebhookExecuteParams.md) | Represents parameters to execute a webhook |
 | class [WebhookMessageParams](./Oxide.Ext.Discord/Entities/WebhookMessageParams.md) | Represents webhook message query string parameters |
 | enum [WebhookSendType](./Oxide.Ext.Discord/Entities/WebhookSendType.md) | Use to control which webhook execute url to call |
@@ -594,9 +598,9 @@
 | class [DiscordSoundDataConverter](./Oxide.Ext.Discord/Json/DiscordSoundDataConverter.md) | Represents the JsonConverter for [`DiscordSoundData`](./Oxide.Ext.Discord/Entities/DiscordSoundData.md) |
 | class [EventPayloadConverter](./Oxide.Ext.Discord/Json/EventPayloadConverter.md) | JSON converter for [`EventPayload`](./Oxide.Ext.Discord/Entities/EventPayload.md) |
 | class [HashListConverter&lt;TValue&gt;](./Oxide.Ext.Discord/Json/HashListConverter%7BTValue%7D.md) | Converts to and from a list in JSON to a hash |
+| class [InteractionMetadataConverter](./Oxide.Ext.Discord/Json/InteractionMetadataConverter.md) | Converter for a list of message components |
 | class [MessageComponentsConverter](./Oxide.Ext.Discord/Json/MessageComponentsConverter.md) | Converter for a list of message components |
 | class [PermissionFlagsStringConverter](./Oxide.Ext.Discord/Json/PermissionFlagsStringConverter.md) | Converts Permission Flags to and from a JSON string |
-| class [RoleTagsConverter](./Oxide.Ext.Discord/Json/RoleTagsConverter.md) | Handles converting [`RoleTags`](./Oxide.Ext.Discord/Entities/RoleTags.md) This type contains special deserialization types |
 | class [SnowflakeConverter](./Oxide.Ext.Discord/Json/SnowflakeConverter.md) | Converts a snowflake to and from its JSON string value |
 | class [TemplateComponentsConverter](./Oxide.Ext.Discord/Json/TemplateComponentsConverter.md) | Converter for a list of message components |
 | class [TemplateKeyConverter](./Oxide.Ext.Discord/Json/TemplateKeyConverter.md) | JSON Template Key Converter |
