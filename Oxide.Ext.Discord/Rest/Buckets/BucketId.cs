@@ -36,7 +36,21 @@ namespace Oxide.Ext.Discord.Rest
         public override bool Equals(object obj) => obj is BucketId other && Equals(other);
         /// <inheritdoc />
         public override int GetHashCode() => (Id != null ? Id.GetHashCode() : 0);
+        
+        /// <summary>
+        /// Compares two BucketIds if they are not equal
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns>True if they are not equal; false otherwise</returns>
         public static bool operator !=(BucketId left, BucketId right) => !(left == right);
+        
+        /// <summary>
+        /// Compares two BucketIds if they are equal
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns>True if they are equal; false otherwise</returns>
         public static bool operator ==(BucketId left, BucketId right) => left.Equals(right);
     }
 }

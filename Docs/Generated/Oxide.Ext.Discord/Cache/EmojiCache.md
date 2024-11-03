@@ -10,10 +10,10 @@ public sealed class EmojiCache : Singleton<EmojiCache>
 
 | name | description |
 | --- | --- |
-| readonly [EmojiRegex](#emojiregex-field) |  |
-| readonly [EmojiToTextOrDefault](#emojitotextordefault-field) |  |
-| readonly [TextRegex](#textregex-field) |  |
-| readonly [TextToEmojiOrDefault](#texttoemojiordefault-field) |  |
+| readonly [EmojiRegex](#emojiregex-field) | Regex for unicode emoji characters |
+| readonly [EmojiToTextOrDefault](#emojitotextordefault-field) | Regex MatchEvaluator for emoji to text or matched value |
+| readonly [TextRegex](#textregex-field) | Regex for discord :emoji: strings |
+| readonly [TextToEmojiOrDefault](#texttoemojiordefault-field) | Regex MatchEvaluator for text to emoji or matched value |
 | [EmojiToText](#emojitotext-method)(…) | Convert an emoji character to the emoji string text |
 | [ReplaceEmojiWithText](#replaceemojiwithtext-method-1-of-3)(…) | Replaces emoji character with emoji string characters (3 methods) |
 | [ReplaceTextWithEmoji](#replacetextwithemoji-method-1-of-3)(…) | Replaces emoji string text with emoji characters (3 methods) |
@@ -189,6 +189,8 @@ public string ReplaceTextWithEmoji(string text, string nonMatchReplacement)
    
 # EmojiRegex field
 
+Regex for unicode emoji characters
+
 ```csharp
 public readonly Regex EmojiRegex;
 ```
@@ -201,6 +203,8 @@ public readonly Regex EmojiRegex;
    
    
 # TextRegex field
+
+Regex for discord :emoji: strings
 
 ```csharp
 public readonly Regex TextRegex;
@@ -215,6 +219,8 @@ public readonly Regex TextRegex;
    
 # EmojiToTextOrDefault field
 
+Regex MatchEvaluator for emoji to text or matched value
+
 ```csharp
 public readonly MatchEvaluator EmojiToTextOrDefault;
 ```
@@ -227,6 +233,8 @@ public readonly MatchEvaluator EmojiToTextOrDefault;
    
    
 # TextToEmojiOrDefault field
+
+Regex MatchEvaluator for text to emoji or matched value
 
 ```csharp
 public readonly MatchEvaluator TextToEmojiOrDefault;

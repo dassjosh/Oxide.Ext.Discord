@@ -280,6 +280,11 @@ namespace Oxide.Ext.Discord.Types
             _pos += s.Length;
         }
 
+        /// <summary>
+        /// Append the given char count times
+        /// </summary>
+        /// <param name="c">Char to be appended</param>
+        /// <param name="count">Number of times to append</param>
         public void Append(char c, int count)
         {
             if (_pos > _chars.Length - count)
@@ -655,7 +660,9 @@ namespace Oxide.Ext.Discord.Types
             }
         }
 
-        // Dispose of the builder. Only needs to be called if ToString() is not used.
+        /// <summary>
+        /// Dispose of the builder. Only needs to be called if ToString() is not used.
+        /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Dispose()
         {
