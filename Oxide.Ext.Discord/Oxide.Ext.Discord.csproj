@@ -10,7 +10,7 @@
     <AssemblyVersion>3.1.0</AssemblyVersion>
     <FileVersion>3.1.0</FileVersion>
     <Configurations>Debug;Release</Configurations>
-    <Platforms>Carbon;Oxide</Platforms>
+    <Platforms>Oxide</Platforms>
     <AssemblyName>Oxide.Ext.Discord</AssemblyName>
     <DocumentationFile>$(outdir)Oxide.Ext.Discord.xml</DocumentationFile>
   </PropertyGroup>

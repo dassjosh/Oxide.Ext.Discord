@@ -15,19 +15,13 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release|Oxide = Release|Oxide
-		Release|Carbon = Release|Carbon
-		Debug|Carbon = Debug|Carbon
 		Debug|Oxide = Debug|Oxide
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E7ECDD31-5969-43AF-A7E1-31E04631124C}.Release|Oxide.ActiveCfg = Release|Oxide
 		{E7ECDD31-5969-43AF-A7E1-31E04631124C}.Release|Oxide.Build.0 = Release|Oxide
-		{E7ECDD31-5969-43AF-A7E1-31E04631124C}.Debug|Carbon.ActiveCfg = Debug|Carbon
-		{E7ECDD31-5969-43AF-A7E1-31E04631124C}.Debug|Carbon.Build.0 = Debug|Carbon
 		{E7ECDD31-5969-43AF-A7E1-31E04631124C}.Debug|Oxide.ActiveCfg = Debug|Oxide
 		{E7ECDD31-5969-43AF-A7E1-31E04631124C}.Debug|Oxide.Build.0 = Debug|Oxide
-		{E7ECDD31-5969-43AF-A7E1-31E04631124C}.Release|Carbon.ActiveCfg = Release|Carbon
-		{E7ECDD31-5969-43AF-A7E1-31E04631124C}.Release|Carbon.Build.0 = Release|Carbon
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
