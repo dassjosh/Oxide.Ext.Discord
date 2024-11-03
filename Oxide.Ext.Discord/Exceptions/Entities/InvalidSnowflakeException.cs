@@ -17,6 +17,12 @@ namespace Oxide.Ext.Discord.Exceptions
 
         internal static InvalidSnowflakeException InvalidException(string paramName) => new($"Invalid Snowflake ID. Parameter Name: {paramName}");
         
+        /// <summary>
+        /// Throws an exception if the Snowflake ID is invalid
+        /// </summary>
+        /// <param name="snowflake">Snowflake</param>
+        /// <param name="paramName">parameter name of the snowflake</param>
+        /// <exception cref="InvalidSnowflakeException"></exception>
         public static void ThrowIfInvalid(Snowflake snowflake, [CallerArgumentExpression("snowflake")] string paramName = null)
         {
             if (!snowflake.IsValid())
@@ -25,6 +31,12 @@ namespace Oxide.Ext.Discord.Exceptions
             }
         }
         
+        /// <summary>
+        /// Throws an exception if the Snowflake ID is invalid
+        /// </summary>
+        /// <param name="snowflake">Snowflake</param>
+        /// <param name="paramName">parameter name of the snowflake</param>
+        /// <exception cref="InvalidSnowflakeException"></exception>
         public static void ThrowIfInvalid(Snowflake? snowflake, [CallerArgumentExpression("snowflake")] string paramName = null)
         {
             if (snowflake.HasValue && !snowflake.Value.IsValid())
@@ -33,6 +45,12 @@ namespace Oxide.Ext.Discord.Exceptions
             }
         }
         
+        /// <summary>
+        /// Throws an exception if any of the snowflakes are invalid
+        /// </summary>
+        /// <param name="snowflakes">Snowflakes</param>
+        /// <param name="paramName">parameter name of the snowflake</param>
+        /// <exception cref="InvalidSnowflakeException"></exception>
         public static void ThrowIfInvalid(ICollection<Snowflake> snowflakes, [CallerArgumentExpression("snowflakes")] string paramName = null)
         {
             int index = 0;
@@ -45,7 +63,14 @@ namespace Oxide.Ext.Discord.Exceptions
                 index++;
             }
         }
-        
+
+        /// <summary>
+        /// Throws an exception if the Snowflake ID is invalid or requiresValue and the snowflake is null
+        /// </summary>
+        /// <param name="snowflake">Snowflake</param>
+        /// <param name="requireValue">If the value is required</param>
+        /// <param name="paramName">parameter name of the snowflake</param>
+        /// <exception cref="InvalidSnowflakeException"></exception>
         public static void ThrowIfInvalid(Snowflake? snowflake, bool requireValue, [CallerArgumentExpression("snowflake")] string paramName = null)
         {
             if (requireValue && !snowflake.HasValue)

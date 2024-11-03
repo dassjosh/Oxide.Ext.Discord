@@ -1747,6 +1747,26 @@
             Cached Emoji Data
             </summary>
         </member>
+        <member name="F:Oxide.Ext.Discord.Cache.EmojiCache.EmojiRegex">
+            <summary>
+            Regex for unicode emoji characters
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Cache.EmojiCache.TextRegex">
+            <summary>
+            Regex for discord :emoji: strings
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Cache.EmojiCache.EmojiToTextOrDefault">
+            <summary>
+            Regex MatchEvaluator for emoji to text or matched value
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Cache.EmojiCache.TextToEmojiOrDefault">
+            <summary>
+            Regex MatchEvaluator for text to emoji or matched value
+            </summary>
+        </member>
         <member name="M:Oxide.Ext.Discord.Cache.EmojiCache.EmojiToText(System.String)">
             <summary>
             Convert an emoji character to the emoji string text
@@ -2249,6 +2269,11 @@
             Webhook clients for this DiscordClient
             </summary>
         </member>
+        <member name="P:Oxide.Ext.Discord.Clients.DiscordClient.JsonSettings">
+            <summary>
+            Json settings for the discord client
+            </summary>
+        </member>
         <member name="P:Oxide.Ext.Discord.Clients.DiscordClient.Connection">
             <summary>
             Settings used to connect to discord and configure the extension
@@ -2579,6 +2604,11 @@
         <member name="F:Oxide.Ext.Discord.Connections.WebhookConnection.WebhookToken">
             <summary>
             Token for the webhook
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Connections.WebhookConnection.WebhookUrl">
+            <summary>
+            URL of the webhook
             </summary>
         </member>
         <member name="P:Oxide.Ext.Discord.Connections.WebhookConnection.LogLevel">
@@ -18729,6 +18759,39 @@
             </summary>
             <param name="message">Exception message</param>
         </member>
+        <member name="M:Oxide.Ext.Discord.Exceptions.InvalidSnowflakeException.ThrowIfInvalid(Oxide.Ext.Discord.Entities.Snowflake,System.String)">
+            <summary>
+            Throws an exception if the Snowflake ID is invalid
+            </summary>
+            <param name="snowflake">Snowflake</param>
+            <param name="paramName">parameter name of the snowflake</param>
+            <exception cref="T:Oxide.Ext.Discord.Exceptions.InvalidSnowflakeException"></exception>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Exceptions.InvalidSnowflakeException.ThrowIfInvalid(System.Nullable{Oxide.Ext.Discord.Entities.Snowflake},System.String)">
+            <summary>
+            Throws an exception if the Snowflake ID is invalid
+            </summary>
+            <param name="snowflake">Snowflake</param>
+            <param name="paramName">parameter name of the snowflake</param>
+            <exception cref="T:Oxide.Ext.Discord.Exceptions.InvalidSnowflakeException"></exception>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Exceptions.InvalidSnowflakeException.ThrowIfInvalid(System.Collections.Generic.ICollection{Oxide.Ext.Discord.Entities.Snowflake},System.String)">
+            <summary>
+            Throws an exception if any of the snowflakes are invalid
+            </summary>
+            <param name="snowflakes">Snowflakes</param>
+            <param name="paramName">parameter name of the snowflake</param>
+            <exception cref="T:Oxide.Ext.Discord.Exceptions.InvalidSnowflakeException"></exception>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Exceptions.InvalidSnowflakeException.ThrowIfInvalid(System.Nullable{Oxide.Ext.Discord.Entities.Snowflake},System.Boolean,System.String)">
+            <summary>
+            Throws an exception if the Snowflake ID is invalid or requiresValue and the snowflake is null
+            </summary>
+            <param name="snowflake">Snowflake</param>
+            <param name="requireValue">If the value is required</param>
+            <param name="paramName">parameter name of the snowflake</param>
+            <exception cref="T:Oxide.Ext.Discord.Exceptions.InvalidSnowflakeException"></exception>
+        </member>
         <member name="T:Oxide.Ext.Discord.Exceptions.InvalidEmbedException">
             <summary>
             Represents an invalid embed
@@ -19243,6 +19306,146 @@
             <param name="remaining">Remaining text of the span</param>
             <param name="parsed">The parsed string</param>
             <returns>True if successfully parsed; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.Byte,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.SByte,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.Int16,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.UInt16,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.Int32,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.UInt32,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.Int64,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.UInt64,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.Decimal,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.Single,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.Double,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.DateTime,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.DateTimeOffset,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.TimeSpan,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
         </member>
         <member name="T:Oxide.Ext.Discord.Extensions.StreamExt">
             <summary>
@@ -25957,6 +26160,22 @@
         <member name="M:Oxide.Ext.Discord.Plugins.PluginId.GetHashCode">
             <inheritdoc />
         </member>
+        <member name="M:Oxide.Ext.Discord.Plugins.PluginId.op_Inequality(Oxide.Ext.Discord.Plugins.PluginId,Oxide.Ext.Discord.Plugins.PluginId)">
+            <summary>
+            Compares two PluginIds if they are not equal
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns>True if they are not equal; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Plugins.PluginId.op_Equality(Oxide.Ext.Discord.Plugins.PluginId,Oxide.Ext.Discord.Plugins.PluginId)">
+            <summary>
+            Compares two PluginIds if they are equal
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns>True if they are equal; false otherwise</returns>
+        </member>
         <member name="T:Oxide.Ext.Discord.Plugins.PluginSetup">
             <summary>
             Build Discord Extension Setup Data for a plugin
@@ -26050,6 +26269,22 @@
         </member>
         <member name="M:Oxide.Ext.Discord.Rest.BucketId.GetHashCode">
             <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Rest.BucketId.op_Inequality(Oxide.Ext.Discord.Rest.BucketId,Oxide.Ext.Discord.Rest.BucketId)">
+            <summary>
+            Compares two BucketIds if they are not equal
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns>True if they are not equal; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Rest.BucketId.op_Equality(Oxide.Ext.Discord.Rest.BucketId,Oxide.Ext.Discord.Rest.BucketId)">
+            <summary>
+            Compares two BucketIds if they are equal
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns>True if they are equal; false otherwise</returns>
         </member>
         <member name="T:Oxide.Ext.Discord.Rest.BaseRequest">
             <summary>
@@ -27682,6 +27917,13 @@
             </summary>
             <param name="s">string to append</param>
         </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Char,System.Int32)">
+            <summary>
+            Append the given char count times
+            </summary>
+            <param name="c">Char to be appended</param>
+            <param name="count">Number of times to append</param>
+        </member>
         <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.ReadOnlySpan{System.Char})">
             <summary>
             Appends span to the builder
@@ -27827,6 +28069,11 @@
             <param name="additionalCapacityBeyondPos">
             Number of chars requested beyond current position.
             </param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Dispose">
+            <summary>
+            Dispose of the builder. Only needs to be called if ToString() is not used.
+            </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.WebSockets.DiscordWebSocket">
             <summary>
@@ -28514,6 +28761,7 @@
             Constructor
             </summary>
             <param name="handler">Handles for web socket events</param>
+            <param name="botClient">Bot client for the websocket handler</param>
             <param name="logger"></param>
         </member>
         <member name="M:Oxide.Ext.Discord.WebSockets.WebSocketHandler.Connect(System.String)">

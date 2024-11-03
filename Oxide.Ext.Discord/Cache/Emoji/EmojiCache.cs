@@ -11,10 +11,25 @@ namespace Oxide.Ext.Discord.Cache
     {
         private readonly Hash<string, string> _emojiToText = new();
         private readonly Hash<string, string> _textToEmoji = new();
+        
+        /// <summary>
+        /// Regex for unicode emoji characters
+        /// </summary>
         public readonly Regex EmojiRegex = new(@"(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])", RegexOptions.Compiled);
+        
+        /// <summary>
+        /// Regex for discord :emoji: strings
+        /// </summary>
         public readonly Regex TextRegex = new(@":[\d\w_]*:", RegexOptions.Compiled);
 
+        /// <summary>
+        /// Regex MatchEvaluator for emoji to text or matched value
+        /// </summary>
         public readonly MatchEvaluator EmojiToTextOrDefault;
+        
+        /// <summary>
+        /// Regex MatchEvaluator for text to emoji or matched value
+        /// </summary>
         public readonly MatchEvaluator TextToEmojiOrDefault;
 
         private EmojiCache()

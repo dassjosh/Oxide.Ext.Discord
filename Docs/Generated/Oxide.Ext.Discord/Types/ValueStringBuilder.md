@@ -22,7 +22,7 @@ public struct ValueStringBuilder
 | [AppendSpan](#appendspan-method)(…) | Requests a writable span of length |
 | [AsSpan](#asspan-method)() | Converts the current builder to a ReadOnlySpan |
 | [AsSpan](#asspan-method-1-of-3)(…) | Returns a span around the contents of the builder. (3 methods) |
-| [Dispose](#dispose-method)() |  |
+| [Dispose](#dispose-method)() | Dispose of the builder. Only needs to be called if ToString() is not used. |
 | [EnsureCapacity](#ensurecapacity-method)(…) | Ensure the builder has a capacity of at least *capacity* |
 | [GetPinnableReference](#getpinnablereference-method)() | Get a pinnable reference to the builder. Does not ensure there is a null char after [`Length`](#length-property) This overload is pattern matched in the C# 7.3+ compiler so you can omit the explicit method call, and write eg "fixed (char* c = builder)" |
 | [GetPinnableReference](#getpinnablereference-method)(…) | Get a pinnable reference to the builder. |
@@ -310,9 +310,16 @@ public void Append(string s)
 
 # Append method (4 of 18)
 
+Append the given char count times
+
 ```csharp
 public void Append(char c, int count)
 ```
+
+| parameter | description |
+| --- | --- |
+| c | Char to be appended |
+| count | Number of times to append |
 
 ## See Also
 
@@ -688,6 +695,8 @@ public void AppendLine(string s)
    
    
 # Dispose method
+
+Dispose of the builder. Only needs to be called if ToString() is not used.
 
 ```csharp
 public void Dispose()

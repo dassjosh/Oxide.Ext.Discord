@@ -48,6 +48,9 @@ namespace Oxide.Ext.Discord.Clients
         /// </summary>
         public readonly IReadOnlyList<WebhookClient> Webhooks;
     
+        /// <summary>
+        /// Json settings for the discord client
+        /// </summary>
         public JsonSerializerSettings JsonSettings => Bot?.JsonSettings ?? DiscordJson.Settings;
         
         /// <summary>

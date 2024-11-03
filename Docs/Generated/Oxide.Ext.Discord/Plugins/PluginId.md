@@ -17,8 +17,8 @@ public struct PluginId : IDebugLoggable, IEquatable<PluginId>
 | override [GetHashCode](#gethashcode-method)() |  |
 | [LogDebug](#logdebug-method)(…) |  |
 | override [ToString](#tostring-method)() | Returns the PluginName |
-| [operator ==](#pluginid-equality-operator) |  |
-| [operator !=](#pluginid-inequality-operator) |  |
+| [operator ==](#pluginid-equality-operator) | Compares two PluginIds if they are equal |
+| [operator !=](#pluginid-inequality-operator) | Compares two PluginIds if they are not equal |
 
 ## See Also
 
@@ -99,9 +99,20 @@ public override int GetHashCode()
    
 # PluginId Inequality operator
 
+Compares two PluginIds if they are not equal
+
 ```csharp
 public static bool operator !=(PluginId left, PluginId right)
 ```
+
+| parameter | description |
+| --- | --- |
+| left |  |
+| right |  |
+
+## Return Value
+
+True if they are not equal; false otherwise
 
 ## See Also
 
@@ -112,9 +123,20 @@ public static bool operator !=(PluginId left, PluginId right)
    
 # PluginId Equality operator
 
+Compares two PluginIds if they are equal
+
 ```csharp
 public static bool operator ==(PluginId left, PluginId right)
 ```
+
+| parameter | description |
+| --- | --- |
+| left |  |
+| right |  |
+
+## Return Value
+
+True if they are equal; false otherwise
 
 ## See Also
 

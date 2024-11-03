@@ -11,7 +11,7 @@ public class DiscordClient
 | name | description |
 | --- | --- |
 | [Bot](#bot-property) { get; } | The bot client that is unique to the Token used |
-| [JsonSettings](#jsonsettings-property) { get; } |  |
+| [JsonSettings](#jsonsettings-property) { get; } | Json settings for the discord client |
 | [Plugin](#plugin-property) { get; } | Which plugin is the owner of this client |
 | readonly [PluginId](#pluginid-field) | The ID of the plugin |
 | readonly [PluginName](#pluginname-field) | The full plugin name including author and version |
@@ -237,6 +237,8 @@ public BotClient Bot { get; }
    
    
 # JsonSettings property
+
+Json settings for the discord client
 
 ```csharp
 public JsonSerializerSettings JsonSettings { get; }

@@ -10,7 +10,7 @@ public class InvalidSnowflakeException : BaseDiscordException
 
 | name | description |
 | --- | --- |
-| static [ThrowIfInvalid](#throwifinvalid-method-1-of-4)(…) |  (4 methods) |
+| static [ThrowIfInvalid](#throwifinvalid-method-1-of-4)(…) | Throws an exception if the Snowflake ID is invalid (4 methods) |
 
 ## See Also
 
@@ -22,9 +22,22 @@ public class InvalidSnowflakeException : BaseDiscordException
    
 # ThrowIfInvalid method (1 of 4)
 
+Throws an exception if any of the snowflakes are invalid
+
 ```csharp
 public static void ThrowIfInvalid(ICollection<Snowflake> snowflakes, string paramName = null)
 ```
+
+| parameter | description |
+| --- | --- |
+| snowflakes | Snowflakes |
+| paramName | parameter name of the snowflake |
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| [InvalidSnowflakeException](./InvalidSnowflakeException.md) |  |
 
 ## See Also
 
@@ -37,9 +50,22 @@ public static void ThrowIfInvalid(ICollection<Snowflake> snowflakes, string para
 
 # ThrowIfInvalid method (2 of 4)
 
+Throws an exception if the Snowflake ID is invalid
+
 ```csharp
 public static void ThrowIfInvalid(Snowflake snowflake, string paramName = null)
 ```
+
+| parameter | description |
+| --- | --- |
+| snowflake | Snowflake |
+| paramName | parameter name of the snowflake |
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| [InvalidSnowflakeException](./InvalidSnowflakeException.md) |  |
 
 ## See Also
 
@@ -52,9 +78,22 @@ public static void ThrowIfInvalid(Snowflake snowflake, string paramName = null)
 
 # ThrowIfInvalid method (3 of 4)
 
+Throws an exception if the Snowflake ID is invalid
+
 ```csharp
 public static void ThrowIfInvalid(Snowflake? snowflake, string paramName = null)
 ```
+
+| parameter | description |
+| --- | --- |
+| snowflake | Snowflake |
+| paramName | parameter name of the snowflake |
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| [InvalidSnowflakeException](./InvalidSnowflakeException.md) |  |
 
 ## See Also
 
@@ -67,9 +106,23 @@ public static void ThrowIfInvalid(Snowflake? snowflake, string paramName = null)
 
 # ThrowIfInvalid method (4 of 4)
 
+Throws an exception if the Snowflake ID is invalid or requiresValue and the snowflake is null
+
 ```csharp
 public static void ThrowIfInvalid(Snowflake? snowflake, bool requireValue, string paramName = null)
 ```
+
+| parameter | description |
+| --- | --- |
+| snowflake | Snowflake |
+| requireValue | If the value is required |
+| paramName | parameter name of the snowflake |
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| [InvalidSnowflakeException](./InvalidSnowflakeException.md) |  |
 
 ## See Also
 

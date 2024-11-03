@@ -52,7 +52,21 @@ namespace Oxide.Ext.Discord.Plugins
         public override bool Equals(object obj) => obj is PluginId other && Equals(other);
         /// <inheritdoc />
         public override int GetHashCode() => Id;
+        
+        /// <summary>
+        /// Compares two PluginIds if they are not equal
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns>True if they are not equal; false otherwise</returns>
         public static bool operator !=(PluginId left, PluginId right) => !(left == right);
+        
+        /// <summary>
+        /// Compares two PluginIds if they are equal
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns>True if they are equal; false otherwise</returns>
         public static bool operator ==(PluginId left, PluginId right) => left.Equals(right);
     }
 }

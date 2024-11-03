@@ -40,6 +40,7 @@ namespace Oxide.Ext.Discord.WebSockets
         /// Constructor
         /// </summary>
         /// <param name="handler">Handles for web socket events</param>
+        /// <param name="botClient">Bot client for the websocket handler</param>
         /// <param name="logger"></param>
         public WebSocketHandler(IWebSocketEventHandler handler, BotClient botClient, ILogger logger)
         {
