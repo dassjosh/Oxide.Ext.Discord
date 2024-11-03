@@ -82,7 +82,9 @@ namespace Oxide.Ext.Discord.Extensions
 
         internal static void OnPluginUnloaded(Plugin plugin)
         {
-            FullNameCache.Remove(plugin.Id());
+            PluginId id = plugin.Id();
+            FullNameCache.Remove(id);
+            PluginIds.Remove(id);
         }
 
         private static string CreatePluginFullName(Plugin plugin) => $"{plugin.Name} by {plugin.Author} v{plugin.Version}";
