@@ -124,12 +124,12 @@ Newly created type of T
 Frees an item back to the pool
 
 ```csharp
-public void Free(TPooled item)
+public void Free(TPooled poolable)
 ```
 
 | parameter | description |
 | --- | --- |
-| item | Item being freed |
+| poolable | Item being freed |
 
 ## See Also
 

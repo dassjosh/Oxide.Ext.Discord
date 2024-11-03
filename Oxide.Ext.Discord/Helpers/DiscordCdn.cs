@@ -303,7 +303,7 @@ namespace Oxide.Ext.Discord.Helpers
                 StickerFormatType.Png or StickerFormatType.Apng => $"{CdnUrl}/stickers/{sticker.Id.ToString()}.{GetExtension(DiscordImageFormat.Png)}",
                 StickerFormatType.Lottie => $"{CdnUrl}/stickers/{sticker.Id.ToString()}.{GetExtension(DiscordImageFormat.Lottie)}",
                 StickerFormatType.Gif => $"{CdnUrl}/stickers/{sticker.Id.ToString()}.{GetExtension(DiscordImageFormat.Gif)}",
-                _ => throw new ArgumentException("Sticker does not container a valid format type", nameof(sticker.FormatType))
+                _ => throw new ArgumentException("Sticker does not contain a valid format type", nameof(sticker))
             };
         }
         

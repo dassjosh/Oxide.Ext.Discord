@@ -16,13 +16,14 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-    <NoWarn>1701;1702;0618</NoWarn>
+    <NoWarn>1701;1702;0618;0419</NoWarn>
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <OutputPath>bin\Debug\</OutputPath>
+    <NoWarn>1701;1702;0419</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

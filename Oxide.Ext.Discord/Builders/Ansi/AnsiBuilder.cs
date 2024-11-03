@@ -96,7 +96,7 @@ namespace Oxide.Ext.Discord.Builders.Ansi
             _sb.Append("\u001b[0;0m");
         }
 
-        private bool HasFlag(FontStyle style, FontStyle flag)
+        private static bool HasFlag(FontStyle style, FontStyle flag)
         {
             return (style & flag) == flag;
         }

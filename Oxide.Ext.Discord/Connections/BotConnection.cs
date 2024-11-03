@@ -51,6 +51,7 @@ namespace Oxide.Ext.Discord.Connections
         {
             ApiToken = apiToken;
             Intents = intents;
+            LogLevel = DiscordLogLevel.Info;
         }
         
         /// <summary>

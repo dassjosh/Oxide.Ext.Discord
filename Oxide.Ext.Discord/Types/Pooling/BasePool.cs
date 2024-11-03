@@ -137,8 +137,8 @@ namespace Oxide.Ext.Discord.Types
         /// <summary>
         /// Frees an item back to the pool
         /// </summary>
-        /// <param name="item">Item being freed</param>
-        public void Free(TPooled item) => Free(ref item);
+        /// <param name="poolable">Item being freed</param>
+        public void Free(TPooled poolable) => Free(ref poolable);
 
         private void Free(ref TPooled item)
         {

@@ -60,7 +60,7 @@ public DiscordEmbed ToEntity(PlaceholderData data = null, DiscordEmbed embed = n
 # ToEntityBulk method
 
 ```csharp
-public IPromise<List<DiscordEmbed>> ToEntityBulk(List<PlaceholderData> data = null)
+public IPromise<List<DiscordEmbed>> ToEntityBulk(List<PlaceholderData> data)
 ```
 
 ## See Also

@@ -25910,6 +25910,13 @@
             Library for Discord Message templates
             </summary>
         </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.BaseMessageTemplateLibrary`1.#ctor(Oxide.Ext.Discord.Libraries.TemplateType,Oxide.Ext.Discord.Interfaces.ILogger)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="type"></param>
+            <param name="logger"></param>
+        </member>
         <member name="M:Oxide.Ext.Discord.Libraries.BaseMessageTemplateLibrary`1.RegisterGlobalTemplateAsync(Oxide.Core.Plugins.Plugin,Oxide.Ext.Discord.Libraries.TemplateKey,`0,Oxide.Ext.Discord.Libraries.TemplateVersion,Oxide.Ext.Discord.Libraries.TemplateVersion)">
             <summary>
             Registers a global message template
@@ -28106,7 +28113,7 @@
             <summary>
             Frees an item back to the pool
             </summary>
-            <param name="item">Item being freed</param>
+            <param name="poolable">Item being freed</param>
         </member>
         <member name="M:Oxide.Ext.Discord.Types.BasePool`2.OnPluginUnloaded(Oxide.Ext.Discord.Types.DiscordPluginPool)">
             <inheritdoc/>

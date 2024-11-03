@@ -169,8 +169,9 @@ namespace Oxide.Ext.Discord.Libraries
         }
 
         ///<inheritdoc/>
-        public IPromise<List<DiscordEmbed>> ToEntityBulk(List<PlaceholderData> data = null)
+        public IPromise<List<DiscordEmbed>> ToEntityBulk(List<PlaceholderData> data)
         {
+            if (data == null) throw new ArgumentNullException(nameof(data));
             IPendingPromise<List<DiscordEmbed>> promise = Promise<List<DiscordEmbed>>.Create();
             BulkToEntityCallback<DiscordEmbedTemplate, DiscordEmbed>.Start(this, data, promise);
             return promise;

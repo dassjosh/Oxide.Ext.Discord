@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Oxide.Ext.Discord.Callbacks;
@@ -94,6 +95,7 @@ namespace Oxide.Ext.Discord.Libraries
         ///<inheritdoc/>
         public IPromise<List<EmbedField>> ToEntityBulk(List<PlaceholderData> data)
         {
+            if (data == null) throw new ArgumentNullException(nameof(data));
             IPendingPromise<List<EmbedField>> promise = Promise<List<EmbedField>>.Create();
             BulkToEntityCallback<DiscordEmbedFieldTemplate, EmbedField>.Start(this, data, promise);
             return promise;

@@ -49,7 +49,7 @@ namespace Oxide.Ext.Discord.Types
             _pool[size]?.Free(ref array);
         }
 
-        private class ArrayPoolInternal
+        private sealed class ArrayPoolInternal
         {
             private const int MaxArrays = 64;
             private ushort _index;
