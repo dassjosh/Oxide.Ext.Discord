@@ -6909,6 +6909,17 @@
             Id of the guild the soundboard sound is from, required to play sounds from different servers
             </summary>
         </member>
+        <member name="M:Oxide.Ext.Discord.Entities.SendSoundboardSound.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.SendSoundboardSound.#ctor(Oxide.Ext.Discord.Entities.DiscordSoundboardSound)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="sound">Sound to send</param>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.SortOrderType">
             <summary>
             Represents <a href="https://discord.com/developers/docs/resources/channel#channel-object-sort-order-types">Sort Order Types</a> in Discord
@@ -11774,9 +11785,89 @@
             Represents <a href="https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-frequency">Guild Scheduled Event Recurrence Rule Frequency</a>
             </summary>
         </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleFrequency.Yearly">
+            <summary>
+            Yearly Recurrence Rule Frequency
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleFrequency.Monthly">
+            <summary>
+            Monthy Recurrence Rule Frequency
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleFrequency.Weekly">
+            <summary>
+            Weekly Recurrence Rule Frequency
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleFrequency.Daily">
+            <summary>
+            Daily Recurrence Rule Frequency
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth">
             <summary>
             Represents <a href="https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-month">Guild Scheduled Event Recurrence Rule Month</a>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.January">
+            <summary>
+            January Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.February">
+            <summary>
+            February Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.March">
+            <summary>
+            March Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.April">
+            <summary>
+            April Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.May">
+            <summary>
+            May Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.June">
+            <summary>
+            June Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.July">
+            <summary>
+            July Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.August">
+            <summary>
+            August Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.September">
+            <summary>
+            September Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.October">
+            <summary>
+            October Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.November">
+            <summary>
+            November Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.December">
+            <summary>
+            December Recurrence Rule Month
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.RecurrenceRuleNWeekday">
@@ -11797,6 +11888,41 @@
         <member name="T:Oxide.Ext.Discord.Entities.RecurrenceRuleWeekday">
             <summary>
             Represents <a href="https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-weekday">Guild Scheduled Event Recurrence Rule Weekday</a>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleWeekday.Monday">
+            <summary>
+            Monday Recurrence Rule Weekday
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleWeekday.Tuesday">
+            <summary>
+            Tuesday Recurrence Rule Weekday
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleWeekday.Wednesday">
+            <summary>
+            Wednesday Recurrence Rule Weekday
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleWeekday.Thursday">
+            <summary>
+            Thursday Recurrence Rule Weekday
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleWeekday.Friday">
+            <summary>
+            Friday Recurrence Rule Weekday
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleWeekday.Saturday">
+            <summary>
+            Saturday Recurrence Rule Weekday
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleWeekday.Sunday">
+            <summary>
+            Sunday Recurrence Rule Weekday
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.ScheduledEventCreate">
@@ -15675,6 +15801,11 @@
             <param name="width"></param>
             <param name="proxyUrl"></param>
         </member>
+        <member name="T:Oxide.Ext.Discord.Entities.EmbedType">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/message#embed-object-embed-types">Embed Type</a> in Discord
+            </summary>
+        </member>
         <member name="F:Oxide.Ext.Discord.Entities.EmbedType.Rich">
             <summary>
             Generic embed rendered from embed attributes
@@ -16908,21 +17039,24 @@
         </member>
         <member name="M:Oxide.Ext.Discord.Entities.DiscordSku.GetSkus(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.Snowflake)">
             <summary>
-            Returns all SKUs for a given application. Because of how our SKU and subscription systems work, you will see two SKUs for your premium offering. 
+            Returns all SKUs for a given application. Because of how our SKU and subscription systems work, you will see two SKUs for your premium offering.
+            <a href="https://discord.com/developers/docs/resources/sku#list-skus">List SKUs</a>
             </summary>
             <param name="client">Client to use</param>
             <param name="applicationId">Application ID to get SKU's for</param>
         </member>
         <member name="M:Oxide.Ext.Discord.Entities.DiscordSku.GetSkuSubscriptions(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.GetSkuSubscriptionsQueryString)">
             <summary>
-            Returns all SKUs for a given application. Because of how our SKU and subscription systems work, you will see two SKUs for your premium offering. 
+            Returns all subscriptions containing the SKU, filtered by user. Returns a list of subscription objects.
+            <a href="https://discord.com/developers/docs/resources/subscription#list-sku-subscriptions">List SKU Subscriptions</a>
             </summary>
             <param name="client">Client to use</param>
             <param name="query">Query for the request</param>
         </member>
         <member name="M:Oxide.Ext.Discord.Entities.DiscordSku.GetSkuSubscription(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.Snowflake)">
             <summary>
-            Returns all SKUs for a given application. Because of how our SKU and subscription systems work, you will see two SKUs for your premium offering. 
+            Get a subscription by its ID. Returns a subscription object.
+            <a href="https://discord.com/developers/docs/resources/subscription#get-sku-subscription">Get SKU Subscription</a>
             </summary>
             <param name="client">Client to use</param>
             <param name="subscriptionId">ID of the subscription</param>
@@ -16952,6 +17086,12 @@
             System-generated group for each SUBSCRIPTION SKU created
             </summary>
         </member>
+        <member name="T:Oxide.Ext.Discord.Entities.GetSkuSubscriptionsQueryString">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/subscription#query-string-params">Get SKU Subscriptions Query String Params</a> in Discord
+            
+            </summary>
+        </member>
         <member name="P:Oxide.Ext.Discord.Entities.GetSkuSubscriptionsQueryString.Before">
             <summary>
             List subscriptions before this ID
@@ -16972,6 +17112,12 @@
             User ID for which to return subscriptions.
             Required except for OAuth queries.
             </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.GetSkuSubscriptionsQueryString.ToQueryString">
+            <summary>
+            Converts the request into a query string
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.SkuFlags">
             <summary>
@@ -17924,6 +18070,9 @@
             Unicode character of a standard emoji for the soundboard sound
             </summary>
         </member>
+        <member name="M:Oxide.Ext.Discord.Entities.SoundboardSoundCreate.Validate">
+            <inheritdoc/>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.SoundboardSoundUpdate">
             <summary>
             Represents <a href="https://discord.com/developers/docs/resources/soundboard#modify-guild-soundboard-sound-json-params">Soundboard Update Request</a> in Discord
@@ -17948,6 +18097,9 @@
             <summary>
             Unicode character of a standard emoji for the soundboard sound
             </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.SoundboardSoundUpdate.Validate">
+            <inheritdoc/>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.DiscordSticker">
             <summary>
@@ -20074,6 +20226,28 @@
             <summary>
             Represents a bot token mismatch
             </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Extensions.ByteExt">
+            <summary>
+            Extension methods for bytes
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.ByteExt.GetFileSize(System.Byte[],Oxide.Ext.Discord.Entities.DiscordFileSize)">
+            <summary>
+            Returns the files size in the specified units
+            </summary>
+            <param name="data"></param>
+            <param name="size"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.ByteExt.StartsWith(System.Byte[],System.Byte[])">
+            <summary>
+            Checks if the byte array starts with the specified bytes
+            </summary>
+            <param name="file">File to check</param>
+            <param name="startsWith">bytes to start with</param>
+            <returns></returns>
         </member>
         <member name="T:Oxide.Ext.Discord.Extensions.ConcurrentDictionaryExt">
             <summary>

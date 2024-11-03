@@ -48,7 +48,8 @@ namespace Oxide.Ext.Discord.Entities
         public SkuFlags Flags { get; set; }
 
         /// <summary>
-        /// Returns all SKUs for a given application. Because of how our SKU and subscription systems work, you will see two SKUs for your premium offering. 
+        /// Returns all SKUs for a given application. Because of how our SKU and subscription systems work, you will see two SKUs for your premium offering.
+        /// <a href="https://discord.com/developers/docs/resources/sku#list-skus">List SKUs</a>
         /// </summary>
         /// <param name="client">Client to use</param>
         /// <param name="applicationId">Application ID to get SKU's for</param>
@@ -58,7 +59,8 @@ namespace Oxide.Ext.Discord.Entities
         }
 
         /// <summary>
-        /// Returns all SKUs for a given application. Because of how our SKU and subscription systems work, you will see two SKUs for your premium offering. 
+        /// Returns all subscriptions containing the SKU, filtered by user. Returns a list of subscription objects.
+        /// <a href="https://discord.com/developers/docs/resources/subscription#list-sku-subscriptions">List SKU Subscriptions</a>
         /// </summary>
         /// <param name="client">Client to use</param>
         /// <param name="query">Query for the request</param>
@@ -68,7 +70,8 @@ namespace Oxide.Ext.Discord.Entities
         }
 
         /// <summary>
-        /// Returns all SKUs for a given application. Because of how our SKU and subscription systems work, you will see two SKUs for your premium offering. 
+        /// Get a subscription by its ID. Returns a subscription object.
+        /// <a href="https://discord.com/developers/docs/resources/subscription#get-sku-subscription">Get SKU Subscription</a>
         /// </summary>
         /// <param name="client">Client to use</param>
         /// <param name="subscriptionId">ID of the subscription</param>

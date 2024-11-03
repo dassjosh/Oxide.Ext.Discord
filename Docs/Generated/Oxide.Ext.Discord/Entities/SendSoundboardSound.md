@@ -10,8 +10,8 @@ public class SendSoundboardSound
 
 | name | description |
 | --- | --- |
-| [SendSoundboardSound](#sendsoundboardsound-constructor)() | The default constructor. |
-| [SendSoundboardSound](#sendsoundboardsound-constructor)(…) |  |
+| [SendSoundboardSound](#sendsoundboardsound-constructor)() | Constructor |
+| [SendSoundboardSound](#sendsoundboardsound-constructor)(…) | Constructor |
 | [SoundId](#soundid-property) { get; set; } | Id of the soundboard sound to play |
 | [SourceGuildId](#sourceguildid-property) { get; set; } | Id of the guild the soundboard sound is from, required to play sounds from different servers |
 
@@ -24,7 +24,7 @@ public class SendSoundboardSound
    
 # SendSoundboardSound constructor (1 of 2)
 
-The default constructor.
+Constructor
 
 ```csharp
 public SendSoundboardSound()
@@ -40,9 +40,15 @@ public SendSoundboardSound()
 
 # SendSoundboardSound constructor (2 of 2)
 
+Constructor
+
 ```csharp
 public SendSoundboardSound(DiscordSoundboardSound sound)
 ```
+
+| parameter | description |
+| --- | --- |
+| sound | Sound to send |
 
 ## See Also
 

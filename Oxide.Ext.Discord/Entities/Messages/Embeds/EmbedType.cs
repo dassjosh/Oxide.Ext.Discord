@@ -4,6 +4,9 @@ using Oxide.Ext.Discord.Json;
 
 namespace Oxide.Ext.Discord.Entities
 {
+    /// <summary>
+    /// Represents <a href="https://discord.com/developers/docs/resources/message#embed-object-embed-types">Embed Type</a> in Discord
+    /// </summary>
     [JsonConverter(typeof(DiscordEnumConverter))]
     public enum EmbedType
     {

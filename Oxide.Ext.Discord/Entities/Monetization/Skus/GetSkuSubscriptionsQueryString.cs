@@ -4,6 +4,10 @@ using Oxide.Ext.Discord.Interfaces;
 
 namespace Oxide.Ext.Discord.Entities
 {
+    /// <summary>
+    /// Represents <a href="https://discord.com/developers/docs/resources/subscription#query-string-params">Get SKU Subscriptions Query String Params</a> in Discord
+    /// 
+    /// </summary>
     public class GetSkuSubscriptionsQueryString : IDiscordQueryString
     {
         /// <summary>
@@ -27,6 +31,10 @@ namespace Oxide.Ext.Discord.Entities
         /// </summary>
         public Snowflake? UserId { get; set; }
     
+        /// <summary>
+        /// Converts the request into a query string
+        /// </summary>
+        /// <returns></returns>
         public string ToQueryString()
         {
             Validate();

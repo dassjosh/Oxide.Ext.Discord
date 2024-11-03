@@ -20,9 +20,16 @@ namespace Oxide.Ext.Discord.Entities
         [JsonProperty("source_guild_id")]
         public Snowflake? SourceGuildId { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         [JsonConstructor]
         public SendSoundboardSound() { }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="sound">Sound to send</param>
         public SendSoundboardSound(DiscordSoundboardSound sound)
         {
             SoundId = sound.SoundId;

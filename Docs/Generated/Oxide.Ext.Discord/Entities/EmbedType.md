@@ -1,5 +1,7 @@
 # EmbedType enumeration
 
+Represents [Embed Type](https://discord.com/developers/docs/resources/message#embed-object-embed-types) in Discord
+
 ```csharp
 public enum EmbedType
 ```

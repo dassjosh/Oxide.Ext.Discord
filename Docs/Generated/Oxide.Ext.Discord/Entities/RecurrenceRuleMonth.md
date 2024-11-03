@@ -10,18 +10,18 @@ public enum RecurrenceRuleMonth
 
 | name | value | description |
 | --- | --- | --- |
-| January | `January` |  |
-| February | `February` |  |
-| March | `March` |  |
-| April | `April` |  |
-| May | `May` |  |
-| June | `June` |  |
-| July | `July` |  |
-| August | `August` |  |
-| September | `September` |  |
-| October | `October` |  |
-| November | `November` |  |
-| December | `December` |  |
+| January | `January` | January Recurrence Rule Month |
+| February | `February` | February Recurrence Rule Month |
+| March | `March` | March Recurrence Rule Month |
+| April | `April` | April Recurrence Rule Month |
+| May | `May` | May Recurrence Rule Month |
+| June | `June` | June Recurrence Rule Month |
+| July | `July` | July Recurrence Rule Month |
+| August | `August` | August Recurrence Rule Month |
+| September | `September` | September Recurrence Rule Month |
+| October | `October` | October Recurrence Rule Month |
+| November | `November` | November Recurrence Rule Month |
+| December | `December` | December Recurrence Rule Month |
 
 ## See Also
 

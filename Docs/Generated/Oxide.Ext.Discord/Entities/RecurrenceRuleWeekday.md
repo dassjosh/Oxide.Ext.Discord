@@ -10,13 +10,13 @@ public enum RecurrenceRuleWeekday
 
 | name | value | description |
 | --- | --- | --- |
-| Monday | `Monday` |  |
-| Tuesday | `Tuesday` |  |
-| Wednesday | `Wednesday` |  |
-| Thursday | `Thursday` |  |
-| Friday | `Friday` |  |
-| Saturday | `Saturday` |  |
-| Sunday | `Sunday` |  |
+| Monday | `Monday` | Monday Recurrence Rule Weekday |
+| Tuesday | `Tuesday` | Tuesday Recurrence Rule Weekday |
+| Wednesday | `Wednesday` | Wednesday Recurrence Rule Weekday |
+| Thursday | `Thursday` | Thursday Recurrence Rule Weekday |
+| Friday | `Friday` | Friday Recurrence Rule Weekday |
+| Saturday | `Saturday` | Saturday Recurrence Rule Weekday |
+| Sunday | `Sunday` | Sunday Recurrence Rule Weekday |
 
 ## See Also
 

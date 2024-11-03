@@ -40,7 +40,7 @@ namespace Oxide.Ext.Discord.Entities
         [JsonProperty("emoji_name")]
         public string EmojiName { get; set; }
 
-        //<inheritdoc/>
+        ///<inheritdoc/>
         public void Validate()
         {
             InvalidSoundboardException.ThrowIfInvalidName(Name);

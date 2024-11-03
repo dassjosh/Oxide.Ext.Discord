@@ -114,7 +114,7 @@
 | class [EmbedImage](./EmbedImage.md) | Represents [Embed Image Structure](https://discord.com/developers/docs/resources/channel#embed-object-embed-image-structure) |
 | class [EmbedProvider](./EmbedProvider.md) | Represents [Embed Provider Structure](https://discord.com/developers/docs/resources/channel#embed-object-embed-provider-structure) |
 | class [EmbedThumbnail](./EmbedThumbnail.md) | Represents [Embed Thumbnail Structure](https://discord.com/developers/docs/resources/channel#embed-object-embed-thumbnail-structure) |
-| enum [EmbedType](./EmbedType.md) |  |
+| enum [EmbedType](./EmbedType.md) | Represents [Embed Type](https://discord.com/developers/docs/resources/message#embed-object-embed-types) in Discord |
 | class [EmbedVideo](./EmbedVideo.md) | Represents [Embed Video Structure](https://discord.com/developers/docs/resources/channel#embed-object-embed-video-structure) |
 | class [EmojiCreate](./EmojiCreate.md) | Represents [Emoji Create Structure](https://discord.com/developers/docs/resources/emoji#create-guild-emoji-json-params) |
 | class [EmojiUpdate](./EmojiUpdate.md) | Represents [Emoji Update Structure](https://discord.com/developers/docs/resources/emoji#modify-guild-emoji-json-params) |
@@ -136,7 +136,7 @@
 | class [GetGuildSoundsResponse](./GetGuildSoundsResponse.md) | Represents [Get Guild Sounds Response](https://discord.com/developers/docs/resources/soundboard#list-guild-soundboard-sounds-response-structure) in Discord |
 | class [GetPollAnswerResponse](./GetPollAnswerResponse.md) | Represents a [Get Poll Answers Response](https://discord.com/developers/docs/resources/poll#get-answer-voters-response-body) |
 | class [GetPollAnswerVoters](./GetPollAnswerVoters.md) | Represents a [Get Answer Voters Query String Params](https://discord.com/developers/docs/resources/poll#get-answer-voters-query-string-params) |
-| class [GetSkuSubscriptionsQueryString](./GetSkuSubscriptionsQueryString.md) |  |
+| class [GetSkuSubscriptionsQueryString](./GetSkuSubscriptionsQueryString.md) | Represents [Get SKU Subscriptions Query String Params](https://discord.com/developers/docs/resources/subscription#query-string-params) in Discord |
 | class [GetSoundboardSoundsCommand](./GetSoundboardSoundsCommand.md) | Represents [Update Voice State](https://discord.com/developers/docs/topics/gateway#update-voice-state) |
 | class [GetThreadMember](./GetThreadMember.md) | Represents [Get Thread Member Query String Params](https://discord.com/developers/docs/resources/channel#get-thread-member-query-string-params) |
 | class [GroupDmChannelUpdate](./GroupDmChannelUpdate.md) | Represents a [Group DM Channel Update Structure](https://discord.com/developers/docs/resources/channel#modify-channel-json-params-group-dm) |

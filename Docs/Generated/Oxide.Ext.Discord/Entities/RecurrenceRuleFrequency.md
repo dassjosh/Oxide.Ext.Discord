@@ -10,10 +10,10 @@ public enum RecurrenceRuleFrequency
 
 | name | value | description |
 | --- | --- | --- |
-| Yearly | `Yearly` |  |
-| Monthly | `Monthly` |  |
-| Weekly | `Weekly` |  |
-| Daily | `Daily` |  |
+| Yearly | `Yearly` | Yearly Recurrence Rule Frequency |
+| Monthly | `Monthly` | Monthy Recurrence Rule Frequency |
+| Weekly | `Weekly` | Weekly Recurrence Rule Frequency |
+| Daily | `Daily` | Daily Recurrence Rule Frequency |
 
 ## See Also
 

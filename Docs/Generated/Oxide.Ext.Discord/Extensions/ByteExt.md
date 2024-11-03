@@ -1,5 +1,7 @@
 # ByteExt class
 
+Extension methods for bytes
+
 ```csharp
 public static class ByteExt
 ```
@@ -8,8 +10,8 @@ public static class ByteExt
 
 | name | description |
 | --- | --- |
-| static [GetFileSize](#getfilesize-method)(…) |  |
-| static [StartsWith](#startswith-method)(…) |  |
+| static [GetFileSize](#getfilesize-method)(…) | Returns the files size in the specified units |
+| static [StartsWith](#startswith-method)(…) | Checks if the byte array starts with the specified bytes |
 
 ## See Also
 
@@ -20,9 +22,22 @@ public static class ByteExt
    
 # GetFileSize method
 
+Returns the files size in the specified units
+
 ```csharp
 public static double GetFileSize(this byte[] data, DiscordFileSize size)
 ```
+
+| parameter | description |
+| --- | --- |
+| data |  |
+| size |  |
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| ArgumentOutOfRangeException |  |
 
 ## See Also
 
@@ -34,9 +49,16 @@ public static double GetFileSize(this byte[] data, DiscordFileSize size)
    
 # StartsWith method
 
+Checks if the byte array starts with the specified bytes
+
 ```csharp
-public static bool StartsWith(this byte[] file, byte[] type)
+public static bool StartsWith(this byte[] file, byte[] startsWith)
 ```
+
+| parameter | description |
+| --- | --- |
+| file | File to check |
+| startsWith | bytes to start with |
 
 ## See Also
 

@@ -217,7 +217,7 @@
 | class [EmbedImage](./Oxide.Ext.Discord/Entities/EmbedImage.md) | Represents [Embed Image Structure](https://discord.com/developers/docs/resources/channel#embed-object-embed-image-structure) |
 | class [EmbedProvider](./Oxide.Ext.Discord/Entities/EmbedProvider.md) | Represents [Embed Provider Structure](https://discord.com/developers/docs/resources/channel#embed-object-embed-provider-structure) |
 | class [EmbedThumbnail](./Oxide.Ext.Discord/Entities/EmbedThumbnail.md) | Represents [Embed Thumbnail Structure](https://discord.com/developers/docs/resources/channel#embed-object-embed-thumbnail-structure) |
-| enum [EmbedType](./Oxide.Ext.Discord/Entities/EmbedType.md) |  |
+| enum [EmbedType](./Oxide.Ext.Discord/Entities/EmbedType.md) | Represents [Embed Type](https://discord.com/developers/docs/resources/message#embed-object-embed-types) in Discord |
 | class [EmbedVideo](./Oxide.Ext.Discord/Entities/EmbedVideo.md) | Represents [Embed Video Structure](https://discord.com/developers/docs/resources/channel#embed-object-embed-video-structure) |
 | class [EmojiCreate](./Oxide.Ext.Discord/Entities/EmojiCreate.md) | Represents [Emoji Create Structure](https://discord.com/developers/docs/resources/emoji#create-guild-emoji-json-params) |
 | class [EmojiUpdate](./Oxide.Ext.Discord/Entities/EmojiUpdate.md) | Represents [Emoji Update Structure](https://discord.com/developers/docs/resources/emoji#modify-guild-emoji-json-params) |
@@ -239,7 +239,7 @@
 | class [GetGuildSoundsResponse](./Oxide.Ext.Discord/Entities/GetGuildSoundsResponse.md) | Represents [Get Guild Sounds Response](https://discord.com/developers/docs/resources/soundboard#list-guild-soundboard-sounds-response-structure) in Discord |
 | class [GetPollAnswerResponse](./Oxide.Ext.Discord/Entities/GetPollAnswerResponse.md) | Represents a [Get Poll Answers Response](https://discord.com/developers/docs/resources/poll#get-answer-voters-response-body) |
 | class [GetPollAnswerVoters](./Oxide.Ext.Discord/Entities/GetPollAnswerVoters.md) | Represents a [Get Answer Voters Query String Params](https://discord.com/developers/docs/resources/poll#get-answer-voters-query-string-params) |
-| class [GetSkuSubscriptionsQueryString](./Oxide.Ext.Discord/Entities/GetSkuSubscriptionsQueryString.md) |  |
+| class [GetSkuSubscriptionsQueryString](./Oxide.Ext.Discord/Entities/GetSkuSubscriptionsQueryString.md) | Represents [Get SKU Subscriptions Query String Params](https://discord.com/developers/docs/resources/subscription#query-string-params) in Discord |
 | class [GetSoundboardSoundsCommand](./Oxide.Ext.Discord/Entities/GetSoundboardSoundsCommand.md) | Represents [Update Voice State](https://discord.com/developers/docs/topics/gateway#update-voice-state) |
 | class [GetThreadMember](./Oxide.Ext.Discord/Entities/GetThreadMember.md) | Represents [Get Thread Member Query String Params](https://discord.com/developers/docs/resources/channel#get-thread-member-query-string-params) |
 | class [GroupDmChannelUpdate](./Oxide.Ext.Discord/Entities/GroupDmChannelUpdate.md) | Represents a [Group DM Channel Update Structure](https://discord.com/developers/docs/resources/channel#modify-channel-json-params-group-dm) |
@@ -532,7 +532,7 @@
 
 | public type | description |
 | --- | --- |
-| static class [ByteExt](./Oxide.Ext.Discord/Extensions/ByteExt.md) |  |
+| static class [ByteExt](./Oxide.Ext.Discord/Extensions/ByteExt.md) | Extension methods for bytes |
 | static class [DateTimeOffsetExt](./Oxide.Ext.Discord/Extensions/DateTimeOffsetExt.md) | DateTimeOffset Extensions |
 | static class [DiscordUserExt](./Oxide.Ext.Discord/Extensions/DiscordUserExt.md) | Adds extension methods to Discord User to allow sending server chat commands to the player |
 | static class [HashExt](./Oxide.Ext.Discord/Extensions/HashExt.md) | Hash extensions |

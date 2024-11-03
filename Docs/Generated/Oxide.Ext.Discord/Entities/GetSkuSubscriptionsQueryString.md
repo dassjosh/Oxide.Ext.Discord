@@ -1,5 +1,7 @@
 # GetSkuSubscriptionsQueryString class
 
+Represents [Get SKU Subscriptions Query String Params](https://discord.com/developers/docs/resources/subscription#query-string-params) in Discord
+
 ```csharp
 public class GetSkuSubscriptionsQueryString : IDiscordQueryString
 ```
@@ -13,7 +15,7 @@ public class GetSkuSubscriptionsQueryString : IDiscordQueryString
 | [Before](#before-property) { get; set; } | List subscriptions before this ID |
 | [Limit](#limit-property) { get; set; } | Number of results to return (1-100) |
 | [UserId](#userid-property) { get; set; } | User ID for which to return subscriptions. Required except for OAuth queries. |
-| [ToQueryString](#toquerystring-method)() |  |
+| [ToQueryString](#toquerystring-method)() | Converts the request into a query string |
 
 ## See Also
 
@@ -24,6 +26,8 @@ public class GetSkuSubscriptionsQueryString : IDiscordQueryString
    
    
 # ToQueryString method
+
+Converts the request into a query string
 
 ```csharp
 public string ToQueryString()
