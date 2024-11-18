@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.ComponentModel;
+using Newtonsoft.Json;
 
 namespace Oxide.Ext.Discord.Configuration
 {
@@ -7,6 +8,10 @@ namespace Oxide.Ext.Discord.Configuration
     /// </summary>
     internal class DiscordIpConfig
     {
+        [DefaultValue(true)]
+        [JsonProperty("Enabled")]
+        public bool Enabled { get; set; }
+        
         /// <summary>
         /// How many days to store IP data
         /// </summary>
