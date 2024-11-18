@@ -21,7 +21,13 @@ namespace Oxide.Ext.Discord.Data.Ip
         {
             get
             {
-                float duration = DiscordConfig.Instance.Ip.StoreIpDuration;
+                DiscordIpConfig config = DiscordConfig.Instance.Ip;
+                if (!config.Enabled)
+                {
+                    return true;
+                }
+                
+                float duration = config.StoreIpDuration;
                 if (duration < 0)
                 {
                     return false;

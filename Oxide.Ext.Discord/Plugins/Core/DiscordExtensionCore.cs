@@ -349,7 +349,7 @@ namespace Oxide.Ext.Discord.Plugins
         // ReSharper disable twice UnusedParameter.Local
         private void OnUserApproved(string name, string id, string ipAddress)
         {
-            if (!DiscordIpData.Instance.HasData(ipAddress))
+            if (DiscordConfig.Instance.Ip.Enabled && !DiscordIpData.Instance.HasData(ipAddress))
             {
                 _logger.Verbose($"{nameof(DiscordExtensionCore)}.{nameof(OnUserConnected)} No data found for IP: {{0}}. Requesting Data.", ipAddress);
                 GetIpDataCallback.Start(ipAddress);

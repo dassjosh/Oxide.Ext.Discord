@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Oxide.Ext.Discord.Configuration;
 using Oxide.Ext.Discord.Extensions;
 using Oxide.Ext.Discord.Interfaces;
 using Oxide.Ext.Discord.Logging;
@@ -44,6 +45,12 @@ namespace Oxide.Ext.Discord.Services.IpApi
 
         public ValueTask<IpResult> GetCountryCode(string ip)
         {
+            if (!DiscordConfig.Instance.Ip.Enabled)
+            {
+                _logger.Verbose($"{nameof(IpApiService)}.{nameof(GetCountryCode)} Skipping Getting IP Data. Disabled in config.");
+                return new ValueTask<IpResult>();
+            }
+            
             _logger.Verbose($"{nameof(IpApiService)}.{nameof(GetCountryCode)} Getting IP data for {{0}}", ip);
             string url = $"{ip}?fields=49155";
             return GetCountryCodeInternal(url, 0);

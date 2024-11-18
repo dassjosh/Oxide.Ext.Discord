@@ -139,6 +139,7 @@ namespace Oxide.Ext.Discord.Configuration
             };
             Ip = new DiscordIpConfig
             {
+                Enabled = Ip?.Enabled ?? true,
                 StoreIpDuration = Ip?.StoreIpDuration ?? 30f,
                 UnknownCountryEmoji = Ip?.UnknownCountryEmoji ?? ":signal_strength:"
             };
