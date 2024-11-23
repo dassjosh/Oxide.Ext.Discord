@@ -1,16 +1,16 @@
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using Oxide.Core.Libraries.Covalence;
 using Oxide.Core.Plugins;
 using Oxide.Ext.Discord.Builders;
 using Oxide.Ext.Discord.Types;
-using Oxide.Plugins;
 
 namespace Oxide.Ext.Discord.Plugins
 {
     internal partial class DiscordExtensionCore
     {
         private Plugin _clans;
-        private readonly Hash<PlayerDisplayNameMode, Hash<string, string>> _playerNameCache = new();
+        private readonly ConcurrentDictionary<PlayerDisplayNameMode, ConcurrentDictionary<string, string>> _playerNameCache = new();
 
         // ReSharper disable once UnusedMember.Local
         [HookMethod(nameof(OnClanCreate))]
@@ -39,16 +39,16 @@ namespace Oxide.Ext.Discord.Plugins
         {
             if (oldName != newName)
             {
-                foreach (KeyValuePair<PlayerDisplayNameMode, Hash<string, string>> cache in _playerNameCache)
+                foreach (KeyValuePair<PlayerDisplayNameMode, ConcurrentDictionary<string, string>> cache in _playerNameCache)
                 {
-                    cache.Value.Remove(playerId);
+                    cache.Value.Remove(playerId, out _);
                 }
             }
         }
 
         private void ClearClanCache()
         {
-            foreach (KeyValuePair<PlayerDisplayNameMode, Hash<string,string>> cache in _playerNameCache)
+            foreach (KeyValuePair<PlayerDisplayNameMode, ConcurrentDictionary<string,string>> cache in _playerNameCache)
             {
                 if (HasFlag(cache.Key, PlayerDisplayNameMode.Clan))
                 {
@@ -70,15 +70,13 @@ namespace Oxide.Ext.Discord.Plugins
         
         public string GetPlayerName(IPlayer player, PlayerDisplayNameMode options)
         {
-            Hash<string, string> cache = _playerNameCache[options];
-            if (cache == null)
+            if (!_playerNameCache.TryGetValue(options, out ConcurrentDictionary<string, string> cache))
             {
-                cache = new Hash<string, string>();
+                cache = new ConcurrentDictionary<string, string>();
                 _playerNameCache[options] = cache;
             }
             
-            string name = cache[player.Id];
-            if (!string.IsNullOrEmpty(name))
+            if (cache.TryGetValue(player.Id, out string name))
             {
                 return name;
             }
@@ -87,7 +85,7 @@ namespace Oxide.Ext.Discord.Plugins
         
             if (_clans is {IsLoaded: true} && HasFlag(options, PlayerDisplayNameMode.Clan))
             {
-                string clan = _clans.Call<string>("GetClanOf", player.Id);
+                string clan = GetClanTag(player);
                 if (!string.IsNullOrEmpty(clan))
                 {
                     sb.Append('[');
@@ -110,7 +108,7 @@ namespace Oxide.Ext.Discord.Plugins
             return name;
         }
         
-        private bool HasFlag(PlayerDisplayNameMode options, PlayerDisplayNameMode flag)
+        private static bool HasFlag(PlayerDisplayNameMode options, PlayerDisplayNameMode flag)
         {
             return (options & flag) == flag;
         }
