@@ -25,9 +25,8 @@ namespace Oxide.Ext.Discord.Types
         private int _index;
         private readonly object _lock = new();
         private PoolSize _size;
-        private bool _isFirstLeakError = true;
-        private DateTime _nextLeakError;
         private bool _isInitialized;
+        private LeakHandler _leakHandler;
         
         private static readonly ConcurrentDictionary<PluginId, TPool> Pools = new();
 
@@ -94,9 +93,10 @@ namespace Oxide.Ext.Discord.Types
                     _pool[_index] = null;
                     _index++;
                 }
-                else if(ShouldLogLeak())
+                else 
                 {
-                    DiscordExtension.GlobalLogger.Warning("{0} Pool {1} is leaking entities!!! {2}/{3}", PluginPool.PluginName, GetType(), _index, _pool.Length);
+                    LeakHandler leak = _leakHandler ??= new LeakHandler(PluginPool.PluginId, GetType().ToString());
+                    leak.OnLeak(_index, _pool.Length);
                 }
             }
                 
@@ -104,28 +104,6 @@ namespace Oxide.Ext.Discord.Types
                 
             OnGetItem(item);
             return item;
-        }
-
-        private bool ShouldLogLeak()
-        {
-            if (!PluginPool.PluginId.IsExtensionPlugin)
-            {
-                return true;
-            }
-
-            if (_isFirstLeakError)
-            {
-                _isFirstLeakError = false;
-                return false;
-            }
-
-            if (_nextLeakError < DateTime.UtcNow)
-            {
-                return false;
-            }
-            
-            _nextLeakError = DateTime.UtcNow + TimeSpan.FromSeconds(30);
-            return true;
         }
 
         /// <summary>

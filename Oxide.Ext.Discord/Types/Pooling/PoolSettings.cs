@@ -8,7 +8,7 @@
         /// <summary>
         /// Size of the <see cref="HashPool{TKey,TValue}"/>
         /// </summary>
-        public PoolSize HashPoolSize = new(32, 256);
+        public PoolSize HashPoolSize { get; set; } = new(32, 256);
         
         /// <summary>
         /// Size of the <see cref="HashSetPool{T}"/>

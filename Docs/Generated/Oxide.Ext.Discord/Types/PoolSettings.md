@@ -11,13 +11,13 @@ public class PoolSettings
 | name | description |
 | --- | --- |
 | [PoolSettings](#poolsettings-constructor)() | The default constructor. |
+| [HashPoolSize](#hashpoolsize-property) { get; set; } | Size of the HashPool |
 | [HashSetPoolSize](#hashsetpoolsize-property) { get; set; } | Size of the HashSetPool |
 | [ListPoolSize](#listpoolsize-property) { get; set; } | Size of the ListPool |
 | [MemoryStreamPoolSize](#memorystreampoolsize-property) { get; set; } | Size of the MemoryStreamPool |
 | [ObjectPoolSize](#objectpoolsize-property) { get; set; } | Size of the ObjectPool |
 | [PlaceholderDataPoolSize](#placeholderdatapoolsize-property) { get; set; } | Size of the PlaceholderDataPool |
 | [StringBuilderPoolSize](#stringbuilderpoolsize-property) { get; set; } | Size of the StringBuilderPool |
-| [HashPoolSize](#hashpoolsize-field) | Size of the HashPool |
 
 ## See Also
 
@@ -36,6 +36,22 @@ public PoolSettings()
 
 ## See Also
 
+* class [PoolSettings](./PoolSettings.md)
+* namespace [Oxide.Ext.Discord.Types](./TypesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# HashPoolSize property
+
+Size of the HashPool
+
+```csharp
+public PoolSize HashPoolSize { get; set; }
+```
+
+## See Also
+
+* struct [PoolSize](./PoolSize.md)
 * class [PoolSettings](./PoolSettings.md)
 * namespace [Oxide.Ext.Discord.Types](./TypesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
@@ -127,22 +143,6 @@ Size of the StringBuilderPool
 
 ```csharp
 public PoolSize StringBuilderPoolSize { get; set; }
-```
-
-## See Also
-
-* struct [PoolSize](./PoolSize.md)
-* class [PoolSettings](./PoolSettings.md)
-* namespace [Oxide.Ext.Discord.Types](./TypesNamespace.md)
-* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
-   
-   
-# HashPoolSize field
-
-Size of the HashPool
-
-```csharp
-public PoolSize HashPoolSize;
 ```
 
 ## See Also
