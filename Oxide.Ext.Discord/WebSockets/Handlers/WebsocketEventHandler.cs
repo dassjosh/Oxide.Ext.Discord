@@ -283,7 +283,7 @@ namespace Oxide.Ext.Discord.WebSockets
             }
             catch (Exception ex)
             {
-                _logger.Exception($"{nameof(WebSocketEventHandler)}.{nameof(SocketMessage)} Please give error message below to Discord Extension Authors. An error occured for: {payload.DispatchCode}.\nBody{reader.ReadAsString()}", ex);
+                _logger.Exception($"{nameof(WebSocketEventHandler)}.{nameof(SocketMessage)} Please give error message below to Discord Extension Authors. An error occured for: {{0}}.\nBody{{1}}", payload.DispatchCode, reader.ReadAsString(), ex);
             }
             finally
             {

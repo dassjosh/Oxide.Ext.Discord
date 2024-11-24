@@ -28359,7 +28359,7 @@
             Settings for the pools
             </summary>
         </member>
-        <member name="F:Oxide.Ext.Discord.Types.PoolSettings.HashPoolSize">
+        <member name="P:Oxide.Ext.Discord.Types.PoolSettings.HashPoolSize">
             <summary>
             Size of the <see cref="T:Oxide.Ext.Discord.Types.HashPool`2"/>
             </summary>

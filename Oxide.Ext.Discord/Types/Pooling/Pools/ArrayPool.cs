@@ -1,5 +1,5 @@
 ﻿using System;
-using Oxide.Ext.Discord.Logging;
+using Oxide.Ext.Discord.Plugins;
 
 namespace Oxide.Ext.Discord.Types
 {
@@ -7,7 +7,7 @@ namespace Oxide.Ext.Discord.Types
     {
         private const int MaxArraySize = 64;
         private readonly ArrayPoolInternal[] _pool = new ArrayPoolInternal[MaxArraySize + 1];
-        
+
         private ArrayPool() { }
 
         public TPooled[] Get(int size)
@@ -51,11 +51,12 @@ namespace Oxide.Ext.Discord.Types
 
         private sealed class ArrayPoolInternal
         {
-            private const int MaxArrays = 64;
+            private const int MaxArrays = 256;
             private ushort _index;
             private readonly TPooled[][] _pool = new TPooled[MaxArrays][];
             private readonly object _lock = new();
             private readonly int _arraySize;
+            private LeakHandler _leakHandler;
 
             public ArrayPoolInternal(int arraySize)
             {
@@ -75,7 +76,8 @@ namespace Oxide.Ext.Discord.Types
                     }
                     else
                     {
-                        DiscordExtension.GlobalLogger.Warning("Pool {0} is leaking entities!!! {1}/{2}", GetType(), _index, _pool.Length);
+                        LeakHandler leak = _leakHandler ??= new LeakHandler(DiscordExtensionCore.Instance.PluginId, $"{typeof(ArrayPool<TPooled>)}[{_arraySize}]");
+                        leak.OnLeak(_index, _pool.Length);
                     }
                 }
 
