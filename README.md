@@ -119,33 +119,33 @@ Commands the Discord Extension registers on the bot:
 `/de commands delete` - deletes an application command from the bot. This should be used when a plugin registers a command but is no longed used.  
 
 ## Discord Templates
-Discord Templates allow server owners to fully customize Discord messages and Slash Commands.
+Discord Templates allow server owners to fully customize Discord messages and Slash Commands. 
 These messages / commands can be localized and follow a similar pattern to Oxide lang.
-To get started the plugin must support the new Discord Templates functionality added in Discord Extension 3.0
+To get started the plugin must support the new Discord Templates functionality added in Discord Extension 3.0 
 If a plugin supports templates you can find the editable templates in the following directory `oxide/discord/{PluginName}/`.
-Inside the plugin folder, you will find a folder for each type of template a plugin has registered.
-The most common ones you will see are `message` and `command`.
+Inside the plugin folder, you will find a folder for each type of template a plugin has registered. 
+The most common ones you will see are `message` and `command`. 
 Inside the message folder, you will find global templates. 
-Global templates are messages that aren't sent to a user but globally to a Discord server.
-You might also see a folder `en` this is the folder for english message templates.
-By default, the fallback language for all messages will be english that matches Oxide's functionality.
-If you wanted to localize a message in German, you would make a copy of the `en` folder and name it `de`.
-Then inside the `de` folder you would update the messages to be in german.
-After making all the changes in the `de` folder you can reload the plugin for the changes to take effect.
+Global templates are messages that aren't sent to a user but globally to a Discord server. 
+You might also see a folder `en` this is the folder for english message templates. 
+By default, the fallback language for all messages will be english that matches Oxide's functionality. 
+If you wanted to localize a message in German, you would make a copy of the `en` folder and name it `de`. 
+Then inside the `de` folder you would update the messages to be in german. 
+After making all the changes in the `de` folder you can reload the plugin for the changes to take effect. 
 
 ## Discord Placeholders
-Discord Placeholders allows for greater message customization for server owners and plugin developers.
-This feature is a big part of Discord Templates but can really be used anywhere a plugin developer would want it to.
-Placeholders follow the same format used in PlaceholdersAPI and can use PlaceholdersAPI for placeholders as well.
+Discord Placeholders allows for greater message customization for server owners and plugin developers. 
+This feature is a big part of Discord Templates but can really be used anywhere a plugin developer would want it to. 
+Placeholders follow the same format used in PlaceholdersAPI and can use PlaceholdersAPI for placeholders as well. 
 You can get the list of available placeholders by typing `de.placeholders.list`.
-This will list out all the available placeholders to use.
-Placeholders have the following format `{name:format}`.
-The `name` is the name of the placeholder.
-`format` is the format to apply to the placeholder.
-`format` is optional and the majority of the time will not be used.  
-**NOTE:** Which placeholders can be used depends on the context. 
-You won't be able to use an IPlayer placeholder if there is no IPlayer available to use for the given context.
+This will list out all the available placeholders to use. 
+Placeholders have the following format `{name:format}`. 
+The `name` is the name of the placeholder. 
+`format` is the format to apply to the placeholder. 
+`format` is optional and the majority of the time will not be used.   
+**NOTE:** Which placeholders can be used depends on the context.  
+You won't be able to use an IPlayer placeholder if there is no IPlayer available to use for the given context. 
 
 ## Contributing
 
-Want to contribute? Create a fork of the repo and create a pull request for any changes you wish to make! 
+Want to contribute? Create a fork of the repo and create a pull request for any changes you wish to make!
