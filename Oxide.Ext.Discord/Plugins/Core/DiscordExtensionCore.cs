@@ -298,6 +298,7 @@ namespace Oxide.Ext.Discord.Plugins
             DiscordAppCommand.Instance.LogDebug(logger);
             DiscordCommand.Instance.LogDebug(logger);
             DiscordSubscriptions.Instance.LogDebug(logger);
+            logger.AppendObject("Array Pool", ArrayPool<object>.Instance);
             logger.AppendObject("Discord Pool", DiscordPool.Instance);
             logger.EndObject();
             

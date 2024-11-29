@@ -1,9 +1,12 @@
 ﻿using System;
+using Oxide.Ext.Discord.Extensions;
+using Oxide.Ext.Discord.Interfaces;
+using Oxide.Ext.Discord.Logging;
 using Oxide.Ext.Discord.Plugins;
 
 namespace Oxide.Ext.Discord.Types
 {
-    internal sealed class ArrayPool<TPooled> : Singleton<ArrayPool<TPooled>>
+    internal sealed class ArrayPool<TPooled> : Singleton<ArrayPool<TPooled>>, IDebugLoggable
     {
         private const int MaxArraySize = 64;
         private readonly ArrayPoolInternal[] _pool = new ArrayPoolInternal[MaxArraySize + 1];
@@ -48,19 +51,30 @@ namespace Oxide.Ext.Discord.Types
             
             _pool[size]?.Free(ref array);
         }
+        
+        public void LogDebug(DebugLogger logger)
+        {
+            logger.StartObject($"Array Pools <{typeof(TPooled).GetRealTypeName()}>");
+            foreach (ArrayPoolInternal pool in _pool)
+            {
+                logger.AppendFieldOutOf($"{typeof(TPooled).GetRealTypeName()} Size: {pool.ArraySize}", ArrayPoolInternal.MaxArrays - pool.Index, ArrayPoolInternal.MaxArrays);
+            }
+            
+            logger.EndObject();
+        }
 
         private sealed class ArrayPoolInternal
         {
-            private const int MaxArrays = 256;
-            private ushort _index;
+            internal const int MaxArrays = 256;
+            internal ushort Index;
             private readonly TPooled[][] _pool = new TPooled[MaxArrays][];
             private readonly object _lock = new();
-            private readonly int _arraySize;
+            internal readonly int ArraySize;
             private LeakHandler _leakHandler;
 
             public ArrayPoolInternal(int arraySize)
             {
-                _arraySize = arraySize;
+                ArraySize = arraySize;
             }
             
             public TPooled[] Get()
@@ -68,20 +82,20 @@ namespace Oxide.Ext.Discord.Types
                 TPooled[] array = null;
                 lock (_lock)
                 {
-                    if (_index < _pool.Length)
+                    if (Index < _pool.Length)
                     {
-                        array = _pool[_index];
-                        _pool[_index] = null;
-                        _index++;
+                        array = _pool[Index];
+                        _pool[Index] = null;
+                        Index++;
                     }
                     else
                     {
-                        LeakHandler leak = _leakHandler ??= new LeakHandler(DiscordExtensionCore.Instance.PluginId, $"{typeof(ArrayPool<TPooled>)}[{_arraySize}]");
-                        leak.OnLeak(_index, _pool.Length);
+                        LeakHandler leak = _leakHandler ??= new LeakHandler(DiscordExtensionCore.Instance.PluginId, $"{typeof(ArrayPool<TPooled>).GetRealTypeName()}[{ArraySize}]");
+                        leak.OnLeak(Index, _pool.Length);
                     }
                 }
 
-                return array ?? new TPooled[_arraySize];
+                return array ?? new TPooled[ArraySize];
             }
             
             public void Free(ref TPooled[] item)
@@ -98,9 +112,9 @@ namespace Oxide.Ext.Discord.Types
 
                 lock (_lock)
                 {
-                    if (_index != 0)
+                    if (Index != 0)
                     {
-                        _pool[--_index] = item;
+                        _pool[--Index] = item;
                     }
                 }
             
