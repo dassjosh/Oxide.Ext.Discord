@@ -83,22 +83,16 @@ namespace Oxide.Ext.Discord.WebSockets
                     }
 
                     command = GetNextCommand();
-                    if (command == null)
-                    {
-                        continue;
-                    }
 
                     //If the client has been disconnect don't run it's command
-                    if (command.Client.Bot == null)
+                    if (command?.Client.Bot == null)
                     {
-                        RemoveCommand(command);
                         continue;
                     }
 
                     if (!_rateLimit.CanFireRequest(command))
                     {
                         _logger.Warning($"{nameof(WebSocketCommandHandler)}.{nameof(SendCommandsInternal)} Skipping websocket command for plugin {{0}} Exceeded Rate Limit of {{1}} Requests in {{2}} Seconds! Report this error to the plugin author.", command.Client.PluginName, WebsocketRateLimit.MaxRequestPerPlugin, WebsocketRateLimit.RateLimitInterval / 1000);
-                        RemoveCommand(command);
                         continue;
                     }
                     
@@ -107,16 +101,11 @@ namespace Oxide.Ext.Discord.WebSockets
                     _rateLimit.FiredRequest(command);
                     
                     await _webSocket.SendAsync(command.Payload).ConfigureAwait(false);
-                    RemoveCommand(command);
                 }
                 catch(OperationCanceledException) {}
                 catch (Exception ex)
                 {
                     _logger.Exception("An error occured sending commands", ex);
-                    if (command != null)
-                    {
-                        RemoveCommand(command);
-                    }
                     
                     await Task.Delay(1000, _token).ConfigureAwait(false);
                 }
@@ -130,6 +119,11 @@ namespace Oxide.Ext.Discord.WebSockets
                     if (!_pendingCommands.IsEmpty)
                     {
                         _commands.Set();
+                    }
+                    
+                    if (command != null)
+                    {
+                        RemoveCommand(command);
                     }
                 }
             }
