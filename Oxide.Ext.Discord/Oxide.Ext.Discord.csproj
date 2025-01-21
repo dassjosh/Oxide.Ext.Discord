@@ -31,10 +31,10 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Oxide.Core" Version="2.0.4106">
+    <PackageReference Include="Oxide.Core" Version="2.0.4121">
       <ExcludeAssets>contentfiles;analyzers;build</ExcludeAssets>
     </PackageReference>
-    <PackageReference Include="Oxide.CSharp" Version="2.0.4132">
+    <PackageReference Include="Oxide.CSharp" Version="2.0.4145">
       <ExcludeAssets>contentfiles;analyzers;build</ExcludeAssets>
     </PackageReference>
     <Reference Include="mscorlib">

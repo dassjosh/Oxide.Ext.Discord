@@ -14,6 +14,7 @@ public class DiscordExtension : Extension
 | override [Author](#author-property) { get; } | Authors for the extension |
 | override [Name](#name-property) { get; } | Name of the extension |
 | override [Version](#version-property) { get; } | Version number used by oxide |
+| override [GetPreprocessorDirectives](#getpreprocessordirectives-method)() |  |
 | override [OnModLoad](#onmodload-method)() | Called when mod is loaded |
 | override [OnShutdown](#onshutdown-method)() | Called when server is shutdown |
 
@@ -45,6 +46,19 @@ Called when server is shutdown
 
 ```csharp
 public override void OnShutdown()
+```
+
+## See Also
+
+* class [DiscordExtension](./DiscordExtension.md)
+* namespace [Oxide.Ext.Discord](../Oxide.Ext.DiscordNamespace.md)
+* assembly [Oxide.Ext.Discord](../Oxide.Ext.Discord.md)
+   
+   
+# GetPreprocessorDirectives method
+
+```csharp
+public override IEnumerable<string> GetPreprocessorDirectives()
 ```
 
 ## See Also

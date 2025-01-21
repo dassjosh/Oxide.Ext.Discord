@@ -128,8 +128,6 @@ namespace Oxide.Ext.Discord
             
             Manager.RegisterPluginLoader(new DiscordExtPluginLoader());
             //Interface.Oxide.OnFrame(PromiseTimer.Instance.Update);
-
-            InjectPreProcessorDirectives();
             
             Interface.Oxide.RootPluginManager.OnPluginAdded += DiscordClientFactory.Instance.OnPluginLoaded;
             Interface.Oxide.RootPluginManager.OnPluginRemoved += plugin =>
@@ -151,30 +149,12 @@ namespace Oxide.Ext.Discord
             DiscordLoggerFactory.Instance.OnServerShutdown();
         }
 
-        private IEnumerable<string> GetPreProcessorDirectives()
+        public override IEnumerable<string> GetPreprocessorDirectives()
         {
             yield return "DISCORD_EXT";
             for (int i = 0; i <= Version.Minor; i++)
             {
                 yield return $"DISCORD_EXT_{Version.Major}_{i}";
-            }
-        }
-
-        private void InjectPreProcessorDirectives()
-        {
-            try
-            {
-                FieldInfo compilerField = typeof(CSharpPluginLoader).GetField("compiler", BindingFlags.NonPublic | BindingFlags.Instance);
-                object compiler = compilerField.GetValue(CSharpPluginLoader.Instance);
-                FieldInfo preProcessorField = compiler.GetType().GetField("preprocessor", BindingFlags.NonPublic | BindingFlags.Instance);
-                string[] preProcessor = preProcessorField.GetValue(compiler) as string[];
-                preProcessor = preProcessor.Concat(GetPreProcessorDirectives()).ToArray();
-                preProcessorField.SetValue(compiler, preProcessor);
-                GlobalLogger.Debug($"Injected Preprocessor Directives: {string.Join(", ", preProcessor)}");
-            }
-            catch (Exception ex)
-            {
-                GlobalLogger.Exception("Failed to inject preprocessor directives", ex);
             }
         }
     }
