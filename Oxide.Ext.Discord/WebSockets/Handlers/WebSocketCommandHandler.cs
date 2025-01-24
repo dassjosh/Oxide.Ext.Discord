@@ -176,7 +176,10 @@ namespace Oxide.Ext.Discord.WebSockets
             _online.Reset();
             while (!_pendingCommands.IsEmpty)
             {
-                _pendingCommands.TryDequeue(out WebSocketCommand _);
+                if (_pendingCommands.TryDequeue(out WebSocketCommand command))
+                {
+                    command.Dispose();
+                }
             }
             _isSocketReady = false;
         }
