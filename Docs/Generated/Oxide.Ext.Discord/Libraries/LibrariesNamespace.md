@@ -23,6 +23,7 @@
 | class [DiscordAutoCompleteChoiceTemplate](./DiscordAutoCompleteChoiceTemplate.md) | Template for Discord Auto Completes |
 | class [DiscordAutoCompleteChoiceTemplates](./DiscordAutoCompleteChoiceTemplates.md) | Auto Complete Choice Templates Library |
 | class [DiscordButtonTemplates](./DiscordButtonTemplates.md) | Button Templates Library |
+| class [DiscordChannelSubscription](./DiscordChannelSubscription.md) | Represents a channel subscription for a plugin |
 | class [DiscordCommand](./DiscordCommand.md) | Represents a library for discord commands |
 | class [DiscordCommandLocalization](./DiscordCommandLocalization.md) | Command Localizations for Application Commands |
 | class [DiscordCommandLocalizations](./DiscordCommandLocalizations.md) | Library for localizing [`DiscordApplicationCommand`](./Oxide.Ext.Discord/Entities/DiscordApplicationCommand.md)s |
@@ -41,7 +42,6 @@
 | class [DiscordPlaceholders](./DiscordPlaceholders.md) | Discord Placeholders Library |
 | class [DiscordPool](./DiscordPool.md) | Discord Pool Library |
 | class [DiscordSelectMenuTemplates](./DiscordSelectMenuTemplates.md) | InputText Templates Library |
-| class [DiscordSubscription](./DiscordSubscription.md) | Represents a channel subscription for a plugin |
 | class [DiscordSubscriptions](./DiscordSubscriptions.md) | Represents Discord Subscriptions Oxide Library Allows for plugins to subscribe to discord channels |
 | class [EmbedFooterTemplate](./EmbedFooterTemplate.md) | Discord Template for Embed Footer |
 | class [EmojiTemplate](./EmojiTemplate.md) | Discord Template for Emoji |

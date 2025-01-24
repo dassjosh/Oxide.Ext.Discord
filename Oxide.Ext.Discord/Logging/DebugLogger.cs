@@ -223,7 +223,7 @@ namespace Oxide.Ext.Discord.Logging
         /// </summary>
         /// <param name="name">Name of the field</param>
         /// <param name="value">Value of the field</param>
-        public void AppendFieldEnum<T>(string name, T value)  where T : struct, IComparable, IFormattable, IConvertible => AppendField(name, EnumCache<T>.Instance.ToString(value));
+        public void AppendFieldEnum<T>(string name, T value)  where T : Enum, IComparable, IFormattable, IConvertible => AppendField(name, EnumCache<T>.Instance.ToString(value));
 
         /// <summary>
         /// Appends a field with the given name and int amount over int total value

@@ -347,6 +347,14 @@ namespace Oxide.Ext.Discord.Entities
         
         /// <summary>
         /// The scheduled events in the guild
+        /// <see cref="DiscordSticker"/>
+        /// </summary>
+        [JsonConverter(typeof(HashListConverter<DiscordSoundboardSound>))]
+        [JsonProperty("soundboard_sounds")]
+        public Hash<Snowflake, DiscordSoundboardSound> SoundboardSounds { get; set; }
+        
+        /// <summary>
+        /// Whether the guild has the boost progress bar enabled
         /// </summary>
         [JsonProperty("premium_progress_bar_enabled")]
         public bool PremiumProgressBarEnabled { get; set; }
@@ -922,6 +930,18 @@ namespace Oxide.Ext.Discord.Entities
         }
 
         /// <summary>
+        /// Returns a role object for the specified role.
+        /// See <a href="https://discord.com/developers/docs/resources/guild#get-guild-role">Get Guild Role</a>
+        /// </summary>
+        /// <param name="client">Client to use</param>
+        /// <param name="roleId">ID of the role</param>
+        public IPromise<List<DiscordRole>> GetRole(DiscordClient client, Snowflake roleId)
+        {
+            InvalidSnowflakeException.ThrowIfInvalid(roleId);
+            return client.Bot.Rest.Get<List<DiscordRole>>(client,$"guilds/{Id}/roles/{roleId}");
+        }
+
+        /// <summary>
         /// Create a new role for the guild.
         /// Requires the MANAGE_ROLES permission.
         /// Returns the new role object on success.
@@ -1224,10 +1244,31 @@ namespace Oxide.Ext.Discord.Entities
             InvalidSnowflakeException.ThrowIfInvalid(emojiId);
             return client.Bot.Rest.Delete(client,$"guilds/{Id}/emojis/{emojiId}");
         }
+        
+        /// <summary>
+        /// Get Current User Voice State
+        /// See <a href="https://discord.com/developers/docs/resources/voice#get-user-voice-state">Get Current User Voice State</a>
+        /// </summary>
+        /// <param name="client">Client to use</param>
+        public IPromise<VoiceState> GetCurrentUserVoiceState(DiscordClient client)
+        {
+            return client.Bot.Rest.Get<VoiceState>(client,$"guilds/{Id}/voice-states/@me");
+        }
+
+        /// <summary>
+        /// Get Current User Voice State
+        /// See <a href="https://discord.com/developers/docs/resources/voice#get-user-voice-state">Get User Voice State</a>
+        /// </summary>
+        /// <param name="client">Client to use</param>
+        /// <param name="userId">User ID to get the voice state for</param>
+        public IPromise<VoiceState> GetUserVoiceState(DiscordClient client, Snowflake userId)
+        {
+            return client.Bot.Rest.Get<VoiceState>(client,$"guilds/{Id}/voice-states/{userId}");
+        }
 
         /// <summary>
         /// Modifies the current user's voice state.
-        /// See <a href="https://discord.com/developers/docs/resources/guild#modify-current-user-voice-state">Update Current User Voice State</a>
+        /// See <a href="https://discord.com/developers/docs/resources/voice#modify-current-user-voice-state">Update Current User Voice State</a>
         /// </summary>
         /// <param name="client">Client to use</param>
         /// <param name="update">Update to the guild voice state</param>
@@ -1239,7 +1280,7 @@ namespace Oxide.Ext.Discord.Entities
 
         /// <summary>
         /// Modifies another user's voice state.
-        /// See <a href="https://discord.com/developers/docs/resources/guild#modify-user-voice-state">Update Users Voice State</a>
+        /// See <a href="https://discord.com/developers/docs/resources/voice#modify-user-voice-state">Update Users Voice State</a>
         /// </summary>
         /// <param name="client">Client to use</param>
         /// <param name="userId">User to modify</param>
@@ -1347,6 +1388,27 @@ namespace Oxide.Ext.Discord.Entities
         public IPromise<GuildOnboarding> EditOnboarding(DiscordClient client, GuildOnboardingUpdate update)
         {
             return client.Bot.Rest.Put<GuildOnboarding>(client,$"guilds/{Id}/onboarding", update);
+        }
+        
+        /// <summary>
+        /// Returns a list of the guild's soundboard sounds
+        /// See <a href="https://discord.com/developers/docs/resources/soundboard#list-guild-soundboard-sounds">List Guild Soundboard Sounds</a>
+        /// </summary>
+        /// <param name="client">Client to use</param>
+        public IPromise<GetGuildSoundsResponse> GetGuildSounds(DiscordClient client)
+        {
+            return client.Bot.Rest.Get<GetGuildSoundsResponse>(client,$"guilds/{Id}/soundboard-sounds");
+        }
+
+        /// <summary>
+        /// Returns a soundboard sound object for the given sound id
+        /// See <a href="https://discord.com/developers/docs/resources/soundboard#get-guild-soundboard-sound">Get Guild Soundboard Sound</a>
+        /// </summary>
+        /// <param name="client">Client to use</param>
+        /// <param name="soundId">ID of the guild sound</param>
+        public IPromise<DiscordSoundboardSound> GetGuildSound(DiscordClient client, Snowflake soundId)
+        {
+            return client.Bot.Rest.Get<DiscordSoundboardSound>(client,$"guilds/{Id}/soundboard-sounds/{soundId}");
         }
         #endregion
 

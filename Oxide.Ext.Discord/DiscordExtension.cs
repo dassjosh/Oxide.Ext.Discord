@@ -1,6 +1,6 @@
-#if !CARBON
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Oxide.Core;
 using Oxide.Core.Extensions;
@@ -13,6 +13,7 @@ using Oxide.Ext.Discord.Interfaces;
 using Oxide.Ext.Discord.Libraries;
 using Oxide.Ext.Discord.Logging;
 using Oxide.Ext.Discord.Plugins;
+using Oxide.Plugins;
 
 namespace Oxide.Ext.Discord
 {
@@ -128,8 +129,6 @@ namespace Oxide.Ext.Discord
             Manager.RegisterPluginLoader(new DiscordExtPluginLoader());
             //Interface.Oxide.OnFrame(PromiseTimer.Instance.Update);
             
-            Interface.Oxide.Config.Compiler.PreprocessorDirectives.AddRange(GetPreProcessorDirectives());
-            
             Interface.Oxide.RootPluginManager.OnPluginAdded += DiscordClientFactory.Instance.OnPluginLoaded;
             Interface.Oxide.RootPluginManager.OnPluginRemoved += plugin =>
             {
@@ -150,11 +149,13 @@ namespace Oxide.Ext.Discord
             DiscordLoggerFactory.Instance.OnServerShutdown();
         }
 
-        private IEnumerable<string> GetPreProcessorDirectives()
+        public override IEnumerable<string> GetPreprocessorDirectives()
         {
-            yield return "DiscordExt";
-            yield return "DiscordExt3_0";
+            yield return "DISCORD_EXT";
+            for (int i = 0; i <= Version.Minor; i++)
+            {
+                yield return $"DISCORD_EXT_{Version.Major}_{i}";
+            }
         }
     }
-#endif
 }

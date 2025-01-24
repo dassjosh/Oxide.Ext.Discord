@@ -10,37 +10,37 @@ namespace Oxide.Ext.Discord.Entities
     public class InteractionDataResolved
     {
         /// <summary>
-        /// The IDs and User objects
+        /// IDs and User objects
         /// </summary>
         [JsonProperty("users")]
         public Hash<Snowflake, DiscordUser> Users { get; set; }
-        
+
         /// <summary>
-        /// The IDs and partial Member objects
+        /// IDs and partial Member objects
         /// </summary>
         [JsonProperty("members")]
         public Hash<Snowflake, GuildMember> Members { get; set; }
-        
+
         /// <summary>
-        /// The IDs and Role objects
+        /// IDs and Role objects
         /// </summary>
         [JsonProperty("roles")]
         public Hash<Snowflake, DiscordRole> Roles { get; set; }
-        
+
         /// <summary>
-        /// The IDs and partial Channel objects
+        /// IDs and partial Channel objects
         /// </summary>
         [JsonProperty("channels")]
         public Hash<Snowflake, DiscordChannel> Channels { get; set; }
-        
+
         /// <summary>
-        /// The ids and partial Message objects
+        /// IDs and partial Message objects
         /// </summary>
         [JsonProperty("messages")]
         public Hash<Snowflake, DiscordMessage> Messages { get; set; }
-        
+
         /// <summary>
-        /// The ids and attachment objects
+        /// IDs and attachment objects
         /// </summary>
         [JsonProperty("attachments")]
         public Hash<Snowflake, MessageAttachment> Attachments { get; set; }

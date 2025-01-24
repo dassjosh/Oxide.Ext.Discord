@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Oxide.Ext.Discord.Extensions
 {
@@ -7,6 +8,8 @@ namespace Oxide.Ext.Discord.Extensions
     /// </summary>
     public static class SpanExt
     {
+        private static readonly ThreadLocal<char[]> Buffer = new(() => new char[128]);
+        
         /// <summary>
         /// Parses the next string from the input splitting on the token
         /// </summary>
@@ -35,6 +38,300 @@ namespace Oxide.Ext.Discord.Extensions
             remaining = input.Slice(end + token.Length);
             parsed = input.Slice(0, end);
             return true;
+        }
+
+        /// <summary>
+        /// Tries to write the formatted values to out span
+        /// </summary>
+        /// <param name="value">Value to be formatted</param>
+        /// <param name="written">Span the format is written to</param>
+        /// <param name="format">The format to apply to the span</param>
+        /// <param name="provider">Formatting provider</param>
+        /// <returns>true if format was successful; false otherwise</returns>
+        public static bool TryFormat(this byte value, out ReadOnlySpan<char> written, ReadOnlySpan<char> format = default, IFormatProvider provider = null)
+        {
+            Span<char> span = Buffer.Value.AsSpan();
+            if (value.TryFormat(span, out int charsWritten, format, provider))
+            {
+                written = span.Slice(0, charsWritten);
+                return true;
+            }
+
+            written = default;
+            return false;
+        }
+        
+        /// <summary>
+        /// Tries to write the formatted values to out span
+        /// </summary>
+        /// <param name="value">Value to be formatted</param>
+        /// <param name="written">Span the format is written to</param>
+        /// <param name="format">The format to apply to the span</param>
+        /// <param name="provider">Formatting provider</param>
+        /// <returns>true if format was successful; false otherwise</returns>
+        public static bool TryFormat(this sbyte value, out ReadOnlySpan<char> written, ReadOnlySpan<char> format = default, IFormatProvider provider = null)
+        {
+            Span<char> span = Buffer.Value.AsSpan();
+            if (value.TryFormat(span, out int charsWritten, format, provider))
+            {
+                written = span.Slice(0, charsWritten);
+                return true;
+            }
+
+            written = default;
+            return false;
+        }
+        
+        /// <summary>
+        /// Tries to write the formatted values to out span
+        /// </summary>
+        /// <param name="value">Value to be formatted</param>
+        /// <param name="written">Span the format is written to</param>
+        /// <param name="format">The format to apply to the span</param>
+        /// <param name="provider">Formatting provider</param>
+        /// <returns>true if format was successful; false otherwise</returns>
+        public static bool TryFormat(this short value, out ReadOnlySpan<char> written, ReadOnlySpan<char> format = default, IFormatProvider provider = null)
+        {
+            Span<char> span = Buffer.Value.AsSpan();
+            if (value.TryFormat(span, out int charsWritten, format, provider))
+            {
+                written = span.Slice(0, charsWritten);
+                return true;
+            }
+
+            written = default;
+            return false;
+        }
+        
+        /// <summary>
+        /// Tries to write the formatted values to out span
+        /// </summary>
+        /// <param name="value">Value to be formatted</param>
+        /// <param name="written">Span the format is written to</param>
+        /// <param name="format">The format to apply to the span</param>
+        /// <param name="provider">Formatting provider</param>
+        /// <returns>true if format was successful; false otherwise</returns>
+        public static bool TryFormat(this ushort value, out ReadOnlySpan<char> written, ReadOnlySpan<char> format = default, IFormatProvider provider = null)
+        {
+            Span<char> span = Buffer.Value.AsSpan();
+            if (value.TryFormat(span, out int charsWritten, format, provider))
+            {
+                written = span.Slice(0, charsWritten);
+                return true;
+            }
+
+            written = default;
+            return false;
+        }
+        
+        /// <summary>
+        /// Tries to write the formatted values to out span
+        /// </summary>
+        /// <param name="value">Value to be formatted</param>
+        /// <param name="written">Span the format is written to</param>
+        /// <param name="format">The format to apply to the span</param>
+        /// <param name="provider">Formatting provider</param>
+        /// <returns>true if format was successful; false otherwise</returns>
+        public static bool TryFormat(this int value, out ReadOnlySpan<char> written, ReadOnlySpan<char> format = default, IFormatProvider provider = null)
+        {
+            Span<char> span = Buffer.Value.AsSpan();
+            if (value.TryFormat(span, out int charsWritten, format, provider))
+            {
+                written = span.Slice(0, charsWritten);
+                return true;
+            }
+
+            written = default;
+            return false;
+        }
+        
+        /// <summary>
+        /// Tries to write the formatted values to out span
+        /// </summary>
+        /// <param name="value">Value to be formatted</param>
+        /// <param name="written">Span the format is written to</param>
+        /// <param name="format">The format to apply to the span</param>
+        /// <param name="provider">Formatting provider</param>
+        /// <returns>true if format was successful; false otherwise</returns>
+        public static bool TryFormat(this uint value, out ReadOnlySpan<char> written, ReadOnlySpan<char> format = default, IFormatProvider provider = null)
+        {
+            Span<char> span = Buffer.Value.AsSpan();
+            if (value.TryFormat(span, out int charsWritten, format, provider))
+            {
+                written = span.Slice(0, charsWritten);
+                return true;
+            }
+
+            written = default;
+            return false;
+        }
+        
+        /// <summary>
+        /// Tries to write the formatted values to out span
+        /// </summary>
+        /// <param name="value">Value to be formatted</param>
+        /// <param name="written">Span the format is written to</param>
+        /// <param name="format">The format to apply to the span</param>
+        /// <param name="provider">Formatting provider</param>
+        /// <returns>true if format was successful; false otherwise</returns>
+        public static bool TryFormat(this long value, out ReadOnlySpan<char> written, ReadOnlySpan<char> format = default, IFormatProvider provider = null)
+        {
+            Span<char> span = Buffer.Value.AsSpan();
+            if (value.TryFormat(span, out int charsWritten, format, provider))
+            {
+                written = span.Slice(0, charsWritten);
+                return true;
+            }
+
+            written = default;
+            return false;
+        }
+        
+        /// <summary>
+        /// Tries to write the formatted values to out span
+        /// </summary>
+        /// <param name="value">Value to be formatted</param>
+        /// <param name="written">Span the format is written to</param>
+        /// <param name="format">The format to apply to the span</param>
+        /// <param name="provider">Formatting provider</param>
+        /// <returns>true if format was successful; false otherwise</returns>
+        public static bool TryFormat(this ulong value, out ReadOnlySpan<char> written, ReadOnlySpan<char> format = default, IFormatProvider provider = null)
+        {
+            Span<char> span = Buffer.Value.AsSpan();
+            if (value.TryFormat(span, out int charsWritten, format, provider))
+            {
+                written = span.Slice(0, charsWritten);
+                return true;
+            }
+
+            written = default;
+            return false;
+        }
+        
+        /// <summary>
+        /// Tries to write the formatted values to out span
+        /// </summary>
+        /// <param name="value">Value to be formatted</param>
+        /// <param name="written">Span the format is written to</param>
+        /// <param name="format">The format to apply to the span</param>
+        /// <param name="provider">Formatting provider</param>
+        /// <returns>true if format was successful; false otherwise</returns>
+        public static bool TryFormat(this decimal value, out ReadOnlySpan<char> written, ReadOnlySpan<char> format = default, IFormatProvider provider = null)
+        {
+            Span<char> span = Buffer.Value.AsSpan();
+            if (value.TryFormat(span, out int charsWritten, format, provider))
+            {
+                written = span.Slice(0, charsWritten);
+                return true;
+            }
+
+            written = default;
+            return false;
+        }
+        
+        /// <summary>
+        /// Tries to write the formatted values to out span
+        /// </summary>
+        /// <param name="value">Value to be formatted</param>
+        /// <param name="written">Span the format is written to</param>
+        /// <param name="format">The format to apply to the span</param>
+        /// <param name="provider">Formatting provider</param>
+        /// <returns>true if format was successful; false otherwise</returns>
+        public static bool TryFormat(this float value, out ReadOnlySpan<char> written, ReadOnlySpan<char> format = default, IFormatProvider provider = null)
+        {
+            Span<char> span = Buffer.Value.AsSpan();
+            if (value.TryFormat(span, out int charsWritten, format, provider))
+            {
+                written = span.Slice(0, charsWritten);
+                return true;
+            }
+
+            written = default;
+            return false;
+        }
+        
+        /// <summary>
+        /// Tries to write the formatted values to out span
+        /// </summary>
+        /// <param name="value">Value to be formatted</param>
+        /// <param name="written">Span the format is written to</param>
+        /// <param name="format">The format to apply to the span</param>
+        /// <param name="provider">Formatting provider</param>
+        /// <returns>true if format was successful; false otherwise</returns>
+        public static bool TryFormat(this double value, out ReadOnlySpan<char> written, ReadOnlySpan<char> format = default, IFormatProvider provider = null)
+        {
+            Span<char> span = Buffer.Value.AsSpan();
+            if (value.TryFormat(span, out int charsWritten, format, provider))
+            {
+                written = span.Slice(0, charsWritten);
+                return true;
+            }
+
+            written = default;
+            return false;
+        }
+        
+        /// <summary>
+        /// Tries to write the formatted values to out span
+        /// </summary>
+        /// <param name="value">Value to be formatted</param>
+        /// <param name="written">Span the format is written to</param>
+        /// <param name="format">The format to apply to the span</param>
+        /// <param name="provider">Formatting provider</param>
+        /// <returns>true if format was successful; false otherwise</returns>
+        public static bool TryFormat(this DateTime value, out ReadOnlySpan<char> written, ReadOnlySpan<char> format = default, IFormatProvider provider = null)
+        {
+            Span<char> span = Buffer.Value.AsSpan();
+            if (value.TryFormat(span, out int charsWritten, format, provider))
+            {
+                written = span.Slice(0, charsWritten);
+                return true;
+            }
+
+            written = default;
+            return false;
+        }
+        
+        /// <summary>
+        /// Tries to write the formatted values to out span
+        /// </summary>
+        /// <param name="value">Value to be formatted</param>
+        /// <param name="written">Span the format is written to</param>
+        /// <param name="format">The format to apply to the span</param>
+        /// <param name="provider">Formatting provider</param>
+        /// <returns>true if format was successful; false otherwise</returns>
+        public static bool TryFormat(this DateTimeOffset value, out ReadOnlySpan<char> written, ReadOnlySpan<char> format = default, IFormatProvider provider = null)
+        {
+            Span<char> span = Buffer.Value.AsSpan();
+            if (value.TryFormat(span, out int charsWritten, format, provider))
+            {
+                written = span.Slice(0, charsWritten);
+                return true;
+            }
+
+            written = default;
+            return false;
+        }
+        
+        /// <summary>
+        /// Tries to write the formatted values to out span
+        /// </summary>
+        /// <param name="value">Value to be formatted</param>
+        /// <param name="written">Span the format is written to</param>
+        /// <param name="format">The format to apply to the span</param>
+        /// <param name="provider">Formatting provider</param>
+        /// <returns>true if format was successful; false otherwise</returns>
+        public static bool TryFormat(this TimeSpan value, out ReadOnlySpan<char> written, ReadOnlySpan<char> format = default, IFormatProvider provider = null)
+        {
+            Span<char> span = Buffer.Value.AsSpan();
+            if (value.TryFormat(span, out int charsWritten, format, provider))
+            {
+                written = span.Slice(0, charsWritten);
+                return true;
+            }
+
+            written = default;
+            return false;
         }
     }
 }

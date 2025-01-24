@@ -115,6 +115,12 @@ namespace Oxide.Ext.Discord.Entities
         /// </summary>
         [JsonProperty("version")]
         public Snowflake Version { get; set; }
+        
+        /// <summary>
+        /// Determines whether the interaction is handled by the app's interactions handler or by Discord
+        /// </summary>
+        [JsonProperty("handler")]
+        public ApplicationCommandHandlerType Handler { get; set; }
 
         /// <summary>
         /// Mention the <see cref="DiscordApplicationCommand"/>

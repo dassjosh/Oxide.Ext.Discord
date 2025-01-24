@@ -11,13 +11,14 @@ public class DiscordClient
 | name | description |
 | --- | --- |
 | [Bot](#bot-property) { get; } | The bot client that is unique to the Token used |
-| [JsonSettings](#jsonsettings-property) { get; } |  |
+| [JsonSettings](#jsonsettings-property) { get; } | Json settings for the discord client |
 | [Plugin](#plugin-property) { get; } | Which plugin is the owner of this client |
 | readonly [PluginId](#pluginid-field) | The ID of the plugin |
 | readonly [PluginName](#pluginname-field) | The full plugin name including author and version |
 | readonly [Webhooks](#webhooks-field) | Webhook clients for this DiscordClient |
 | [Connect](#connect-method-1-of-4)(…) | Starts a connection to discord with the given apiKey and intents (4 methods) |
 | [Disconnect](#disconnect-method)() | Disconnects this client from discord |
+| [GetSoundboardSounds](#getsoundboardsounds-method)(…) | Request the list of soundboard sounds for the given guilds |
 | [IsConnected](#isconnected-method)() | Returns if the client is connected to a bot / webhook and if the bot / webhook is initialized |
 | [RequestGuildMembers](#requestguildmembers-method)(…) | Used to request guild members from discord for a specific guild |
 | [UpdateStatus](#updatestatus-method)(…) | Used to update the bot status in discord |
@@ -205,6 +206,26 @@ public void UpdateStatus(UpdatePresenceCommand presenceUpdate)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
    
+# GetSoundboardSounds method
+
+Request the list of soundboard sounds for the given guilds
+
+```csharp
+public void GetSoundboardSounds(GetSoundboardSoundsCommand request)
+```
+
+| parameter | description |
+| --- | --- |
+| request |  |
+
+## See Also
+
+* class [GetSoundboardSoundsCommand](../Entities/GetSoundboardSoundsCommand.md)
+* class [DiscordClient](./DiscordClient.md)
+* namespace [Oxide.Ext.Discord.Clients](./ClientsNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
 # Plugin property
 
 Which plugin is the owner of this client
@@ -237,6 +258,8 @@ public BotClient Bot { get; }
    
    
 # JsonSettings property
+
+Json settings for the discord client
 
 ```csharp
 public JsonSerializerSettings JsonSettings { get; }

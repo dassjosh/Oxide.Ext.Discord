@@ -1,16 +1,16 @@
-# DiscordSubscription class
+# DiscordChannelSubscription class
 
 Represents a channel subscription for a plugin
 
 ```csharp
-public class DiscordSubscription : IDebugLoggable
+public class DiscordChannelSubscription : IDebugLoggable
 ```
 
 ## Public Members
 
 | name | description |
 | --- | --- |
-| [DiscordSubscription](#discordsubscription-constructor)(…) | Constructor |
+| [DiscordChannelSubscription](#discordchannelsubscription-constructor)(…) | Constructor |
 | [CanRun](#canrun-method)(…) | Returns if a subscription can run. They can only run for the client that they were created for. |
 | [Invoke](#invoke-method)(…) | Invokes the callback with the message |
 | [IsForChannel](#isforchannel-method)(…) | Returns if this subscription is for the given channel |
@@ -22,7 +22,7 @@ public class DiscordSubscription : IDebugLoggable
 * interface [IDebugLoggable](../Interfaces/IDebugLoggable.md)
 * namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
-* [DiscordSubscription.cs](../../../../Oxide.Ext.Discord/Libraries/DiscordSubscription.cs)
+* [DiscordChannelSubscription.cs](../../../../Oxide.Ext.Discord/Libraries/DiscordChannelSubscription.cs)
    
    
 # CanRun method
@@ -44,7 +44,7 @@ True if same bot client; false otherwise
 ## See Also
 
 * class [BotClient](../Clients/BotClient.md)
-* class [DiscordSubscription](./DiscordSubscription.md)
+* class [DiscordChannelSubscription](./DiscordChannelSubscription.md)
 * namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
@@ -67,7 +67,7 @@ True if the subscription is for this plugin; False otherwise
 
 ## See Also
 
-* class [DiscordSubscription](./DiscordSubscription.md)
+* class [DiscordChannelSubscription](./DiscordChannelSubscription.md)
 * namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
@@ -91,7 +91,7 @@ True if the subscription is for this channel; False otherwise
 ## See Also
 
 * struct [Snowflake](../Entities/Snowflake.md)
-* class [DiscordSubscription](./DiscordSubscription.md)
+* class [DiscordChannelSubscription](./DiscordChannelSubscription.md)
 * namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
@@ -111,7 +111,7 @@ public void Invoke(DiscordMessage message)
 ## See Also
 
 * class [DiscordMessage](../Entities/DiscordMessage.md)
-* class [DiscordSubscription](./DiscordSubscription.md)
+* class [DiscordChannelSubscription](./DiscordChannelSubscription.md)
 * namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
@@ -125,17 +125,17 @@ public void LogDebug(DebugLogger logger)
 ## See Also
 
 * class [DebugLogger](../Logging/DebugLogger.md)
-* class [DiscordSubscription](./DiscordSubscription.md)
+* class [DiscordChannelSubscription](./DiscordChannelSubscription.md)
 * namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
    
-# DiscordSubscription constructor
+# DiscordChannelSubscription constructor
 
 Constructor
 
 ```csharp
-public DiscordSubscription(DiscordClient client, Snowflake channelId, 
+public DiscordChannelSubscription(DiscordClient client, Snowflake channelId, 
     Action<DiscordMessage> callback)
 ```
 
@@ -150,7 +150,7 @@ public DiscordSubscription(DiscordClient client, Snowflake channelId,
 * class [DiscordClient](../Clients/DiscordClient.md)
 * struct [Snowflake](../Entities/Snowflake.md)
 * class [DiscordMessage](../Entities/DiscordMessage.md)
-* class [DiscordSubscription](./DiscordSubscription.md)
+* class [DiscordChannelSubscription](./DiscordChannelSubscription.md)
 * namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
 

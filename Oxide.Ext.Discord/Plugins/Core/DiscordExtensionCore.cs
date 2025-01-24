@@ -210,7 +210,7 @@ namespace Oxide.Ext.Discord.Plugins
 
             try
             {
-                DiscordLogLevel log = (DiscordLogLevel)Enum.Parse(typeof(DiscordLogLevel), args[0], true);
+                DiscordLogLevel log = Enum.Parse<DiscordLogLevel>(args[0], true);
                 DiscordConfig.Instance.Logging.ConsoleLogLevel = log;
                 DiscordConfig.Instance.Save();
 
@@ -237,7 +237,7 @@ namespace Oxide.Ext.Discord.Plugins
             
             try
             {
-                DiscordLogLevel log = (DiscordLogLevel)Enum.Parse(typeof(DiscordLogLevel), args[0], true);
+                DiscordLogLevel log = Enum.Parse<DiscordLogLevel>(args[0], true);
                 DiscordConfig.Instance.Logging.FileLogLevel = log;
                 DiscordConfig.Instance.Save();
 
@@ -298,6 +298,7 @@ namespace Oxide.Ext.Discord.Plugins
             DiscordAppCommand.Instance.LogDebug(logger);
             DiscordCommand.Instance.LogDebug(logger);
             DiscordSubscriptions.Instance.LogDebug(logger);
+            logger.AppendObject("Array Pool", ArrayPool<object>.Instance);
             logger.AppendObject("Discord Pool", DiscordPool.Instance);
             logger.EndObject();
             

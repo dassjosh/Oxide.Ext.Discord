@@ -14,13 +14,13 @@ public class InteractionData
 | [Components](#components-property) { get; set; } | The values submitted by the user (Modal Submit) |
 | [ComponentType](#componenttype-property) { get; set; } | For components, the type of the component |
 | [CustomId](#customid-property) { get; set; } | For components, the custom_id of the component |
-| [GuildId](#guildid-property) { get; set; } | The id of the guild the command is registered to |
+| [GuildId](#guildid-property) { get; set; } | ID of the guild the command is registered to |
 | [Id](#id-property) { get; set; } | ID of the invoked command |
-| [Name](#name-property) { get; set; } | The name of the invoked command |
-| [Options](#options-property) { get; set; } | The params + values from the user |
+| [Name](#name-property) { get; set; } | Name of the invoked command |
+| [Options](#options-property) { get; set; } | Params + values from the user |
 | [Resolved](#resolved-property) { get; set; } | Converted [`DiscordUser`](./DiscordUser.md)s, [`DiscordRole`](./DiscordRole.md)s, [`DiscordChannel`](./DiscordChannel.md)s, [`GuildMember`](./GuildMember.md)s, [`DiscordMessage`](./DiscordMessage.md)s [`MessageAttachment`](./MessageAttachment.md)s |
-| [TargetId](#targetid-property) { get; set; } | Id the of user or message targeted by a user or message command |
-| [Type](#type-property) { get; set; } | The type of the invoked command |
+| [TargetId](#targetid-property) { get; set; } | ID of user or message targeted by a user or message command |
+| [Type](#type-property) { get; set; } | Type of the invoked command |
 | [Values](#values-property) { get; set; } | For components, the values for the select menu component |
 | [GetComponent&lt;T&gt;](#getcomponent&amp;lt;t&amp;gt;-method)(…) | Returns a Component of type {T} with a custom ID that equals customId |
 
@@ -86,7 +86,7 @@ public Snowflake Id { get; set; }
    
 # Name property
 
-The name of the invoked command
+Name of the invoked command
 
 ```csharp
 public string Name { get; set; }
@@ -101,7 +101,7 @@ public string Name { get; set; }
    
 # Type property
 
-The type of the invoked command
+Type of the invoked command
 
 ```csharp
 public ApplicationCommandType? Type { get; set; }
@@ -133,7 +133,7 @@ public InteractionDataResolved Resolved { get; set; }
    
 # Options property
 
-The params + values from the user
+Params + values from the user
 
 ```csharp
 public List<InteractionDataOption> Options { get; set; }
@@ -149,7 +149,7 @@ public List<InteractionDataOption> Options { get; set; }
    
 # GuildId property
 
-The id of the guild the command is registered to
+ID of the guild the command is registered to
 
 ```csharp
 public Snowflake? GuildId { get; set; }
@@ -211,7 +211,7 @@ public List<string> Values { get; set; }
    
 # TargetId property
 
-Id the of user or message targeted by a user or message command
+ID of user or message targeted by a user or message command
 
 ```csharp
 public Snowflake? TargetId { get; set; }

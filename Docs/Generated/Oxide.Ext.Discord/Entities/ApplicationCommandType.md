@@ -13,6 +13,7 @@ public enum ApplicationCommandType : byte
 | ChatInput | `ChatInput` | Slash commands; a text-based command that shows up when a user types / |
 | User | `User` | A UI-based command that shows up when you right click or tap on a user |
 | Message | `Message` | A UI-based command that shows up when you right click or tap on a messages |
+| PrimaryEntryPoint | `PrimaryEntryPoint` | A UI-based command that represents the primary way to invoke an app's Activity |
 
 ## See Also
 

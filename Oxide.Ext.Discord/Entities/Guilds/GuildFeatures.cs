@@ -100,6 +100,12 @@ namespace Oxide.Ext.Discord.Entities
         MemberVerificationGateEnabled,
         
         /// <summary>
+        /// Guild has increased custom soundboard sound slots   
+        /// </summary>
+        [DiscordEnum("MORE_SOUNDBOARD")] 
+        MoreSoundboard,
+        
+        /// <summary>
         /// Guild has increased custom sticker slots
         /// </summary>
         [DiscordEnum("MORE_STICKERS")] 
@@ -146,6 +152,12 @@ namespace Oxide.Ext.Discord.Entities
         /// </summary>
         [DiscordEnum("ROLE_SUBSCRIPTIONS_ENABLED")] 
         RoleSubscriptionsEnabled,
+        
+        /// <summary>
+        /// Guild has created soundboard sounds
+        /// </summary>
+        [DiscordEnum("SOUNDBOARD")] 
+        Soundboard,
         
         /// <summary>
         /// Guild has enabled ticketed events

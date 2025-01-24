@@ -51,7 +51,7 @@ public T ToEntity(PlaceholderData data = null, T entity = default)
 Returns a promise that returns a bulk to entity.
 
 ```csharp
-public IPromise<List<T>> ToEntityBulk(List<PlaceholderData> data = null)
+public IPromise<List<T>> ToEntityBulk(List<PlaceholderData> data)
 ```
 
 | parameter | description |

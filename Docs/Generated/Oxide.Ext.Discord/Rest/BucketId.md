@@ -17,8 +17,8 @@ public struct BucketId : IEquatable<BucketId>
 | override [Equals](#equals-method)(…) |  |
 | override [GetHashCode](#gethashcode-method)() |  |
 | override [ToString](#tostring-method)() |  |
-| [operator ==](#bucketid-equality-operator) |  |
-| [operator !=](#bucketid-inequality-operator) |  |
+| [operator ==](#bucketid-equality-operator) | Compares two BucketIds if they are equal |
+| [operator !=](#bucketid-inequality-operator) | Compares two BucketIds if they are not equal |
 
 ## See Also
 
@@ -82,9 +82,20 @@ public override int GetHashCode()
    
 # BucketId Inequality operator
 
+Compares two BucketIds if they are not equal
+
 ```csharp
 public static bool operator !=(BucketId left, BucketId right)
 ```
+
+| parameter | description |
+| --- | --- |
+| left |  |
+| right |  |
+
+## Return Value
+
+True if they are not equal; false otherwise
 
 ## See Also
 
@@ -95,9 +106,20 @@ public static bool operator !=(BucketId left, BucketId right)
    
 # BucketId Equality operator
 
+Compares two BucketIds if they are equal
+
 ```csharp
 public static bool operator ==(BucketId left, BucketId right)
 ```
+
+| parameter | description |
+| --- | --- |
+| left |  |
+| right |  |
+
+## Return Value
+
+True if they are equal; false otherwise
 
 ## See Also
 

@@ -143,6 +143,16 @@ namespace Oxide.Ext.Discord.Helpers
         {
             return $"<id:{EnumCache<GuildNavigationType>.Instance.ToLower(type)}>";
         }
+
+        /// <summary>
+        /// Linked Roles
+        /// </summary>
+        /// <param name="roleId">Linked role ID</param>
+        /// <returns>string with navigation to the navigation type</returns>
+        public static string LinkedRoles(Snowflake roleId)
+        {
+            return $"<id:{EnumCache<GuildNavigationType>.Instance.ToLower(GuildNavigationType.LinkedRoles)}:{roleId.ToString()}>";
+        }
         
         /// <summary>
         /// Will display the message in italics

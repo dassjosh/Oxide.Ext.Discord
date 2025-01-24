@@ -21,6 +21,7 @@ public abstract class BaseMessageTemplateLibrary<TTemplate> : BaseTemplateLibrar
 
 | name | description |
 | --- | --- |
+| [BaseMessageTemplateLibrary](#basemessagetemplatelibrary&amp;lt;ttemplate&amp;gt;-constructor)(…) | Constructor |
 | override [OnPluginUnloaded](#onpluginunloaded-method)(…) |  |
 
 ## See Also
@@ -254,6 +255,28 @@ protected override void OnPluginUnloaded(Plugin plugin)
 
 ## See Also
 
+* class [BaseMessageTemplateLibrary&lt;TTemplate&gt;](./BaseMessageTemplateLibrary%7BTTemplate%7D.md)
+* namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# BaseMessageTemplateLibrary&lt;TTemplate&gt; constructor
+
+Constructor
+
+```csharp
+protected BaseMessageTemplateLibrary(TemplateType type, ILogger logger)
+```
+
+| parameter | description |
+| --- | --- |
+| type |  |
+| logger |  |
+
+## See Also
+
+* enum [TemplateType](./TemplateType.md)
+* interface [ILogger](../Interfaces/ILogger.md)
 * class [BaseMessageTemplateLibrary&lt;TTemplate&gt;](./BaseMessageTemplateLibrary%7BTTemplate%7D.md)
 * namespace [Oxide.Ext.Discord.Libraries](./LibrariesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)

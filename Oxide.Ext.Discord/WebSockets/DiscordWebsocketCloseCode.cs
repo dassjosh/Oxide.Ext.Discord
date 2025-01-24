@@ -20,7 +20,7 @@ namespace Oxide.Ext.Discord.WebSockets
         DecodeError = 4002,
         
         /// <summary>
-        /// You sent us a payload prior to identifying.
+        /// You sent us a payload prior to identifying, or this session has been invalidated. 
         /// </summary>
         NotAuthenticated = 4003,
         

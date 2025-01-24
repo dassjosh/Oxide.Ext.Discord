@@ -67,12 +67,12 @@ public string Title { get; set; }
 Type of embed (always "rich" for webhook embeds)
 
 ```csharp
-[Obsolete("Embed types should be considered deprecated and might be removed in a future API version")]
-public string Type { get; set; }
+public EmbedType Type { get; set; }
 ```
 
 ## See Also
 
+* enum [EmbedType](./EmbedType.md)
 * class [DiscordEmbed](./DiscordEmbed.md)
 * namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)

@@ -42,7 +42,7 @@ namespace Oxide.Ext.Discord.Json
 
             foreach (JToken token in array)
             {
-                MessageComponentType type = (MessageComponentType)Enum.Parse(typeof(MessageComponentType), token["type"].ToString());
+                MessageComponentType type = Enum.Parse<MessageComponentType>(token["type"].ToString());
                 switch (type)
                 {
                     case MessageComponentType.Button:

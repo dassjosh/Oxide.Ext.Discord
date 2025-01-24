@@ -21,7 +21,12 @@ namespace Oxide.Ext.Discord.Libraries
     {
         private readonly ConcurrentDictionary<TemplateId, TTemplate> _templateCache = new();
 
-        internal BaseMessageTemplateLibrary(TemplateType type, ILogger logger) : base(type, logger) { }
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="logger"></param>
+        protected BaseMessageTemplateLibrary(TemplateType type, ILogger logger) : base(type, logger) { }
 
         /// <summary>
         /// Registers a global message template

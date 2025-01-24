@@ -475,6 +475,10 @@ namespace Oxide.Ext.Discord.WebSockets
                 case DiscordDispatchCode.VoiceStateUpdated:
                     HandleDispatchVoiceStateUpdate(payload.GetData<VoiceState>(_client));
                     break;
+                
+                case DiscordDispatchCode.VoiceChannelEffectSend:
+                    HandleDispatchVoiceChannelEffect(payload.GetData<VoiceChannelEffectEvent>(_client));
+                    break;
 
                 case DiscordDispatchCode.VoiceServerUpdated:
                     HandleDispatchVoiceServerUpdate(payload.GetData<VoiceServerUpdatedEvent>(_client));
@@ -534,6 +538,38 @@ namespace Oxide.Ext.Discord.WebSockets
                 
                 case DiscordDispatchCode.StageInstanceDeleted:
                     HandleDispatchStageInstanceDeleted(payload.GetData<StageInstance>(_client));
+                    break;
+                
+                case DiscordDispatchCode.SubscriptionCreate:
+                    HandleDispatchSubscriptionCreated(payload.GetData<DiscordSubscription>(_client));
+                    break;
+                    
+                case DiscordDispatchCode.SubscriptionUpdate:
+                    HandleDispatchSubscriptionUpdated(payload.GetData<DiscordSubscription>(_client));
+                    break;
+                    
+                case DiscordDispatchCode.SubscriptionDelete:
+                    HandleDispatchSubscriptionDeleted(payload.GetData<DiscordSubscription>(_client));
+                    break;
+                
+                case DiscordDispatchCode.GuildSoundboardSoundCreate:
+                    HandleDispatchSoundboardSoundCreated(payload.GetData<DiscordSoundboardSound>(_client));
+                    break;
+                
+                case DiscordDispatchCode.GuildSoundboardSoundUpdate:
+                    HandleDispatchSoundboardSoundUpdated(payload.GetData<DiscordSoundboardSound>(_client));
+                    break;
+                
+                case DiscordDispatchCode.GuildSoundboardSoundDelete:
+                    HandleDispatchSoundboardSoundDeleted(payload.GetData<SoundboardDeletedEvent>(_client));
+                    break;
+                
+                case DiscordDispatchCode.GuildSoundboardSoundsUpdate:
+                    HandleDispatchSoundboardSoundsUpdated(payload.GetData<SoundboardSoundsUpdatedEvent>(_client));
+                    break;
+                
+                case DiscordDispatchCode.SoundboardSounds:
+                    HandleDispatchGetSoundboardSoundsResponse(payload.GetData<GetGuildSoundboardSoundsEvent>(_client));
                     break;
                 
                 case DiscordDispatchCode.AutoModerationRuleCreate:
@@ -1006,7 +1042,7 @@ namespace Oxide.Ext.Discord.WebSockets
         private void HandleDispatchGuildMemberUpdate(GuildMemberUpdatedEvent update)
         {
             DiscordGuild guild = _client.GetGuild(update.GuildId);
-            if (guild == null || !guild.IsAvailable)
+            if (guild is not {IsAvailable: true})
             {
                 return;
             }
@@ -1100,6 +1136,9 @@ namespace Oxide.Ext.Discord.WebSockets
             }
 
             current.Flags = update.Flags;
+            current.Banner = update.Banner;
+            current.Pending = update.Pending;
+            if (update.AvatarDecoration != null) current.AvatarDecoration = update.AvatarDecoration;
         }
 
         //https://discord.com/developers/docs/topics/gateway-events#guild-members-chunk
@@ -1111,7 +1150,7 @@ namespace Oxide.Ext.Discord.WebSockets
             //Used to load all members in the discord server
             if (chunk.Nonce == "DiscordExtension")
             {
-                if (guild == null || !guild.IsAvailable)
+                if (guild is not {IsAvailable: true})
                 {
                     return;
                 }
@@ -1582,6 +1621,13 @@ namespace Oxide.Ext.Discord.WebSockets
                 _logger.Verbose($"{nameof(WebSocketEventHandler)}.{nameof(HandleDispatchVoiceStateUpdate)} DirectChannel Channel ID: {{0}} User ID: {{1}}", voice.ChannelId, voice.UserId);
             }
         }
+        
+        // https://discord.com/developers/docs/topics/gateway-events#voice-channel-effect-send
+        private void HandleDispatchVoiceChannelEffect(VoiceChannelEffectEvent effect)
+        {
+            DiscordGuild guild = _client.GetGuild(effect.GuildId);
+            _client.Hooks.CallHook(DiscordExtHooks.OnDiscordVoiceChannelEffect, effect, guild);
+        }
 
         //https://discord.com/developers/docs/topics/gateway-events#voice-server-update
         private void HandleDispatchVoiceServerUpdate(VoiceServerUpdatedEvent voice)
@@ -1901,7 +1947,7 @@ namespace Oxide.Ext.Discord.WebSockets
         private void HandleDispatchStageInstanceDeleted(StageInstance stage)
         {
             DiscordGuild guild = _client.GetGuild(stage.GuildId);
-            if (guild == null || !guild.IsAvailable)
+            if (guild is not {IsAvailable: true})
             {
                 return;
             }
@@ -1910,6 +1956,73 @@ namespace Oxide.Ext.Discord.WebSockets
             guild.StageInstances.Remove(stage.Id);
             guild.StageInstances[stage.Id] = stage;
             _client.Hooks.CallHook(DiscordExtHooks.OnDiscordStageInstanceDeleted, existing ?? stage, guild);
+        }
+        
+        //https://discord.com/developers/docs/topics/gateway-events#subscription-create
+        private void HandleDispatchSubscriptionCreated(DiscordSubscription subscription)
+        {
+            _client.Hooks.CallHook(DiscordExtHooks.OnDiscordSubscriptionCreated, subscription);
+        }
+
+        //https://discord.com/developers/docs/topics/gateway-events#subscription-update
+        private void HandleDispatchSubscriptionUpdated(DiscordSubscription subscription)
+        {
+            _client.Hooks.CallHook(DiscordExtHooks.OnDiscordSubscriptionUpdated, subscription);
+        }
+
+        //https://discord.com/developers/docs/topics/gateway-events#subscription-delete
+        private void HandleDispatchSubscriptionDeleted(DiscordSubscription subscription)
+        {
+            _client.Hooks.CallHook(DiscordExtHooks.OnDiscordSubscriptionDeleted, subscription);
+        }
+        
+        //https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-create
+        private void HandleDispatchSoundboardSoundCreated(DiscordSoundboardSound sound)
+        {
+            DiscordGuild guild = _client.GetGuild(sound.GuildId);
+            guild.SoundboardSounds[sound.Id] = sound;
+            _client.Hooks.CallHook(DiscordExtHooks.OnDiscordGuildSoundboardCreated, sound, guild);
+        }
+
+        //https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-update
+        private void HandleDispatchSoundboardSoundUpdated(DiscordSoundboardSound sound)
+        {
+            DiscordGuild guild = _client.GetGuild(sound.GuildId);
+            DiscordSoundboardSound existing = guild.SoundboardSounds[sound.Id];
+            if (existing == null)
+            {
+                guild.SoundboardSounds[sound.Id] = sound;
+            }
+            else
+            {
+                existing.Update(sound);
+            }
+            _client.Hooks.CallHook(DiscordExtHooks.OnDiscordGuildSoundboardUpdated, existing ?? sound, guild);
+        }
+
+        //https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-delete
+        private void HandleDispatchSoundboardSoundDeleted(SoundboardDeletedEvent sounds)
+        {
+            DiscordGuild guild = _client.GetGuild(sounds.GuildId);
+            DiscordSoundboardSound sound = guild.SoundboardSounds[sounds.SoundId] ?? new DiscordSoundboardSound { SoundId = sounds.SoundId };
+            _client.Hooks.CallHook(DiscordExtHooks.OnDiscordGuildSoundboardDeleted, sound, guild);
+        }
+
+        //https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sounds-update
+        private void HandleDispatchSoundboardSoundsUpdated(SoundboardSoundsUpdatedEvent sounds)
+        {
+            for (int index = 0; index < sounds.SoundboardSounds.Count; index++)
+            {
+                DiscordSoundboardSound sound = sounds.SoundboardSounds[index];
+                HandleDispatchSoundboardSoundUpdated(sound);
+            }
+        }
+        
+        //https://discord.com/developers/docs/events/gateway-events#soundboard-sounds
+        private void HandleDispatchGetSoundboardSoundsResponse(GetGuildSoundboardSoundsEvent sounds)
+        {
+            DiscordGuild guild = _client.GetGuild(sounds.GuildId);
+            _client.Hooks.CallHook(DiscordExtHooks.OnDiscordGetGuildSoundboardSounds, sounds.SoundboardSounds, guild);
         }
         
         //https://discord.com/developers/docs/topics/gateway-events#auto-moderation-rule-create

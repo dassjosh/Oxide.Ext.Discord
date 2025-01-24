@@ -102,6 +102,18 @@ namespace Oxide.Ext.Discord.Entities
         /// </summary>
         [JsonProperty("user_count")]
         public int? UserCount { get; set; }
+        
+        /// <summary>
+        /// The cover image hash of the scheduled event
+        /// </summary>
+        [JsonProperty("image")]
+        public string Image { get; set; } 
+        
+        /// <summary>
+        /// The cover image hash of the scheduled event
+        /// </summary>
+        [JsonProperty("recurrence_rule")]
+        public RecurrenceRule RecurrenceRule { get; set; } 
 
         /// <summary>
         /// Returns a list of guild scheduled event objects for the given guild.

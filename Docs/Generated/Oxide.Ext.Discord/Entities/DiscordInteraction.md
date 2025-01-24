@@ -28,7 +28,7 @@ public class DiscordInteraction
 | [Member](#member-property) { get; set; } | Guild member data for the invoking user, including permissions |
 | [Message](#message-property) { get; set; } | For components, the message they were attached to |
 | [Parsed](#parsed-property) { get; } | Returns the interaction parsed args to make it easier to process that interaction. |
-| [Token](#token-property) { get; set; } | Continuation token for responding to the interaction Interaction tokens are valid for 15 minutes and can be used to send followup messages but you must send an initial response within 3 seconds of receiving the event. If the 3 second deadline is exceeded, the token will be invalidated. |
+| [Token](#token-property) { get; set; } | Continuation token for responding to the interaction tokens are valid for 15 minutes and can be used to send followup messages, but you must send an initial response within 3 seconds of receiving the event. If the 3 second deadline is exceeded, the token will be invalidated. |
 | [Type](#type-property) { get; set; } | The type of interaction See [`InteractionType`](./InteractionType.md) |
 | [User](#user-property) { get; } | User object. If in DM then DM user else GuildMember.User |
 | [Version](#version-property) { get; set; } | Read-only property, always 1 |
@@ -37,6 +37,7 @@ public class DiscordInteraction
 | [CreateFollowUpTemplateResponse](#createfollowuptemplateresponse-method)(…) | Creates a interaction follow up message response from a message template |
 | [CreateModalResponse](#createmodalresponse-method)(…) | Creates a interaction modal response from a modal template |
 | [CreateResponse](#createresponse-method-1-of-7)(…) | Create a response to an Interaction from the gateway. See [Create Interaction Response](https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response) (7 methods) |
+| [CreateResponseWithCallback](#createresponsewithcallback-method)(…) | Create a response to an Interaction from the gateway. See [Create Interaction Response](https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response) |
 | [CreateTemplateResponse](#createtemplateresponse-method)(…) | Creates a interaction message response from a message template |
 | [DefferResponse](#defferresponse-method)(…) | Creates a response indicating that: for application commands there will be an update in the future for message component commands that you have acknowledged the command and there may be an update in the future See [Create Interaction Response](https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response) |
 | [DeleteFollowUpMessage](#deletefollowupmessage-method)(…) | Deletes a followup message for an Interaction See [Delete Followup Message](https://discord.com/developers/docs/interactions/receiving-and-responding#delete-followup-message) |
@@ -341,6 +342,31 @@ public IPromise CreateResponse(DiscordClient client, InteractionResponseType typ
 * class [DiscordClient](../Clients/DiscordClient.md)
 * enum [InteractionResponseType](./InteractionResponseType.md)
 * class [InteractionResponseBuilder](../Builders/InteractionResponseBuilder.md)
+* class [DiscordInteraction](./DiscordInteraction.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# CreateResponseWithCallback method
+
+Create a response to an Interaction from the gateway. See [Create Interaction Response](https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response)
+
+```csharp
+public IPromise<InteractionCallbackResponse> CreateResponseWithCallback(DiscordClient client, 
+    BaseInteractionResponse response)
+```
+
+| parameter | description |
+| --- | --- |
+| client | Client to use |
+| response | Response to respond with |
+
+## See Also
+
+* interface [IPromise&lt;TPromised&gt;](../Interfaces/IPromise%7BTPromised%7D.md)
+* class [InteractionCallbackResponse](./InteractionCallbackResponse.md)
+* class [DiscordClient](../Clients/DiscordClient.md)
+* class [BaseInteractionResponse](./BaseInteractionResponse.md)
 * class [DiscordInteraction](./DiscordInteraction.md)
 * namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
@@ -881,7 +907,7 @@ public DiscordUser User { get; }
    
 # Token property
 
-Continuation token for responding to the interaction Interaction tokens are valid for 15 minutes and can be used to send followup messages but you must send an initial response within 3 seconds of receiving the event. If the 3 second deadline is exceeded, the token will be invalidated.
+Continuation token for responding to the interaction tokens are valid for 15 minutes and can be used to send followup messages, but you must send an initial response within 3 seconds of receiving the event. If the 3 second deadline is exceeded, the token will be invalidated.
 
 ```csharp
 public string Token { get; set; }

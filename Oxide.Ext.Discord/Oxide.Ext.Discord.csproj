@@ -10,63 +10,33 @@
     <AssemblyVersion>3.1.0</AssemblyVersion>
     <FileVersion>3.1.0</FileVersion>
     <Configurations>Debug;Release</Configurations>
-    <Platforms>Carbon;Oxide</Platforms>
-    <DocumentationFile>$(outdir)Oxide.Ext.Discord.xml</DocumentationFile>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Platform)' != 'Carbon'">
+    <Platforms>Oxide</Platforms>
     <AssemblyName>Oxide.Ext.Discord</AssemblyName>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Platform)' == 'Carbon'">
-    <AssemblyName>Carbon.Discord</AssemblyName>
+    <DocumentationFile>$(outdir)Oxide.Ext.Discord.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-    <NoWarn>1701;1702;0618</NoWarn>
+    <NoWarn>1701;1702;0618;0419</NoWarn>
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Carbon' ">
-    <DefineConstants>TRACE;DEBUG;CARBON</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)' == 'Debug' And '$(Platform)' != 'Carbon'">
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <OutputPath>bin\Debug\</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Carbon' ">
-    <DefineConstants>TRACE;CARBON</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)' == 'Release' And '$(Platform)' != 'Carbon'">
-    <DefineConstants>TRACE</DefineConstants>
+    <NoWarn>1701;1702;0419</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Oxide.References" Version="2.0.3780" />
   </ItemGroup>
-
-  <ItemGroup Condition="'$(Platform)' != 'Carbon'">
-    <PackageReference Include="Oxide.Core" Version="2.0.4106">
-      <ExcludeAssets>contentfiles;analyzers;build</ExcludeAssets>
-    </PackageReference>
-    <PackageReference Include="Oxide.CSharp" Version="2.0.4132">
-      <ExcludeAssets>contentfiles;analyzers;build</ExcludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(Platform)' == 'Carbon'">
-    <Reference Include="Carbon.Common">
-      <HintPath>..\References\Carbon.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Carbon.SDK">
-      <HintPath>..\References\Carbon.SDK.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   
   <ItemGroup>
+    <PackageReference Include="Oxide.Core" Version="2.0.4121">
+      <ExcludeAssets>contentfiles;analyzers;build</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Include="Oxide.CSharp" Version="2.0.4145">
+      <ExcludeAssets>contentfiles;analyzers;build</ExcludeAssets>
+    </PackageReference>
     <Reference Include="mscorlib">
       <HintPath>..\References\mscorlib.dll</HintPath>
     </Reference>

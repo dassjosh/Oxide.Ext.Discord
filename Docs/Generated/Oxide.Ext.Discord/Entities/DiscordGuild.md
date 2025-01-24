@@ -49,7 +49,7 @@ public class DiscordGuild : ISnowflakeEntity
 | [OwnerId](#ownerid-property) { get; set; } | ID of owner |
 | [Permissions](#permissions-property) { get; set; } | Total permissions for the user in the guild (excludes overrides) |
 | [PreferredLocale](#preferredlocale-property) { get; set; } | The preferred locale of a Community guild Used in server discovery and notices from Discord Defaults to "en-US" |
-| [PremiumProgressBarEnabled](#premiumprogressbarenabled-property) { get; set; } | The scheduled events in the guild |
+| [PremiumProgressBarEnabled](#premiumprogressbarenabled-property) { get; set; } | Whether the guild has the boost progress bar enabled |
 | [PremiumSubscriptionCount](#premiumsubscriptioncount-property) { get; set; } | The number of boosts this guild currently has |
 | [PremiumTier](#premiumtier-property) { get; set; } | Premium tier (Server Boost level) |
 | [Presences](#presences-property) { get; set; } | Presences of the members in the guild will only include non-offline members if the size is greater than large threshold |
@@ -58,6 +58,7 @@ public class DiscordGuild : ISnowflakeEntity
 | [RulesChannelId](#ruleschannelid-property) { get; set; } | The id of the channel where Community guilds can display rules and/or guidelines |
 | [SafetyAlertsChannelId](#safetyalertschannelid-property) { get; set; } | The ID of the channel where admins and moderators of Community guilds receive safety alerts from Discord |
 | [ScheduledEvents](#scheduledevents-property) { get; set; } | The scheduled events in the guild [`DiscordSticker`](./DiscordSticker.md) |
+| [SoundboardSounds](#soundboardsounds-property) { get; set; } | The scheduled events in the guild [`DiscordSticker`](./DiscordSticker.md) |
 | [Splash](#splash-property) { get; set; } | Splash hash |
 | [SplashUrl](#splashurl-property) { get; } | Returns the Guilds Splash Url |
 | [StageInstances](#stageinstances-property) { get; set; } | Stage instances in the guild [`StageInstance`](./StageInstance.md) |
@@ -89,7 +90,7 @@ public class DiscordGuild : ISnowflakeEntity
 | [Edit](#edit-method)(…) | Modify a guild's settings. Requires the MANAGE_GUILD permission. See [Modify Guild](https://discord.com/developers/docs/resources/guild#modify-guild) |
 | [EditChannelPositions](#editchannelpositions-method)(…) | Modify the positions of a set of channel objects for the guild. Requires MANAGE_CHANNELS permission. Only channels to be modified are required, with the minimum being a swap between at least two channels. See [Modify Guild Channel Positions](https://discord.com/developers/docs/resources/guild#modify-guild-channel-positions) |
 | [EditCurrentMember](#editcurrentmember-method)(…) | Modifies the current members nickname in the guild See [Modify Current Member](https://discord.com/developers/docs/resources/guild#modify-current-member) |
-| [EditCurrentUserVoiceState](#editcurrentuservoicestate-method)(…) | Modifies the current user's voice state. See [Update Current User Voice State](https://discord.com/developers/docs/resources/guild#modify-current-user-voice-state) |
+| [EditCurrentUserVoiceState](#editcurrentuservoicestate-method)(…) | Modifies the current user's voice state. See [Update Current User Voice State](https://discord.com/developers/docs/resources/voice#modify-current-user-voice-state) |
 | [EditEmoji](#editemoji-method)(…) | Modify the given emoji. Requires the MANAGE_EMOJIS permission. Returns the updated emoji object on success. See [Modify Guild Emoji](https://discord.com/developers/docs/resources/emoji#modify-guild-emoji) |
 | [EditMember](#editmember-method)(…) | Modify attributes of a guild member See [Modify Guild Member](https://discord.com/developers/docs/resources/guild#modify-guild-member) |
 | [EditMemberNick](#editmembernick-method)(…) | Modify attributes of a guild member See [Modify Guild Member](https://discord.com/developers/docs/resources/guild#modify-guild-member) |
@@ -98,7 +99,7 @@ public class DiscordGuild : ISnowflakeEntity
 | [EditRole](#editrole-method-1-of-2)(…) | Modify a guild role. Requires the MANAGE_ROLES permission. Returns the updated role on success. See [Modify Guild Role](https://discord.com/developers/docs/resources/guild#modify-guild-role) (2 methods) |
 | [EditRolePositions](#editrolepositions-method)(…) | Modify the positions of a set of role objects for the guild. Requires the MANAGE_ROLES permission. Returns a list of all of the guild's role objects on success. See [Modify Guild Role Positions](https://discord.com/developers/docs/resources/guild#modify-guild-role-positions) |
 | [EditSticker](#editsticker-method)(…) | Modify the given sticker. Requires the MANAGE_EMOJIS_AND_STICKERS permission. Returns the updated sticker object on success. See [Modify Guild Sticker](https://discord.com/developers/docs/resources/sticker#modify-guild-sticker) |
-| [EditUserVoiceState](#edituservoicestate-method)(…) | Modifies another user's voice state. See [Update Users Voice State](https://discord.com/developers/docs/resources/guild#modify-user-voice-state) |
+| [EditUserVoiceState](#edituservoicestate-method)(…) | Modifies another user's voice state. See [Update Users Voice State](https://discord.com/developers/docs/resources/voice#modify-user-voice-state) |
 | [EditWelcomeScreen](#editwelcomescreen-method)(…) | Modify the guild's Welcome Screen. Requires the MANAGE_GUILD permission. Returns the updated Welcome Screen object. |
 | [EditWidget](#editwidget-method)(…) | Modify a guild widget object for the guild. Requires the MANAGE_GUILD permission. See [Modify Guild Widget](https://discord.com/developers/docs/resources/guild#modify-guild-widget) |
 | [GetAutoModRule](#getautomodrule-method)(…) |  |
@@ -107,17 +108,21 @@ public class DiscordGuild : ISnowflakeEntity
 | [GetBoosterRole](#getboosterrole-method)() | Returns the booster role for the guild if it exists |
 | [GetChannel](#getchannel-method-1-of-2)(…) | Returns a channel with the given name (Case Insensitive) (2 methods) |
 | [GetChannels](#getchannels-method)(…) | Returns a list of guild channel objects. Does not include threads See [Get Guild Channels](https://discord.com/developers/docs/resources/guild#get-guild-channels) |
+| [GetCurrentUserVoiceState](#getcurrentuservoicestate-method)(…) | Get Current User Voice State See [Get Current User Voice State](https://discord.com/developers/docs/resources/voice#get-user-voice-state) |
 | [GetEmoji](#getemoji-method-1-of-2)(…) | Finds guild emoji by name (2 methods) |
+| [GetGuildSound](#getguildsound-method)(…) | Returns a soundboard sound object for the given sound id See [Get Guild Soundboard Sound](https://discord.com/developers/docs/resources/soundboard#get-guild-soundboard-sound) |
+| [GetGuildSounds](#getguildsounds-method)(…) | Returns a list of the guild's soundboard sounds See [List Guild Soundboard Sounds](https://discord.com/developers/docs/resources/soundboard#list-guild-soundboard-sounds) |
 | [GetIntegrations](#getintegrations-method)(…) | Returns a list of integration objects for the guild. Requires the MANAGE_GUILD permission. See [Get Guild Integrations](https://discord.com/developers/docs/resources/guild#get-guild-integrations) |
 | [GetInvites](#getinvites-method)(…) | Returns a list of invite objects (with invite metadata) for the guild. Requires the MANAGE_GUILD permission. See [Get Guild Invites](https://discord.com/developers/docs/resources/guild#get-guild-invites) |
 | [GetMember](#getmember-method-1-of-3)(…) | Returns a GuildMember with the given username (Case Insensitive) (3 methods) |
 | [GetOnboarding](#getonboarding-method)(…) | Returns the [`GuildOnboarding`](./GuildOnboarding.md) for the guild. |
 | [GetParentChannel](#getparentchannel-method)(…) | Returns the parent channel for a channel if it exists |
 | [GetPruneCount](#getprunecount-method)(…) | Returns an object with one 'pruned' key indicating the number of members that would be removed in a prune operation. Requires the KICK_MEMBERS permission. See [Get Guild Prune Count](https://discord.com/developers/docs/resources/guild#get-guild-prune-count) |
-| [GetRole](#getrole-method)(…) | Returns a Role with the given name (Case Insensitive) |
+| [GetRole](#getrole-method-1-of-2)(…) | Returns a Role with the given name (Case Insensitive) (2 methods) |
 | [GetRoles](#getroles-method)(…) | Returns a list of role objects for the guild. See [Get Guild Roles](https://discord.com/developers/docs/resources/guild#get-guild-roles) |
 | [GetSticker](#getsticker-method)(…) | Returns a sticker object for the given guild and sticker IDs. Includes the user field if the bot has the MANAGE_EMOJIS_AND_STICKERS permission. See [Get Guild Sticker](https://discord.com/developers/docs/resources/sticker#get-guild-sticker) |
 | [GetUserPermissions](#getuserpermissions-method)(…) | Returns the user permissions for the given user ID |
+| [GetUserVoiceState](#getuservoicestate-method)(…) | Get Current User Voice State See [Get User Voice State](https://discord.com/developers/docs/resources/voice#get-user-voice-state) |
 | [GetVanityUrl](#getvanityurl-method)(…) | Returns a partial invite object for guilds with that feature enabled. Requires the MANAGE_GUILD permission. Code will be null if a vanity url for the guild is not set. |
 | [GetVoiceRegions](#getvoiceregions-method)(…) | Returns a list of voice region objects for the guild. Unlike the similar /voice route, this returns VIP servers when the guild is VIP-enabled. See [Get Guild Voice Regions](https://discord.com/developers/docs/resources/guild#get-guild-voice-regions) |
 | [GetWelcomeScreen](#getwelcomescreen-method)(…) | Returns the Welcome Screen object for the guild. Requires the `MANAGE_GUILD` permission. |
@@ -218,7 +223,7 @@ Parent channel for the given channel; null otherwise
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
    
-# GetRole method
+# GetRole method (1 of 2)
 
 Returns a Role with the given name (Case Insensitive)
 
@@ -237,6 +242,31 @@ Role with the given name; Null otherwise
 ## See Also
 
 * class [DiscordRole](./DiscordRole.md)
+* class [DiscordGuild](./DiscordGuild.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+
+---
+
+# GetRole method (2 of 2)
+
+Returns a role object for the specified role. See [Get Guild Role](https://discord.com/developers/docs/resources/guild#get-guild-role)
+
+```csharp
+public IPromise<List<DiscordRole>> GetRole(DiscordClient client, Snowflake roleId)
+```
+
+| parameter | description |
+| --- | --- |
+| client | Client to use |
+| roleId | ID of the role |
+
+## See Also
+
+* interface [IPromise&lt;TPromised&gt;](../Interfaces/IPromise%7BTPromised%7D.md)
+* class [DiscordRole](./DiscordRole.md)
+* class [DiscordClient](../Clients/DiscordClient.md)
+* struct [Snowflake](./Snowflake.md)
 * class [DiscordGuild](./DiscordGuild.md)
 * namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
@@ -1620,9 +1650,55 @@ public IPromise DeleteEmoji(DiscordClient client, Snowflake emojiId)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
    
+# GetCurrentUserVoiceState method
+
+Get Current User Voice State See [Get Current User Voice State](https://discord.com/developers/docs/resources/voice#get-user-voice-state)
+
+```csharp
+public IPromise<VoiceState> GetCurrentUserVoiceState(DiscordClient client)
+```
+
+| parameter | description |
+| --- | --- |
+| client | Client to use |
+
+## See Also
+
+* interface [IPromise&lt;TPromised&gt;](../Interfaces/IPromise%7BTPromised%7D.md)
+* class [VoiceState](./VoiceState.md)
+* class [DiscordClient](../Clients/DiscordClient.md)
+* class [DiscordGuild](./DiscordGuild.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# GetUserVoiceState method
+
+Get Current User Voice State See [Get User Voice State](https://discord.com/developers/docs/resources/voice#get-user-voice-state)
+
+```csharp
+public IPromise<VoiceState> GetUserVoiceState(DiscordClient client, Snowflake userId)
+```
+
+| parameter | description |
+| --- | --- |
+| client | Client to use |
+| userId | User ID to get the voice state for |
+
+## See Also
+
+* interface [IPromise&lt;TPromised&gt;](../Interfaces/IPromise%7BTPromised%7D.md)
+* class [VoiceState](./VoiceState.md)
+* class [DiscordClient](../Clients/DiscordClient.md)
+* struct [Snowflake](./Snowflake.md)
+* class [DiscordGuild](./DiscordGuild.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
 # EditCurrentUserVoiceState method
 
-Modifies the current user's voice state. See [Update Current User Voice State](https://discord.com/developers/docs/resources/guild#modify-current-user-voice-state)
+Modifies the current user's voice state. See [Update Current User Voice State](https://discord.com/developers/docs/resources/voice#modify-current-user-voice-state)
 
 ```csharp
 public IPromise EditCurrentUserVoiceState(DiscordClient client, 
@@ -1646,7 +1722,7 @@ public IPromise EditCurrentUserVoiceState(DiscordClient client,
    
 # EditUserVoiceState method
 
-Modifies another user's voice state. See [Update Users Voice State](https://discord.com/developers/docs/resources/guild#modify-user-voice-state)
+Modifies another user's voice state. See [Update Users Voice State](https://discord.com/developers/docs/resources/voice#modify-user-voice-state)
 
 ```csharp
 public IPromise EditUserVoiceState(DiscordClient client, Snowflake userId, 
@@ -1877,6 +1953,52 @@ public IPromise<GuildOnboarding> EditOnboarding(DiscordClient client, GuildOnboa
 * class [GuildOnboarding](./GuildOnboarding.md)
 * class [DiscordClient](../Clients/DiscordClient.md)
 * class [GuildOnboardingUpdate](./GuildOnboardingUpdate.md)
+* class [DiscordGuild](./DiscordGuild.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# GetGuildSounds method
+
+Returns a list of the guild's soundboard sounds See [List Guild Soundboard Sounds](https://discord.com/developers/docs/resources/soundboard#list-guild-soundboard-sounds)
+
+```csharp
+public IPromise<GetGuildSoundsResponse> GetGuildSounds(DiscordClient client)
+```
+
+| parameter | description |
+| --- | --- |
+| client | Client to use |
+
+## See Also
+
+* interface [IPromise&lt;TPromised&gt;](../Interfaces/IPromise%7BTPromised%7D.md)
+* class [GetGuildSoundsResponse](./GetGuildSoundsResponse.md)
+* class [DiscordClient](../Clients/DiscordClient.md)
+* class [DiscordGuild](./DiscordGuild.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# GetGuildSound method
+
+Returns a soundboard sound object for the given sound id See [Get Guild Soundboard Sound](https://discord.com/developers/docs/resources/soundboard#get-guild-soundboard-sound)
+
+```csharp
+public IPromise<DiscordSoundboardSound> GetGuildSound(DiscordClient client, Snowflake soundId)
+```
+
+| parameter | description |
+| --- | --- |
+| client | Client to use |
+| soundId | ID of the guild sound |
+
+## See Also
+
+* interface [IPromise&lt;TPromised&gt;](../Interfaces/IPromise%7BTPromised%7D.md)
+* class [DiscordSoundboardSound](./DiscordSoundboardSound.md)
+* class [DiscordClient](../Clients/DiscordClient.md)
+* struct [Snowflake](./Snowflake.md)
 * class [DiscordGuild](./DiscordGuild.md)
 * namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
@@ -2698,9 +2820,26 @@ public Hash<Snowflake, GuildScheduledEvent> ScheduledEvents { get; set; }
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
    
+# SoundboardSounds property
+
+The scheduled events in the guild [`DiscordSticker`](./DiscordSticker.md)
+
+```csharp
+public Hash<Snowflake, DiscordSoundboardSound> SoundboardSounds { get; set; }
+```
+
+## See Also
+
+* struct [Snowflake](./Snowflake.md)
+* class [DiscordSoundboardSound](./DiscordSoundboardSound.md)
+* class [DiscordGuild](./DiscordGuild.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
 # PremiumProgressBarEnabled property
 
-The scheduled events in the guild
+Whether the guild has the boost progress bar enabled
 
 ```csharp
 public bool PremiumProgressBarEnabled { get; set; }

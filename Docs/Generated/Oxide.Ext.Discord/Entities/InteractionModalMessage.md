@@ -12,7 +12,7 @@ public class InteractionModalMessage
 | --- | --- |
 | [InteractionModalMessage](#interactionmodalmessage-constructor)() | The default constructor. |
 | [Components](#components-property) { get; set; } | Used to create message components on a message |
-| [CustomId](#customid-property) { get; set; } | A developer-defined identifier for the interactable form Max 100 characters |
+| [CustomId](#customid-property) { get; set; } | Developer-defined identifier for the interactable form Max 100 characters |
 | [Title](#title-property) { get; set; } | Title of the modal if Modal Response Max 45 characters |
 
 ## See Also
@@ -39,7 +39,7 @@ public InteractionModalMessage()
    
 # CustomId property
 
-A developer-defined identifier for the interactable form Max 100 characters
+Developer-defined identifier for the interactable form Max 100 characters
 
 ```csharp
 public string CustomId { get; set; }

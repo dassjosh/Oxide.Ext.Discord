@@ -12,12 +12,15 @@ public class DiscordApplication : IDebugLoggable
 | --- | --- |
 | [DiscordApplication](#discordapplication-constructor)() | The default constructor. |
 | [ApproximateGuildCount](#approximateguildcount-property) { get; set; } | An approximate count of the app's guild membership. |
+| [ApproximateUserInstallCount](#approximateuserinstallcount-property) { get; set; } | Approximate count of users that have installed the app |
 | [Bot](#bot-property) { get; set; } | Partial user object for the bot user associated with the app |
 | [BotPublic](#botpublic-property) { get; set; } | When false only app owner can join the app's bot to guilds |
 | [BotRequireCodeGrant](#botrequirecodegrant-property) { get; set; } | When true the app's bot will only join upon completion of the full oauth2 code grant flow |
 | [CoverImage](#coverimage-property) { get; set; } | If this application is a game sold on Discord, this field will be the hash of the image on store embeds |
 | [CustomInstallUrl](#custominstallurl-property) { get; set; } | The application's default custom authorization link, if enabled |
 | [Description](#description-property) { get; set; } | Description of the app |
+| [EventWebhooksTypes](#eventwebhookstypes-property) { get; set; } | Event webhooks URL for the app to receive webhook events |
+| [EventWebhooksUrl](#eventwebhooksurl-property) { get; set; } | Event webhooks URL for the app to receive webhook events |
 | [Flags](#flags-property) { get; set; } | App's public flags |
 | [GetApplicationCoverUrl](#getapplicationcoverurl-property) { get; } | Returns the URL for the application cover |
 | [GetApplicationIconUrl](#getapplicationiconurl-property) { get; } | Returns the URL for the applications Icon |
@@ -48,6 +51,7 @@ public class DiscordApplication : IDebugLoggable
 | [Edit](#edit-method)(…) | Edit properties of the app associated with the requesting bot user. Only properties that are passed will be updated. |
 | [EditRoleConnectionMetadata](#editroleconnectionmetadata-method)(…) | Updates and returns a list of application role connection metadata objects for the given application. See [Update Application Role Connection Metadata Records](https://discord.com/developers/docs/resources/application-role-connection-metadata#update-application-role-connection-metadata-records) |
 | [GetAllCommands](#getallcommands-method)(…) | Returns all commands registered to this application |
+| [GetApplicationActivityInstance](#getapplicationactivityinstance-method)(…) | Deletes an application emoji |
 | [GetApplicationEmoji](#getapplicationemoji-method)(…) | Return an application emoji by ID |
 | [GetApplicationEmojis](#getapplicationemojis-method)(…) | Returns the list of all application emojis |
 | [GetGlobalCommand](#getglobalcommand-method)(…) | Fetch global command by ID See [Get Global Application Command](https://discord.com/developers/docs/interactions/application-commands#get-global-application-command) |
@@ -548,6 +552,30 @@ public IPromise DeleteApplicationEmoji(DiscordClient client, Snowflake emojiId)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
    
+# GetApplicationActivityInstance method
+
+Deletes an application emoji
+
+```csharp
+public IPromise<ActivityInstance> GetApplicationActivityInstance(DiscordClient client, 
+    string instanceId)
+```
+
+| parameter | description |
+| --- | --- |
+| client | Client to use |
+| instanceId | Instance ID of the activity |
+
+## See Also
+
+* interface [IPromise&lt;TPromised&gt;](../Interfaces/IPromise%7BTPromised%7D.md)
+* class [ActivityInstance](./ActivityInstance.md)
+* class [DiscordClient](../Clients/DiscordClient.md)
+* class [DiscordApplication](./DiscordApplication.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
 # LogDebug method
 
 ```csharp
@@ -884,6 +912,21 @@ public int? ApproximateGuildCount { get; set; }
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
    
+# ApproximateUserInstallCount property
+
+Approximate count of users that have installed the app
+
+```csharp
+public int? ApproximateUserInstallCount { get; set; }
+```
+
+## See Also
+
+* class [DiscordApplication](./DiscordApplication.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
 # RedirectUris property
 
 Array of redirect URIs for the app
@@ -924,6 +967,37 @@ public string RoleConnectionsVerificationUrl { get; set; }
 
 ## See Also
 
+* class [DiscordApplication](./DiscordApplication.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# EventWebhooksUrl property
+
+Event webhooks URL for the app to receive webhook events
+
+```csharp
+public string EventWebhooksUrl { get; set; }
+```
+
+## See Also
+
+* class [DiscordApplication](./DiscordApplication.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# EventWebhooksTypes property
+
+Event webhooks URL for the app to receive webhook events
+
+```csharp
+public WebhookEventType? EventWebhooksTypes { get; set; }
+```
+
+## See Also
+
+* enum [WebhookEventType](./WebhookEventType.md)
 * class [DiscordApplication](./DiscordApplication.md)
 * namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)

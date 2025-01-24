@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using Newtonsoft.Json;
 using Oxide.Core.Plugins;
 using Oxide.Ext.Discord.Connections;
@@ -48,6 +47,9 @@ namespace Oxide.Ext.Discord.Clients
         /// </summary>
         public readonly IReadOnlyList<WebhookClient> Webhooks;
     
+        /// <summary>
+        /// Json settings for the discord client
+        /// </summary>
         public JsonSerializerSettings JsonSettings => Bot?.JsonSettings ?? DiscordJson.Settings;
         
         /// <summary>
@@ -173,7 +175,7 @@ namespace Oxide.Ext.Discord.Clients
         /// Returns if the client is connected to a bot / webhook and if the bot / webhook is initialized
         /// </summary>
         /// <returns></returns>
-        public bool IsConnected() => Bot?.Initialized ?? _webhooks.Any(w => w.Initialized);
+        public bool IsConnected() => Bot?.Initialized ?? _webhooks.Exists(w => w.Initialized);
 
         #region Websocket Commands
         /// <summary>
@@ -193,6 +195,12 @@ namespace Oxide.Ext.Discord.Clients
         /// </summary>
         /// <param name="presenceUpdate"></param>
         public void UpdateStatus(UpdatePresenceCommand presenceUpdate) => Bot?.SendWebSocketCommand(this, GatewayCommandCode.PresenceUpdate, presenceUpdate);
+
+        /// <summary>
+        /// Request the list of soundboard sounds for the given guilds
+        /// </summary>
+        /// <param name="request"></param>
+        public void GetSoundboardSounds(GetSoundboardSoundsCommand request) => Bot?.SendWebSocketCommand(this, GatewayCommandCode.RequestSoundboardSounds, request);
         #endregion
         
         internal void UpdateLogLevel()

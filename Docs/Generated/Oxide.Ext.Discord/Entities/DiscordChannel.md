@@ -81,6 +81,7 @@ public class DiscordChannel : IDebugLoggable, ISnowflakeEntity
 | [ListThreadMembers](#listthreadmembers-method)(…) | Returns array of thread members objects that are members of the thread. This endpoint is restricted according to whether the GUILD_MEMBERS Privileged Intent is enabled for your application. See [List Thread Members](https://discord.com/developers/docs/resources/channel#list-thread-members) |
 | [LogDebug](#logdebug-method)(…) |  |
 | [RemoveThreadMember](#removethreadmember-method)(…) | Removes another user from a thread. Requires the MANAGE_THREADS permission or that you are the creator of the thread. Also requires the thread is not archived. See [Remove Thread Member](https://discord.com/developers/docs/resources/channel#remove-thread-member) |
+| [SendSoundboardSound](#sendsoundboardsound-method)(…) | Sends a soundboard sound to the channel See [Send Soundboard Sound](https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound) |
 | [StartThreadFromMessage](#startthreadfrommessage-method)(…) | Creates a new public thread from a message See [Start Thread with Message](https://discord.com/developers/docs/resources/channel#start-thread-from-message) |
 | [StartThreadInForumChannel](#startthreadinforumchannel-method)(…) | Creates a new thread in a forum channel, and sends a message within the created thread. Returns a channel, with a nested message object See [Start Thread in Forum Channel](https://discord.com/developers/docs/resources/channel#start-thread-in-forum-channel) |
 | [StartThreadWithoutMessage](#startthreadwithoutmessage-method)(…) | Creates a new thread that is not connected to an existing message. The created thread is always a GUILD_PRIVATE_THREAD See [Start Thread without Message](https://discord.com/developers/docs/resources/channel#start-thread-without-message) |
@@ -1080,6 +1081,29 @@ public IPromise<StageInstance> GetStageInstance(DiscordClient client)
 * interface [IPromise&lt;TPromised&gt;](../Interfaces/IPromise%7BTPromised%7D.md)
 * class [StageInstance](./StageInstance.md)
 * class [DiscordClient](../Clients/DiscordClient.md)
+* class [DiscordChannel](./DiscordChannel.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# SendSoundboardSound method
+
+Sends a soundboard sound to the channel See [Send Soundboard Sound](https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound)
+
+```csharp
+public IPromise SendSoundboardSound(DiscordClient client, SendSoundboardSound request)
+```
+
+| parameter | description |
+| --- | --- |
+| client | Client to use |
+| request | Sound to send |
+
+## See Also
+
+* interface [IPromise](../Interfaces/IPromise.md)
+* class [DiscordClient](../Clients/DiscordClient.md)
+* class [SendSoundboardSound](./SendSoundboardSound.md)
 * class [DiscordChannel](./DiscordChannel.md)
 * namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)

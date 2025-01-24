@@ -19,6 +19,9 @@ namespace Oxide.Ext.Discord.Connections
         /// </summary>
         public readonly string WebhookToken;
 
+        /// <summary>
+        /// URL of the webhook
+        /// </summary>
         public readonly string WebhookUrl;
         
         /// <summary>

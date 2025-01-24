@@ -11,6 +11,7 @@ public enum ConnectionType : byte
 | name | value | description |
 | --- | --- | --- |
 | Unknown | `Unknown` | Discord Extension doesn't currently support this connection type |
+| AmazonMusic | `AmazonMusic` | Connection type is Battle.net |
 | BattleNet | `BattleNet` | Connection type is Battle.net |
 | Bungie | `Bungie` | Connection type is Bungie.net |
 | Domain | `Domain` | Connection type is Domain |

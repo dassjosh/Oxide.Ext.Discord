@@ -23,6 +23,6 @@ namespace Oxide.Ext.Discord.Interfaces
         /// </summary>
         /// <param name="data">List of data to be bulk converter</param>
         /// <returns></returns>
-        IPromise<List<T>> ToEntityBulk(List<PlaceholderData> data = null);
+        IPromise<List<T>> ToEntityBulk(List<PlaceholderData> data);
     }
 }

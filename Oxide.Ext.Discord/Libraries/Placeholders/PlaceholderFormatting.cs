@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
 using Oxide.Core.Libraries.Covalence;
 using Oxide.Ext.Discord.Entities;
 using Oxide.Ext.Discord.Extensions;
@@ -16,7 +15,6 @@ namespace Oxide.Ext.Discord.Libraries
     internal static class PlaceholderFormatting
     {
         private static readonly Regex GenericPositionRegex = new(@"([xyz])(?::?([\d\.]*))", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly ThreadLocal<char[]> Buffer = new(() => new char[128]);
 
         /// <summary>
         /// Replace the <see cref="PlaceholderState"/> with the string value
@@ -114,10 +112,9 @@ namespace Oxide.Ext.Discord.Libraries
 
         private static void Replace(StringBuilder builder, PlaceholderState state, byte value)
         {
-            Span<char> span = Buffer.Value.AsSpan();
-            if (value.TryFormat(span, out int written, state.Format))
+            if (value.TryFormat(out ReadOnlySpan<char> span, state.Format))
             {
-                Replace(builder, state, span.Slice(0, written));
+                Replace(builder, state, span);
             }
             else
             {
@@ -127,10 +124,9 @@ namespace Oxide.Ext.Discord.Libraries
 
         private static void Replace(StringBuilder builder, PlaceholderState state, sbyte value)
         {
-            Span<char> span = Buffer.Value.AsSpan();
-            if (value.TryFormat(span, out int written, state.Format))
+            if (value.TryFormat(out ReadOnlySpan<char> span, state.Format))
             {
-                Replace(builder, state, span.Slice(0, written));
+                Replace(builder, state, span);
             }
             else
             {
@@ -140,10 +136,9 @@ namespace Oxide.Ext.Discord.Libraries
 
         private static void Replace(StringBuilder builder, PlaceholderState state, short value)
         {
-            Span<char> span = Buffer.Value.AsSpan();
-            if (value.TryFormat(span, out int written, state.Format))
+            if (value.TryFormat(out ReadOnlySpan<char> span, state.Format))
             {
-                Replace(builder, state, span.Slice(0, written));
+                Replace(builder, state, span);
             }
             else
             {
@@ -153,10 +148,9 @@ namespace Oxide.Ext.Discord.Libraries
 
         private static void Replace(StringBuilder builder, PlaceholderState state, ushort value)
         {
-            Span<char> span = Buffer.Value.AsSpan();
-            if (value.TryFormat(span, out int written, state.Format))
+            if (value.TryFormat(out ReadOnlySpan<char> span, state.Format))
             {
-                Replace(builder, state, span.Slice(0, written));
+                Replace(builder, state, span);
             }
             else
             {
@@ -166,10 +160,9 @@ namespace Oxide.Ext.Discord.Libraries
 
         private static void Replace(StringBuilder builder, PlaceholderState state, int value)
         {
-            Span<char> span = Buffer.Value.AsSpan();
-            if (value.TryFormat(span, out int written, state.Format))
+            if (value.TryFormat(out ReadOnlySpan<char> span, state.Format))
             {
-                Replace(builder, state, span.Slice(0, written));
+                Replace(builder, state, span);
             }
             else
             {
@@ -179,10 +172,9 @@ namespace Oxide.Ext.Discord.Libraries
 
         private static void Replace(StringBuilder builder, PlaceholderState state, uint value)
         {
-            Span<char> span = Buffer.Value.AsSpan();
-            if (value.TryFormat(span, out int written, state.Format))
+            if (value.TryFormat(out ReadOnlySpan<char> span, state.Format))
             {
-                Replace(builder, state, span.Slice(0, written));
+                Replace(builder, state, span);
             }
             else
             {
@@ -192,24 +184,21 @@ namespace Oxide.Ext.Discord.Libraries
 
         private static void Replace(StringBuilder builder, PlaceholderState state, long value)
         {
-            Span<char> span = Buffer.Value.AsSpan();
-            if (value.TryFormat(span, out int written, state.Format))
+            if (value.TryFormat(out ReadOnlySpan<char> span, state.Format))
             {
-                Replace(builder, state, span.Slice(0, written));
+                Replace(builder, state, span);
             }
             else
             {
                 Replace(builder, state, value as IFormattable);
             }
-            
         }
 
         private static void Replace(StringBuilder builder, PlaceholderState state, ulong value)
         {
-            Span<char> span = Buffer.Value.AsSpan();
-            if (value.TryFormat(span, out int written, state.Format))
+            if (value.TryFormat(out ReadOnlySpan<char> span, state.Format))
             {
-                Replace(builder, state, span.Slice(0, written));
+                Replace(builder, state, span);
             }
             else
             {
@@ -219,10 +208,9 @@ namespace Oxide.Ext.Discord.Libraries
 
         private static void Replace(StringBuilder builder, PlaceholderState state, float value)
         {
-            Span<char> span = Buffer.Value.AsSpan();
-            if (value.TryFormat(span, out int written, state.Format))
+            if (value.TryFormat(out ReadOnlySpan<char> span, state.Format))
             {
-                Replace(builder, state, span.Slice(0, written));
+                Replace(builder, state, span);
             }
             else
             {
@@ -232,10 +220,9 @@ namespace Oxide.Ext.Discord.Libraries
 
         private static void Replace(StringBuilder builder, PlaceholderState state, double value)
         {
-            Span<char> span = Buffer.Value.AsSpan();
-            if (value.TryFormat(span, out int written, state.Format))
+            if (value.TryFormat(out ReadOnlySpan<char> span, state.Format))
             {
-                Replace(builder, state, span.Slice(0, written));
+                Replace(builder, state, span);
             }
             else
             {
@@ -245,10 +232,9 @@ namespace Oxide.Ext.Discord.Libraries
 
         private static void Replace(StringBuilder builder, PlaceholderState state, decimal value)
         {
-            Span<char> span = Buffer.Value.AsSpan();
-            if (value.TryFormat(span, out int written, state.Format))
+            if (value.TryFormat(out ReadOnlySpan<char> span, state.Format))
             {
-                Replace(builder, state, span.Slice(0, written));
+                Replace(builder, state, span);
             }
             else
             {
@@ -258,10 +244,9 @@ namespace Oxide.Ext.Discord.Libraries
 
         private static void Replace(StringBuilder builder, PlaceholderState state, DateTime value)
         {
-            Span<char> span = Buffer.Value.AsSpan();
-            if (value.TryFormat(span, out int written, state.Format))
+            if (value.TryFormat(out ReadOnlySpan<char> span, state.Format))
             {
-                Replace(builder, state, span.Slice(0, written));
+                Replace(builder, state, span);
             }
             else
             {
@@ -271,10 +256,9 @@ namespace Oxide.Ext.Discord.Libraries
 
         private static void Replace(StringBuilder builder, PlaceholderState state, DateTimeOffset value)
         {
-            Span<char> span = Buffer.Value.AsSpan();
-            if (value.TryFormat(span, out int written, state.Format))
+            if (value.TryFormat(out ReadOnlySpan<char> span, state.Format))
             {
-                Replace(builder, state, span.Slice(0, written));
+                Replace(builder, state, span);
             }
             else
             {
@@ -284,10 +268,9 @@ namespace Oxide.Ext.Discord.Libraries
 
         private static void Replace(StringBuilder builder, PlaceholderState state, TimeSpan value)
         {
-            Span<char> span = Buffer.Value.AsSpan();
-            if (value.TryFormat(span, out int written, state.Format))
+            if (value.TryFormat(out ReadOnlySpan<char> span, state.Format))
             {
-                Replace(builder, state, span.Slice(0, written));
+                Replace(builder, state, span);
             }
             else
             {

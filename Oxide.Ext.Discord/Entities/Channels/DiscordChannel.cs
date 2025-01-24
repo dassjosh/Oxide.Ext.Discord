@@ -837,73 +837,44 @@ namespace Oxide.Ext.Discord.Entities
             return client.Bot.Rest.Get<StageInstance>(client,$"stage-instances/{Id}");
         }
 
+        /// <summary>
+        /// Sends a soundboard sound to the channel
+        /// See <a href="https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound">Send Soundboard Sound</a>
+        /// </summary>
+        /// <param name="client">Client to use</param>
+        /// <param name="request">Sound to send</param>
+        public IPromise SendSoundboardSound(DiscordClient client, SendSoundboardSound request)
+        {
+            return client.Bot.Rest.Post(client,$"channels/{Id}/send-soundboard-sound", request);
+        }
+
         internal DiscordChannel Update(DiscordChannel channel)
         {
             DiscordChannel previous = (DiscordChannel)MemberwiseClone();
 
             Type = channel.Type;
 
-            if (channel.Position != null)
-                Position = channel.Position;
-
-            if (channel.PermissionOverwrites != null)
-                PermissionOverwrites = channel.PermissionOverwrites;
-
-            if (channel.Name != null)
-                Name = channel.Name;
-
-            if (channel.Topic != null)
-                Topic = channel.Topic;
-
-            if (channel.Nsfw != null)
-                Nsfw = channel.Nsfw;
-            
-            if (channel.Bitrate != null)
-                Bitrate = channel.Bitrate;
-
-            if (channel.UserLimit != null)
-                UserLimit = channel.UserLimit;
-
-            if (channel.RateLimitPerUser != null)
-                RateLimitPerUser = channel.RateLimitPerUser;
-
-            if (channel.Icon != null)
-                Icon = channel.Icon;
-
-            if (channel.OwnerId != null)
-                OwnerId = channel.OwnerId;
-
-            if (channel.ApplicationId != null)
-                ApplicationId = channel.ApplicationId;
-            
-            if (channel.LastPinTimestamp != null)
-                LastPinTimestamp = channel.LastPinTimestamp;
-            
-            if (channel.VideoQualityMode != null)
-                VideoQualityMode = channel.VideoQualityMode;
-            
-            if (channel.MessageCount != null)
-                MessageCount = channel.MessageCount;
-            
-            if (channel.MemberCount != null)
-                MemberCount = channel.MemberCount;
-            
-            if (channel.ThreadMetadata != null)
-                ThreadMetadata = channel.ThreadMetadata;
-            
-            if (channel.Member != null)
-                Member = channel.Member;
-            
-            if (channel.DefaultAutoArchiveDuration != null)
-                DefaultAutoArchiveDuration = channel.DefaultAutoArchiveDuration;
-            
-            if (channel.Permissions != null)
-                Permissions = channel.Permissions;
-
+            if (channel.Position != null) Position = channel.Position;
+            if (channel.PermissionOverwrites != null) PermissionOverwrites = channel.PermissionOverwrites;
+            if (channel.Name != null) Name = channel.Name;
+            if (channel.Topic != null) Topic = channel.Topic;
+            if (channel.Nsfw != null) Nsfw = channel.Nsfw;
+            if (channel.Bitrate != null) Bitrate = channel.Bitrate;
+            if (channel.UserLimit != null) UserLimit = channel.UserLimit;
+            if (channel.RateLimitPerUser != null) RateLimitPerUser = channel.RateLimitPerUser;
+            if (channel.Icon != null) Icon = channel.Icon;
+            if (channel.OwnerId != null) OwnerId = channel.OwnerId;
+            if (channel.ApplicationId != null) ApplicationId = channel.ApplicationId;
+            if (channel.LastPinTimestamp != null) LastPinTimestamp = channel.LastPinTimestamp;
+            if (channel.VideoQualityMode != null) VideoQualityMode = channel.VideoQualityMode;
+            if (channel.MessageCount != null) MessageCount = channel.MessageCount;
+            if (channel.MemberCount != null) MemberCount = channel.MemberCount;
+            if (channel.ThreadMetadata != null) ThreadMetadata = channel.ThreadMetadata;
+            if (channel.Member != null) Member = channel.Member;
+            if (channel.DefaultAutoArchiveDuration != null) DefaultAutoArchiveDuration = channel.DefaultAutoArchiveDuration;
+            if (channel.Permissions != null) Permissions = channel.Permissions;
             ParentId = channel.ParentId;
-
-            if (channel.Flags.HasValue)
-                Flags = Flags;
+            if (channel.Flags.HasValue) Flags = channel.Flags;
 
             return previous;
         }

@@ -64,6 +64,18 @@ namespace Oxide.Ext.Discord.Entities
         /// </summary>
         [JsonProperty("status")]
         public ScheduledEventStatus? Status { get; set; }
+        
+        /// <summary>
+        /// The cover image of the scheduled event
+        /// </summary>
+        [JsonProperty("image")]
+        public DiscordImageData Image { get; set; }
+        
+        /// <summary>
+        /// The definition for how often this event should recur
+        /// </summary>
+        [JsonProperty("recurrence_rule")]
+        public RecurrenceRule RecurrenceRule { get; set; }
 
         ///<inheritdoc/>
         public void Validate()

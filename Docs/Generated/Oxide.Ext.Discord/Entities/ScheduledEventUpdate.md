@@ -15,8 +15,10 @@ public class ScheduledEventUpdate
 | [Description](#description-property) { get; set; } | The description of the scheduled event (1-1000 characters) |
 | [EntityMetadata](#entitymetadata-property) { get; set; } | Additional metadata for the guild scheduled event |
 | [EntityType](#entitytype-property) { get; set; } | The type of the scheduled event |
+| [Image](#image-property) { get; set; } | The cover image of the scheduled event |
 | [Name](#name-property) { get; set; } | The name of the scheduled event (1-100 characters) |
 | [PrivacyLevel](#privacylevel-property) { get; set; } | The privacy level of the scheduled event |
+| [RecurrenceRule](#recurrencerule-property) { get; set; } | The definition for how often this event should recur |
 | [ScheduledEndTime](#scheduledendtime-property) { get; set; } | The time the scheduled event will end, required if [`EntityType`](./GuildScheduledEvent.md#entitytype-property) is EXTERNAL |
 | [ScheduledStartTime](#scheduledstarttime-property) { get; set; } | The time the scheduled event will start |
 | [Status](#status-property) { get; set; } | The status of the scheduled event |
@@ -192,6 +194,38 @@ public ScheduledEventStatus? Status { get; set; }
 ## See Also
 
 * enum [ScheduledEventStatus](./ScheduledEventStatus.md)
+* class [ScheduledEventUpdate](./ScheduledEventUpdate.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# Image property
+
+The cover image of the scheduled event
+
+```csharp
+public DiscordImageData Image { get; set; }
+```
+
+## See Also
+
+* struct [DiscordImageData](./DiscordImageData.md)
+* class [ScheduledEventUpdate](./ScheduledEventUpdate.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# RecurrenceRule property
+
+The definition for how often this event should recur
+
+```csharp
+public RecurrenceRule RecurrenceRule { get; set; }
+```
+
+## See Also
+
+* class [RecurrenceRule](./RecurrenceRule.md)
 * class [ScheduledEventUpdate](./ScheduledEventUpdate.md)
 * namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)

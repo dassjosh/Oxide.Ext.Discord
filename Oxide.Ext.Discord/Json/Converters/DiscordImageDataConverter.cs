@@ -41,7 +41,7 @@ namespace Oxide.Ext.Discord.Json
                         return null;
                     }
 
-                    DiscordExtension.GlobalLogger.Warning("DiscordImageData tried to parse null to non nullable field: {0}. Please give this message to the discord extension authors.", reader.Path);
+                    DiscordExtension.GlobalLogger.Warning($"{nameof(DiscordImageData)} tried to parse null to non nullable field: {{0}}. Please give this message to the discord extension authors.", reader.Path);
                     return default(DiscordImageData);
 
                 case JsonToken.String:
@@ -49,7 +49,7 @@ namespace Oxide.Ext.Discord.Json
                     return new DiscordImageData(value);
 
                 default:
-                    throw new JsonException($"Token type {reader.TokenType} does not match DiscordImageData valid types of string or null. Path: {reader.Path}");
+                    throw new JsonException($"Token type {reader.TokenType} does not match {nameof(DiscordImageData)} valid types of string or null. Path: {reader.Path}");
             }
         }
 

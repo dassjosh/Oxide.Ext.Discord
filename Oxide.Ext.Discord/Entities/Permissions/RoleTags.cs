@@ -7,7 +7,6 @@ namespace Oxide.Ext.Discord.Entities
     /// Represents <a href="https://discord.com/developers/docs/topics/permissions#role-object-role-tags-structure">Role Tags Structure</a>
     /// </summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-    [JsonConverter(typeof(RoleTagsConverter))]
     public class RoleTags
     {
         /// <summary>
@@ -25,6 +24,7 @@ namespace Oxide.Ext.Discord.Entities
         /// <summary>
         /// Whether this is the guild's premium subscriber role
         /// </summary>
+        [JsonConverter(typeof(NullBoolConverter))]
         [JsonProperty("premium_subscriber")]
         public bool PremiumSubscriber { get; set; }
         
@@ -37,12 +37,14 @@ namespace Oxide.Ext.Discord.Entities
         /// <summary>
         /// whether this role is available for purchase
         /// </summary>
+        [JsonConverter(typeof(NullBoolConverter))]
         [JsonProperty("available_for_purchase")]
         public bool AvailableForPurchase { get; set; }
         
         /// <summary>
         /// Whether this role is a guild's linked role
         /// </summary>
+        [JsonConverter(typeof(NullBoolConverter))]
         [JsonProperty("guild_connections")]
         public bool GuildConnections { get; set; }
     }

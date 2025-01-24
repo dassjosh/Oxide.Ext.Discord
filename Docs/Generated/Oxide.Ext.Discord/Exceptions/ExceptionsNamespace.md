@@ -28,6 +28,7 @@
 | class [InvalidFileNameException](./InvalidFileNameException.md) | Exception throw when an attachment filename contains invalid characters |
 | class [InvalidForumTagException](./InvalidForumTagException.md) | Represents an exception for channel threads |
 | class [InvalidGetEntitlementException](./InvalidGetEntitlementException.md) | Exceptions for invalid entitlements |
+| class [InvalidGetSkuSubscriptionsException](./InvalidGetSkuSubscriptionsException.md) | Exceptions for invalid entitlements |
 | class [InvalidGuildBanException](./InvalidGuildBanException.md) | Represents an error in channel ban |
 | class [InvalidGuildException](./InvalidGuildException.md) | Represents an exception in guild |
 | class [InvalidGuildListMembersException](./InvalidGuildListMembersException.md) | Represents an exception in guid list request |
@@ -47,6 +48,8 @@
 | class [InvalidPoolException](./InvalidPoolException.md) | An exception when something is invalid with a pool |
 | class [InvalidSelectMenuComponentException](./InvalidSelectMenuComponentException.md) | Represents an exception for select menu components |
 | class [InvalidSnowflakeException](./InvalidSnowflakeException.md) | Exception thrown when an invalid Snowflake ID is used in an API call |
+| class [InvalidSoundboardException](./InvalidSoundboardException.md) | Represents an exception in discord sound data |
+| class [InvalidSoundDataException](./InvalidSoundDataException.md) | Represents an exception in discord sound data |
 | class [InvalidTemplateVersionException](./InvalidTemplateVersionException.md) | Thrown when the minimum template version is higher than the current template version |
 | class [InvalidThreadException](./InvalidThreadException.md) | Represents an exception for channel threads |
 | class [InvalidUserException](./InvalidUserException.md) | Represents an exception when modifying a user with invalid data |

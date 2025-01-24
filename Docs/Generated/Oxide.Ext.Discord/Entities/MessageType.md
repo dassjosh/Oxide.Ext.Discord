@@ -47,6 +47,7 @@ public enum MessageType : byte
 | GuildIncidentReportRaid | `GuildIncidentReportRaid` | Message is a Guild Incident Report Raid |
 | GuildIncidentReportFalseAlarm | `GuildIncidentReportFalseAlarm` | Message is a Guild Incident Report False Alarm |
 | PurchaseNotification | `PurchaseNotification` | Message is a Purchase Notification |
+| PollResult | `PurchaseNotification` | Message is a poll result |
 
 ## See Also
 

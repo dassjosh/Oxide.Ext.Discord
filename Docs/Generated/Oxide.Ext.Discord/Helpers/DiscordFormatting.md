@@ -25,6 +25,7 @@ public static class DiscordFormatting
 | static [Header3](#header3-method)(…) | Creates a Small Header |
 | static [Italics](#italics-method)(…) | Will display the message in italics |
 | static [ItalicsBold](#italicsbold-method)(…) | Will display the message in italics and bold |
+| static [LinkedRoles](#linkedroles-method)(…) | Linked Roles |
 | static [List](#list-method)(…) | Creates a list item for the given message |
 | static [MaskLink](#masklink-method)(…) | Creates a clickable link displayed as the mask text |
 | static [MentionApplicationCommand](#mentionapplicationcommand-method)(…) | Mention the Application command |
@@ -309,6 +310,30 @@ string with navigation to the navigation type
 ## See Also
 
 * enum [GuildNavigationType](../Entities/GuildNavigationType.md)
+* class [DiscordFormatting](./DiscordFormatting.md)
+* namespace [Oxide.Ext.Discord.Helpers](./HelpersNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# LinkedRoles method
+
+Linked Roles
+
+```csharp
+public static string LinkedRoles(Snowflake roleId)
+```
+
+| parameter | description |
+| --- | --- |
+| roleId | Linked role ID |
+
+## Return Value
+
+string with navigation to the navigation type
+
+## See Also
+
+* struct [Snowflake](../Entities/Snowflake.md)
 * class [DiscordFormatting](./DiscordFormatting.md)
 * namespace [Oxide.Ext.Discord.Helpers](./HelpersNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)

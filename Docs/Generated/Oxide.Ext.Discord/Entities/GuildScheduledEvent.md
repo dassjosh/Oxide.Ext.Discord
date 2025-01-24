@@ -20,8 +20,10 @@ public class GuildScheduledEvent : ISnowflakeEntity
 | [EntityType](#entitytype-property) { get; set; } | The type of the scheduled event |
 | [GuildId](#guildid-property) { get; set; } | The guild ID which the scheduled event belongs to |
 | [Id](#id-property) { get; set; } | The ID of the scheduled event |
+| [Image](#image-property) { get; set; } | The cover image hash of the scheduled event |
 | [Name](#name-property) { get; set; } | The name of the scheduled event (1-100 characters) |
 | [PrivacyLevel](#privacylevel-property) { get; set; } | The privacy level of the scheduled event |
+| [RecurrenceRule](#recurrencerule-property) { get; set; } | The cover image hash of the scheduled event |
 | [ScheduledEndTime](#scheduledendtime-property) { get; set; } | The time the scheduled event will end, required if [`EntityType`](#entitytype-property) is EXTERNAL |
 | [ScheduledStartTime](#scheduledstarttime-property) { get; set; } | The time the scheduled event will start |
 | [Status](#status-property) { get; set; } | The status of the scheduled event |
@@ -444,6 +446,37 @@ public int? UserCount { get; set; }
 
 ## See Also
 
+* class [GuildScheduledEvent](./GuildScheduledEvent.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# Image property
+
+The cover image hash of the scheduled event
+
+```csharp
+public string Image { get; set; }
+```
+
+## See Also
+
+* class [GuildScheduledEvent](./GuildScheduledEvent.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# RecurrenceRule property
+
+The cover image hash of the scheduled event
+
+```csharp
+public RecurrenceRule RecurrenceRule { get; set; }
+```
+
+## See Also
+
+* class [RecurrenceRule](./RecurrenceRule.md)
 * class [GuildScheduledEvent](./GuildScheduledEvent.md)
 * namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)

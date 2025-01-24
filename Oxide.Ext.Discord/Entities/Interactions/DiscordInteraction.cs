@@ -87,7 +87,7 @@ namespace Oxide.Ext.Discord.Entities
 
         /// <summary>
         /// Continuation token for responding to the interaction
-        /// Interaction tokens are valid for 15 minutes and can be used to send followup messages but you must send an initial response within 3 seconds of receiving the event.
+        /// tokens are valid for 15 minutes and can be used to send followup messages, but you must send an initial response within 3 seconds of receiving the event.
         /// If the 3 second deadline is exceeded, the token will be invalidated.
         /// </summary>
         [JsonProperty("token")]
@@ -149,14 +149,14 @@ namespace Oxide.Ext.Discord.Entities
         /// <summary>
         /// Returns the interaction parsed args to make it easier to process that interaction.
         /// </summary>
-        public InteractionDataParsed Parsed => _parsed ?? (_parsed = new InteractionDataParsed(this));
+        public InteractionDataParsed Parsed => _parsed ??= new InteractionDataParsed(this);
 
         private InteractionDataOption _focused;
 
         /// <summary>
         /// Returns the Focused option for Auto Complete
         /// </summary>
-        public InteractionDataOption Focused => _focused ?? (_focused = GetFocusedOption());
+        public InteractionDataOption Focused => _focused ??= GetFocusedOption();
 
         /// <summary>
         /// The UTC DateTime this interaction was created
@@ -321,6 +321,24 @@ namespace Oxide.Ext.Discord.Entities
 
             _hasResponded = true;
             return client.Bot.Rest.Post(client, $"interactions/{Id}/{Token}/callback", response, RequestOptions.SkipRateLimit());
+        }
+    
+        /// <summary>
+        /// Create a response to an Interaction from the gateway.
+        /// See <a href="https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response">Create Interaction Response</a>
+        /// </summary>
+        /// <param name="client">Client to use</param>
+        /// <param name="response">Response to respond with</param>
+        //TODO: Look into improving callback integration with other methods
+        public IPromise<InteractionCallbackResponse> CreateResponseWithCallback(DiscordClient client, BaseInteractionResponse response)
+        {
+            if (response == null) throw new ArgumentNullException(nameof(response));
+            InvalidInteractionResponseException.ThrowIfAlreadyResponded(_hasResponded);
+            InvalidInteractionResponseException.ThrowIfInitialResponseTimeElapsed(CreatedDate);
+            InvalidInteractionResponseException.ThrowIfInvalidResponseType(Type, response.Type);
+
+            _hasResponded = true;
+            return client.Bot.Rest.Post<InteractionCallbackResponse>(client, $"interactions/{Id}/{Token}/callback?with_response=true", response, RequestOptions.SkipRateLimit());
         }
 
         /// <summary>

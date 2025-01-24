@@ -23,61 +23,61 @@ namespace Oxide.Ext.Discord.Entities
         /// </summary>
         [JsonProperty("id")]
         public Snowflake Id { get; set; }
-        
+
         /// <summary>
         /// Name of the app
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
-        
+
         /// <summary>
         /// Icon hash of the app
         /// </summary>
         [JsonProperty("icon")]
         public string Icon { get; set; }
-        
+
         /// <summary>
         /// Description of the app
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
-        
+
         /// <summary>
         /// List of RPC origin URLs, if RPC is enabled
         /// </summary>
         [JsonProperty("rpc_origins")]
         public List<string> RpcOrigins { get; set; }
-        
+
         /// <summary>
         /// When false only app owner can join the app's bot to guilds
         /// </summary>
         [JsonProperty("bot_public")]
         public bool BotPublic { get; set; }
-        
+
         /// <summary>
         /// When true the app's bot will only join upon completion of the full oauth2 code grant flow
         /// </summary>
         [JsonProperty("bot_require_code_grant")]
         public bool BotRequireCodeGrant { get; set; }
-        
+
         /// <summary>
         /// Partial user object for the bot user associated with the app
         /// </summary>
         [JsonProperty("bot")]
         public DiscordUser Bot { get; set; }
-        
+
         /// <summary>
         /// URL of the app's terms of service
         /// </summary>
         [JsonProperty("terms_of_service_url")]
         public string TermsOfServiceUrl { get; set; }
-        
+
         /// <summary>
         /// URL of the app's privacy policy
         /// </summary>
         [JsonProperty("privacy_policy_url")]
         public string PrivacyPolicyUrl { get; set; }
-        
+
         /// <summary>
         /// Partial user object containing info on the owner of the application
         /// </summary>
@@ -89,7 +89,7 @@ namespace Oxide.Ext.Discord.Entities
         /// </summary>
         [JsonProperty("verify_key")]
         public string Verify { get; set; }
-        
+
         /// <summary>
         /// If the application belongs to a team, this will be a list of the members of that team
         /// </summary>
@@ -101,95 +101,113 @@ namespace Oxide.Ext.Discord.Entities
         /// </summary>
         [JsonProperty("guild_id")]
         public Snowflake? GuildId { get; set; }
-        
+
         /// <summary>
         /// Partial Guild for the application
         /// </summary>
         [JsonProperty("guild")]
         public DiscordGuild Guild { get; set; }
-        
+
         /// <summary>
         /// If this application is a game sold on Discord, this field will be the id of the "Game SKU" that is created, if exists
         /// </summary>
         [JsonProperty("primary_sku_id")]
         public string PrimarySkuId { get; set; }
-        
+
         /// <summary>
         /// If this application is a game sold on Discord, this field will be the URL slug that links to the store page
         /// </summary>
         [JsonProperty("slug")]
         public string Slug { get; set; }
-        
+
         /// <summary>
         /// If this application is a game sold on Discord, this field will be the hash of the image on store embeds
         /// </summary>
         [JsonProperty("cover_image")]
-        public string CoverImage { get; set; } 
-        
+        public string CoverImage { get; set; }
+
         /// <summary>
         /// App's public flags
         /// </summary>
         [JsonProperty("flags")]
         public ApplicationFlags? Flags { get; set; }
-        
+
         /// <summary>
         /// An approximate count of the app's guild membership.
         /// </summary>
         [JsonProperty("approximate_guild_count")]
-        public int? ApproximateGuildCount { get; set; } 
-                
+        public int? ApproximateGuildCount { get; set; }
+
+        /// <summary>
+        /// Approximate count of users that have installed the app
+        /// </summary>
+        [JsonProperty("approximate_user_install_count")]
+        public int? ApproximateUserInstallCount { get; set; }
+
         /// <summary>
         /// Array of redirect URIs for the app
         /// </summary>
         [JsonProperty("redirect_uris")]
-        public List<string> RedirectUris { get; set; } 
-        
+        public List<string> RedirectUris { get; set; }
+
         /// <summary>
         /// Interactions endpoint URL for the app
         /// </summary>
         [JsonProperty("interactions_endpoint_url")]
-        public string InteractionsEndpointUrl { get; set; } 
-        
+        public string InteractionsEndpointUrl { get; set; }
+
         /// <summary>
         /// Role connection verification URL for the app
         /// </summary>
         [JsonProperty("role_connections_verification_url")]
-        public string RoleConnectionsVerificationUrl { get; set; } 
+        public string RoleConnectionsVerificationUrl { get; set; }
         
+        /// <summary>
+        /// Event webhooks URL for the app to receive webhook events
+        /// </summary>
+        [JsonProperty("event_webhooks_url")]
+        public string EventWebhooksUrl { get; set; }
+        
+        /// <summary>
+        /// Event webhooks URL for the app to receive webhook events
+        /// </summary>
+        [JsonProperty("event_webhooks_types")]
+        public WebhookEventType? EventWebhooksTypes { get; set; }
+
         /// <summary>
         /// Up to 5 tags describing the content and functionality of the application
         /// </summary>
         [JsonProperty("tags")]
-        public List<string> Tags { get; set; } 
-        
+        public List<string> Tags { get; set; }
+
         /// <summary>
         /// Settings for the application's default in-app authorization link, if enabled
         /// </summary>
         [JsonProperty("install_params")]
-        public InstallParams InstallParams { get; set; } 
-        
+        public InstallParams InstallParams { get; set; }
+
         /// <summary>
         /// Default scopes and permissions for each supported installation context
         /// </summary>
         [JsonProperty("integration_types_config")]
         public Hash<ApplicationIntegrationType, ApplicationIntegrationTypeConfiguration> IntegrationTypesConfig { get; set; }
-        
+
         /// <summary>
         /// The application's default custom authorization link, if enabled
         /// </summary>
         [JsonProperty("custom_install_url")]
-        public string CustomInstallUrl { get; set; } 
+        public string CustomInstallUrl { get; set; }
 
         /// <summary>
         /// Returns the URL for the applications Icon
         /// </summary>
         public string GetApplicationIconUrl => DiscordCdn.GetApplicationIconUrl(Id, Icon);
-        
+
         /// <summary>
         /// Returns the URL for the application cover
         /// </summary>
         public string GetApplicationCoverUrl => DiscordCdn.GetApplicationIconUrl(Id, CoverImage);
-        
+
         /// <summary>
         /// Returns if the given application has the passed in application flag
         /// If <see cref="Flags"/> is null false is returned
@@ -200,7 +218,7 @@ namespace Oxide.Ext.Discord.Entities
         {
             return Flags.HasValue && (Flags.Value & flag) == flag;
         }
-        
+
         /// <summary>
         /// Returns if the given application has any of the passed in application flags
         /// If <see cref="Flags"/> is null false is returned
@@ -218,7 +236,7 @@ namespace Oxide.Ext.Discord.Entities
         /// </summary>
         public static IPromise<DiscordApplication> Get(DiscordClient client)
         {
-            return client.Bot.Rest.Get<DiscordApplication>(client,"applications/@me");
+            return client.Bot.Rest.Get<DiscordApplication>(client, "applications/@me");
         }
 
         /// <summary>
@@ -230,7 +248,7 @@ namespace Oxide.Ext.Discord.Entities
         {
             return client.Bot.Rest.Patch<DiscordApplication>(client, "applications/@me", update);
         }
-        
+
         /// <summary>
         /// Fetch all of the global commands for your application.
         /// Returns a list of ApplicationCommand.
@@ -240,7 +258,7 @@ namespace Oxide.Ext.Discord.Entities
         /// </summary>
         public IPromise<List<DiscordApplicationCommand>> GetGlobalCommands(DiscordClient client, bool withLocalizations = false)
         {
-            return client.Bot.Rest.Get<List<DiscordApplicationCommand>>(client,$"applications/{Id}/commands?with_localizations={withLocalizations}");
+            return client.Bot.Rest.Get<List<DiscordApplicationCommand>>(client, $"applications/{Id}/commands?with_localizations={withLocalizations}");
         }
 
         /// <summary>
@@ -252,9 +270,9 @@ namespace Oxide.Ext.Discord.Entities
         public IPromise<DiscordApplicationCommand> GetGlobalCommand(DiscordClient client, Snowflake commandId)
         {
             InvalidSnowflakeException.ThrowIfInvalid(commandId);
-            return client.Bot.Rest.Get<DiscordApplicationCommand>(client,$"applications/{Id}/commands/{commandId}");
+            return client.Bot.Rest.Get<DiscordApplicationCommand>(client, $"applications/{Id}/commands/{commandId}");
         }
-        
+
         /// <summary>
         /// Create a new global command.
         /// New global commands will be available in all guilds after 1 hour.
@@ -266,7 +284,7 @@ namespace Oxide.Ext.Discord.Entities
         public IPromise<DiscordApplicationCommand> CreateGlobalCommand(DiscordClient client, CommandCreate create)
         {
             if (create == null) throw new ArgumentNullException(nameof(create));
-            return client.Bot.Rest.Post<DiscordApplicationCommand>(client,$"applications/{Id}/commands", create);
+            return client.Bot.Rest.Post<DiscordApplicationCommand>(client, $"applications/{Id}/commands", create);
         }
 
         /// <summary>
@@ -278,7 +296,7 @@ namespace Oxide.Ext.Discord.Entities
         public IPromise<List<DiscordApplicationCommand>> BulkOverwriteGlobalCommands(DiscordClient client, List<CommandBulkOverwrite> commands)
         {
             if (commands == null) throw new ArgumentNullException(nameof(commands));
-            return client.Bot.Rest.Put<List<DiscordApplicationCommand>>(client,$"applications/{Id}/commands", commands);
+            return client.Bot.Rest.Put<List<DiscordApplicationCommand>>(client, $"applications/{Id}/commands", commands);
         }
 
         /// <summary>
@@ -291,7 +309,7 @@ namespace Oxide.Ext.Discord.Entities
         public IPromise<List<DiscordApplicationCommand>> GetGuildCommands(DiscordClient client, Snowflake guildId, bool withLocalizations = false)
         {
             InvalidSnowflakeException.ThrowIfInvalid(guildId);
-            return client.Bot.Rest.Get<List<DiscordApplicationCommand>>(client,$"applications/{Id}/guilds/{guildId}/commands?with_localizations={withLocalizations}");
+            return client.Bot.Rest.Get<List<DiscordApplicationCommand>>(client, $"applications/{Id}/guilds/{guildId}/commands?with_localizations={withLocalizations}");
         }
 
         /// <summary>
@@ -305,7 +323,7 @@ namespace Oxide.Ext.Discord.Entities
         {
             InvalidSnowflakeException.ThrowIfInvalid(guildId);
             InvalidSnowflakeException.ThrowIfInvalid(commandId);
-            return client.Bot.Rest.Get<DiscordApplicationCommand>(client,$"applications/{Id}/guilds/{guildId}/commands/{commandId}");
+            return client.Bot.Rest.Get<DiscordApplicationCommand>(client, $"applications/{Id}/guilds/{guildId}/commands/{commandId}");
         }
 
         /// <summary>
@@ -320,7 +338,7 @@ namespace Oxide.Ext.Discord.Entities
         {
             if (create == null) throw new ArgumentNullException(nameof(create));
             InvalidSnowflakeException.ThrowIfInvalid(guildId);
-            return client.Bot.Rest.Post<DiscordApplicationCommand>(client,$"applications/{Id}/guilds/{guildId}/commands", create);
+            return client.Bot.Rest.Post<DiscordApplicationCommand>(client, $"applications/{Id}/guilds/{guildId}/commands", create);
         }
 
         /// <summary>
@@ -332,7 +350,7 @@ namespace Oxide.Ext.Discord.Entities
         public IPromise<List<GuildCommandPermissions>> GetGuildCommandPermissions(DiscordClient client, Snowflake guildId)
         {
             InvalidSnowflakeException.ThrowIfInvalid(guildId);
-            return client.Bot.Rest.Get<List<GuildCommandPermissions>>(client,$"applications/{Id}/guilds/{guildId}/commands/permissions");
+            return client.Bot.Rest.Get<List<GuildCommandPermissions>>(client, $"applications/{Id}/guilds/{guildId}/commands/permissions");
         }
 
         /// <summary>
@@ -352,7 +370,7 @@ namespace Oxide.Ext.Discord.Entities
                 .Then(commands => commands
                     .SelectMany(c => c).ToList());
         }
-        
+
         /// <summary>
         /// Returns a list of application role connection metadata objects for the given application.
         /// See <a href="https://discord.com/developers/docs/resources/application-role-connection-metadata#get-application-role-connection-metadata-records">Get Application Role Connection Metadata Records</a>
@@ -360,7 +378,7 @@ namespace Oxide.Ext.Discord.Entities
         /// <param name="client">Client to use</param>
         public IPromise<List<ApplicationRoleConnectionMetadata>> GetRoleConnectionMetadata(DiscordClient client)
         {
-            return client.Bot.Rest.Get<List<ApplicationRoleConnectionMetadata>>(client,$"applications/{Id}/role-connections/metadata");
+            return client.Bot.Rest.Get<List<ApplicationRoleConnectionMetadata>>(client, $"applications/{Id}/role-connections/metadata");
         }
 
         /// <summary>
@@ -372,7 +390,7 @@ namespace Oxide.Ext.Discord.Entities
         public IPromise<List<ApplicationRoleConnectionMetadata>> EditRoleConnectionMetadata(DiscordClient client, List<ApplicationRoleConnectionMetadata> records)
         {
             DiscordApplicationException.ThrowIfInvalidApplicationRoleConnectionMetadataLength(records);
-            return client.Bot.Rest.Put<List<ApplicationRoleConnectionMetadata>>(client,$"applications/{Id}/role-connections/metadata", records);
+            return client.Bot.Rest.Put<List<ApplicationRoleConnectionMetadata>>(client, $"applications/{Id}/role-connections/metadata", records);
         }
 
         /// <summary>
@@ -416,7 +434,7 @@ namespace Oxide.Ext.Discord.Entities
             InvalidSnowflakeException.ThrowIfInvalid(emojiId);
             return client.Bot.Rest.Patch<DiscordEmoji>(client, $"applications/{Id}/emojis/{emojiId}", update);
         }
-        
+
         /// <summary>
         /// Deletes an application emoji
         /// </summary>
@@ -426,6 +444,17 @@ namespace Oxide.Ext.Discord.Entities
         {
             InvalidSnowflakeException.ThrowIfInvalid(emojiId);
             return client.Bot.Rest.Delete(client, $"applications/{Id}/emojis/{emojiId}");
+        }
+
+        /// <summary>
+        /// Deletes an application emoji
+        /// </summary>
+        /// <param name="client">Client to use</param>
+        /// <param name="instanceId">Instance ID of the activity</param>
+        /// >
+        public IPromise<ActivityInstance> GetApplicationActivityInstance(DiscordClient client, string instanceId)
+        {
+            return client.Bot.Rest.Get<ActivityInstance>(client, $"applications/{Id}/activity-instances/{instanceId}");
         }
 
         ///<inheritdoc/>

@@ -13,6 +13,7 @@ public enum GuildNavigationType
 | Customize | `Customize` | Customize tab with the server's onboarding prompts |
 | Browse | `Browse` | Browse Channels tab |
 | Guide | `Guide` | [ Server Guide](https://support.discord.com/hc/en-us/articles/13497665141655) |
+| LinkedRoles | `LinkedRoles` | [ Linked Roles](https://support.discord.com/hc/en-us/articles/10388356626711) |
 
 ## See Also
 

@@ -1747,6 +1747,26 @@
             Cached Emoji Data
             </summary>
         </member>
+        <member name="F:Oxide.Ext.Discord.Cache.EmojiCache.EmojiRegex">
+            <summary>
+            Regex for unicode emoji characters
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Cache.EmojiCache.TextRegex">
+            <summary>
+            Regex for discord :emoji: strings
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Cache.EmojiCache.EmojiToTextOrDefault">
+            <summary>
+            Regex MatchEvaluator for emoji to text or matched value
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Cache.EmojiCache.TextToEmojiOrDefault">
+            <summary>
+            Regex MatchEvaluator for text to emoji or matched value
+            </summary>
+        </member>
         <member name="M:Oxide.Ext.Discord.Cache.EmojiCache.EmojiToText(System.String)">
             <summary>
             Convert an emoji character to the emoji string text
@@ -2249,6 +2269,11 @@
             Webhook clients for this DiscordClient
             </summary>
         </member>
+        <member name="P:Oxide.Ext.Discord.Clients.DiscordClient.JsonSettings">
+            <summary>
+            Json settings for the discord client
+            </summary>
+        </member>
         <member name="P:Oxide.Ext.Discord.Clients.DiscordClient.Connection">
             <summary>
             Settings used to connect to discord and configure the extension
@@ -2313,6 +2338,12 @@
             Used to update the bot status in discord
             </summary>
             <param name="presenceUpdate"></param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Clients.DiscordClient.GetSoundboardSounds(Oxide.Ext.Discord.Entities.GetSoundboardSoundsCommand)">
+            <summary>
+            Request the list of soundboard sounds for the given guilds
+            </summary>
+            <param name="request"></param>
         </member>
         <member name="T:Oxide.Ext.Discord.Clients.WebhookClient">
             <summary>
@@ -2579,6 +2610,11 @@
         <member name="F:Oxide.Ext.Discord.Connections.WebhookConnection.WebhookToken">
             <summary>
             Token for the webhook
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Connections.WebhookConnection.WebhookUrl">
+            <summary>
+            URL of the webhook
             </summary>
         </member>
         <member name="P:Oxide.Ext.Discord.Connections.WebhookConnection.LogLevel">
@@ -3618,6 +3654,17 @@
             </code>
             </summary>
         </member>
+        <member name="F:Oxide.Ext.Discord.Constants.DiscordExtHooks.OnDiscordVoiceChannelEffect">
+            <summary>
+            Sent when someone sends an effect, such as an emoji reaction or a soundboard sound, in a voice channel the current user is connected to.
+            <code>
+            void OnDiscordVoiceChannelEffect(VoiceChannelEffectEvent effect, DiscordGuild guild)
+            {
+                Puts("OnDiscordVoiceChannelEffect Works!");
+            }
+            </code>
+            </summary>
+        </member>
         <member name="F:Oxide.Ext.Discord.Constants.DiscordExtHooks.OnDiscordGuildVoiceServerUpdated">
             <summary>
             Called when the voice server in a guild channel is updated
@@ -3836,6 +3883,83 @@
             void OnDiscordStageInstanceDeleted(StageInstance stage, DiscordGuild guild)
             {
                 Puts("OnDiscordStageInstanceDeleted Works!");
+            }
+            </code>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Constants.DiscordExtHooks.OnDiscordSubscriptionCreated">
+            <summary>
+            Called when a subscription is created
+            <code>
+            void OnDiscordSubscriptionCreated(DiscordSubscription subscription)
+            {
+                Puts("OnDiscordSubscriptionCreated Works!");
+            }
+            </code>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Constants.DiscordExtHooks.OnDiscordSubscriptionUpdated">
+            <summary>
+            Called when a subscription is updated
+            <code>
+            void OnDiscordSubscriptionUpdated(DiscordSubscription subscription)
+            {
+                Puts("OnDiscordSubscriptionUpdated Works!");
+            }
+            </code>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Constants.DiscordExtHooks.OnDiscordSubscriptionDeleted">
+            <summary>
+            Called when a subscription is deleted
+            <code>
+            void OnDiscordSubscriptionDeleted(DiscordSubscription subscription)
+            {
+                Puts("OnDiscordSubscriptionDeleted Works!");
+            }
+            </code>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Constants.DiscordExtHooks.OnDiscordGuildSoundboardCreated">
+            <summary>
+            Called when a guild soundboard is created
+            <code>
+            void OnDiscordGuildSoundboardCreated(DiscordSoundboard soundboard, DiscordGuild guid)
+            {
+                Puts("OnDiscordGuildSoundboardCreated Works!");
+            }
+            </code>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Constants.DiscordExtHooks.OnDiscordGuildSoundboardUpdated">
+            <summary>
+            Called when a guild soundboard is updated
+            <code>
+            void OnDiscordGuildSoundboardUpdated(DiscordSoundboard soundboard, DiscordGuild guid)
+            {
+                Puts("OnDiscordGuildSoundboardUpdated Works!");
+            }
+            </code>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Constants.DiscordExtHooks.OnDiscordGuildSoundboardDeleted">
+            <summary>
+            Called when a guild soundboard is deleted
+            <code>
+            void OnDiscordGuildSoundboardDeleted(DiscordSoundboard soundboard, DiscordGuild guid)
+            {
+                Puts("OnDiscordGuildSoundboardDeleted Works!");
+            }
+            </code>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Constants.DiscordExtHooks.OnDiscordGetGuildSoundboardSounds">
+            <summary>
+            Called when a guild soundboard is deleted
+            <code>
+            void OnDiscordGetGuildSoundboardSounds(List&lt;DiscordSoundboard&gt; soundboard, DiscordGuild guid)
+            {
+                Puts("OnDiscordGetGuildSoundboardSounds Works!");
             }
             </code>
             </summary>
@@ -4109,6 +4233,76 @@
         <member name="F:Oxide.Ext.Discord.Entities.ActivityFlags.Embedded">
             <summary>
             User is playing embedded activity
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.ActivityInstance">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/application#get-application-activity-instance-activity-instance-object">Activity Instance</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.ActivityInstance.ApplicationId">
+            <summary>
+            Application ID
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.ActivityInstance.InstanceId">
+            <summary>
+            Activity Instance ID
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.ActivityInstance.LaunchId">
+            <summary>
+            Unique identifier for the launch
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.ActivityInstance.Location">
+            <summary>
+            The Location the instance is running in
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.ActivityInstance.Users">
+            <summary>
+            The IDs of the Users currently connected to the instance
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.ActivityLocation">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/application#get-application-activity-instance-activity-location-object">Activity Location</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.ActivityLocation.Id">
+            <summary>
+            The unique identifier for the location
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.ActivityLocation.Kind">
+            <summary>
+            Enum describing kind of location
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.ActivityLocation.ChannelId">
+            <summary>
+            The ID of the Channel
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.ActivityLocation.GuildId">
+            <summary>
+            The ID of the Guild
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.ActivityLocationKind">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/application#get-application-activity-instance-activity-location-kind-enum">Activity Location Kind Enum</a>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.ActivityLocationKind.GuildChannel">
+            <summary>
+            The Location is a Guild Channel
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.ActivityLocationKind.PrivateChannel">
+            <summary>
+            The Location is a Private Channel, such as a DM or GDM
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.ActivityParty">
@@ -4856,6 +5050,11 @@
             An approximate count of the app's guild membership.
             </summary>
         </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordApplication.ApproximateUserInstallCount">
+            <summary>
+            Approximate count of users that have installed the app
+            </summary>
+        </member>
         <member name="P:Oxide.Ext.Discord.Entities.DiscordApplication.RedirectUris">
             <summary>
             Array of redirect URIs for the app
@@ -4869,6 +5068,16 @@
         <member name="P:Oxide.Ext.Discord.Entities.DiscordApplication.RoleConnectionsVerificationUrl">
             <summary>
             Role connection verification URL for the app
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordApplication.EventWebhooksUrl">
+            <summary>
+            Event webhooks URL for the app to receive webhook events
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordApplication.EventWebhooksTypes">
+            <summary>
+            Event webhooks URL for the app to receive webhook events
             </summary>
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.DiscordApplication.Tags">
@@ -5057,6 +5266,14 @@
             </summary>
             <param name="client">Client to use</param>
             <param name="emojiId">ID of the emoji to delete</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordApplication.GetApplicationActivityInstance(Oxide.Ext.Discord.Clients.DiscordClient,System.String)">
+            <summary>
+            Deletes an application emoji
+            </summary>
+            <param name="client">Client to use</param>
+            <param name="instanceId">Instance ID of the activity</param>
+            >
         </member>
         <member name="M:Oxide.Ext.Discord.Entities.DiscordApplication.LogDebug(Oxide.Ext.Discord.Logging.DebugLogger)">
             <inheritdoc/>
@@ -6448,6 +6665,14 @@
             </summary>
             <param name="client">Client to use</param>
         </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordChannel.SendSoundboardSound(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.SendSoundboardSound)">
+            <summary>
+            Sends a soundboard sound to the channel
+            See <a href="https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound">Send Soundboard Sound</a>
+            </summary>
+            <param name="client">Client to use</param>
+            <param name="request">Sound to send</param>
+        </member>
         <member name="M:Oxide.Ext.Discord.Entities.DiscordChannel.LogDebug(Oxide.Ext.Discord.Logging.DebugLogger)">
             <inheritdoc/>
         </member>
@@ -6668,6 +6893,32 @@
             <summary>
             This permission belongs to a member
             </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.SendSoundboardSound">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound-json-params">Send Soundboard Sound Request</a> in Discord
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SendSoundboardSound.SoundId">
+            <summary>
+            Id of the soundboard sound to play
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SendSoundboardSound.SourceGuildId">
+            <summary>
+            Id of the guild the soundboard sound is from, required to play sounds from different servers
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.SendSoundboardSound.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.SendSoundboardSound.#ctor(Oxide.Ext.Discord.Entities.DiscordSoundboardSound)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="sound">Sound to send</param>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.SortOrderType">
             <summary>
@@ -7370,6 +7621,31 @@
         <member name="M:Oxide.Ext.Discord.Entities.DiscordColor.GetHashCode">
             <inheritdoc />
         </member>
+        <member name="T:Oxide.Ext.Discord.Entities.DiscordFileSize">
+            <summary>
+            Represents an image size
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.DiscordFileSize.Bytes">
+            <summary>
+            Image Size in bytes
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.DiscordFileSize.KiloBytes">
+            <summary>
+            Image size in kilobytes
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.DiscordFileSize.MegaBytes">
+            <summary>
+            Image Size in megabytes
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.DiscordFileSize.GigaBytes">
+            <summary>
+            Image Size in gigabytes
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.DefaultReaction">
             <summary>
             Represents <a href="https://discord.com/developers/docs/resources/channel#followed-channel-object">Default Reaction Structure</a>
@@ -7585,6 +7861,21 @@
         <member name="F:Oxide.Ext.Discord.Entities.GatewayCommandCode.RequestGuildMembers">
             <summary>
             Request information about offline guild members in a large guild.
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.GatewayCommandCode.RequestSoundboardSounds">
+            <summary>
+            Request information about soundboard sounds in a set of guilds.
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.GetSoundboardSoundsCommand">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/topics/gateway#update-voice-state">Update Voice State</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.GetSoundboardSoundsCommand.GuildIds">
+            <summary>
+            IDs of the guilds to get soundboard sounds for
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.GuildMembersRequestCommand">
@@ -7996,6 +8287,21 @@
             <summary>
             Represents <a href="https://discord.com/developers/docs/topics/gateway#resumed">Resumed</a>
             The resumed event is dispatched when a client has sent a resume payload to the gateway (for resuming existing sessions).
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.GetGuildSoundboardSoundsEvent">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/events/gateway-events#soundboard-sounds-soundboard-sounds-event-fields">Soundboard Sounds Event Fields</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.GetGuildSoundboardSoundsEvent.SoundboardSounds">
+            <summary>
+            The guild's soundboard sounds
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.GetGuildSoundboardSoundsEvent.GuildId">
+            <summary>
+            ID of the guild the sound was in
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.GuildEmojisUpdatedEvent">
@@ -8589,6 +8895,36 @@
             User's platform-dependent status
             </summary>
         </member>
+        <member name="T:Oxide.Ext.Discord.Entities.SoundboardDeletedEvent">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-delete-guild-soundboard-sound-delete-event-fields">Guild Soundboard Sound Delete</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardDeletedEvent.SoundId">
+            <summary>
+            ID of the sound that was deleted
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardDeletedEvent.GuildId">
+            <summary>
+            ID of the guild the sound was in
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.SoundboardSoundsUpdatedEvent">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sounds-update-guild-soundboard-sounds-update-event-fields">Guild Soundboard Sounds Update</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundsUpdatedEvent.SoundboardSounds">
+            <summary>
+            The guild's soundboard sounds
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundsUpdatedEvent.GuildId">
+            <summary>
+            ID of the guild the sound was in
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.ThreadListSyncEvent">
             <summary>
             Represents <a href="https://discord.com/developers/docs/topics/gateway#thread-list-sync-thread-list-sync-event-fields">Thread List Sync</a>
@@ -8682,6 +9018,51 @@
         <member name="P:Oxide.Ext.Discord.Entities.TypingStartedEvent.Member">
             <summary>
             The member who started typing if this happened in a guild
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.VoiceChannelEffectEvent">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/topics/gateway#voice-server-update">Voice Server Update</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.VoiceChannelEffectEvent.ChannelId">
+            <summary>
+            ID of the channel the effect was sent in
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.VoiceChannelEffectEvent.GuildId">
+            <summary>
+            ID of the guild the effect was sent in
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.VoiceChannelEffectEvent.UserId">
+            <summary>
+            ID of the user who sent the effect
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.VoiceChannelEffectEvent.Emoji">
+            <summary>
+            The emoji sent, for emoji reaction and soundboard effects
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.VoiceChannelEffectEvent.AnimationType">
+            <summary>
+            The type of emoji animation, for emoji reaction and soundboard effects
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.VoiceChannelEffectEvent.AnimationId">
+            <summary>
+            The ID of the emoji animation, for emoji reaction and soundboard effects
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.VoiceChannelEffectEvent.SoundId">
+            <summary>
+            The ID of the soundboard sound, for soundboard effects
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.VoiceChannelEffectEvent.SoundVolume">
+            <summary>
+            The volume of the soundboard sound, from 0 to 1, for soundboard effects
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.VoiceServerUpdatedEvent">
@@ -8797,6 +9178,16 @@
             <summary>
             - GUILD_EMOJIS_UPDATE
             - GUILD_STICKERS_UPDATE
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.GatewayIntents.GuildExpressions">
+            <summary>
+            - GUILD_EMOJIS_UPDATE
+            - GUILD_STICKERS_UPDATE
+            - GUILD_SOUNDBOARD_SOUND_CREATE
+            - GUILD_SOUNDBOARD_SOUND_UPDATE
+            - GUILD_SOUNDBOARD_SOUND_DELETE
+            - GUILD_SOUNDBOARD_SOUNDS_UPDATE
             </summary>
         </member>
         <member name="F:Oxide.Ext.Discord.Entities.GatewayIntents.GuildIntegrations">
@@ -9183,9 +9574,15 @@
             <see cref="T:Oxide.Ext.Discord.Entities.DiscordSticker"/>
             </summary>
         </member>
-        <member name="P:Oxide.Ext.Discord.Entities.DiscordGuild.PremiumProgressBarEnabled">
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordGuild.SoundboardSounds">
             <summary>
             The scheduled events in the guild
+            <see cref="T:Oxide.Ext.Discord.Entities.DiscordSticker"/>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordGuild.PremiumProgressBarEnabled">
+            <summary>
+            Whether the guild has the boost progress bar enabled
             </summary>
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.DiscordGuild.SafetyAlertsChannelId">
@@ -9543,6 +9940,14 @@
             </summary>
             <param name="client">Client to use</param>
         </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordGuild.GetRole(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.Snowflake)">
+            <summary>
+            Returns a role object for the specified role.
+            See <a href="https://discord.com/developers/docs/resources/guild#get-guild-role">Get Guild Role</a>
+            </summary>
+            <param name="client">Client to use</param>
+            <param name="roleId">ID of the role</param>
+        </member>
         <member name="M:Oxide.Ext.Discord.Entities.DiscordGuild.CreateRole(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.DiscordRole)">
             <summary>
             Create a new role for the guild.
@@ -9766,10 +10171,25 @@
             <param name="client">Client to use</param>
             <param name="emojiId">Emoji ID to delete</param>
         </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordGuild.GetCurrentUserVoiceState(Oxide.Ext.Discord.Clients.DiscordClient)">
+            <summary>
+            Get Current User Voice State
+            See <a href="https://discord.com/developers/docs/resources/voice#get-user-voice-state">Get Current User Voice State</a>
+            </summary>
+            <param name="client">Client to use</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordGuild.GetUserVoiceState(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.Snowflake)">
+            <summary>
+            Get Current User Voice State
+            See <a href="https://discord.com/developers/docs/resources/voice#get-user-voice-state">Get User Voice State</a>
+            </summary>
+            <param name="client">Client to use</param>
+            <param name="userId">User ID to get the voice state for</param>
+        </member>
         <member name="M:Oxide.Ext.Discord.Entities.DiscordGuild.EditCurrentUserVoiceState(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.GuildCurrentUserVoiceStateUpdate)">
             <summary>
             Modifies the current user's voice state.
-            See <a href="https://discord.com/developers/docs/resources/guild#modify-current-user-voice-state">Update Current User Voice State</a>
+            See <a href="https://discord.com/developers/docs/resources/voice#modify-current-user-voice-state">Update Current User Voice State</a>
             </summary>
             <param name="client">Client to use</param>
             <param name="update">Update to the guild voice state</param>
@@ -9777,7 +10197,7 @@
         <member name="M:Oxide.Ext.Discord.Entities.DiscordGuild.EditUserVoiceState(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.Snowflake,Oxide.Ext.Discord.Entities.GuildUserVoiceStateUpdate)">
             <summary>
             Modifies another user's voice state.
-            See <a href="https://discord.com/developers/docs/resources/guild#modify-user-voice-state">Update Users Voice State</a>
+            See <a href="https://discord.com/developers/docs/resources/voice#modify-user-voice-state">Update Users Voice State</a>
             </summary>
             <param name="client">Client to use</param>
             <param name="userId">User to modify</param>
@@ -9853,6 +10273,21 @@
             <param name="update">Update for the guild onboarding</param>
             See <a href="">Modify Guild Onboarding</a>
         </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordGuild.GetGuildSounds(Oxide.Ext.Discord.Clients.DiscordClient)">
+            <summary>
+            Returns a list of the guild's soundboard sounds
+            See <a href="https://discord.com/developers/docs/resources/soundboard#list-guild-soundboard-sounds">List Guild Soundboard Sounds</a>
+            </summary>
+            <param name="client">Client to use</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordGuild.GetGuildSound(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.Snowflake)">
+            <summary>
+            Returns a soundboard sound object for the given sound id
+            See <a href="https://discord.com/developers/docs/resources/soundboard#get-guild-soundboard-sound">Get Guild Soundboard Sound</a>
+            </summary>
+            <param name="client">Client to use</param>
+            <param name="soundId">ID of the guild sound</param>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.ExplicitContentFilterLevel">
             <summary>
             Represents <a href="https://discord.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level">Explicit Content Filter Level</a>
@@ -9871,6 +10306,16 @@
         <member name="F:Oxide.Ext.Discord.Entities.ExplicitContentFilterLevel.AllMembers">
             <summary>
             Filter for all members
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.GetGuildSoundsResponse">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/soundboard#list-guild-soundboard-sounds-response-structure">Get Guild Sounds Response</a> in Discord
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.GetGuildSoundsResponse.Items">
+            <summary>
+            Soundboard sounds for the guild
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.GuildBan">
@@ -10106,6 +10551,11 @@
             Guild has enabled Membership Screening
             </summary>
         </member>
+        <member name="F:Oxide.Ext.Discord.Entities.GuildFeatures.MoreSoundboard">
+            <summary>
+            Guild has increased custom soundboard sound slots   
+            </summary>
+        </member>
         <member name="F:Oxide.Ext.Discord.Entities.GuildFeatures.MoreStickers">
             <summary>
             Guild has increased custom sticker slots
@@ -10144,6 +10594,11 @@
         <member name="F:Oxide.Ext.Discord.Entities.GuildFeatures.RoleSubscriptionsEnabled">
             <summary>
             Guild has enabled role subscriptions
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.GuildFeatures.Soundboard">
+            <summary>
+            Guild has created soundboard sounds
             </summary>
         </member>
         <member name="F:Oxide.Ext.Discord.Entities.GuildFeatures.TicketedEventsEnabled">
@@ -10216,6 +10671,11 @@
         <member name="P:Oxide.Ext.Discord.Entities.GuildMember.Avatar">
             <summary>
             The member's guild avatar hash
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.GuildMember.Banner">
+            <summary>
+            The member's guild banner hash
             </summary>
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.GuildMember.Roles">
@@ -10371,6 +10831,36 @@
             Editable: False
             </summary>
         </member>
+        <member name="F:Oxide.Ext.Discord.Entities.GuildMemberFlags.IsGuest">
+            <summary>
+            Member is a guest and can only access the voice channel they were invited to
+            Editable: False
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.GuildMemberFlags.StartedHomeActions">
+            <summary>
+            Member has started Server Guide new member actions
+            Editable: False
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.GuildMemberFlags.CompletedHomeActions">
+            <summary>
+            Member has completed Server Guide new member actions
+            Editable: False
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.GuildMemberFlags.AutoModQuarantinedUsername">
+            <summary>
+            Member's username, display name, or nickname is blocked by AutoMod
+            Editable: False
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.GuildMemberFlags.DmSettingsUpsellAcknowledged">
+            <summary>
+            Member has dismissed the DM settings upsell
+            Editable: False
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.GuildMemberUpdate">
             <summary>
             Represents <a href="https://discord.com/developers/docs/resources/guild#modify-guild-member-json-params">Guild Member Update Structure</a>
@@ -10449,6 +10939,11 @@
         <member name="F:Oxide.Ext.Discord.Entities.GuildNavigationType.Guide">
             <summary>
             <a href="https://support.discord.com/hc/en-us/articles/13497665141655">	Server Guide</a>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.GuildNavigationType.LinkedRoles">
+            <summary>
+            <a href="https://support.discord.com/hc/en-us/articles/10388356626711"> Linked Roles</a>
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.GuildNsfwLevel">
@@ -11157,6 +11652,16 @@
             The number of users subscribed to the scheduled event
             </summary>
         </member>
+        <member name="P:Oxide.Ext.Discord.Entities.GuildScheduledEvent.Image">
+            <summary>
+            The cover image hash of the scheduled event
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.GuildScheduledEvent.RecurrenceRule">
+            <summary>
+            The cover image hash of the scheduled event
+            </summary>
+        </member>
         <member name="M:Oxide.Ext.Discord.Entities.GuildScheduledEvent.GetGuildEvents(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.Snowflake,Oxide.Ext.Discord.Entities.ScheduledEventLookup)">
             <summary>
             Returns a list of guild scheduled event objects for the given guild.
@@ -11219,6 +11724,207 @@
             <param name="eventId">Id of the event to get users for</param>
             <param name="lookup">Query string parameters</param>
         </member>
+        <member name="T:Oxide.Ext.Discord.Entities.RecurrenceRule">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object">Guild Scheduled Event Recurrence Rule Object</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.RecurrenceRule.Start">
+            <summary>
+            Starting time of the recurrence interval
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.RecurrenceRule.End">
+            <summary>
+            Ending time of the recurrence interval
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.RecurrenceRule.Frequency">
+            <summary>
+            Ending time of the recurrence interval
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.RecurrenceRule.Interval">
+            <summary>
+            The spacing between the events, defined by frequency.
+            For example, frequency of WEEKLY and an interval of 2 would be "every-other week"
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.RecurrenceRule.ByWeekday">
+            <summary>
+            Set of specific days within a week for the event to recur on
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.RecurrenceRule.ByNWeekday">
+            <summary>
+            List of specific days within a specific week (1-5) to recur on
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.RecurrenceRule.ByMonth">
+            <summary>
+            Set of specific months to recur on
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.RecurrenceRule.ByMonthDay">
+            <summary>
+            Set of specific dates within a month to recur on
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.RecurrenceRule.ByYearDay">
+            <summary>
+            Set of days within a year to recur on (1-364)
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.RecurrenceRule.Count">
+            <summary>
+            The total amount of times that the event is allowed to recur before stopping
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.RecurrenceRuleFrequency">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-frequency">Guild Scheduled Event Recurrence Rule Frequency</a>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleFrequency.Yearly">
+            <summary>
+            Yearly Recurrence Rule Frequency
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleFrequency.Monthly">
+            <summary>
+            Monthy Recurrence Rule Frequency
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleFrequency.Weekly">
+            <summary>
+            Weekly Recurrence Rule Frequency
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleFrequency.Daily">
+            <summary>
+            Daily Recurrence Rule Frequency
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-month">Guild Scheduled Event Recurrence Rule Month</a>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.January">
+            <summary>
+            January Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.February">
+            <summary>
+            February Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.March">
+            <summary>
+            March Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.April">
+            <summary>
+            April Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.May">
+            <summary>
+            May Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.June">
+            <summary>
+            June Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.July">
+            <summary>
+            July Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.August">
+            <summary>
+            August Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.September">
+            <summary>
+            September Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.October">
+            <summary>
+            October Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.November">
+            <summary>
+            November Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleMonth.December">
+            <summary>
+            December Recurrence Rule Month
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.RecurrenceRuleNWeekday">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-nweekday-structure">Guild Scheduled Event Recurrence Rule N Weekday Object</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.RecurrenceRuleNWeekday.N">
+            <summary>
+            The week to reoccur on. 1 - 5
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.RecurrenceRuleNWeekday.Day">
+            <summary>
+            The day within the week to reoccur on
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.RecurrenceRuleWeekday">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-weekday">Guild Scheduled Event Recurrence Rule Weekday</a>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleWeekday.Monday">
+            <summary>
+            Monday Recurrence Rule Weekday
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleWeekday.Tuesday">
+            <summary>
+            Tuesday Recurrence Rule Weekday
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleWeekday.Wednesday">
+            <summary>
+            Wednesday Recurrence Rule Weekday
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleWeekday.Thursday">
+            <summary>
+            Thursday Recurrence Rule Weekday
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleWeekday.Friday">
+            <summary>
+            Friday Recurrence Rule Weekday
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleWeekday.Saturday">
+            <summary>
+            Saturday Recurrence Rule Weekday
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RecurrenceRuleWeekday.Sunday">
+            <summary>
+            Sunday Recurrence Rule Weekday
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.ScheduledEventCreate">
             <summary>
             Represents <a href="https://discord.com/developers/docs/resources/guild-scheduled-event#create-guild-scheduled-event">Guild Scheduled Event Create</a> within discord
@@ -11267,6 +11973,11 @@
         <member name="P:Oxide.Ext.Discord.Entities.ScheduledEventCreate.Image">
             <summary>
             The cover image of the scheduled event
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.ScheduledEventCreate.RecurrenceRule">
+            <summary>
+            The definition for how often this event should recur
             </summary>
         </member>
         <member name="M:Oxide.Ext.Discord.Entities.ScheduledEventCreate.Validate">
@@ -11408,6 +12119,16 @@
             The status of the scheduled event
             </summary>
         </member>
+        <member name="P:Oxide.Ext.Discord.Entities.ScheduledEventUpdate.Image">
+            <summary>
+            The cover image of the scheduled event
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.ScheduledEventUpdate.RecurrenceRule">
+            <summary>
+            The definition for how often this event should recur
+            </summary>
+        </member>
         <member name="M:Oxide.Ext.Discord.Entities.ScheduledEventUpdate.Validate">
             <inheritdoc/>
         </member>
@@ -11541,6 +12262,12 @@
             The image data
             </summary>
         </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordImageData.IsValid">
+            <summary>
+            Returns if this struct has a valid image
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Oxide.Ext.Discord.Entities.DiscordImageData.#ctor(System.Byte[])">
             <summary>
             Constructor from a byte[] of the image
@@ -11563,20 +12290,6 @@
         <member name="M:Oxide.Ext.Discord.Entities.DiscordImageData.GetBase64Image">
             <summary>
             Returns the Base64 Image string for the image.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Oxide.Ext.Discord.Entities.DiscordImageData.GetImageSize(Oxide.Ext.Discord.Entities.DiscordImageSize)">
-            <summary>
-            Returns the image size in the given format
-            </summary>
-            <param name="size"></param>
-            <returns></returns>
-            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
-        </member>
-        <member name="M:Oxide.Ext.Discord.Entities.DiscordImageData.IsValid">
-            <summary>
-            Returns if this struct has a valid image
             </summary>
             <returns></returns>
         </member>
@@ -11621,31 +12334,6 @@
         <member name="F:Oxide.Ext.Discord.Entities.DiscordImageFormat.Lottie">
             <summary>
             Lottie Image
-            </summary>
-        </member>
-        <member name="T:Oxide.Ext.Discord.Entities.DiscordImageSize">
-            <summary>
-            Represents an image size
-            </summary>
-        </member>
-        <member name="F:Oxide.Ext.Discord.Entities.DiscordImageSize.Bytes">
-            <summary>
-            Image Size in bytes
-            </summary>
-        </member>
-        <member name="F:Oxide.Ext.Discord.Entities.DiscordImageSize.KiloBytes">
-            <summary>
-            Image size in kilobytes
-            </summary>
-        </member>
-        <member name="F:Oxide.Ext.Discord.Entities.DiscordImageSize.MegaBytes">
-            <summary>
-            Image Size in megabytes
-            </summary>
-        </member>
-        <member name="F:Oxide.Ext.Discord.Entities.DiscordImageSize.GigaBytes">
-            <summary>
-            Image Size in gigabytes
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.Integration">
@@ -11819,6 +12507,21 @@
             Period (in days) where the integration will ignore lapsed subscriptions
             </summary>
         </member>
+        <member name="T:Oxide.Ext.Discord.Entities.ApplicationCommandHandlerType">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/interactions/application-commands#application-command-object-entry-point-command-handler-types">Entry Point Command Handler Types</a>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.ApplicationCommandHandlerType.AppHandler">
+            <summary>
+            The app handles the interaction using an interaction token   
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.ApplicationCommandHandlerType.DiscordLaunchActivity">
+            <summary>
+            Discord handles the interaction by launching an Activity and sending a follow-up message without coordinating with the app  
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.ApplicationCommandType">
             <summary>
             Represents <a href="https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types">Application Command Type</a>
@@ -11837,6 +12540,11 @@
         <member name="F:Oxide.Ext.Discord.Entities.ApplicationCommandType.Message">
             <summary>
             A UI-based command that shows up when you right click or tap on a messages
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.ApplicationCommandType.PrimaryEntryPoint">
+            <summary>
+            A UI-based command that represents the primary way to invoke an app's Activity
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.CommandBulkOverwrite">
@@ -12381,6 +13089,11 @@
             Auto incrementing version identifier updated during substantial record changes
             </summary>
         </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordApplicationCommand.Handler">
+            <summary>
+            Determines whether the interaction is handled by the app's interactions handler or by Discord
+            </summary>
+        </member>
         <member name="P:Oxide.Ext.Discord.Entities.DiscordApplicationCommand.Mention">
             <summary>
             Mention the <see cref="T:Oxide.Ext.Discord.Entities.DiscordApplicationCommand"/>
@@ -12515,7 +13228,7 @@
         <member name="P:Oxide.Ext.Discord.Entities.DiscordInteraction.Token">
             <summary>
             Continuation token for responding to the interaction
-            Interaction tokens are valid for 15 minutes and can be used to send followup messages but you must send an initial response within 3 seconds of receiving the event.
+            tokens are valid for 15 minutes and can be used to send followup messages, but you must send an initial response within 3 seconds of receiving the event.
             If the 3 second deadline is exceeded, the token will be invalidated.
             </summary>
         </member>
@@ -12623,6 +13336,14 @@
             <returns></returns>
         </member>
         <member name="M:Oxide.Ext.Discord.Entities.DiscordInteraction.CreateResponse(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.BaseInteractionResponse)">
+            <summary>
+            Create a response to an Interaction from the gateway.
+            See <a href="https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response">Create Interaction Response</a>
+            </summary>
+            <param name="client">Client to use</param>
+            <param name="response">Response to respond with</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordInteraction.CreateResponseWithCallback(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.BaseInteractionResponse)">
             <summary>
             Create a response to an Interaction from the gateway.
             See <a href="https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response">Create Interaction Response</a>
@@ -12826,12 +13547,12 @@
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.InteractionData.Name">
             <summary>
-            The name of the invoked command
+            Name of the invoked command
             </summary>
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.InteractionData.Type">
             <summary>
-            The type of the invoked command
+            Type of the invoked command
             </summary>
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.InteractionData.Resolved">
@@ -12841,12 +13562,12 @@
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.InteractionData.Options">
             <summary>
-            The params + values from the user
+            Params + values from the user
             </summary>
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.InteractionData.GuildId">
             <summary>
-            The id of the guild the command is registered to
+            ID of the guild the command is registered to
             </summary>
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.InteractionData.CustomId">
@@ -12866,7 +13587,7 @@
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.InteractionData.TargetId">
             <summary>
-            Id the of user or message targeted by a user or message command
+            ID of user or message targeted by a user or message command
             </summary>
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.InteractionData.Components">
@@ -13112,32 +13833,32 @@
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.InteractionDataResolved.Users">
             <summary>
-            The IDs and User objects
+            IDs and User objects
             </summary>
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.InteractionDataResolved.Members">
             <summary>
-            The IDs and partial Member objects
+            IDs and partial Member objects
             </summary>
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.InteractionDataResolved.Roles">
             <summary>
-            The IDs and Role objects
+            IDs and Role objects
             </summary>
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.InteractionDataResolved.Channels">
             <summary>
-            The IDs and partial Channel objects
+            IDs and partial Channel objects
             </summary>
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.InteractionDataResolved.Messages">
             <summary>
-            The ids and partial Message objects
+            IDs and partial Message objects
             </summary>
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.InteractionDataResolved.Attachments">
             <summary>
-            The ids and attachment objects
+            IDs and attachment objects
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.InteractionResponseType">
@@ -13178,8 +13899,13 @@
         </member>
         <member name="F:Oxide.Ext.Discord.Entities.InteractionResponseType.Modal">
             <summary>
-            Respond to an interaction with an modal for a user to fill-out
+            Respond to an interaction with a popup modal      
             Note: You can't respond to a <see cref="F:Oxide.Ext.Discord.Entities.InteractionType.ModalSubmit">ModalSubmit</see> with a new MODAL.
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.InteractionResponseType.LaunchActivity">
+            <summary>
+            Launch the Activity associated with the app. Only available for apps with Activities enabled  
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.InteractionType">
@@ -13729,9 +14455,69 @@
             </summary>
             <param name="message">Message to use for the response</param>
         </member>
+        <member name="T:Oxide.Ext.Discord.Entities.InteractionCallback">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-callback-interaction-callback-object">Interaction Callback Object</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.InteractionCallback.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.InteractionCallback.Type">
+            <summary>
+            Interaction Type
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.InteractionCallback.ActivityInstanceId">
+            <summary>
+            Instance ID of the Activity if one was launched or joined
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.InteractionCallback.ResponseMessageId">
+            <summary>
+            ID of the message that was created by the interaction
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.InteractionCallback.ResponseMessageLoading">
+            <summary>
+            Whether or not the message is in a loading state
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.InteractionCallback.ResponseMessageEphemeral">
+            <summary>
+            Whether or not the response message was ephemeral
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.InteractionCallbackActivityInstanceResource">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-callback-interaction-callback-activity-instance-resource">Interaction Callback Activity Instance Resource</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.InteractionCallbackActivityInstanceResource.Id">
+            <summary>
+            Instance ID of the Activity if one was launched or joined.
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.InteractionCallbackData">
             <summary>
             Represents <a href="https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-data-structure">Interaction Application Command Callback Data Structure</a>
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.InteractionCallbackResponse">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-callback-interaction-callback-response-object">Interaction Callback Response</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.InteractionCallbackResponse.interaction">
+            <summary>
+            The interaction object associated with the response
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.InteractionCallbackResponse.resource">
+            <summary>
+            The resource that was created by the interaction response.
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.InteractionModalMessage">
@@ -13741,7 +14527,7 @@
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.InteractionModalMessage.CustomId">
             <summary>
-            A developer-defined identifier for the interactable form
+            Developer-defined identifier for the interactable form
             Max 100 characters
             </summary>
         </member>
@@ -13771,6 +14557,26 @@
             Constructor with message
             </summary>
             <param name="message">Message to use for the response</param>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.InteractionResource">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-callback-interaction-callback-resource-object">Interaction Callback Resource</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.InteractionResource.Type">
+            <summary>
+            The resource that was created by the interaction response.
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.InteractionResource.ActivityInstance">
+            <summary>
+            Represents the Activity launched by this interaction.
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.InteractionResource.Message">
+            <summary>
+            Message created by the interaction.
+            </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.InteractionResponse">
             <summary>
@@ -14308,11 +15114,6 @@
         <member name="P:Oxide.Ext.Discord.Entities.DiscordMessage.InteractionMetadata">
             <summary>
             sent if the message is sent as a result of an interaction
-            </summary>
-        </member>
-        <member name="P:Oxide.Ext.Discord.Entities.DiscordMessage.Interaction">
-            <summary>
-            Sent if the message is a response to an Interaction
             </summary>
         </member>
         <member name="P:Oxide.Ext.Discord.Entities.DiscordMessage.Thread">
@@ -15000,6 +15801,46 @@
             <param name="width"></param>
             <param name="proxyUrl"></param>
         </member>
+        <member name="T:Oxide.Ext.Discord.Entities.EmbedType">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/message#embed-object-embed-types">Embed Type</a> in Discord
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.EmbedType.Rich">
+            <summary>
+            Generic embed rendered from embed attributes
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.EmbedType.Image">
+            <summary>
+            Image embed
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.EmbedType.Video">
+            <summary>
+            Video embed
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.EmbedType.Gifv">
+            <summary>
+            Animated gif image embed rendered as a video embed
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.EmbedType.Article">
+            <summary>
+            Article embed
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.EmbedType.Link">
+            <summary>
+            Link embed
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.EmbedType.PollResult">
+            <summary>
+            Poll result embed
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.EmbedVideo">
             <summary>
             Represents <a href="https://discord.com/developers/docs/resources/channel#embed-object-embed-video-structure">Embed Video Structure</a>
@@ -15282,36 +16123,6 @@
         <member name="F:Oxide.Ext.Discord.Entities.MessageFlags.IsVoiceMessage">
             <summary>
             This message is a voice message
-            </summary>
-        </member>
-        <member name="T:Oxide.Ext.Discord.Entities.MessageInteraction">
-            <summary>
-            Represents a <a href="https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object">Message Interaction Structure</a> within Discord.
-            </summary>
-        </member>
-        <member name="P:Oxide.Ext.Discord.Entities.MessageInteraction.Id">
-            <summary>
-            ID of the interaction
-            </summary>
-        </member>
-        <member name="P:Oxide.Ext.Discord.Entities.MessageInteraction.Type">
-            <summary>
-            Type of interaction
-            </summary>
-        </member>
-        <member name="P:Oxide.Ext.Discord.Entities.MessageInteraction.Name">
-            <summary>
-            Name of the <see cref="T:Oxide.Ext.Discord.Entities.DiscordApplicationCommand"/>, including subcommands and subcommand groups 
-            </summary>
-        </member>
-        <member name="P:Oxide.Ext.Discord.Entities.MessageInteraction.User">
-            <summary>
-            The user who invoked the interaction
-            </summary>
-        </member>
-        <member name="P:Oxide.Ext.Discord.Entities.MessageInteraction.Member">
-            <summary>
-            Member who invoked the interaction in the guild
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.MessageInteractionMetadata">
@@ -15642,6 +16453,11 @@
             Message is a Purchase Notification
             </summary>
         </member>
+        <member name="F:Oxide.Ext.Discord.Entities.MessageType.PollResult">
+            <summary>
+            Message is a poll result
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.MessageUpdate">
             <summary>
             Represents a <a href="https://discord.com/developers/docs/resources/channel#edit-message-jsonform-params">Message Update Structure</a> sent in a channel within Discord..
@@ -15705,6 +16521,71 @@
         </member>
         <member name="M:Oxide.Ext.Discord.Entities.MessageUpdate.Validate">
             <inheritdoc/>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.ApplicationCommandInteractionMetadata">
+            <summary>
+            Represents a <a href="https://discord.com/developers/docs/resources/channel#message-call-object">Application Command Interaction Metadata</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.ApplicationCommandInteractionMetadata.TargetUser">
+            <summary>
+            The user the command was run on, present only on user command interactions
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.ApplicationCommandInteractionMetadata.TargetMessageId">
+            <summary>
+             The ID of the message the command was run on, present only on message command interactions. The original response message will also have message_reference and referenced_message pointing to this message.
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.BaseInteractionMetadata">
+            <summary>
+            Represents a <a href="https://discord.com/developers/docs/resources/channel#message-call-object">Message Call Structure</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.BaseInteractionMetadata.Id">
+            <summary>
+            ID of the interaction
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.BaseInteractionMetadata.Type">
+            <summary>
+            Type of interaction
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.BaseInteractionMetadata.User">
+            <summary>
+            User who triggered the interaction
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.BaseInteractionMetadata.AuthorizingIntegrationOwners">
+            <summary>
+            IDs for installation context(s) related to an interaction. Details in Authorizing Integration Owners Object
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.BaseInteractionMetadata.OriginalResponseMessageId">
+            <summary>
+            ID of the original response message, present only on follow-up messages
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.MessageComponentInteractionMetadata">
+            <summary>
+            Represents a <a href="https://discord.com/developers/docs/resources/channel#message-call-object">Application Command Interaction Metadata</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.MessageComponentInteractionMetadata.InteractedMessageId">
+            <summary>
+            ID of the message that contained the interactive component
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.ModalSubmitInteractionMetadata">
+            <summary>
+            Represents a <a href="https://discord.com/developers/docs/resources/channel#message-call-object">Message Component Interaction Metadata</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.ModalSubmitInteractionMetadata.TriggeringInteractionMetadata">
+            <summary>
+            The ID of the message the command was run on, present only on message command interactions. The original response message will also have message_reference and referenced_message pointing to this message.
+            </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.DiscordPoll">
             <summary>
@@ -16158,10 +17039,27 @@
         </member>
         <member name="M:Oxide.Ext.Discord.Entities.DiscordSku.GetSkus(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.Snowflake)">
             <summary>
-            Returns all SKUs for a given application. Because of how our SKU and subscription systems work, you will see two SKUs for your premium offering. 
+            Returns all SKUs for a given application. Because of how our SKU and subscription systems work, you will see two SKUs for your premium offering.
+            <a href="https://discord.com/developers/docs/resources/sku#list-skus">List SKUs</a>
             </summary>
             <param name="client">Client to use</param>
             <param name="applicationId">Application ID to get SKU's for</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordSku.GetSkuSubscriptions(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.GetSkuSubscriptionsQueryString)">
+            <summary>
+            Returns all subscriptions containing the SKU, filtered by user. Returns a list of subscription objects.
+            <a href="https://discord.com/developers/docs/resources/subscription#list-sku-subscriptions">List SKU Subscriptions</a>
+            </summary>
+            <param name="client">Client to use</param>
+            <param name="query">Query for the request</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordSku.GetSkuSubscription(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.Snowflake)">
+            <summary>
+            Get a subscription by its ID. Returns a subscription object.
+            <a href="https://discord.com/developers/docs/resources/subscription#get-sku-subscription">Get SKU Subscription</a>
+            </summary>
+            <param name="client">Client to use</param>
+            <param name="subscriptionId">ID of the subscription</param>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.DiscordSkuType">
             <summary>
@@ -16188,6 +17086,39 @@
             System-generated group for each SUBSCRIPTION SKU created
             </summary>
         </member>
+        <member name="T:Oxide.Ext.Discord.Entities.GetSkuSubscriptionsQueryString">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/subscription#query-string-params">Get SKU Subscriptions Query String Params</a> in Discord
+            
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.GetSkuSubscriptionsQueryString.Before">
+            <summary>
+            List subscriptions before this ID
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.GetSkuSubscriptionsQueryString.After">
+            <summary>
+            List subscriptions after this ID
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.GetSkuSubscriptionsQueryString.Limit">
+            <summary>
+            Number of results to return (1-100)
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.GetSkuSubscriptionsQueryString.UserId">
+            <summary>
+            User ID for which to return subscriptions.
+            Required except for OAuth queries.
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.GetSkuSubscriptionsQueryString.ToQueryString">
+            <summary>
+            Converts the request into a query string
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.SkuFlags">
             <summary>
             Represents a <a href="https://discord.com/developers/docs/monetization/skus#sku-object-sku-flags">Discord SKU Flags</a>
@@ -16211,6 +17142,77 @@
         <member name="F:Oxide.Ext.Discord.Entities.SkuFlags.UserSubscription">
             <summary>
             Recurring SKU purchased by a user for themselves. Grants access to the purchasing user in every server.
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.DiscordSubscription">
+            <summary>
+            Represents a <a href="https://discord.com/developers/docs/resources/subscription#subscription-resource">Subscription</a>
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSubscription.Id">
+            <summary>
+            ID of the subscription
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSubscription.UserId">
+            <summary>
+            ID of the user who is subscribed
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSubscription.SkuIds">
+            <summary>
+            List of SKUs subscribed to
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSubscription.EntitlementIds">
+            <summary>
+            List of entitlements granted for this subscription
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSubscription.CurrentPeriodStart">
+            <summary>
+            Start of the current subscription period
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSubscription.CurrentPeriodEnd">
+            <summary>
+            End of the current subscription period
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSubscription.Status">
+            <summary>
+            Current status of the subscription
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSubscription.CanceledAt">
+            <summary>
+            When the subscription was canceled
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSubscription.Country">
+            <summary>
+            ISO3166-1 alpha-2 country code of the payment source used to purchase the subscription.
+            Missing unless queried with a private OAuth scope.
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.SubscriptionStatus">
+            <summary>
+            Represents a <a href="https://discord.com/developers/docs/resources/subscription#subscription-statuses">Subscription Statuses</a>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.SubscriptionStatus.Active">
+            <summary>
+            Subscription is active and scheduled to renew.
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.SubscriptionStatus.Ending">
+            <summary>
+            Subscription is active but will not renew.
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.SubscriptionStatus.Inactive">
+            <summary>
+            Subscription is inactive and not being charged.
             </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Entities.DiscordRole">
@@ -16900,6 +17902,205 @@
             <param name="id">Id to be converted to snowflake</param>
             <returns>ID converted to a snowflake</returns>
         </member>
+        <member name="T:Oxide.Ext.Discord.Entities.DiscordSoundboardSound">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/soundboard#soundboard-sound-object">Soundboard</a> in Discord
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.Id">
+            <summary>
+            ID of the sound
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.Name">
+            <summary>
+            Name of this sound
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.SoundId">
+            <summary>
+            ID of this sound
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.Volume">
+            <summary>
+            Volume of this sound, from 0 to 1
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.EmojiId">
+            <summary>
+            ID of this sound's custom emoji
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.EmojiName">
+            <summary>
+            Unicode character of this sound's standard emoji
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.GuildId">
+            <summary>
+            ID of the guild this sound is in
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.Available">
+            <summary>
+            Whether this sound can be used, may be false due to loss of Server Boosts
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.User">
+            <summary>
+            User who created this sound
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.GetDefaultSounds(Oxide.Ext.Discord.Clients.DiscordClient)">
+            <summary>
+            Returns a list of soundboard sound objects that can be used by all users.
+            See <a href="https://discord.com/developers/docs/resources/soundboard#list-default-soundboard-sounds">List Default Soundboard Sounds</a>
+            </summary>
+            <param name="client">Client to use</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.Edit(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.SoundboardSoundUpdate)">
+            <summary>
+            Returns a list of soundboard sound objects that can be used by all users.
+            See <a href="https://discord.com/developers/docs/resources/soundboard#list-default-soundboard-sounds">List Default Soundboard Sounds</a>
+            </summary>
+            <param name="client">Client to use</param>
+            <param name="update">Update to apply</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordSoundboardSound.Delete(Oxide.Ext.Discord.Clients.DiscordClient)">
+            <summary>
+            Returns a list of soundboard sound objects that can be used by all users.
+            See <a href="https://discord.com/developers/docs/resources/soundboard#list-default-soundboard-sounds">List Default Soundboard Sounds</a>
+            </summary>
+            <param name="client">Client to use</param>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.DiscordSoundData">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/reference#image-data">Discord Sound Data</a>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.DiscordSoundData.Format">
+            <summary>
+            Format for the sound
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.DiscordSoundData.Sound">
+            <summary>
+            Sound Data
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.DiscordSoundData.IsValid">
+            <summary>
+            Returns if this struct has a valid sound
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordSoundData.#ctor(System.Byte[])">
+            <summary>
+            Constructor
+            </summary>
+            <param name="sound">Sound data</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordSoundData.#ctor(System.IO.Stream)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="stream">Sound data</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordSoundData.#ctor(System.String)">
+            <summary>
+            Constructor from the discord image data format
+            </summary>
+            <param name="sound">string base64 image</param>
+            <exception cref="T:Oxide.Ext.Discord.Exceptions.InvalidImageDataException">Thrown if the sound is not a valid base64 sound string</exception>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordSoundData.GetBase64Sound">
+            <summary>
+            Returns the Base64 Image string for the image.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.DiscordSoundFormat">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/reference#image-formatting-image-formats">Image Formats</a>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.DiscordSoundFormat.Auto">
+            <summary>
+            Automatically pick the sound format
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.DiscordSoundFormat.Mp3">
+            <summary>
+            Data is MP3
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.DiscordSoundFormat.Ogg">
+            <summary>
+            Data is OGG
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.SoundboardSoundCreate">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/soundboard#create-guild-soundboard-sound-json-params">Soundboard Create Request</a> in Discord
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundCreate.Name">
+            <summary>
+            Name of the soundboard sound (2-32 characters)
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundCreate.Sound">
+            <summary>
+            Mp3 or ogg sound data
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundCreate.Volume">
+            <summary>
+            Volume of the soundboard sound, from 0 to 1, defaults to 1
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundCreate.EmojiId">
+            <summary>
+            ID of the custom emoji for the soundboard sound
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundCreate.EmojiName">
+            <summary>
+            Unicode character of a standard emoji for the soundboard sound
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.SoundboardSoundCreate.Validate">
+            <inheritdoc/>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Entities.SoundboardSoundUpdate">
+            <summary>
+            Represents <a href="https://discord.com/developers/docs/resources/soundboard#modify-guild-soundboard-sound-json-params">Soundboard Update Request</a> in Discord
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundUpdate.Name">
+            <summary>
+            Name of the soundboard sound (2-32 characters)
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundUpdate.Volume">
+            <summary>
+            Volume of the soundboard sound, from 0 to 1, defaults to 1
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundUpdate.EmojiId">
+            <summary>
+            ID of the custom emoji for the soundboard sound
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Entities.SoundboardSoundUpdate.EmojiName">
+            <summary>
+            Unicode character of a standard emoji for the soundboard sound
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.SoundboardSoundUpdate.Validate">
+            <inheritdoc/>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.DiscordSticker">
             <summary>
             Represents a <a href="https://discord.com/developers/docs/resources/sticker#sticker-object">Discord Sticker Structure</a>
@@ -17032,6 +18233,14 @@
             <summary>
             ID of the sticker pack's banner image
             </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Entities.DiscordStickerPack.GetStickerPack(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.Snowflake)">
+            <summary>
+            Returns a sticker pack object for the given sticker pack ID.
+            See <a href="https://discord.com/developers/docs/resources/sticker#get-sticker-pack">List Nitro Sticker Packs</a>
+            </summary>
+            <param name="client">Client to use</param>
+            <param name="packId">ID of the pack</param>
         </member>
         <member name="M:Oxide.Ext.Discord.Entities.DiscordStickerPack.GetStickerPacks(Oxide.Ext.Discord.Clients.DiscordClient)">
             <summary>
@@ -17310,6 +18519,11 @@
         <member name="F:Oxide.Ext.Discord.Entities.ConnectionType.Unknown">
             <summary>
             Discord Extension doesn't currently support this connection type
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.ConnectionType.AmazonMusic">
+            <summary>
+            Connection type is Battle.net
             </summary>
         </member>
         <member name="F:Oxide.Ext.Discord.Entities.ConnectionType.BattleNet">
@@ -17927,6 +19141,21 @@
             User is offline
             </summary>
         </member>
+        <member name="T:Oxide.Ext.Discord.Entities.AnimationType">
+            <summary>
+            Represents the <a href="">Animation Type</a>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.AnimationType.Premium">
+            <summary>
+            A fun animation, sent by a Nitro subscriber
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.AnimationType.Basic">
+            <summary>
+            The standard animation
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.VoiceRegion">
             <summary>
             Represents <a href="https://discord.com/developers/docs/resources/voice#voice-region-object">Voice Region Structure</a>
@@ -18431,6 +19660,26 @@
         <member name="M:Oxide.Ext.Discord.Entities.WebhookEditMessage.Validate">
             <inheritdoc/>
         </member>
+        <member name="T:Oxide.Ext.Discord.Entities.WebhookEventType">
+            <summary>
+            Represents a <a href="https://discord.com/developers/docs/resources/application#application-event-webhook-status">Webhook event type</a>
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.WebhookEventType.Disabled">
+            <summary>
+            Webhook events are disabled by developer 
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.WebhookEventType.Enabled">
+            <summary>
+            Webhook events are enabled by developer  
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.Entities.WebhookEventType.DisabledByDiscord">
+            <summary>
+            Webhook events are disabled by Discord, usually do to inactivity
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.WebhookExecuteParams">
             <summary>
             Represents parameters to execute a webhook
@@ -18729,6 +19978,39 @@
             </summary>
             <param name="message">Exception message</param>
         </member>
+        <member name="M:Oxide.Ext.Discord.Exceptions.InvalidSnowflakeException.ThrowIfInvalid(Oxide.Ext.Discord.Entities.Snowflake,System.String)">
+            <summary>
+            Throws an exception if the Snowflake ID is invalid
+            </summary>
+            <param name="snowflake">Snowflake</param>
+            <param name="paramName">parameter name of the snowflake</param>
+            <exception cref="T:Oxide.Ext.Discord.Exceptions.InvalidSnowflakeException"></exception>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Exceptions.InvalidSnowflakeException.ThrowIfInvalid(System.Nullable{Oxide.Ext.Discord.Entities.Snowflake},System.String)">
+            <summary>
+            Throws an exception if the Snowflake ID is invalid
+            </summary>
+            <param name="snowflake">Snowflake</param>
+            <param name="paramName">parameter name of the snowflake</param>
+            <exception cref="T:Oxide.Ext.Discord.Exceptions.InvalidSnowflakeException"></exception>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Exceptions.InvalidSnowflakeException.ThrowIfInvalid(System.Collections.Generic.ICollection{Oxide.Ext.Discord.Entities.Snowflake},System.String)">
+            <summary>
+            Throws an exception if any of the snowflakes are invalid
+            </summary>
+            <param name="snowflakes">Snowflakes</param>
+            <param name="paramName">parameter name of the snowflake</param>
+            <exception cref="T:Oxide.Ext.Discord.Exceptions.InvalidSnowflakeException"></exception>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Exceptions.InvalidSnowflakeException.ThrowIfInvalid(System.Nullable{Oxide.Ext.Discord.Entities.Snowflake},System.Boolean,System.String)">
+            <summary>
+            Throws an exception if the Snowflake ID is invalid or requiresValue and the snowflake is null
+            </summary>
+            <param name="snowflake">Snowflake</param>
+            <param name="requireValue">If the value is required</param>
+            <param name="paramName">parameter name of the snowflake</param>
+            <exception cref="T:Oxide.Ext.Discord.Exceptions.InvalidSnowflakeException"></exception>
+        </member>
         <member name="T:Oxide.Ext.Discord.Exceptions.InvalidEmbedException">
             <summary>
             Represents an invalid embed
@@ -18785,6 +20067,17 @@
             </summary>
             <param name="message">Exception message</param>
         </member>
+        <member name="T:Oxide.Ext.Discord.Exceptions.InvalidGetSkuSubscriptionsException">
+            <summary>
+            Exceptions for invalid entitlements
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Exceptions.InvalidGetSkuSubscriptionsException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message</param>
+        </member>
         <member name="T:Oxide.Ext.Discord.Exceptions.InvalidDiscordColorException">
             <summary>
             Represents an invalid discord color
@@ -18795,6 +20088,16 @@
             Constructor
             </summary>
             <param name="message">Exception message</param>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Exceptions.InvalidSoundboardException">
+            <summary>
+            Represents an exception in discord sound data
+            </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Exceptions.InvalidSoundDataException">
+            <summary>
+            Represents an exception in discord sound data
+            </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.Exceptions.InvalidGuildStickerException">
             <summary>
@@ -18923,6 +20226,28 @@
             <summary>
             Represents a bot token mismatch
             </summary>
+        </member>
+        <member name="T:Oxide.Ext.Discord.Extensions.ByteExt">
+            <summary>
+            Extension methods for bytes
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.ByteExt.GetFileSize(System.Byte[],Oxide.Ext.Discord.Entities.DiscordFileSize)">
+            <summary>
+            Returns the files size in the specified units
+            </summary>
+            <param name="data"></param>
+            <param name="size"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.ByteExt.StartsWith(System.Byte[],System.Byte[])">
+            <summary>
+            Checks if the byte array starts with the specified bytes
+            </summary>
+            <param name="file">File to check</param>
+            <param name="startsWith">bytes to start with</param>
+            <returns></returns>
         </member>
         <member name="T:Oxide.Ext.Discord.Extensions.ConcurrentDictionaryExt">
             <summary>
@@ -19243,6 +20568,146 @@
             <param name="remaining">Remaining text of the span</param>
             <param name="parsed">The parsed string</param>
             <returns>True if successfully parsed; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.Byte,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.SByte,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.Int16,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.UInt16,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.Int32,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.UInt32,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.Int64,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.UInt64,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.Decimal,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.Single,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.Double,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.DateTime,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.DateTimeOffset,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Extensions.SpanExt.TryFormat(System.TimeSpan,System.ReadOnlySpan{System.Char}@,System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <summary>
+            Tries to write the formatted values to out span
+            </summary>
+            <param name="value">Value to be formatted</param>
+            <param name="written">Span the format is written to</param>
+            <param name="format">The format to apply to the span</param>
+            <param name="provider">Formatting provider</param>
+            <returns>true if format was successful; false otherwise</returns>
         </member>
         <member name="T:Oxide.Ext.Discord.Extensions.StreamExt">
             <summary>
@@ -19850,6 +21315,13 @@
             Guild Navigation Format
             </summary>
             <param name="type">Type to navigate to</param>
+            <returns>string with navigation to the navigation type</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Helpers.DiscordFormatting.LinkedRoles(Oxide.Ext.Discord.Entities.Snowflake)">
+            <summary>
+            Linked Roles
+            </summary>
+            <param name="roleId">Linked role ID</param>
             <returns>string with navigation to the navigation type</returns>
         </member>
         <member name="M:Oxide.Ext.Discord.Helpers.DiscordFormatting.Italics(System.String)">
@@ -20901,6 +22373,37 @@
             <param name="objectType"></param>
             <returns></returns>
         </member>
+        <member name="T:Oxide.Ext.Discord.Json.DiscordSoundDataConverter">
+            <summary>
+            Represents the <see cref="T:Newtonsoft.Json.JsonConverter"/> for <see cref="T:Oxide.Ext.Discord.Entities.DiscordSoundData"/>
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Json.DiscordSoundDataConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            
+            </summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+            <param name="serializer"></param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Json.DiscordSoundDataConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            
+            </summary>
+            <param name="reader"></param>
+            <param name="objectType"></param>
+            <param name="existingValue"></param>
+            <param name="serializer"></param>
+            <returns></returns>
+            <exception cref="T:Newtonsoft.Json.JsonException"></exception>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Json.DiscordSoundDataConverter.CanConvert(System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="objectType"></param>
+            <returns></returns>
+        </member>
         <member name="T:Oxide.Ext.Discord.Json.EventPayloadConverter">
             <summary>
             JSON converter for <see cref="T:Oxide.Ext.Discord.Entities.EventPayload"/>
@@ -20969,6 +22472,43 @@
             <param name="objectType"></param>
             <returns></returns>
         </member>
+        <member name="T:Oxide.Ext.Discord.Json.InteractionMetadataConverter">
+            <summary>
+            Converter for a list of message components
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Json.InteractionMetadataConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Ignored as we don't write JSON
+            </summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+            <param name="serializer"></param>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Json.InteractionMetadataConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Populate the correct types in components instead of just the BaseComponent
+            </summary>
+            <param name="reader"></param>
+            <param name="objectType"></param>
+            <param name="existingValue"></param>
+            <param name="serializer"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Json.InteractionMetadataConverter.CanConvert(System.Type)">
+            <summary>
+            Returns if this can convert the value
+            </summary>
+            <param name="objectType"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Json.InteractionMetadataConverter.CanWrite">
+            <summary>
+            Message Component Convert does not write JSON
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Json.MessageComponentsConverter">
             <summary>
             Converter for a list of message components
@@ -21032,43 +22572,6 @@
         <member name="M:Oxide.Ext.Discord.Json.PermissionFlagsStringConverter.CanConvert(System.Type)">
             <summary>
             Returns if the type equals PermissionFlags
-            </summary>
-            <param name="objectType"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Oxide.Ext.Discord.Json.RoleTagsConverter">
-            <summary>
-            Handles converting <see cref="T:Oxide.Ext.Discord.Entities.RoleTags"/>
-            This type contains special deserialization types
-            </summary>
-        </member>
-        <member name="P:Oxide.Ext.Discord.Json.RoleTagsConverter.CanWrite">
-            <summary>
-            Cannot write
-            </summary>
-        </member>
-        <member name="M:Oxide.Ext.Discord.Json.RoleTagsConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
-            <summary>
-            Cannot Write
-            </summary>
-            <param name="writer"></param>
-            <param name="value"></param>
-            <param name="serializer"></param>
-            <exception cref="T:Newtonsoft.Json.JsonSerializationException"></exception>
-        </member>
-        <member name="M:Oxide.Ext.Discord.Json.RoleTagsConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
-            <summary>
-            Converts the JSON to a <see cref="T:Oxide.Ext.Discord.Entities.RoleTags"/>
-            </summary>
-            <param name="reader"></param>
-            <param name="objectType"></param>
-            <param name="existingValue"></param>
-            <param name="serializer"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Oxide.Ext.Discord.Json.RoleTagsConverter.CanConvert(System.Type)">
-            <summary>
-            Returns if the type can be converter
             </summary>
             <param name="objectType"></param>
             <returns></returns>
@@ -24201,12 +25704,12 @@
         <member name="M:Oxide.Ext.Discord.Libraries.DiscordPool.LogDebug(Oxide.Ext.Discord.Logging.DebugLogger)">
             <inheritdoc/>
         </member>
-        <member name="T:Oxide.Ext.Discord.Libraries.DiscordSubscription">
+        <member name="T:Oxide.Ext.Discord.Libraries.DiscordChannelSubscription">
             <summary>
             Represents a channel subscription for a plugin
             </summary>
         </member>
-        <member name="M:Oxide.Ext.Discord.Libraries.DiscordSubscription.#ctor(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.Snowflake,System.Action{Oxide.Ext.Discord.Entities.DiscordMessage})">
+        <member name="M:Oxide.Ext.Discord.Libraries.DiscordChannelSubscription.#ctor(Oxide.Ext.Discord.Clients.DiscordClient,Oxide.Ext.Discord.Entities.Snowflake,System.Action{Oxide.Ext.Discord.Entities.DiscordMessage})">
             <summary>
             Constructor
             </summary>
@@ -24214,7 +25717,7 @@
             <param name="channelId">ID of the channel</param>
             <param name="callback">Callback when the channel message is sent</param>
         </member>
-        <member name="M:Oxide.Ext.Discord.Libraries.DiscordSubscription.CanRun(Oxide.Ext.Discord.Clients.BotClient)">
+        <member name="M:Oxide.Ext.Discord.Libraries.DiscordChannelSubscription.CanRun(Oxide.Ext.Discord.Clients.BotClient)">
             <summary>
             Returns if a subscription can run.
             They can only run for the client that they were created for.
@@ -24222,27 +25725,27 @@
             <param name="client">Client to compare against</param>
             <returns>True if same bot client; false otherwise</returns>
         </member>
-        <member name="M:Oxide.Ext.Discord.Libraries.DiscordSubscription.IsForPlugin(Oxide.Core.Plugins.Plugin)">
+        <member name="M:Oxide.Ext.Discord.Libraries.DiscordChannelSubscription.IsForPlugin(Oxide.Core.Plugins.Plugin)">
             <summary>
             Returns if this subscription is for this plugin
             </summary>
             <param name="plugin">Plugin to check</param>
             <returns>True if the subscription is for this plugin; False otherwise</returns>
         </member>
-        <member name="M:Oxide.Ext.Discord.Libraries.DiscordSubscription.IsForChannel(Oxide.Ext.Discord.Entities.Snowflake)">
+        <member name="M:Oxide.Ext.Discord.Libraries.DiscordChannelSubscription.IsForChannel(Oxide.Ext.Discord.Entities.Snowflake)">
             <summary>
             Returns if this subscription is for the given channel
             </summary>
             <param name="channelId">Channel ID to check</param>
             <returns>True if the subscription is for this channel; False otherwise</returns>
         </member>
-        <member name="M:Oxide.Ext.Discord.Libraries.DiscordSubscription.Invoke(Oxide.Ext.Discord.Entities.DiscordMessage)">
+        <member name="M:Oxide.Ext.Discord.Libraries.DiscordChannelSubscription.Invoke(Oxide.Ext.Discord.Entities.DiscordMessage)">
             <summary>
             Invokes the callback with the message
             </summary>
             <param name="message">Message that was sent in the given channel</param>
         </member>
-        <member name="M:Oxide.Ext.Discord.Libraries.DiscordSubscription.LogDebug(Oxide.Ext.Discord.Logging.DebugLogger)">
+        <member name="M:Oxide.Ext.Discord.Libraries.DiscordChannelSubscription.LogDebug(Oxide.Ext.Discord.Logging.DebugLogger)">
             <inheritdoc/>
         </member>
         <member name="T:Oxide.Ext.Discord.Libraries.DiscordSubscriptions">
@@ -24406,6 +25909,13 @@
             <summary>
             Library for Discord Message templates
             </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Libraries.BaseMessageTemplateLibrary`1.#ctor(Oxide.Ext.Discord.Libraries.TemplateType,Oxide.Ext.Discord.Interfaces.ILogger)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="type"></param>
+            <param name="logger"></param>
         </member>
         <member name="M:Oxide.Ext.Discord.Libraries.BaseMessageTemplateLibrary`1.RegisterGlobalTemplateAsync(Oxide.Core.Plugins.Plugin,Oxide.Ext.Discord.Libraries.TemplateKey,`0,Oxide.Ext.Discord.Libraries.TemplateVersion,Oxide.Ext.Discord.Libraries.TemplateVersion)">
             <summary>
@@ -25957,6 +27467,22 @@
         <member name="M:Oxide.Ext.Discord.Plugins.PluginId.GetHashCode">
             <inheritdoc />
         </member>
+        <member name="M:Oxide.Ext.Discord.Plugins.PluginId.op_Inequality(Oxide.Ext.Discord.Plugins.PluginId,Oxide.Ext.Discord.Plugins.PluginId)">
+            <summary>
+            Compares two PluginIds if they are not equal
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns>True if they are not equal; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Plugins.PluginId.op_Equality(Oxide.Ext.Discord.Plugins.PluginId,Oxide.Ext.Discord.Plugins.PluginId)">
+            <summary>
+            Compares two PluginIds if they are equal
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns>True if they are equal; false otherwise</returns>
+        </member>
         <member name="T:Oxide.Ext.Discord.Plugins.PluginSetup">
             <summary>
             Build Discord Extension Setup Data for a plugin
@@ -26050,6 +27576,22 @@
         </member>
         <member name="M:Oxide.Ext.Discord.Rest.BucketId.GetHashCode">
             <inheritdoc />
+        </member>
+        <member name="M:Oxide.Ext.Discord.Rest.BucketId.op_Inequality(Oxide.Ext.Discord.Rest.BucketId,Oxide.Ext.Discord.Rest.BucketId)">
+            <summary>
+            Compares two BucketIds if they are not equal
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns>True if they are not equal; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Rest.BucketId.op_Equality(Oxide.Ext.Discord.Rest.BucketId,Oxide.Ext.Discord.Rest.BucketId)">
+            <summary>
+            Compares two BucketIds if they are equal
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns>True if they are equal; false otherwise</returns>
         </member>
         <member name="T:Oxide.Ext.Discord.Rest.BaseRequest">
             <summary>
@@ -26571,7 +28113,7 @@
             <summary>
             Frees an item back to the pool
             </summary>
-            <param name="item">Item being freed</param>
+            <param name="poolable">Item being freed</param>
         </member>
         <member name="M:Oxide.Ext.Discord.Types.BasePool`2.OnPluginUnloaded(Oxide.Ext.Discord.Types.DiscordPluginPool)">
             <inheritdoc/>
@@ -27558,6 +29100,39 @@
             <param name="key">Key for the record</param>
             <param name="value">Value of the record</param>
         </member>
+        <member name="T:Oxide.Ext.Discord.Types.ValueStringBuilder">
+            <summary>
+            A non-heap-allocation allocating string builder
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.#ctor(System.Span{System.Char})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="initialBuffer">Initial buffer to use for the chars</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.#ctor(System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="initialCapacity">Initial buffer capacity to rent</param>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Types.ValueStringBuilder.Length">
+            <summary>
+            Length of the builder
+            </summary>
+        </member>
+        <member name="P:Oxide.Ext.Discord.Types.ValueStringBuilder.Capacity">
+            <summary>
+            Current capacity of the builder
+            </summary>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.EnsureCapacity(System.Int32)">
+            <summary>
+            Ensure the builder has a capacity of at least <paramref name="capacity"/>
+            </summary>
+            <param name="capacity"></param>
+        </member>
         <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.GetPinnableReference">
             <summary>
             Get a pinnable reference to the builder.
@@ -27572,6 +29147,18 @@
             </summary>
             <param name="terminate">Ensures that the builder has a null char after <see cref="P:Oxide.Ext.Discord.Types.ValueStringBuilder.Length"/></param>
         </member>
+        <member name="P:Oxide.Ext.Discord.Types.ValueStringBuilder.Item(System.Int32)">
+            <summary>
+            Get the char at the specified index
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.ToString">
+            <summary>
+            Get's the final string and disposes of the builder
+            </summary>
+            <returns></returns>
+        </member>
         <member name="P:Oxide.Ext.Discord.Types.ValueStringBuilder.RawChars">
             <summary>Returns the underlying storage of the builder.</summary>
         </member>
@@ -27580,6 +29167,205 @@
             Returns a span around the contents of the builder.
             </summary>
             <param name="terminate">Ensures that the builder has a null char after <see cref="P:Oxide.Ext.Discord.Types.ValueStringBuilder.Length"/></param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.AsSpan">
+            <summary>
+            Converts the current builder to a <see cref="T:System.ReadOnlySpan`1"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.AsSpan(System.Int32)">
+            <summary>
+            Converts the current builder to a <see cref="T:System.ReadOnlySpan`1"/>
+            </summary>
+            <param name="start">Index to start at</param>
+            <returns></returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.AsSpan(System.Int32,System.Int32)">
+            <summary>
+            Converts the current builder to a <see cref="T:System.ReadOnlySpan`1"/>
+            </summary>
+            <param name="start">Index to start at</param>
+            <param name="length">Length of the span</param>
+            <returns></returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.TryCopyTo(System.Span{System.Char},System.Int32@)">
+            <summary>
+            Tries to copy the current builder to a <see cref="T:System.Span`1"/>
+            </summary>
+            <param name="destination">Span to write the chars to</param>
+            <param name="charsWritten">Number of chars written</param>
+            <returns>True if successfully; false otherwise</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Insert(System.Int32,System.Char,System.Int32)">
+            <summary>
+            Insert a char at the specified index count times
+            </summary>
+            <param name="index">Index to insert the char</param>
+            <param name="value">Char to insert</param>
+            <param name="count">Number of times to insert</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Insert(System.Int32,System.String)">
+            <summary>
+            Insert string at the specified index
+            </summary>
+            <param name="index">Index to insert the string</param>
+            <param name="s">String to insert</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Char)">
+            <summary>
+            Appends char to the builder
+            </summary>
+            <param name="c">Char to append</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.String)">
+            <summary>
+            Appends string to the builder
+            </summary>
+            <param name="s">string to append</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Char,System.Int32)">
+            <summary>
+            Append the given char count times
+            </summary>
+            <param name="c">Char to be appended</param>
+            <param name="count">Number of times to append</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Appends span to the builder
+            </summary>
+            <param name="value">Span to append</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.AppendSpan(System.Int32)">
+            <summary>
+            Requests a writable span of length
+            </summary>
+            <param name="length">Length of the request span</param>
+            <returns>Span of the request length</returns>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Byte,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.Byte"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.SByte,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.SByte"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Int16,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.SByte"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.UInt16,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.SByte"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Int32,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.Int32"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.UInt32,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.UInt32"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Int64,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.Int64"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.UInt64,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.UInt64"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Decimal,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.Decimal"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Single,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.Single"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.Double,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.Double"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.DateTime,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.DateTime"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.DateTimeOffset,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.DateTimeOffset"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Append(System.TimeSpan,System.String,System.IFormatProvider)">
+            <summary>
+            Appends a <see cref="T:System.TimeSpan"/> to the builder
+            </summary>
+            <param name="value">Value to append</param>
+            <param name="format">format for the value</param>
+            <param name="provider">Format provider for the value</param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.AppendLine(System.String)">
+            <summary>
+            Appends <paramref name="s"/> followed by a newline
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.AppendLine">
+            <summary>
+            Appends a newline
+            </summary>
         </member>
         <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Grow(System.Int32)">
             <summary>
@@ -27590,6 +29376,11 @@
             <param name="additionalCapacityBeyondPos">
             Number of chars requested beyond current position.
             </param>
+        </member>
+        <member name="M:Oxide.Ext.Discord.Types.ValueStringBuilder.Dispose">
+            <summary>
+            Dispose of the builder. Only needs to be called if ToString() is not used.
+            </summary>
         </member>
         <member name="T:Oxide.Ext.Discord.WebSockets.DiscordWebSocket">
             <summary>
@@ -27750,7 +29541,7 @@
         </member>
         <member name="F:Oxide.Ext.Discord.WebSockets.DiscordWebsocketCloseCode.NotAuthenticated">
             <summary>
-            You sent us a payload prior to identifying.
+            You sent us a payload prior to identifying, or this session has been invalidated. 
             </summary>
         </member>
         <member name="F:Oxide.Ext.Discord.WebSockets.DiscordWebsocketCloseCode.AuthenticationFailed">
@@ -28048,6 +29839,11 @@
             Represents the <a href="https://discord.com/developers/docs/topics/gateway#voice-state-update">VOICE_STATE_UPDATE</a> gateway event
             </summary>
         </member>
+        <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.VoiceChannelEffectSend">
+            <summary>
+            Represents the <a href="https://discord.com/developers/docs/topics/gateway-events#voice-channel-effect-send">VOICE_CHANNEL_EFFECT_SEND</a> gateway event
+            </summary>
+        </member>
         <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.VoiceServerUpdated">
             <summary>
             Represents the <a href="https://discord.com/developers/docs/topics/gateway#voice-server-update">VOICE_SERVER_UPDATE</a> gateway event
@@ -28121,6 +29917,46 @@
         <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.StageInstanceDeleted">
             <summary>
             Represents the <a href="https://discord.com/developers/docs/topics/gateway#stage-instance-delete">STAGE_INSTANCE_CREATE</a> gateway event
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.SubscriptionCreate">
+            <summary>
+            Represents the <a href="https://discord.com/developers/docs/topics/gateway-events#subscription-create">SUBSCRIPTION_CREATE</a> gateway event
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.SubscriptionUpdate">
+            <summary>
+            Represents the <a href="https://discord.com/developers/docs/topics/gateway-events#subscription-update">SUBSCRIPTION_UPDATE</a> gateway event
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.SubscriptionDelete">
+            <summary>
+            Represents the <a href="https://discord.com/developers/docs/topics/gateway-events#subscription-delete">SUBSCRIPTION_DELETE</a> gateway event
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.GuildSoundboardSoundCreate">
+            <summary>
+            Represents the <a href="https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-create">GUILD_SOUNDBOARD_SOUND_CREATE</a> gateway event
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.GuildSoundboardSoundUpdate">
+            <summary>
+            Represents the <a href="https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-update">GUILD_SOUNDBOARD_SOUND_UPDATE</a> gateway event
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.GuildSoundboardSoundDelete">
+            <summary>
+            Represents the <a href="https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-delete">GUILD_SOUNDBOARD_SOUND_DELETE</a> gateway event
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.GuildSoundboardSoundsUpdate">
+            <summary>
+            Represents the <a href="https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sounds-update">GUILD_SOUNDBOARD_SOUNDS_UPDATE</a> gateway event
+            </summary>
+        </member>
+        <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.SoundboardSounds">
+            <summary>
+            Represents the <a href="https://discord.com/developers/docs/events/gateway-events#soundboard-sounds">SOUNDBOARD_SOUNDS</a> gateway event
             </summary>
         </member>
         <member name="F:Oxide.Ext.Discord.WebSockets.DiscordDispatchCode.AutoModerationRuleCreate">
@@ -28277,6 +30113,7 @@
             Constructor
             </summary>
             <param name="handler">Handles for web socket events</param>
+            <param name="botClient">Bot client for the websocket handler</param>
             <param name="logger"></param>
         </member>
         <member name="M:Oxide.Ext.Discord.WebSockets.WebSocketHandler.Connect(System.String)">

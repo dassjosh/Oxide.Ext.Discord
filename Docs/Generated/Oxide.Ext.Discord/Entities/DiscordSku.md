@@ -17,7 +17,9 @@ public class DiscordSku
 | [Name](#name-property) { get; set; } | Customer-facing name of your premium offering |
 | [Slug](#slug-property) { get; set; } | System-generated URL slug based on the SKU's name |
 | [Type](#type-property) { get; set; } | Type of SKU |
-| static [GetSkus](#getskus-method)(…) | Returns all SKUs for a given application. Because of how our SKU and subscription systems work, you will see two SKUs for your premium offering. |
+| [GetSkuSubscription](#getskusubscription-method)(…) | Get a subscription by its ID. Returns a subscription object. [Get SKU Subscription](https://discord.com/developers/docs/resources/subscription#get-sku-subscription) |
+| [GetSkuSubscriptions](#getskusubscriptions-method)(…) | Returns all subscriptions containing the SKU, filtered by user. Returns a list of subscription objects. [List SKU Subscriptions](https://discord.com/developers/docs/resources/subscription#list-sku-subscriptions) |
+| static [GetSkus](#getskus-method)(…) | Returns all SKUs for a given application. Because of how our SKU and subscription systems work, you will see two SKUs for your premium offering. [List SKUs](https://discord.com/developers/docs/resources/sku#list-skus) |
 
 ## See Also
 
@@ -28,7 +30,7 @@ public class DiscordSku
    
 # GetSkus method
 
-Returns all SKUs for a given application. Because of how our SKU and subscription systems work, you will see two SKUs for your premium offering.
+Returns all SKUs for a given application. Because of how our SKU and subscription systems work, you will see two SKUs for your premium offering. [List SKUs](https://discord.com/developers/docs/resources/sku#list-skus)
 
 ```csharp
 public static IPromise<List<DiscordSku>> GetSkus(DiscordClient client, Snowflake applicationId)
@@ -42,6 +44,56 @@ public static IPromise<List<DiscordSku>> GetSkus(DiscordClient client, Snowflake
 ## See Also
 
 * interface [IPromise&lt;TPromised&gt;](../Interfaces/IPromise%7BTPromised%7D.md)
+* class [DiscordClient](../Clients/DiscordClient.md)
+* struct [Snowflake](./Snowflake.md)
+* class [DiscordSku](./DiscordSku.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# GetSkuSubscriptions method
+
+Returns all subscriptions containing the SKU, filtered by user. Returns a list of subscription objects. [List SKU Subscriptions](https://discord.com/developers/docs/resources/subscription#list-sku-subscriptions)
+
+```csharp
+public IPromise<List<DiscordSubscription>> GetSkuSubscriptions(DiscordClient client, 
+    GetSkuSubscriptionsQueryString query = null)
+```
+
+| parameter | description |
+| --- | --- |
+| client | Client to use |
+| query | Query for the request |
+
+## See Also
+
+* interface [IPromise&lt;TPromised&gt;](../Interfaces/IPromise%7BTPromised%7D.md)
+* class [DiscordSubscription](./DiscordSubscription.md)
+* class [DiscordClient](../Clients/DiscordClient.md)
+* class [GetSkuSubscriptionsQueryString](./GetSkuSubscriptionsQueryString.md)
+* class [DiscordSku](./DiscordSku.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# GetSkuSubscription method
+
+Get a subscription by its ID. Returns a subscription object. [Get SKU Subscription](https://discord.com/developers/docs/resources/subscription#get-sku-subscription)
+
+```csharp
+public IPromise<DiscordSubscription> GetSkuSubscription(DiscordClient client, 
+    Snowflake subscriptionId)
+```
+
+| parameter | description |
+| --- | --- |
+| client | Client to use |
+| subscriptionId | ID of the subscription |
+
+## See Also
+
+* interface [IPromise&lt;TPromised&gt;](../Interfaces/IPromise%7BTPromised%7D.md)
+* class [DiscordSubscription](./DiscordSubscription.md)
 * class [DiscordClient](../Clients/DiscordClient.md)
 * struct [Snowflake](./Snowflake.md)
 * class [DiscordSku](./DiscordSku.md)

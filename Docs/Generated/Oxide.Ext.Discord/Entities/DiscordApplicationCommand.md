@@ -18,6 +18,7 @@ public class DiscordApplicationCommand
 | [DescriptionLocalizations](#descriptionlocalizations-property) { get; set; } | Localization dictionary for the description field. Values follow the same restrictions as description |
 | [DmPermission](#dmpermission-property) { get; set; } | Indicates whether the command is available in DMs with the app, only for globally-scoped commands. By default, commands are visible. |
 | [GuildId](#guildid-property) { get; set; } | Guild ID of the command, if not global |
+| [Handler](#handler-property) { get; set; } | Determines whether the interaction is handled by the app's interactions handler or by Discord |
 | [Id](#id-property) { get; set; } | Unique id of the command |
 | [IntegrationTypes](#integrationtypes-property) { get; set; } | Installation context(s) where the command is available, only for globally-scoped commands. Defaults to GUILD_INSTALL (0) |
 | [Mention](#mention-property) { get; } | Mention the [`DiscordApplicationCommand`](./DiscordApplicationCommand.md) |
@@ -401,6 +402,22 @@ public Snowflake Version { get; set; }
 ## See Also
 
 * struct [Snowflake](./Snowflake.md)
+* class [DiscordApplicationCommand](./DiscordApplicationCommand.md)
+* namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# Handler property
+
+Determines whether the interaction is handled by the app's interactions handler or by Discord
+
+```csharp
+public ApplicationCommandHandlerType Handler { get; set; }
+```
+
+## See Also
+
+* enum [ApplicationCommandHandlerType](./ApplicationCommandHandlerType.md)
 * class [DiscordApplicationCommand](./DiscordApplicationCommand.md)
 * namespace [Oxide.Ext.Discord.Entities](./EntitiesNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)

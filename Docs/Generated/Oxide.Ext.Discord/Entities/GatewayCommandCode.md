@@ -16,6 +16,7 @@ public enum GatewayCommandCode : byte
 | VoiceStateUpdate | `VoiceStateUpdate` | Used to join/leave or move between voice channels. |
 | Resume | `Resume` | Resume a previous session that was disconnected. |
 | RequestGuildMembers | `RequestGuildMembers` | Request information about offline guild members in a large guild. |
+| RequestSoundboardSounds | `RequestSoundboardSounds` | Request information about soundboard sounds in a set of guilds. |
 
 ## See Also
 

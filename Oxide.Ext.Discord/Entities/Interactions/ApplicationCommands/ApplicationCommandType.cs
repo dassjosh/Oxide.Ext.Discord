@@ -12,17 +12,23 @@ namespace Oxide.Ext.Discord.Entities
         /// </summary>
         [DiscordEnum("CHAT_INPUT")]
         ChatInput = 1,
-        
+
         /// <summary>
         /// A UI-based command that shows up when you right click or tap on a user
         /// </summary>
         [DiscordEnum("USER")]
         User = 2,
-        
+
         /// <summary>
         /// A UI-based command that shows up when you right click or tap on a messages
         /// </summary>
         [DiscordEnum("MESSAGE")]
-        Message = 3
+        Message = 3,
+
+        /// <summary>
+        /// A UI-based command that represents the primary way to invoke an app's Activity
+        /// </summary>
+        [DiscordEnum("PRIMARY_ENTRY_POINT")]
+        PrimaryEntryPoint = 4
     }
 }
