@@ -139,7 +139,7 @@ namespace Oxide.Ext.Discord
         }
 
         /// <summary>
-        /// Called when server is shutdown
+        /// Called when server is shutdown 
         /// </summary>
         public override void OnShutdown()
         {
