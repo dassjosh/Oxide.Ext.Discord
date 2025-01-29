@@ -58,6 +58,7 @@ namespace Oxide.Ext.Discord.Factory
         public void RemoveBot(BotClient bot)
         {
             _activeBots.Remove(bot.Connection.ApiToken);
+            _applicationBots.Remove(bot.Connection.ApplicationId);
         }
 
         public void ResetAllWebSockets()
