@@ -32,17 +32,17 @@ namespace Oxide.Ext.Discord.Factory
                 WebhookClient bot = _activeWebhooks[connection.WebhookToken];
                 if (bot == null)
                 {
-                    DiscordExtension.GlobalLogger.Debug($"{nameof(WebhookClientFactory)}.{nameof(InitializeWebhookClient)} Creating new ${nameof(WebhookClient)}");
+                    client.Logger.Debug($"{nameof(WebhookClientFactory)}.{nameof(InitializeWebhookClient)} Creating new ${nameof(WebhookClient)}");
                     bot = new WebhookClient(connection);
                     _activeWebhooks[connection.WebhookToken] = bot;
                 }
                 
-                DiscordExtension.GlobalLogger.Debug($"{nameof(WebhookClientFactory)}.{nameof(InitializeWebhookClient)} Adding {{0}} client to webhook {{1}}", client.PluginName, connection.WebhookId);
+                client.Logger.Debug($"{nameof(WebhookClientFactory)}.{nameof(InitializeWebhookClient)} Adding {{0}} client to webhook {{1}}", client.PluginName, connection.WebhookId);
                 return bot;
             }
             catch (Exception ex)
             {
-                DiscordExtension.GlobalLogger.Exception($"{nameof(WebhookClientFactory)}.{nameof(InitializeWebhookClient)} An error occured adding {{0}} client", client.PluginName, ex);
+                client.Logger.Exception($"{nameof(WebhookClientFactory)}.{nameof(InitializeWebhookClient)} An error occured adding {{0}} client", client.PluginName, ex);
                 return null;
             }
         }

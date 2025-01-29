@@ -34,18 +34,18 @@ namespace Oxide.Ext.Discord.Factory
                 BotClient bot = _activeBots[connection.ApiToken];
                 if (bot == null)
                 {
-                    DiscordExtension.GlobalLogger.Debug($"{nameof(BotClientFactory)}.{nameof(InitializeBotClient)} Creating new BotClient");
+                    client.Logger.Debug($"{nameof(BotClientFactory)}.{nameof(InitializeBotClient)} Creating new BotClient");
                     bot = new BotClient(connection);
                     _activeBots[connection.ApiToken] = bot;
                     _applicationBots[connection.ApplicationId] = bot;
                 }
                 
-                DiscordExtension.GlobalLogger.Debug($"{nameof(BotClientFactory)}.{nameof(InitializeBotClient)} Adding {{0}} client to bot {{1}}", client.PluginName, bot.BotUser?.FullUserName);
+                client.Logger.Debug($"{nameof(BotClientFactory)}.{nameof(InitializeBotClient)} Adding {{0}} client to bot {{1}}", client.PluginName, bot.BotUser?.FullUserName);
                 return bot;
             }
             catch (Exception ex)
             {
-                DiscordExtension.GlobalLogger.Exception($"{nameof(BotClientFactory)}.{nameof(InitializeBotClient)} An error occured adding {{0}} client", client.PluginName, ex);
+                client.Logger.Exception($"{nameof(BotClientFactory)}.{nameof(InitializeBotClient)} An error occured adding {{0}} client", client.PluginName, ex);
                 return null;
             }
         }
