@@ -218,6 +218,8 @@ namespace Oxide.Ext.Discord.Plugins
                 
                 BotClientFactory.Instance.UpdateLogLevel();
                 WebhookClientFactory.Instance.UpdateLogLevel();
+                DiscordClientFactory.Instance.UpdateLogLevel();
+                DiscordExtension.UpdateLogLevel();
             }
             catch
             {
@@ -246,6 +248,7 @@ namespace Oxide.Ext.Discord.Plugins
                 BotClientFactory.Instance.UpdateLogLevel();
                 WebhookClientFactory.Instance.UpdateLogLevel();
                 DiscordClientFactory.Instance.UpdateLogLevel();
+                DiscordExtension.UpdateLogLevel();
             }
             catch
             {

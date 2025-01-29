@@ -88,7 +88,7 @@ namespace Oxide.Ext.Discord
         {
             DiscordConfig.LoadConfig();
             
-            GlobalLogger = DiscordLoggerFactory.Instance.CreateExtensionLogger(string.IsNullOrEmpty(TestVersion) ? DiscordLogLevel.Warning : DiscordLogLevel.Verbose);
+            GlobalLogger = DiscordLoggerFactory.Instance.CreateExtensionLogger(GetGlobalLogLevel());
             GlobalLogger.Info("Using Discord Extension Version: {0}", FullExtensionVersion);
             
             ThreadEx.Initialize();
@@ -139,7 +139,7 @@ namespace Oxide.Ext.Discord
         }
 
         /// <summary>
-        /// Called when server is shutdown 
+        /// Called when server is shutdown
         /// </summary>
         public override void OnShutdown()
         {
@@ -156,6 +156,16 @@ namespace Oxide.Ext.Discord
             {
                 yield return $"DISCORD_EXT_{Version.Major}_{i}";
             }
+        }
+
+        private static DiscordLogLevel GetGlobalLogLevel()
+        {
+            return DiscordConfig.Instance.Logging.ConsoleLogLevel >= DiscordConfig.Instance.Logging.FileLogLevel ? DiscordConfig.Instance.Logging.ConsoleLogLevel : DiscordConfig.Instance.Logging.FileLogLevel;
+        }
+        
+        internal static void UpdateLogLevel() 
+        {
+            GlobalLogger.UpdateLogLevel(GetGlobalLogLevel());
         }
     }
 }
