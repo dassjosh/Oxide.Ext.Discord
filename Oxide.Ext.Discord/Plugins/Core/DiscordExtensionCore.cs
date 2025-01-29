@@ -278,48 +278,55 @@ namespace Oxide.Ext.Discord.Plugins
         // ReSharper disable once UnusedParameter.Local
         private void DiscordDebugCommand(IPlayer player, string cmd, string[] args)
         {
-            DebugLogger logger = new();
+            try
+            {
+                DebugLogger logger = new();
             
-            ThreadPool.GetAvailableThreads(out int worker, out int port);
-            ThreadPool.GetMaxThreads(out int maxWorker, out int maxPort);
+                ThreadPool.GetAvailableThreads(out int worker, out int port);
+                ThreadPool.GetMaxThreads(out int maxWorker, out int maxPort);
             
-            logger.AppendLine($"Discord Extension Version: {DiscordExtension.FullExtensionVersion}");
-            logger.AppendList("Bot Clients", BotClientFactory.Instance.Clients);
-            logger.AppendList("Webhook Clients", WebhookClientFactory.Instance.Clients);
-            logger.AppendObject("Global Rest", RestHandler.Global);
-            logger.StartObject("Threads");
-            logger.AppendFieldOutOf("Worker", worker, maxWorker);
-            logger.AppendFieldOutOf("Port", port, maxPort);
-            logger.EndObject();
-            logger.StartObject("Libraries");
-            logger.AppendObject("Discord Application Command", DiscordAppCommand.Instance);
-            logger.AppendObject("Discord Command", DiscordCommand.Instance);
-            logger.AppendObject("Discord Subscriptions", DiscordSubscriptions.Instance);
-            DiscordAppCommand.Instance.LogDebug(logger);
-            DiscordCommand.Instance.LogDebug(logger);
-            DiscordSubscriptions.Instance.LogDebug(logger);
-            logger.AppendObject("Array Pool", ArrayPool<object>.Instance);
-            logger.AppendObject("Discord Pool", DiscordPool.Instance);
-            logger.EndObject();
+                logger.AppendLine($"Discord Extension Version: {DiscordExtension.FullExtensionVersion}");
+                logger.AppendList("Bot Clients", BotClientFactory.Instance.Clients);
+                logger.AppendList("Webhook Clients", WebhookClientFactory.Instance.Clients);
+                logger.AppendObject("Global Rest", RestHandler.Global);
+                logger.StartObject("Threads");
+                logger.AppendFieldOutOf("Worker", worker, maxWorker);
+                logger.AppendFieldOutOf("Port", port, maxPort);
+                logger.EndObject();
+                logger.StartObject("Libraries");
+                logger.AppendObject("Discord Application Command", DiscordAppCommand.Instance);
+                logger.AppendObject("Discord Command", DiscordCommand.Instance);
+                logger.AppendObject("Discord Subscriptions", DiscordSubscriptions.Instance);
+                DiscordAppCommand.Instance.LogDebug(logger);
+                DiscordCommand.Instance.LogDebug(logger);
+                DiscordSubscriptions.Instance.LogDebug(logger);
+                logger.AppendObject("Array Pool", ArrayPool<object>.Instance);
+                logger.AppendObject("Discord Pool", DiscordPool.Instance);
+                logger.EndObject();
             
-            string message = logger.ToString();
+                string message = logger.ToString();
 
-            if (args.Length != 0 && args[0].Equals("file", StringComparison.OrdinalIgnoreCase))
-            {
-                string path = Path.Combine(Interface.Oxide.LogDirectory, "DiscordExtension");
-                string filePath = Path.Combine(path, $"DEBUG-{DateTime.Now:yyyy-MM-dd_h-mm-ss-tt}.txt");
-                if (!Directory.Exists(path))
+                if (args.Length != 0 && args[0].Equals("file", StringComparison.OrdinalIgnoreCase))
                 {
-                    Directory.CreateDirectory(path);
-                }
+                    string path = Path.Combine(Interface.Oxide.LogDirectory, "DiscordExtension");
+                    string filePath = Path.Combine(path, $"DEBUG-{DateTime.Now:yyyy-MM-dd_h-mm-ss-tt}.txt");
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
                 
-                File.WriteAllText(filePath, message);
-                player.Message($"Debug Saved to File. Path: {filePath.Replace(Interface.Oxide.RootDirectory, "").Substring(1)}");
+                    File.WriteAllText(filePath, message);
+                    player.Message($"Debug Saved to File. Path: {filePath.Replace(Interface.Oxide.RootDirectory, "").Substring(1)}");
+                }
+                else
+                {
+                    player.Message(message);
+                    _logger.Info(message);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                player.Message(message);
-                _logger.Info(message);
+                _logger.Exception("Failed to generate debug log", ex);
             }
         }
 
