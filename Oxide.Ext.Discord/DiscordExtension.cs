@@ -13,6 +13,7 @@ using Oxide.Ext.Discord.Interfaces;
 using Oxide.Ext.Discord.Libraries;
 using Oxide.Ext.Discord.Logging;
 using Oxide.Ext.Discord.Plugins;
+using Oxide.Ext.Discord.Rest;
 using Oxide.Plugins;
 
 namespace Oxide.Ext.Discord
@@ -146,6 +147,7 @@ namespace Oxide.Ext.Discord
             DiscordClientFactory.Instance.OnShutdown();
             GlobalLogger.Debug("Disconnected all clients - server shutdown.");
             DataHandler.Instance.Shutdown();
+            RestHandler.Global.Shutdown();
             DiscordLoggerFactory.Instance.OnServerShutdown();
         }
 
