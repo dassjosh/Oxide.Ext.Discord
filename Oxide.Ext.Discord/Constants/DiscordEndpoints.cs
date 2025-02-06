@@ -45,7 +45,7 @@ namespace Oxide.Ext.Discord.Constants
             /// Generated connection string for the websocket
             /// </summary>
             /// <returns></returns>
-            public static readonly string WebsocketArgs = $"v={Version}&encoding={Encoding}";
+            public const string WebsocketArgs = "v=" + Version + "&encoding=" + Encoding;
         }
     }
 }
