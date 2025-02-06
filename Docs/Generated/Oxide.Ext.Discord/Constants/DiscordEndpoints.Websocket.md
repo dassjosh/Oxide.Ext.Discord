@@ -12,26 +12,11 @@ public static class Websocket
 | --- | --- |
 | const [Encoding](#encoding.encoding-field) | How the data sent / received will be encoded |
 | const [Version](#version.version-field) | Which websocket version to use |
-| static readonly [WebsocketArgs](#websocketargs.websocketargs-field) | Generated connection string for the websocket |
+| const [WebsocketArgs](#websocketargs.websocketargs-field) | Generated connection string for the websocket |
 
 ## See Also
 
 * class [DiscordEndpoints](./DiscordEndpoints.md)
-* namespace [Oxide.Ext.Discord.Constants](./ConstantsNamespace.md)
-* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
-   
-   
-# WebsocketArgs.WebsocketArgs field
-
-Generated connection string for the websocket
-
-```csharp
-public static readonly string WebsocketArgs;
-```
-
-## See Also
-
-* class [Websocket](./DiscordEndpoints.Websocket.md)
 * namespace [Oxide.Ext.Discord.Constants](./ConstantsNamespace.md)
 * assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
    
@@ -57,6 +42,21 @@ How the data sent / received will be encoded
 
 ```csharp
 public const string Encoding;
+```
+
+## See Also
+
+* class [Websocket](./DiscordEndpoints.Websocket.md)
+* namespace [Oxide.Ext.Discord.Constants](./ConstantsNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# WebsocketArgs.WebsocketArgs field
+
+Generated connection string for the websocket
+
+```csharp
+public const string WebsocketArgs;
 ```
 
 ## See Also

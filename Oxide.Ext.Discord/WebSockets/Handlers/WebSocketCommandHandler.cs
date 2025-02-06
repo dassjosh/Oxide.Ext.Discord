@@ -174,13 +174,16 @@ namespace Oxide.Ext.Discord.WebSockets
             
             _logger.Debug($"{nameof(WebSocketCommandHandler)}.{nameof(OnSocketDisconnected)} Socket Disconnected. Queuing Commands.");
             _online.Reset();
+            int count = 0;
             while (!_pendingCommands.IsEmpty)
             {
                 if (_pendingCommands.TryDequeue(out WebSocketCommand command))
                 {
                     command.Dispose();
+                    count++;
                 }
             }
+            _logger.Debug($"{nameof(WebSocketCommandHandler)}.{nameof(OnSocketDisconnected)} {{0}} Commands Skipped due to websocket disconnect", count);
             _isSocketReady = false;
         }
 

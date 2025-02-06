@@ -13,6 +13,7 @@ using Oxide.Ext.Discord.Interfaces;
 using Oxide.Ext.Discord.Libraries;
 using Oxide.Ext.Discord.Logging;
 using Oxide.Ext.Discord.Plugins;
+using Oxide.Ext.Discord.Rest;
 using Oxide.Plugins;
 
 namespace Oxide.Ext.Discord
@@ -88,7 +89,7 @@ namespace Oxide.Ext.Discord
         {
             DiscordConfig.LoadConfig();
             
-            GlobalLogger = DiscordLoggerFactory.Instance.CreateExtensionLogger(string.IsNullOrEmpty(TestVersion) ? DiscordLogLevel.Warning : DiscordLogLevel.Verbose);
+            GlobalLogger = DiscordLoggerFactory.Instance.CreateExtensionLogger(GetGlobalLogLevel());
             GlobalLogger.Info("Using Discord Extension Version: {0}", FullExtensionVersion);
             
             ThreadEx.Initialize();
@@ -146,6 +147,7 @@ namespace Oxide.Ext.Discord
             DiscordClientFactory.Instance.OnShutdown();
             GlobalLogger.Debug("Disconnected all clients - server shutdown.");
             DataHandler.Instance.Shutdown();
+            RestHandler.Global.Shutdown();
             DiscordLoggerFactory.Instance.OnServerShutdown();
         }
 
@@ -156,6 +158,16 @@ namespace Oxide.Ext.Discord
             {
                 yield return $"DISCORD_EXT_{Version.Major}_{i}";
             }
+        }
+
+        private static DiscordLogLevel GetGlobalLogLevel()
+        {
+            return DiscordConfig.Instance.Logging.ConsoleLogLevel >= DiscordConfig.Instance.Logging.FileLogLevel ? DiscordConfig.Instance.Logging.ConsoleLogLevel : DiscordConfig.Instance.Logging.FileLogLevel;
+        }
+        
+        internal static void UpdateLogLevel() 
+        {
+            GlobalLogger.UpdateLogLevel(GetGlobalLogLevel());
         }
     }
 }

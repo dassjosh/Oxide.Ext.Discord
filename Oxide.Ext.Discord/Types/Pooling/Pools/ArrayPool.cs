@@ -57,7 +57,10 @@ namespace Oxide.Ext.Discord.Types
             logger.StartObject($"Array Pools <{typeof(TPooled).GetRealTypeName()}>");
             foreach (ArrayPoolInternal pool in _pool)
             {
-                logger.AppendFieldOutOf($"{typeof(TPooled).GetRealTypeName()} Size: {pool.ArraySize}", ArrayPoolInternal.MaxArrays - pool.Index, ArrayPoolInternal.MaxArrays);
+                if (pool != null)
+                {
+                    logger.AppendFieldOutOf($"{typeof(TPooled).GetRealTypeName()} Size: {pool.ArraySize}", ArrayPoolInternal.MaxArrays - pool.Index, ArrayPoolInternal.MaxArrays);
+                }
             }
             
             logger.EndObject();
