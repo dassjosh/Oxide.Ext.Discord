@@ -110,7 +110,7 @@ public int Interval { get; set; }
 Set of specific days within a week for the event to recur on
 
 ```csharp
-public RecurrenceRuleWeekday ByWeekday { get; set; }
+public List<RecurrenceRuleWeekday> ByWeekday { get; set; }
 ```
 
 ## See Also
@@ -126,7 +126,7 @@ public RecurrenceRuleWeekday ByWeekday { get; set; }
 List of specific days within a specific week (1-5) to recur on
 
 ```csharp
-public RecurrenceRuleNWeekday ByNWeekday { get; set; }
+public List<RecurrenceRuleNWeekday> ByNWeekday { get; set; }
 ```
 
 ## See Also
@@ -142,7 +142,7 @@ public RecurrenceRuleNWeekday ByNWeekday { get; set; }
 Set of specific months to recur on
 
 ```csharp
-public RecurrenceRuleMonth ByMonth { get; set; }
+public List<RecurrenceRuleMonth> ByMonth { get; set; }
 ```
 
 ## See Also

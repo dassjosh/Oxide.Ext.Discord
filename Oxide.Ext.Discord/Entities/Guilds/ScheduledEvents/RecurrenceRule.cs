@@ -39,19 +39,19 @@ namespace Oxide.Ext.Discord.Entities
         /// Set of specific days within a week for the event to recur on
         /// </summary>
         [JsonProperty("by_weekday")]
-        public RecurrenceRuleWeekday ByWeekday { get; set; }
+        public List<RecurrenceRuleWeekday> ByWeekday { get; set; }
 
         /// <summary>
         /// List of specific days within a specific week (1-5) to recur on
         /// </summary>
         [JsonProperty("by_n_weekday")]
-        public RecurrenceRuleNWeekday ByNWeekday { get; set; }
+        public List<RecurrenceRuleNWeekday> ByNWeekday { get; set; }
 
         /// <summary>
         /// Set of specific months to recur on
         /// </summary>
         [JsonProperty("by_month")]
-        public RecurrenceRuleMonth ByMonth { get; set; }
+        public List<RecurrenceRuleMonth> ByMonth { get; set; }
 
         /// <summary>
         /// Set of specific dates within a month to recur on
