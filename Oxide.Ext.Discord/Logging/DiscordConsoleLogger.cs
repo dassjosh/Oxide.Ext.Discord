@@ -51,16 +51,16 @@ namespace Oxide.Ext.Discord.Logging
             {
                 case DiscordLogLevel.Debug:
                 case DiscordLogLevel.Warning:
-                    Interface.Oxide.LogWarning(message, Array.Empty<object>());
+                    Interface.Oxide.LogWarning(message);
                     break;
                 case DiscordLogLevel.Error:
-                    Interface.Oxide.LogError(message, Array.Empty<object>());
+                    Interface.Oxide.LogError(message);
                     break;
                 case DiscordLogLevel.Exception:
                     Interface.Oxide.LogException(message, ex);
                     break;
                 default:
-                    Interface.Oxide.LogInfo(message, Array.Empty<object>());
+                    Interface.Oxide.LogInfo(message);
                     break;
             }
         }
