@@ -1829,6 +1829,14 @@
             <param name="text">Text to replace</param>
             <returns></returns>
         </member>
+        <member name="M:Oxide.Ext.Discord.Cache.EmojiCache.GetEmojiUrlEncoded(System.String)">
+            <summary>
+            Returns the emoji character or discord emoji string as it's url encoded formated.
+            If no matching emoji is found, the originally passed string is returned
+            </summary>
+            <param name="emoji"></param>
+            <returns></returns>
+        </member>
         <member name="T:Oxide.Ext.Discord.Cache.EntityCache`1">
             <summary>
             Cache for {T} 

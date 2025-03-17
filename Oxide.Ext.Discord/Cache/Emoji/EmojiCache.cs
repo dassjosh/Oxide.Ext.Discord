@@ -1,4 +1,8 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Net;
+using System.Text;
+using System.Text.RegularExpressions;
+using Oxide.Ext.Discord.Libraries;
 using Oxide.Ext.Discord.Types;
 using Oxide.Plugins;
 
@@ -10,7 +14,7 @@ namespace Oxide.Ext.Discord.Cache
     public sealed partial class EmojiCache : Singleton<EmojiCache>
     {
         private readonly Hash<string, string> _emojiToText = new();
-        private readonly Hash<string, string> _textToEmoji = new();
+        private readonly Hash<string, string> _textToEmoji = new(StringComparer.OrdinalIgnoreCase);
         
         /// <summary>
         /// Regex for unicode emoji characters
@@ -34,6 +38,7 @@ namespace Oxide.Ext.Discord.Cache
 
         private EmojiCache()
         {
+            Build();
             EmojiToTextOrDefault = match => _emojiToText[match.Value] ?? match.Value;
             TextToEmojiOrDefault = match => _textToEmoji[match.Value] ?? match.Value;
         }
@@ -99,5 +104,26 @@ namespace Oxide.Ext.Discord.Cache
         /// <param name="text">Text to replace</param>
         /// <returns></returns>
         public string ReplaceTextWithEmoji(string text) => ReplaceTextWithEmoji(text, TextToEmojiOrDefault);
+        
+        /// <summary>
+        /// Returns the emoji character or discord emoji string as it's url encoded formated.
+        /// If no matching emoji is found, the originally passed string is returned
+        /// </summary>
+        /// <param name="emoji"></param>
+        /// <returns></returns>
+        public string GetEmojiUrlEncoded(string emoji)
+        {
+            if (string.IsNullOrEmpty(emoji))
+            {
+                return emoji;
+            }
+            
+            if (_textToEmoji.TryGetValue(emoji, out string emojiString))
+            {
+                emoji = emojiString;
+            }
+            
+            return WebUtility.UrlEncode(emoji);
+        }
     }
 }

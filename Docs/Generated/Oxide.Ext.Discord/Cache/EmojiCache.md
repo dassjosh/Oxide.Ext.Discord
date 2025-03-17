@@ -15,6 +15,7 @@ public sealed class EmojiCache : Singleton<EmojiCache>
 | readonly [TextRegex](#textregex-field) | Regex for discord :emoji: strings |
 | readonly [TextToEmojiOrDefault](#texttoemojiordefault-field) | Regex MatchEvaluator for text to emoji or matched value |
 | [EmojiToText](#emojitotext-method)(…) | Convert an emoji character to the emoji string text |
+| [GetEmojiUrlEncoded](#getemojiurlencoded-method)(…) | Returns the emoji character or discord emoji string as it's url encoded formated. If no matching emoji is found, the originally passed string is returned |
 | [ReplaceEmojiWithText](#replaceemojiwithtext-method-1-of-3)(…) | Replaces emoji character with emoji string characters (3 methods) |
 | [ReplaceTextWithEmoji](#replacetextwithemoji-method-1-of-3)(…) | Replaces emoji string text with emoji characters (3 methods) |
 | [TextToEmoji](#texttoemoji-method)(…) | Convert emoji string text to an emoji character |
@@ -179,6 +180,25 @@ public string ReplaceTextWithEmoji(string text, string nonMatchReplacement)
 | --- | --- |
 | text | Text to replace |
 | nonMatchReplacement | Replacement Text to use if non-matching |
+
+## See Also
+
+* class [EmojiCache](./EmojiCache.md)
+* namespace [Oxide.Ext.Discord.Cache](./CacheNamespace.md)
+* assembly [Oxide.Ext.Discord](../../Oxide.Ext.Discord.md)
+   
+   
+# GetEmojiUrlEncoded method
+
+Returns the emoji character or discord emoji string as it's url encoded formated. If no matching emoji is found, the originally passed string is returned
+
+```csharp
+public string GetEmojiUrlEncoded(string emoji)
+```
+
+| parameter | description |
+| --- | --- |
+| emoji |  |
 
 ## See Also
 

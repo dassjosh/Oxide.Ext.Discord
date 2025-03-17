@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -220,7 +221,15 @@ namespace Oxide.Ext.Discord.Entities
                     break;
 
                 case RequestErrorType.Generic:
-                    _client.Logger.Exception("Rest Request Exception (Generic Error). Plugin: {0} ID: {1} Method: {2} URL: {3} Data Type: {4}", _client.PluginName, RequestId, RequestMethod, Url, RequestData?.GetType().GetRealTypeName() ?? "None", Exception);
+                    if (Exception is WebException {Message: not null} exception && exception.Message.Contains("NameResolutionFailure", StringComparison.OrdinalIgnoreCase) && Url.Contains("gateway"))
+                    {
+                        _client.Logger.Exception("Failed to resolve Discord API server. Are you having internet issues or is Discord blocked in your country? Plugin: {0} ID: {1} Method: {2} URL: {3} Data Type: {4}", _client.PluginName, RequestId, RequestMethod, Url, RequestData?.GetType().GetRealTypeName() ?? "None", Exception);
+                    }
+                    else
+                    {
+                        _client.Logger.Exception("Rest Request Exception (Generic Error). Plugin: {0} ID: {1} Method: {2} URL: {3} Data Type: {4}", _client.PluginName, RequestId, RequestMethod, Url, RequestData?.GetType().GetRealTypeName() ?? "None", Exception);
+                    }
+
                     break;
             }
         }
