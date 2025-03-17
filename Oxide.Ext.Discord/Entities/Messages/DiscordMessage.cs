@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Oxide.Core.Plugins;
 using Oxide.Ext.Discord.Builders;
+using Oxide.Ext.Discord.Cache;
 using Oxide.Ext.Discord.Clients;
 using Oxide.Ext.Discord.Exceptions;
 using Oxide.Ext.Discord.Interfaces;
@@ -563,6 +564,7 @@ namespace Oxide.Ext.Discord.Entities
             InvalidSnowflakeException.ThrowIfInvalid(Id);
             InvalidSnowflakeException.ThrowIfInvalid(ChannelId);
             InvalidEmojiException.ThrowIfInvalidEmojiString(emoji);
+            emoji = EmojiCache.Instance.GetEmojiUrlEncoded(emoji);
             return client.Bot.Rest.Put(client,$"channels/{ChannelId}/messages/{Id}/reactions/{emoji}/@me", null);
         }
 
@@ -591,6 +593,7 @@ namespace Oxide.Ext.Discord.Entities
             InvalidSnowflakeException.ThrowIfInvalid(Id);
             InvalidSnowflakeException.ThrowIfInvalid(ChannelId);
             InvalidEmojiException.ThrowIfInvalidEmojiString(emoji);
+            emoji = EmojiCache.Instance.GetEmojiUrlEncoded(emoji);
             return client.Bot.Rest.Delete(client,$"channels/{ChannelId}/messages/{Id}/reactions/{emoji}/@me");
         }
 
@@ -623,6 +626,7 @@ namespace Oxide.Ext.Discord.Entities
             InvalidSnowflakeException.ThrowIfInvalid(ChannelId);
             InvalidSnowflakeException.ThrowIfInvalid(userId);
             InvalidEmojiException.ThrowIfInvalidEmojiString(emoji);
+            emoji = EmojiCache.Instance.GetEmojiUrlEncoded(emoji);
             return client.Bot.Rest.Delete(client,$"channels/{ChannelId}/messages/{Id}/reactions/{emoji}/{userId}");
         }
 
@@ -649,6 +653,7 @@ namespace Oxide.Ext.Discord.Entities
         public IPromise<List<DiscordUser>> GetReactions(DiscordClient client, string emoji)
         {
             InvalidEmojiException.ThrowIfInvalidEmojiString(emoji);
+            emoji = EmojiCache.Instance.GetEmojiUrlEncoded(emoji);
             return client.Bot.Rest.Get<List<DiscordUser>>(client,$"channels/{ChannelId}/messages/{Id}/reactions/{emoji}");
         }
 
@@ -689,6 +694,7 @@ namespace Oxide.Ext.Discord.Entities
         public IPromise DeleteAllReactionsForEmoji(DiscordClient client, string emoji)
         {
             InvalidEmojiException.ThrowIfInvalidEmojiString(emoji);
+            emoji = EmojiCache.Instance.GetEmojiUrlEncoded(emoji);
             return client.Bot.Rest.Delete(client,$"channels/{ChannelId}/messages/{Id}/reactions/{emoji}");
         }
 

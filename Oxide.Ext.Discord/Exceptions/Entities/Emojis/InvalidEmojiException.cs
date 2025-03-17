@@ -24,19 +24,6 @@ namespace Oxide.Ext.Discord.Exceptions
             {
                 throw new InvalidEmojiException(emoji, "Emoji string cannot be null or empty.");
             }
-
-            if (emoji.Length == 2 && !char.IsSurrogatePair(emoji[0], emoji[1]))
-            {
-                throw new InvalidEmojiException(emoji, "Emoji of length 2 must be a surrogate pair");
-            }
-
-            if (emoji.Length > 2 && !EmojiValidation.IsMatch(emoji))
-            {
-                throw new InvalidEmojiException(emoji, "Emoji string is not in the correct format.\n" +
-                                                       "If using a normal emoji please use the unicode character for that emoji.\n" +
-                                                       "If using a custom emoji the format must be emojiName:emojiId\n" +
-                                                       "If using a custom animated emoji the format must be a:emojiName:emojiId");
-            }
         }
         
         internal static void ThrowIfInvalidName(string name, bool allowNullOrEmpty)

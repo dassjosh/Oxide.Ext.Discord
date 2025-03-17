@@ -124,8 +124,6 @@ namespace Oxide.Ext.Discord
             Manager.RegisterLibrary(nameof(DiscordButtonTemplates), DiscordButtonTemplates);
             Manager.RegisterLibrary(nameof(DiscordInputTextTemplates), DiscordInputTextTemplates);
             Manager.RegisterLibrary(nameof(DiscordSelectMenuTemplates), DiscordSelectMenuTemplates);
-
-            EmojiCache.Instance.Build();
             
             Manager.RegisterPluginLoader(new DiscordExtPluginLoader());
             //Interface.Oxide.OnFrame(PromiseTimer.Instance.Update);
