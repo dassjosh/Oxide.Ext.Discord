@@ -61,7 +61,7 @@ namespace Oxide.Ext.Discord.Rest
             };
             Client = new HttpClient(handler)
             {
-                Timeout = TimeSpan.FromSeconds(15),
+                Timeout = TimeSpan.FromSeconds(HttpConstants.Timeout),
                 BaseAddress = new Uri(DiscordEndpoints.Rest.ApiUrl)
             };
             Client.DefaultRequestHeaders.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));

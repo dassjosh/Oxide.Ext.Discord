@@ -144,6 +144,7 @@ namespace Oxide.Ext.Discord.Rest
         {
             if (!Source.IsCancellationRequested)
             {
+                Client.Logger.Debug($"{nameof(BaseRequest)}.{nameof(Abort)} Aborting Request Request ID: {{0}} Plugin: {{1}} Method: {{2}} Route: {{3}}", Id, Client.PluginName, Method, Route);
                 Source.Cancel();
                 Status = RequestStatus.Cancelled;
             }

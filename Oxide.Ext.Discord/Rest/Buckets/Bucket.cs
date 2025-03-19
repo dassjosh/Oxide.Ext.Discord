@@ -183,7 +183,7 @@ namespace Oxide.Ext.Discord.Rest
                         continue;
                     }
 
-                    if (Remaining < 0)
+                    if (Remaining < 0 && IsKnownBucket)
                     {
                         _logger.Debug($"{nameof(Bucket)}.{nameof(WaitUntilBucketAvailable)} Plugin: {{0}} Bucket ID: {{1}} Request ID: {{2}} Can't Start Request Due to Remaining < 0: {{3}} Url: {{4}} Limit: {{5}} Remaining: {{6}} Waiting For: {{7}} Seconds", client.PluginName, Id, request.Id, request.Method, request.Route, Limit, Remaining, (ResetAt - DateTimeOffset.UtcNow).TotalSeconds);
                         await ResetAt.DelayUntil(100, token).ConfigureAwait(false);

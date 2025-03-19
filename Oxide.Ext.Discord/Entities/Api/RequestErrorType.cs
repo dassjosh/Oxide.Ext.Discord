@@ -33,6 +33,11 @@ namespace Oxide.Ext.Discord.Entities
         /// <summary>
         /// A non web error occured
         /// </summary>
-        Generic
+        Generic,
+        
+        /// <summary>
+        /// A Timeout occured
+        /// </summary>
+        Timeout
     }
 }

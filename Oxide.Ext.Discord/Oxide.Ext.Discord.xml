@@ -4653,6 +4653,11 @@
             A non web error occured
             </summary>
         </member>
+        <member name="F:Oxide.Ext.Discord.Entities.RequestErrorType.Timeout">
+            <summary>
+            A Timeout occured
+            </summary>
+        </member>
         <member name="T:Oxide.Ext.Discord.Entities.RequestResponse">
             <summary>
             Represents a REST response from discord
