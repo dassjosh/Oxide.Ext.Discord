@@ -617,7 +617,7 @@ namespace Oxide.Ext.Discord.WebSockets
             _webSocket.OnSocketReady(ready);
             _client.OnClientReady(ready);
 
-            _logger.Info("Your bot was found in {0} Guilds!", ready.Guilds.Count);
+            _logger.Info("Your bot {0} was found in {1} Guilds!", ready.User.Username, ready.Guilds.Count);
         }
 
         private IPromise<DiscordApplication> ProcessGatewayIntents(DiscordApplication app)
