@@ -85,7 +85,7 @@ A web exception [`RequestResponse`](./RequestResponse.md)
 Creates a REST API response for a cancelled request
 
 ```csharp
-public static ValueTask<RequestResponse> CreateCancelledResponse()
+public static RequestResponse CreateCancelledResponse()
 ```
 
 ## Return Value

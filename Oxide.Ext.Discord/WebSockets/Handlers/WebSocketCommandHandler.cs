@@ -153,6 +153,13 @@ namespace Oxide.Ext.Discord.WebSockets
         /// <param name="command">Command to send over the websocket</param>
         public void Enqueue(WebSocketCommand command)
         {
+            if (!_isSocketReady && command.Payload.OpCode == GatewayCommandCode.PresenceUpdate)
+            {
+                _logger.Debug($"{nameof(WebSocketCommandHandler)}.{nameof(Enqueue)} {{0}} Skipping command {{1}}. Websocket is not ready", command.Client.PluginName, command.Payload.OpCode);
+                command.Dispose();
+                return;
+            }
+            
             _logger.Debug($"{nameof(WebSocketCommandHandler)}.{nameof(Enqueue)} {{0}} Queuing command {{1}}", command.Client.PluginName, command.Payload.OpCode);
             _pendingCommands.Enqueue(command);
             _commands.Set();

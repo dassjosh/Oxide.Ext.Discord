@@ -16,6 +16,7 @@ public enum RequestErrorType : byte
 | ApiError | `ApiError` | An Invalid request was passed to discord |
 | Serialization | `Serialization` | An error occured during JSON serialization |
 | Generic | `Generic` | A non web error occured |
+| Timeout | `Timeout` | A Timeout occured |
 
 ## See Also
 

@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Oxide.Core.Libraries;
 using Oxide.Ext.Discord.Clients;
 using Oxide.Ext.Discord.Configuration;
+using Oxide.Ext.Discord.Constants;
 using Oxide.Ext.Discord.Exceptions;
 using Oxide.Ext.Discord.Extensions;
 using Oxide.Ext.Discord.Logging;
@@ -214,6 +215,10 @@ namespace Oxide.Ext.Discord.Entities
 
                 case RequestErrorType.GenericWeb:
                     _client.Logger.Error("Rest Request Exception (Web Error). Plugin: {0} ID: {1} Request URL: [{2}] {3} Content-Type: {4} Http Response Code: {5} Message: {6}", _client.PluginName, RequestId, RequestMethod, Url, ContentType, HttpStatusCode, ResponseMessage);
+                    break;
+                
+                case RequestErrorType.Timeout:
+                    _client.Logger.Error("Rest Request Exception (Timeout). Plugin: {0} ID: {1} Request URL: [{2}] {3} Took longer than {4} seconds to complete the request", _client.PluginName, RequestId, RequestMethod, Url, HttpConstants.Timeout);
                     break;
 
                 case RequestErrorType.Serialization:

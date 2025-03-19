@@ -25,9 +25,7 @@ namespace Oxide.Ext.Discord.Entities
         /// <param name="error">If the request had an error the error created from the request</param>
         private async ValueTask Init(HttpResponseMessage response, RequestCompletedStatus status, ResponseError error = null)
         {
-            Status = status;
-            Error = error;
-
+            Init(status, error);
             if (response != null)
             {
                 Code = (DiscordHttpStatusCode)response.StatusCode;
@@ -37,6 +35,12 @@ namespace Oxide.Ext.Discord.Entities
                 error?.SetResponse(Code, Content);
                 error?.SetRateLimitResponse(RateLimit.Message, RateLimit.Code);
             }
+        }
+
+        private void Init(RequestCompletedStatus status, ResponseError error = null)
+        {
+            Status = status;
+            Error = error;
         }
 
         /// <summary>
@@ -69,10 +73,10 @@ namespace Oxide.Ext.Discord.Entities
         /// Creates a REST API response for a cancelled request
         /// </summary>
         /// <returns>A cancelled <see cref="RequestResponse"/></returns>
-        public static async ValueTask<RequestResponse> CreateCancelledResponse()
+        public static RequestResponse CreateCancelledResponse()
         {
             RequestResponse response = DiscordPool.Internal.Get<RequestResponse>();
-            await response.Init(null, RequestCompletedStatus.Cancelled).ConfigureAwait(false);
+            response.Init(RequestCompletedStatus.Cancelled);
             return response;
         }
 

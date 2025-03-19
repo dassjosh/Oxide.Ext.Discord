@@ -138,17 +138,10 @@ namespace Oxide.Ext.Discord.Rest
                 if (Request.IsCancelled)
                 {
                     _logger.Verbose($"{nameof(RequestHandler)}.{nameof(FireRequestInternal)} Cancel REST Request. Request ID: {{0}} Method: {{1}} Url: {{2}}", Request.Id, Request.Method, Request.Route);
-                    return await RequestResponse.CreateCancelledResponse().ConfigureAwait(false);
+                    return RequestResponse.CreateCancelledResponse();
                 }
 
                 response = await SendRequest(_token).ConfigureAwait(false);
-                
-                //Request was canceled
-                if (response == null)
-                {
-                    return null;
-                }
-                
                 Request.Bucket.UpdateRateLimits(this, response);
                 
                 switch (response.Status)
@@ -170,7 +163,7 @@ namespace Oxide.Ext.Discord.Rest
             return response;
         }
 
-        private bool CanSendRequest(RequestResponse response, byte retries)
+        private static bool CanSendRequest(RequestResponse response, byte retries)
         {
             if (retries >= DiscordConfig.Instance.Rest.ApiRateLimitRetries)
             {
@@ -193,7 +186,7 @@ namespace Oxide.Ext.Discord.Rest
                 using HttpResponseMessage webResponse = await Request.HttpClient.SendAsync(request, token).ConfigureAwait(false);
                 if (token.IsCancellationRequested)
                 {
-                    return null;
+                    return RequestResponse.CreateCancelledResponse();
                 }
                         
                 if (webResponse.IsSuccessStatusCode)
@@ -203,9 +196,15 @@ namespace Oxide.Ext.Discord.Rest
 
                 return await HandleWebException(request, webResponse).ConfigureAwait(false);
             }
-            catch (OperationCanceledException)
+            catch (OperationCanceledException ex)
             {
-                return await RequestResponse.CreateCancelledResponse().ConfigureAwait(false);
+                if (token.IsCancellationRequested)
+                {
+                    return RequestResponse.CreateCancelledResponse();
+                }
+                
+                Request.OnRequestErrored();
+                return await RequestResponse.CreateExceptionResponse(GetResponseTimeout(RequestErrorType.Timeout, DiscordLogLevel.Error, ex), null, RequestCompletedStatus.ErrorRetry).ConfigureAwait(false);
             }
             catch (JsonSerializationException ex)
             {
@@ -309,6 +308,7 @@ namespace Oxide.Ext.Discord.Rest
         }
 
         private ResponseError GetResponseError(RequestErrorType type, DiscordLogLevel log) => new(Request, type, log);
+        private ResponseError GetResponseTimeout(RequestErrorType type, DiscordLogLevel log, Exception ex) => new ResponseError(Request, type, log).WithException(ex);
 
         /// <inheritdoc/>
         protected override void EnterPool()
