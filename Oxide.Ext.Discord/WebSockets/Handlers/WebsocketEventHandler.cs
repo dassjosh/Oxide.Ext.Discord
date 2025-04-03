@@ -34,9 +34,9 @@ namespace Oxide.Ext.Discord.WebSockets
         /// <param name="logger">Logger for the client</param>
         public WebSocketEventHandler(BotClient client, DiscordWebSocket socket, ILogger logger)
         {
-            _client = client;
-            _webSocket = socket;
-            _logger = logger;
+            _client = client ?? throw new ArgumentNullException(nameof(client));
+            _webSocket = socket ?? throw new ArgumentNullException(nameof(socket));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         #region Socket Events

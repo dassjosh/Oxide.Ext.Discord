@@ -44,9 +44,9 @@ namespace Oxide.Ext.Discord.WebSockets
         /// <param name="logger"></param>
         public WebSocketHandler(IWebSocketEventHandler handler, BotClient botClient, ILogger logger)
         {
-            _handler = handler;
-            _botClient = botClient;
-            _logger = logger;
+            _handler = handler ?? throw new ArgumentNullException(nameof(handler));
+            _botClient = botClient ?? throw new ArgumentNullException(nameof(botClient));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _receiveBuffer = new byte[Math.Max(ReceiveChunkSize, SendChunkSize)];
             _sendBuffer = new byte[SendChunkSize];
         }

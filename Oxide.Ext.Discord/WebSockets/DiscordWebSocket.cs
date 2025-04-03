@@ -65,8 +65,8 @@ namespace Oxide.Ext.Discord.WebSockets
         /// <param name="logger">Logger for the bot client</param>
         public DiscordWebSocket(BotClient client, ILogger logger)
         {
-            _client = client;
-            _logger = logger;
+            _client = client ?? throw new ArgumentNullException(nameof(client));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
             _reconnect = new WebSocketReconnectHandler(client, this, logger);
             _commands = new WebSocketCommandHandler(client, this, logger);

@@ -1,9 +1,10 @@
+using System;
 using System.Timers;
-using Oxide.Core;
 using Oxide.Ext.Discord.Clients;
 using Oxide.Ext.Discord.Constants;
 using Oxide.Ext.Discord.Interfaces;
 using Oxide.Ext.Discord.Logging;
+using Random = Oxide.Core.Random;
 
 namespace Oxide.Ext.Discord.WebSockets
 {
@@ -32,9 +33,9 @@ namespace Oxide.Ext.Discord.WebSockets
         /// <param name="logger">Logger for the bot</param>
         public DiscordHeartbeatHandler(BotClient client, DiscordWebSocket socket, ILogger logger)
         {
-            _client = client;
-            _socket = socket;
-            _logger = logger;
+            _client = client ?? throw new ArgumentNullException(nameof(client));
+            _socket = socket ?? throw new ArgumentNullException(nameof(socket));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _timer = new Timer();
             _timer.Elapsed += HeartbeatElapsed;
         }
@@ -53,7 +54,7 @@ namespace Oxide.Ext.Discord.WebSockets
             _timer.Interval = _interval * Random.Range(0f, 1f);
             _timer.Start();
             _logger.Debug($"{nameof(DiscordHeartbeatHandler)}.{nameof(SetupHeartbeat)} Creating heartbeat with interval {{0}}ms.", interval);
-            _client.Hooks.CallHook(DiscordExtHooks.OnDiscordSetupHeartbeat, interval);
+            _client.Hooks?.CallHook(DiscordExtHooks.OnDiscordSetupHeartbeat, interval);
         }
 
         internal void OnHeartbeatAcknowledge()
