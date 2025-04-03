@@ -30,9 +30,9 @@ namespace Oxide.Ext.Discord.WebSockets
         /// <param name="logger"></param>
         public WebSocketReconnectHandler(BotClient client, DiscordWebSocket webSocket, ILogger logger)
         {
-            _client = client;
-            WebSocket = webSocket;
-            _logger = logger;
+            _client = client ?? throw new ArgumentNullException(nameof(client));
+            WebSocket = webSocket ?? throw new ArgumentNullException(nameof(webSocket));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         /// <summary>

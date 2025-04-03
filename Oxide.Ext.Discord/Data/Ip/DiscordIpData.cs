@@ -19,8 +19,8 @@ namespace Oxide.Ext.Discord.Data.Ip
             OnDataChanged();
         }
 
-        public string GetCountryName(string ip) => _ips.TryGetValue(ip, out IpData data) ? data.CountryName : "Unknown";
-        public string GetCountryCode(string ip) => _ips.TryGetValue(ip, out IpData data) ? data.CountryCode : string.Empty;
+        public string GetCountryName(string ip) => !string.IsNullOrEmpty(ip) && _ips.TryGetValue(ip, out IpData data) ? data.CountryName : "Unknown";
+        public string GetCountryCode(string ip) => !string.IsNullOrEmpty(ip) && _ips.TryGetValue(ip, out IpData data) ? data.CountryCode : string.Empty;
         
         internal override void OnDataLoaded(DataFileInfo info)
         {

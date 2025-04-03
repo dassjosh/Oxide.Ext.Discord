@@ -37,9 +37,9 @@ namespace Oxide.Ext.Discord.WebSockets
         /// <param name="logger">Logger for this handler</param>
         public WebSocketCommandHandler(BotClient client, DiscordWebSocket webSocket, ILogger logger)
         {
-            _client = client;
-            _webSocket = webSocket;
-            _logger = logger;
+            _client = client ?? throw new ArgumentNullException(nameof(client));
+            _webSocket = webSocket ?? throw new ArgumentNullException(nameof(webSocket));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _rateLimit = new WebsocketRateLimit(_logger);
             
             _source = new CancellationTokenSource();
